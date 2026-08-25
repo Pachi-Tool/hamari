@@ -467,6 +467,58 @@ button:focus-visible{outline:3px solid var(--neon-cyan);outline-offset:3px;}
   article table{min-width:340px;}
 }
 
+/* ===== 機種検索 ===== */
+#machineField{display:none;}
+
+.machine-box{position:relative;}
+
+#machineSearch{
+  width:100%;
+  background:#0a0612;
+  border:2px solid rgba(200,194,216,.3);
+  border-radius:8px;
+  color:var(--text);
+  font-family:"Noto Sans JP",sans-serif;
+  font-size:16px;
+  padding:11px 12px;
+}
+#machineSearch:focus{
+  outline:none;
+  border-color:var(--neon-cyan);
+  box-shadow:0 0 12px rgba(37,229,255,.45);
+}
+
+#machineList{
+  display:none;
+  position:absolute;top:calc(100% + 4px);left:0;right:0;
+  z-index:20;
+  list-style:none;margin:0;padding:4px;
+  background:#120c1f;
+  border:2px solid var(--neon-cyan);
+  border-radius:8px;
+  max-height:230px;overflow-y:auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.75);
+}
+#machineList li{
+  padding:10px 11px;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:14px;
+}
+#machineList li:hover,#machineList li.active{background:rgba(37,229,255,.16);}
+#machineList li .m-name{display:block;}
+#machineList li .m-sub{
+  display:block;font-size:11px;color:var(--text-dim);
+  font-family:"DotGothic16",monospace;
+}
+#machineList li.none{color:var(--text-dim);cursor:default;font-size:13px;}
+#machineList li.none:hover{background:none;}
+
+.machine-status{
+  font-size:12px;color:var(--lamp-gold);
+  margin:8px 0 0;min-height:1em;
+}
+
 /* 入力エラー表示 */
 .err{
   display:none;
@@ -507,6 +559,15 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
 <!-- ========== 計算機 ========== -->
 <section class="panel">
   <h2>確率を計算する</h2>
+
+  <div class="field" id="machineField">
+    <label for="machineSearch">機種から選ぶ（任意）</label>
+    <div class="machine-box">
+      <input type="text" id="machineSearch" placeholder="機種名を入力（例：大海、牙狼）" autocomplete="off">
+      <ul id="machineList"></ul>
+    </div>
+    <p class="machine-status" id="machineStatus"></p>
+  </div>
 
   <div class="field">
     <label for="prob">大当たり確率（1/◯◯の◯◯を入力）</label>
@@ -752,6 +813,86 @@ function makeCompare(oneIn){
   for(const item of list){ if(oneIn >= item[0]) best = item; }
   return 'これは「' + best[1] + '」（約1/' + best[0].toLocaleString() + '）と同じくらいの珍しさです。';
 }
+
+// ============================================
+//  機種検索（machines.json から読み込む）
+// ============================================
+const machineField  = document.getElementById('machineField');
+const machineSearch = document.getElementById('machineSearch');
+const machineList   = document.getElementById('machineList');
+const machineStatus = document.getElementById('machineStatus');
+
+let machines = [];   // 読み込んだ機種データを入れる箱
+
+// データを読み込む
+fetch('./machines.json')
+  .then(function(res){
+    if(!res.ok) throw new Error('読み込み失敗');
+    return res.json();
+  })
+  .then(function(data){
+    machines = data.machines || [];
+    if(machines.length > 0) machineField.style.display = 'block';
+  })
+  .catch(function(){
+    // 読み込めなくても計算機は普通に使えるので、検索欄を隠すだけ
+    machineField.style.display = 'none';
+  });
+
+// 候補を絞り込んで表示する
+function showCandidates(keyword){
+  const kw = keyword.trim().toLowerCase();
+  machineList.innerHTML = '';
+
+  if(kw === ''){
+    machineList.style.display = 'none';
+    return;
+  }
+
+  const hits = machines.filter(function(m){
+    return m.name.toLowerCase().indexOf(kw) !== -1
+        || (m.maker || '').toLowerCase().indexOf(kw) !== -1;
+  }).slice(0, 12);
+
+  if(hits.length === 0){
+    machineList.innerHTML = '<li class="none">該当する機種がありません。確率を直接入力してください。</li>';
+    machineList.style.display = 'block';
+    return;
+  }
+
+  hits.forEach(function(m){
+    const li = document.createElement('li');
+    li.innerHTML = '<span class="m-name">' + m.name + '</span>'
+      + '<span class="m-sub">1/' + m.prob + '　' + (m.type || '') + '　' + (m.maker || '') + '</span>';
+    li.addEventListener('click', function(){ selectMachine(m); });
+    machineList.appendChild(li);
+  });
+  machineList.style.display = 'block';
+}
+
+// 機種を選んだときの処理
+function selectMachine(m){
+  probInput.value = m.prob;              // 確率の欄に自動入力
+  machineSearch.value = m.name;
+  machineList.style.display = 'none';
+  machineStatus.textContent = '「' + m.name + '」の通常時確率 1/' + m.prob + ' を入力しました';
+}
+
+machineSearch.addEventListener('input', function(){
+  machineStatus.textContent = '';
+  showCandidates(this.value);
+});
+
+machineSearch.addEventListener('focus', function(){
+  if(this.value.trim() !== '') showCandidates(this.value);
+});
+
+// 欄の外をクリックしたら候補を閉じる
+document.addEventListener('click', function(e){
+  if(!machineSearch.contains(e.target) && !machineList.contains(e.target)){
+    machineList.style.display = 'none';
+  }
+});
 
 // --- エラーをページ内に表示する ---
 function showError(msg){

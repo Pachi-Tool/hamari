@@ -1,0 +1,34 @@
+{
+  "updated": "2026-08-25",
+  "note": "prob は通常時の大当たり確率の分母。verified が false のものは未検証のため、公開前にメーカー公式情報等で確認してください。",
+  "machines": [
+    {
+      "name": "e大海物語5 ブラック",
+      "maker": "三洋",
+      "type": "ライトミドル",
+      "prob": 199.8,
+      "verified": false
+    },
+    {
+      "name": "e牙狼12 黄金騎士極限",
+      "maker": "サンセイR&D",
+      "type": "ミドル",
+      "prob": 319.6,
+      "verified": false
+    },
+    {
+      "name": "eリコリス・リコイル",
+      "maker": "サンセイR&D",
+      "type": "ライトミドル",
+      "prob": 259.7,
+      "verified": false
+    },
+    {
+      "name": "eソードアート・オンライン アリシゼーション 夜空",
+      "maker": "オッケー",
+      "type": "ミドル",
+      "prob": 319.6,
+      "verified": false
+    }
+  ]
+}

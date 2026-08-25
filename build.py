@@ -44,9 +44,12 @@ def fmt_pct(v):
 
 
 def fmt_one_in(v):
-    """「◯回に1度」の表現にする"""
+    """頻度の表現。よく起こる場合は「10回中◯回」で表す"""
     if v <= 0:
         return "-"
+    # 3回に1度より頻繁な場合は「〇回に1度」では表現できないので言い換える
+    if v > 1 / 3:
+        return f"10回中 約{round(v * 10)}回"
     n = 1 / v
     if n >= 100000000:
         return f"約{n/100000000:.1f}億回に1度"
@@ -283,11 +286,13 @@ def build_page(m, others):
   <h2>回転数別 ハマり確率</h2>
   <div class="table-scroll">
     <table>
-      <tr><th>ハマり回転数</th><th>そこまで当たらない確率</th><th>何回に1度</th></tr>
+      <tr><th>ハマり回転数</th><th>そこまで当たらない確率</th><th>遭遇する頻度</th></tr>
 {table_rows}
     </table>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
+    ※「遭遇する頻度」は、大当たりを引くたびにそのハマりに何回に1度出会うかの目安です。
+    たとえば「約151回に1度」なら、大当たり151回につき1回はそこまでハマる計算になります。<br>
     ※通常時の大当たり確率1/{prob}をもとに算出した理論値です。
   </p>
 </section>
@@ -361,6 +366,7 @@ function fmtPct(p){{
   return p.toFixed(5);
 }}
 function fmtOneIn(n){{
+  if(n <= 3) return '10回中 約' + Math.round(10 / n) + '回';
   if(n >= 100000000) return '約' + (n/100000000).toFixed(1) + '億回に1度';
   if(n >= 10000)     return '約' + (n/10000).toFixed(1) + '万回に1度';
   return '約' + Math.round(n).toLocaleString() + '回に1度';

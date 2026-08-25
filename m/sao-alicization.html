@@ -69,10 +69,10 @@
   <h2>回転数別 ハマり確率</h2>
   <div class="table-scroll">
     <table>
-      <tr><th>ハマり回転数</th><th>そこまで当たらない確率</th><th>何回に1度</th></tr>
-      <tr><td>100回転</td><td>73.1%</td><td>約1回に1度</td></tr>
-      <tr><td>200回転</td><td>53.4%</td><td>約2回に1度</td></tr>
-      <tr><td>300回転</td><td>39.1%</td><td>約3回に1度</td></tr>
+      <tr><th>ハマり回転数</th><th>そこまで当たらない確率</th><th>遭遇する頻度</th></tr>
+      <tr><td>100回転</td><td>73.1%</td><td>10回中 約7回</td></tr>
+      <tr><td>200回転</td><td>53.4%</td><td>10回中 約5回</td></tr>
+      <tr><td>300回転</td><td>39.1%</td><td>10回中 約4回</td></tr>
       <tr><td>500回転</td><td>20.9%</td><td>約5回に1度</td></tr>
       <tr><td>700回転</td><td>11.2%</td><td>約9回に1度</td></tr>
       <tr class="mark"><td>1,000回転</td><td>4.36%</td><td>約23回に1度</td></tr>
@@ -84,6 +84,8 @@
     </table>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
+    ※「遭遇する頻度」は、大当たりを引くたびにそのハマりに何回に1度出会うかの目安です。
+    たとえば「約151回に1度」なら、大当たり151回につき1回はそこまでハマる計算になります。<br>
     ※通常時の大当たり確率1/319.6をもとに算出した理論値です。
   </p>
 </section>
@@ -160,6 +162,7 @@ function fmtPct(p){
   return p.toFixed(5);
 }
 function fmtOneIn(n){
+  if(n <= 3) return '10回中 約' + Math.round(10 / n) + '回';
   if(n >= 100000000) return '約' + (n/100000000).toFixed(1) + '億回に1度';
   if(n >= 10000)     return '約' + (n/10000).toFixed(1) + '万回に1度';
   return '約' + Math.round(n).toLocaleString() + '回に1度';

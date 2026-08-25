@@ -8,13 +8,13 @@
 <title>ハマり確率計算機｜パチンコの大当たり確率から連続ハズレ確率を計算</title>
 <meta name="description" content="パチンコ・パチスロのハマり確率を無料で計算。大当たり確率とハマり回転数を入力するだけで、そのハマりが何％の確率で起こるのか、何回に1度の出来事なのかがわかります。大当たり履歴の記録・グラフ表示・Xへの投稿にも対応。">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://example.github.io/hamari/">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/">
 
 <!-- SNSでシェアされた時の表示設定（OGP） -->
 <meta property="og:title" content="ハマり確率計算機｜パチンコの大当たり確率から連続ハズレ確率を計算">
 <meta property="og:description" content="大当たり確率とハマり回転数を入力するだけでハマり確率がわかる無料ツール。履歴の記録とグラフ表示にも対応。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://example.github.io/hamari/">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/">
 <meta property="og:site_name" content="ハマり確率計算機">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "ハマり確率計算機",
-  "url": "https://example.github.io/hamari/",
+  "url": "https://pachi-tool.github.io/hamari/",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "inLanguage": "ja",
@@ -708,6 +708,7 @@ const slumpGrid  = document.getElementById('slumpGrid');
 const slumpSvg   = document.getElementById('slumpSvg');
 
 const STORAGE_KEY = 'hamari_history_v1'; // 保存に使う名前
+const SITE_URL = 'https://pachi-tool.github.io/hamari/'; // 投稿に付けるサイトURL
 let lastCalc = null;                      // 直近の計算結果を覚えておく箱
 
 // --- ① ハマり確率を計算する ---
@@ -838,7 +839,8 @@ function renderHistory(){
       + 'この確率 約' + fmtPercent(item.percent) + '%（' + fmtOneIn(item.oneIn) + '）\n'
       + '#パチンコ #ハマり確率計算機';
 
-    const shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
+    const shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText)
+      + '&url=' + encodeURIComponent(SITE_URL);
 
     li.innerHTML =
       '<div class="hist-top">' +
@@ -1047,7 +1049,8 @@ function buildBulkText(){
     + '\n';
 
   const footer = '\n#パチンコ #ハマり確率計算機';
-  const LIMIT = 280;   // Xの上限
+  const URL_COST = 24;      // Xでは全URLが23文字換算＋区切りの空白1文字
+  const LIMIT = 280 - URL_COST;
   let shown = 0;
 
   // 上限に収まる範囲で1件ずつ足していく
@@ -1066,10 +1069,10 @@ function buildBulkText(){
   return text + footer;
 }
 
-// 文字数の表示を更新する
+// 文字数の表示を更新する（URLの23文字分も加算する）
 function updateCharCount(){
-  const n = tweetLength(previewText.value);
-  charCount.textContent = n + ' / 280';
+  const n = tweetLength(previewText.value) + 24;
+  charCount.textContent = n + ' / 280（URL込み）';
   charCount.className = (n > 280) ? 'over' : '';
 }
 
@@ -1085,7 +1088,8 @@ bulkShareBtn.addEventListener('click', function(){
 previewText.addEventListener('input', updateCharCount);
 
 previewPost.addEventListener('click', function(){
-  const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(previewText.value);
+  const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(previewText.value)
+    + '&url=' + encodeURIComponent(SITE_URL);
   window.open(url, '_blank', 'noopener');
 });
 

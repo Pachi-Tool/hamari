@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.github.io/hamari/sitemap.xml
+Sitemap: https://pachi-tool.github.io/hamari/sitemap.xml

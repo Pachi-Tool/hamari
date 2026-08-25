@@ -1,34 +1,78 @@
 {
   "updated": "2026-08-25",
-  "note": "prob は通常時の大当たり確率の分母。verified が false のものは未検証のため、公開前にメーカー公式情報等で確認してください。",
+  "note": "prob は通常時（ヘソ）の大当たり確率の分母。sources は確認した情報源の数。verified を true にする前に、必ずメーカー公式または遊技説明で確認してください。",
   "machines": [
     {
-      "name": "e大海物語5 ブラック",
-      "maker": "三洋",
-      "type": "ライトミドル",
-      "prob": 199.8,
-      "verified": false
-    },
-    {
-      "name": "e牙狼12 黄金騎士極限",
-      "maker": "サンセイR&D",
+      "name": "eソードアート・オンライン オルタナティブ ガンゲイル・オンライン",
+      "maker": "大都技研",
       "type": "ミドル",
-      "prob": 319.6,
-      "verified": false
+      "prob": 319.9,
+      "intro": "2026-06-08",
+      "sources": 5,
+      "verified": false,
+      "slug": "sao-ggo",
+      "short": "ガンゲイル・オンライン",
+      "page": true
     },
     {
-      "name": "eリコリス・リコイル",
-      "maker": "サンセイR&D",
-      "type": "ライトミドル",
-      "prob": 259.7,
-      "verified": false
+      "name": "e学園黙示録ハイスクール・オブ・ザ・デッド3",
+      "maker": "高尾",
+      "type": "ミドル",
+      "prob": 299.2,
+      "intro": "2026-06-08",
+      "sources": 5,
+      "verified": false,
+      "slug": "hotd3",
+      "short": "ハイスクール・オブ・ザ・デッド3",
+      "page": true
     },
     {
       "name": "eソードアート・オンライン アリシゼーション 夜空",
       "maker": "オッケー",
       "type": "ミドル",
       "prob": 319.6,
-      "verified": false
+      "intro": "2026-08-03",
+      "sources": 1,
+      "verified": false,
+      "slug": "sao-alicization",
+      "short": "SAOアリシゼーション 夜空",
+      "page": true
+    },
+    {
+      "name": "eリコリス・リコイル",
+      "maker": "サンセイR&D",
+      "type": "ライトミドル",
+      "prob": 259.7,
+      "intro": "",
+      "sources": 1,
+      "verified": false,
+      "slug": "lycoris",
+      "short": "リコリス・リコイル",
+      "page": true
+    },
+    {
+      "name": "e大海物語5 ブラック",
+      "maker": "三洋物産",
+      "type": "ライトミドル",
+      "prob": 199.8,
+      "intro": "",
+      "sources": 1,
+      "verified": false,
+      "slug": "umi5-black",
+      "short": "大海物語5 ブラック",
+      "page": true
+    },
+    {
+      "name": "e牙狼12 黄金騎士極限",
+      "maker": "サンセイR&D",
+      "type": "ミドル",
+      "prob": 319.6,
+      "intro": "2025-10",
+      "sources": 1,
+      "verified": false,
+      "slug": "garo12",
+      "short": "牙狼12 黄金騎士極限",
+      "page": false
     }
   ]
 }

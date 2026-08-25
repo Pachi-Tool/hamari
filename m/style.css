@@ -1,0 +1,98 @@
+:root{
+  --hall-black:#0b0710; --hall-deep:#171025; --panel:#1e1630;
+  --neon-pink:#ff2d78; --neon-cyan:#25e5ff; --lamp-gold:#ffc832;
+  --text:#f2eefa; --text-dim:#9c93b5;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,45,120,.18), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(37,229,255,.15), transparent 45%),
+    var(--hall-black);
+  color:var(--text); font-family:"Noto Sans JP",sans-serif;
+  line-height:1.9; padding:0 16px 80px;
+}
+.wrap{max-width:760px;margin:0 auto;}
+
+.crumb{font-size:12px;color:var(--text-dim);padding:18px 0 0;}
+.crumb a{color:var(--neon-cyan);text-decoration:none;}
+
+header{text-align:center;padding:18px 0 20px;}
+.eyebrow{font-family:"DotGothic16",monospace;color:var(--neon-cyan);
+  letter-spacing:.25em;font-size:11px;margin:0 0 10px;}
+h1{font-family:"Reggae One",cursive;font-size:clamp(21px,5vw,32px);
+  margin:0;line-height:1.4;color:#fff;
+  text-shadow:0 0 8px var(--neon-pink),0 0 24px rgba(255,45,120,.6),0 3px 0 #7a0b39;}
+
+.spec-bar{
+  display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0 0;
+}
+.spec-bar span{
+  background:rgba(255,255,255,.06);border:1px solid rgba(200,194,216,.28);
+  border-radius:999px;padding:5px 14px;font-size:12px;color:var(--text-dim);
+}
+.spec-bar b{color:var(--lamp-gold);font-family:"DotGothic16",monospace;font-size:15px;}
+
+.panel{
+  background:linear-gradient(180deg,var(--panel),var(--hall-deep));
+  border:2px solid rgba(200,194,216,.25);border-radius:14px;
+  padding:22px;margin:22px 0;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 10px 30px rgba(0,0,0,.6);
+}
+h2{font-family:"Reggae One",cursive;font-size:18px;margin:0 0 14px;
+  color:var(--lamp-gold);letter-spacing:.04em;}
+h3{font-size:14px;color:var(--neon-cyan);margin:22px 0 6px;}
+p{font-size:14px;color:#d8d1e8;margin:0 0 13px;}
+
+/* 早見表 */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:330px;}
+th,td{border:1px solid rgba(200,194,216,.25);padding:9px 6px;text-align:center;}
+th{background:rgba(255,45,120,.2);color:#fff;font-size:12px;}
+td:first-child{color:var(--lamp-gold);font-family:"DotGothic16",monospace;}
+tr.mark td{background:rgba(255,200,50,.09);}
+
+/* 計算機 */
+.calc label{display:block;font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+.calc input{
+  width:100%;background:#0a0612;border:2px solid rgba(200,194,216,.3);
+  border-radius:8px;color:var(--neon-cyan);font-family:"DotGothic16",monospace;
+  font-size:22px;padding:10px 12px;text-align:right;
+}
+.calc input:focus{outline:none;border-color:var(--neon-pink);
+  box-shadow:0 0 12px rgba(255,45,120,.5);}
+.calc button{
+  width:100%;margin-top:14px;border:none;border-radius:999px;padding:14px;
+  font-family:"Noto Sans JP",sans-serif;font-weight:900;font-size:15px;cursor:pointer;
+  background:linear-gradient(180deg,#ff5c9a,var(--neon-pink));color:#fff;
+  box-shadow:0 5px 0 #a30d4a,0 0 22px rgba(255,45,120,.5);
+}
+.calc button:active{transform:scale(.98);}
+
+#out{display:none;margin-top:18px;background:#05030a;border:2px solid var(--lamp-gold);
+  border-radius:10px;padding:18px;text-align:center;
+  box-shadow:0 0 24px rgba(255,200,50,.3) inset;}
+#out .lbl{font-size:11px;color:var(--text-dim);letter-spacing:.2em;}
+#out .big{font-family:"DotGothic16",monospace;font-size:clamp(30px,9vw,50px);
+  color:var(--lamp-gold);line-height:1.2;text-shadow:0 0 18px rgba(255,200,50,.8);}
+#out .sub{font-family:"DotGothic16",monospace;font-size:16px;color:var(--neon-cyan);}
+
+.cta{display:block;text-align:center;background:linear-gradient(180deg,#3ff0ff,var(--neon-cyan));
+  color:#04222b;text-decoration:none;font-weight:900;font-size:14px;
+  padding:14px;border-radius:999px;box-shadow:0 4px 0 #0b7f96;margin-top:8px;}
+
+.others{list-style:none;padding:0;margin:0;}
+.others li{border-bottom:1px solid rgba(200,194,216,.16);}
+.others a{display:flex;justify-content:space-between;gap:10px;
+  padding:12px 2px;color:var(--text);text-decoration:none;font-size:14px;}
+.others a:hover{color:var(--neon-cyan);}
+.others .p{font-family:"DotGothic16",monospace;color:var(--lamp-gold);white-space:nowrap;}
+
+footer{text-align:center;color:var(--text-dim);font-size:12px;padding:26px 0 0;}
+footer a{color:var(--text-dim);}
+
+@media (max-width:480px){
+  body{padding:0 12px 60px;}
+  .panel{padding:16px;}
+}

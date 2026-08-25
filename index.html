@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ▼▼▼ ここからSEO（検索対策）用の設定 ▼▼▼ -->
+<title>ハマり確率計算機｜パチンコの大当たり確率から連続ハズレ確率を計算</title>
+<meta name="description" content="パチンコ・パチスロのハマり確率を無料で計算。大当たり確率とハマり回転数を入力するだけで、そのハマりが何％の確率で起こるのか、何回に1度の出来事なのかがわかります。大当たり履歴の記録・グラフ表示・Xへの投稿にも対応。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://example.github.io/hamari/">
+
+<!-- SNSでシェアされた時の表示設定（OGP） -->
+<meta property="og:title" content="ハマり確率計算機｜パチンコの大当たり確率から連続ハズレ確率を計算">
+<meta property="og:description" content="大当たり確率とハマり回転数を入力するだけでハマり確率がわかる無料ツール。履歴の記録とグラフ表示にも対応。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.github.io/hamari/">
+<meta property="og:site_name" content="ハマり確率計算機">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- 構造化データ：このページが何であるかを検索エンジン・AIに機械可読な形で伝える -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ハマり確率計算機",
+  "url": "https://example.github.io/hamari/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "inLanguage": "ja",
+  "description": "パチンコ・パチスロの大当たり確率とハマり回転数から、そのハマりが起こる確率を計算する無料ツール。大当たり履歴の記録とグラフ表示に対応。",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+  "featureList": [
+    "ハマり確率の計算",
+    "大当たり履歴の記録",
+    "ハマり回転数のグラフ表示",
+    "獲得出玉のスランプグラフ"
+  ]
+}
+</script>
+
+<!-- 構造化データ：Q&Aの対応関係を明示（AI検索での引用対策） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "パチンコのハマり確率はどう計算しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "パチンコの抽選は1回転ごとに独立しているため、N回転連続で外れる確率は、1回外れる確率をN回かけ算して求めます。大当たり確率が1/319なら1回外れる確率は318/319で、これを1000回かけると約4.3%になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "大ハマりした台は当たりやすくなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "なりません。1000回転ハマった直後でも、次の1回転で当たる確率は1/319の台なら1/319のままです。そろそろ当たると感じるのはギャンブラーの誤謬と呼ばれる錯覚で、確率的な裏づけはありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "1/319の台で1000回転ハマる確率はどのくらいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "約4.3%です。これは大当たり約23回に1度は起こる計算になります。1500回転なら約0.9%（約111回に1度）、2000回転なら約0.19%（約535回に1度）です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "パチスロでもハマり確率計算機は使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。ボーナスやAT当選確率の分母と、ハマったゲーム数を入力してください。ただし設定によって当選確率が変わる機種では、想定する設定の確率で計算する必要があります。"
+      }
+    }
+  ]
+}
+</script>
+<!-- ▲▲▲ SEO設定ここまで ▲▲▲ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Reggae+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ===== 色などの基本設定 ===== */
+:root{
+  --hall-black:#0b0710;      /* ホールの暗さ */
+  --hall-deep:#171025;       /* 台の枠 */
+  --panel:#1e1630;           /* パネル面 */
+  --neon-pink:#ff2d78;       /* 電飾ピンク */
+  --neon-cyan:#25e5ff;       /* 電飾シアン */
+  --lamp-gold:#ffc832;       /* 保留ランプの金 */
+  --chrome:#c8c2d8;          /* メッキ調 */
+  --text:#f2eefa;
+  --text-dim:#9c93b5;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,45,120,.18), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(37,229,255,.15), transparent 45%),
+    var(--hall-black);
+  color:var(--text);
+  font-family:"Noto Sans JP",sans-serif;
+  line-height:1.8;
+  padding:0 16px 80px;
+}
+
+.wrap{max-width:760px;margin:0 auto;}
+
+/* ===== ヘッダー（電飾看板風） ===== */
+header{text-align:center;padding:36px 0 24px;}
+
+.eyebrow{
+  font-family:"DotGothic16",monospace;
+  color:var(--neon-cyan);
+  letter-spacing:.3em;
+  font-size:12px;
+  margin:0 0 10px;
+}
+
+h1{
+  font-family:"Reggae One",cursive;
+  font-size:clamp(26px,6.5vw,44px);
+  margin:0;
+  line-height:1.3;
+  color:#fff;
+  text-shadow:
+    0 0 8px var(--neon-pink),
+    0 0 24px rgba(255,45,120,.7),
+    0 3px 0 #7a0b39;
+}
+
+.lead{color:var(--text-dim);font-size:14px;margin:14px 0 0;}
+
+/* ===== 電飾ランプの並び ===== */
+.lamps{display:flex;justify-content:center;gap:9px;margin:18px 0 0;}
+.lamps span{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--lamp-gold);
+  box-shadow:0 0 10px var(--lamp-gold);
+  animation:blink 1.4s infinite;
+}
+.lamps span:nth-child(2){animation-delay:.2s;background:var(--neon-pink);box-shadow:0 0 10px var(--neon-pink);}
+.lamps span:nth-child(3){animation-delay:.4s;background:var(--neon-cyan);box-shadow:0 0 10px var(--neon-cyan);}
+.lamps span:nth-child(4){animation-delay:.6s;}
+.lamps span:nth-child(5){animation-delay:.8s;background:var(--neon-pink);box-shadow:0 0 10px var(--neon-pink);}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+@media (prefers-reduced-motion:reduce){
+  .lamps span{animation:none;}
+}
+
+/* ===== 共通のパネル ===== */
+.panel{
+  background:linear-gradient(180deg,var(--panel),var(--hall-deep));
+  border:2px solid rgba(200,194,216,.25);
+  border-radius:14px;
+  padding:22px;
+  margin:22px 0;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05) inset, 0 10px 30px rgba(0,0,0,.6);
+}
+
+h2{
+  font-family:"Reggae One",cursive;
+  font-size:19px;
+  margin:0 0 16px;
+  color:var(--lamp-gold);
+  letter-spacing:.04em;
+}
+
+/* ===== 入力欄 ===== */
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13px;color:var(--text-dim);margin-bottom:7px;}
+
+.prob-row{display:flex;align-items:center;gap:10px;}
+.slash{font-family:"DotGothic16",monospace;font-size:26px;color:var(--chrome);}
+
+input[type="number"]{
+  width:100%;
+  background:#0a0612;
+  border:2px solid rgba(200,194,216,.3);
+  border-radius:8px;
+  color:var(--neon-cyan);
+  font-family:"DotGothic16",monospace;
+  font-size:24px;
+  padding:10px 12px;
+  text-align:right;
+}
+input[type="number"]:focus{
+  outline:none;
+  border-color:var(--neon-pink);
+  box-shadow:0 0 12px rgba(255,45,120,.5);
+}
+
+/* ===== ボタン ===== */
+button{
+  font-family:"Noto Sans JP",sans-serif;
+  font-weight:900;
+  border:none;
+  border-radius:999px;
+  padding:14px 22px;
+  font-size:15px;
+  cursor:pointer;
+  transition:transform .12s, box-shadow .12s;
+}
+button:active{transform:scale(.97);}
+button:focus-visible{outline:3px solid var(--neon-cyan);outline-offset:3px;}
+
+.btn-main{
+  width:100%;
+  background:linear-gradient(180deg,#ff5c9a,var(--neon-pink));
+  color:#fff;
+  box-shadow:0 5px 0 #a30d4a, 0 0 22px rgba(255,45,120,.55);
+}
+.btn-sub{
+  background:linear-gradient(180deg,#3ff0ff,var(--neon-cyan));
+  color:#04222b;
+  box-shadow:0 4px 0 #0b7f96;
+}
+.btn-x{background:#000;color:#fff;border:1px solid #555;box-shadow:none;padding:8px 16px;font-size:13px;}
+.btn-reset{background:transparent;color:var(--text-dim);border:1px solid rgba(200,194,216,.35);box-shadow:none;padding:9px 18px;font-size:13px;}
+
+/* ===== 結果表示（デジタル役物風） ===== */
+#result{display:none;}
+
+.digit-box{
+  background:#05030a;
+  border:2px solid var(--lamp-gold);
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 0 24px rgba(255,200,50,.35) inset;
+}
+.digit-label{font-size:12px;color:var(--text-dim);letter-spacing:.2em;margin-bottom:6px;}
+.digit-main{
+  font-family:"DotGothic16",monospace;
+  font-size:clamp(34px,10vw,58px);
+  color:var(--lamp-gold);
+  line-height:1.1;
+  text-shadow:0 0 18px rgba(255,200,50,.8);
+}
+.digit-unit{font-size:.45em;margin-left:4px;}
+
+.sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.sub-cell{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(200,194,216,.2);
+  border-radius:8px;
+  padding:12px;
+  text-align:center;
+}
+.sub-cell .l{font-size:11px;color:var(--text-dim);}
+.sub-cell .v{font-family:"DotGothic16",monospace;font-size:20px;color:var(--neon-cyan);}
+
+.compare{
+  margin-top:14px;
+  padding:12px 14px;
+  background:rgba(255,45,120,.1);
+  border-left:4px solid var(--neon-pink);
+  border-radius:0 8px 8px 0;
+  font-size:13px;
+}
+
+@media (max-width:420px){
+  .sub-grid{grid-template-columns:1fr;}
+}
+
+/* ===== 履歴 ===== */
+.history-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.history-head h2{margin:0;}
+
+#historyList{list-style:none;padding:0;margin:0;}
+
+#historyList li{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(200,194,216,.2);
+  border-left:4px solid var(--lamp-gold);
+  border-radius:0 10px 10px 0;
+  padding:14px 16px;
+  margin-bottom:10px;
+}
+.hist-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.hist-spin{font-family:"DotGothic16",monospace;font-size:26px;color:var(--lamp-gold);}
+.hist-date{font-size:11px;color:var(--text-dim);}
+.hist-detail{font-size:13px;color:var(--text-dim);margin:4px 0 10px;}
+
+.empty{color:var(--text-dim);font-size:13px;text-align:center;padding:22px 0;}
+
+.hist-actions{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* 削除の確認 */
+.confirm-box{
+  display:none;
+  background:rgba(255,45,120,.12);
+  border:1px solid var(--neon-pink);
+  border-radius:10px;
+  padding:14px 16px;
+  margin-bottom:14px;
+}
+.confirm-box p{margin:0 0 10px;font-size:13px;}
+.confirm-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.btn-danger{
+  background:linear-gradient(180deg,#ff5c9a,var(--neon-pink));
+  color:#fff;padding:9px 20px;font-size:13px;
+  box-shadow:0 3px 0 #a30d4a;
+}
+
+/* 一括投稿のプレビュー */
+.preview-box{
+  display:none;
+  background:#05030a;
+  border:1px solid rgba(200,194,216,.35);
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:14px;
+}
+.preview-label{font-size:11px;color:var(--text-dim);margin-bottom:8px;letter-spacing:.1em;}
+#previewText{
+  width:100%;
+  background:#0a0612;
+  border:1px solid rgba(200,194,216,.3);
+  border-radius:8px;
+  color:var(--text);
+  font-family:"Noto Sans JP",sans-serif;
+  font-size:13px;
+  line-height:1.7;
+  padding:10px;
+  resize:vertical;
+}
+#previewText:focus{outline:none;border-color:var(--neon-cyan);}
+.preview-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:10px;
+}
+#charCount{font-family:"DotGothic16",monospace;font-size:12px;color:var(--neon-cyan);}
+#charCount.over{color:var(--neon-pink);}
+
+/* 集計 */
+.summary{
+  display:none;
+  background:rgba(37,229,255,.08);
+  border-left:4px solid var(--neon-cyan);
+  border-radius:0 8px 8px 0;
+  padding:12px 14px;
+  margin-bottom:14px;
+  font-size:13px;
+}
+.summary b{color:var(--lamp-gold);font-family:"DotGothic16",monospace;font-size:16px;}
+
+/* ===== データカウンター風グラフ ===== */
+.chart-wrap{display:none;margin-bottom:18px;}
+
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:8px;flex-wrap:wrap;}
+.chart-title{font-size:12px;color:var(--text-dim);letter-spacing:.15em;}
+.chart-note{font-size:11px;color:var(--text-dim);}
+
+.chart-body{display:flex;gap:6px;}
+
+.y-axis{
+  width:42px;height:170px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  font-family:"DotGothic16",monospace;font-size:10px;color:var(--text-dim);
+  text-align:right;padding:2px 0;
+}
+
+.chart{
+  position:relative;flex:1;height:170px;
+  background:#05030a;
+  border:1px solid rgba(200,194,216,.28);
+  border-radius:6px;
+  overflow:hidden;
+}
+
+.grid{position:absolute;inset:0;pointer-events:none;}
+.grid div{
+  position:absolute;left:0;right:0;height:1px;
+  background:rgba(200,194,216,.14);
+}
+
+.bars{
+  position:relative;height:100%;
+  display:flex;align-items:flex-end;gap:2px;
+  padding:0 5px;
+}
+.bars .bar{
+  flex:1 1 0;min-width:4px;
+  border-radius:2px 2px 0 0;
+  transition:height .35s ease;
+}
+.bar.lv1{background:linear-gradient(180deg,#7dffb0,#25c46e);box-shadow:0 0 6px rgba(37,196,110,.6);}
+.bar.lv2{background:linear-gradient(180deg,#7ef0ff,var(--neon-cyan));box-shadow:0 0 6px rgba(37,229,255,.6);}
+.bar.lv3{background:linear-gradient(180deg,#ffe08a,var(--lamp-gold));box-shadow:0 0 7px rgba(255,200,50,.7);}
+.bar.lv4{background:linear-gradient(180deg,#ff8ab5,var(--neon-pink));box-shadow:0 0 9px rgba(255,45,120,.8);}
+
+@media (prefers-reduced-motion:reduce){
+  .bars .bar{transition:none;}
+}
+
+.x-axis{
+  display:flex;justify-content:space-between;
+  font-size:10px;color:var(--text-dim);
+  margin:5px 0 0 48px;
+}
+
+.chart-legend{
+  display:flex;gap:12px;flex-wrap:wrap;
+  margin:9px 0 0 48px;
+  font-size:10px;color:var(--text-dim);
+}
+.chart-legend span{display:flex;align-items:center;gap:4px;}
+.chart-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;}
+.chart-legend i.lv1{background:#25c46e;}
+.chart-legend i.lv2{background:var(--neon-cyan);}
+.chart-legend i.lv3{background:var(--lamp-gold);}
+.chart-legend i.lv4{background:var(--neon-pink);}
+
+/* スランプグラフ */
+#slumpSvg{position:absolute;inset:0;width:100%;height:100%;}
+#slumpSvg .line{
+  fill:none;
+  stroke:var(--lamp-gold);
+  stroke-width:2;
+  vector-effect:non-scaling-stroke;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 0 4px rgba(255,200,50,.9));
+}
+#slumpSvg .area{fill:rgba(255,200,50,.14);}
+#slumpSvg .zero{stroke:rgba(200,194,216,.4);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:4 3;}
+
+.record-area{
+  margin-top:18px;padding-top:16px;
+  border-top:1px dashed rgba(200,194,216,.25);
+}
+
+.hist-payout{color:var(--neon-cyan);font-family:"DotGothic16",monospace;}
+
+/* ===== スマートフォン向けの調整 ===== */
+@media (max-width:480px){
+  body{padding:0 12px 60px;}
+  .panel{padding:16px;border-radius:12px;}
+
+  /* グラフを狭い画面に収める */
+  .y-axis{width:34px;font-size:9px;}
+  .chart,.y-axis{height:150px;}
+  .bars{gap:1px;padding:0 3px;}
+  .bars .bar{min-width:3px;}
+  .x-axis,.chart-legend{margin-left:38px;}
+  .chart-legend{gap:9px;}
+
+  /* ボタンを押しやすい大きさにする */
+  .btn-x,.btn-reset,.btn-danger{padding:11px 16px;}
+  .hist-actions{width:100%;}
+  .hist-actions button{flex:1;}
+
+  /* 解説の表が横にはみ出さないようにする */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  article table{min-width:340px;}
+}
+
+/* 入力エラー表示 */
+.err{
+  display:none;
+  color:var(--neon-pink);
+  font-size:13px;
+  margin-top:10px;
+}
+
+/* ===== 解説文 ===== */
+article h3{font-size:16px;color:var(--neon-cyan);margin:26px 0 8px;}
+article p{font-size:14px;color:#d8d1e8;margin:0 0 12px;}
+article table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+article th,article td{border:1px solid rgba(200,194,216,.25);padding:8px;text-align:center;}
+article th{background:rgba(255,45,120,.18);color:#fff;}
+article td:first-child{color:var(--lamp-gold);font-family:"DotGothic16",monospace;}
+
+footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
+
+/* 広告枠（アドセンス審査通過後にここへタグを貼る） */
+.ad-slot{
+  margin:22px 0;min-height:90px;
+  border:1px dashed rgba(200,194,216,.25);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-dim);font-size:11px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">PACHINKO PROBABILITY</p>
+  <h1>ハマり確率計算機</h1>
+  <div class="lamps"><span></span><span></span><span></span><span></span><span></span></div>
+  <p class="lead">大当たり確率とハマり回転数を入れるだけ。<br>そのハマりが何％の出来事なのかがわかります。</p>
+</header>
+
+<!-- ========== 計算機 ========== -->
+<section class="panel">
+  <h2>確率を計算する</h2>
+
+  <div class="field">
+    <label for="prob">大当たり確率（1/◯◯の◯◯を入力）</label>
+    <div class="prob-row">
+      <span class="slash">1/</span>
+      <input type="number" id="prob" value="319" min="1.1" step="0.1" inputmode="decimal">
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="spin">ハマり回転数（何回転ハマったか）</label>
+    <input type="number" id="spin" value="1000" min="1" step="1" inputmode="numeric">
+  </div>
+
+  <button class="btn-main" id="calcBtn">計算する</button>
+  <p class="err" id="errMsg"></p>
+
+  <!-- 計算結果 -->
+  <div id="result" style="margin-top:22px;">
+    <div class="digit-box">
+      <div class="digit-label">この ハマリ が 起こる 確率</div>
+      <div class="digit-main"><span id="pct">--</span><span class="digit-unit">%</span></div>
+    </div>
+
+    <div class="sub-grid">
+      <div class="sub-cell"><div class="l">何回に1度の出来事か</div><div class="v" id="oneIn">--</div></div>
+      <div class="sub-cell"><div class="l">大当たり確率の何倍ハマりか</div><div class="v" id="ratio">--</div></div>
+    </div>
+
+    <div class="compare" id="compare"></div>
+
+    <div class="record-area">
+      <div class="field" style="margin-bottom:12px;">
+        <label for="payout">獲得出玉（任意・わからなければ空欄でOK）</label>
+        <div class="prob-row">
+          <input type="number" id="payout" placeholder="0" min="0" step="1" inputmode="numeric">
+          <span class="slash" style="font-size:16px;">玉</span>
+        </div>
+      </div>
+      <button class="btn-sub" id="recordBtn" style="width:100%;">この内容で大当たりを記録する</button>
+    </div>
+  </div>
+</section>
+
+<div class="ad-slot">広告枠（アドセンス審査通過後にタグを貼る場所）</div>
+
+<!-- ========== 履歴 ========== -->
+<section class="panel">
+  <div class="history-head">
+    <h2>大当たり履歴</h2>
+    <div class="hist-actions">
+      <button class="btn-x" id="bulkShareBtn">まとめてXに投稿</button>
+      <button class="btn-reset" id="resetBtn">履歴をすべて消す</button>
+    </div>
+  </div>
+
+  <!-- 削除の確認（ページ内で完結する確認UI） -->
+  <div class="confirm-box" id="confirmBox">
+    <p>履歴をすべて消します。この操作は元に戻せません。</p>
+    <div class="confirm-btns">
+      <button class="btn-danger" id="confirmYes">すべて消す</button>
+      <button class="btn-reset" id="confirmNo">やめる</button>
+    </div>
+  </div>
+
+  <!-- 一括投稿のプレビュー -->
+  <div class="preview-box" id="previewBox">
+    <div class="preview-label">この内容で投稿します（編集できます）</div>
+    <textarea id="previewText" rows="9"></textarea>
+    <div class="preview-foot">
+      <span id="charCount"></span>
+      <span>
+        <button class="btn-x" id="previewPost">Xを開く</button>
+        <button class="btn-reset" id="previewCancel">閉じる</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="summary" id="summary"></div>
+
+  <!-- データカウンター風グラフ -->
+  <div class="chart-wrap" id="chartWrap">
+    <div class="chart-head">
+      <span class="chart-title">ハマり回転数の推移</span>
+      <span class="chart-note" id="chartNote"></span>
+    </div>
+    <div class="chart-body">
+      <div class="y-axis" id="yAxis"></div>
+      <div class="chart" id="chart">
+        <div class="grid" id="grid"></div>
+        <div class="bars" id="bars"></div>
+      </div>
+    </div>
+    <div class="x-axis"><span>古い</span><span>新しい →</span></div>
+    <div class="chart-legend">
+      <span><i class="lv1"></i>〜300</span>
+      <span><i class="lv2"></i>〜600</span>
+      <span><i class="lv3"></i>〜1000</span>
+      <span><i class="lv4"></i>1000〜</span>
+    </div>
+  </div>
+
+  <!-- スランプグラフ風（獲得出玉の累計） -->
+  <div class="chart-wrap" id="slumpWrap">
+    <div class="chart-head">
+      <span class="chart-title">獲得出玉の累計</span>
+      <span class="chart-note" id="slumpNote"></span>
+    </div>
+    <div class="chart-body">
+      <div class="y-axis" id="slumpAxis"></div>
+      <div class="chart">
+        <div class="grid" id="slumpGrid"></div>
+        <svg id="slumpSvg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+      </div>
+    </div>
+    <div class="x-axis"><span>開始</span><span>最新 →</span></div>
+  </div>
+
+  <ul id="historyList"></ul>
+  <p class="empty" id="emptyMsg">まだ履歴がありません。計算後に「大当たりを記録する」を押すと、ここに残ります。</p>
+</section>
+
+<!-- ========== 解説（SEO用の読み物） ========== -->
+<article class="panel">
+  <h2>ハマり確率について</h2>
+
+  <h3>ハマり確率はどう計算しているのか</h3>
+  <p>パチンコの抽選は1回転ごとに独立しています。つまり、前の回転で外れたことは次の回転の結果に一切影響しません。そのため「N回転連続で外れる確率」は、1回外れる確率をN回かけ算するだけで求められます。</p>
+  <p>大当たり確率が1/319なら、1回外れる確率は318/319です。これを1000回かけると約4.3%となり、「1/319の台で1000回転ハマるのは、大当たり約23回に1度は起こる出来事」と読み取れます。</p>
+
+  <h3>1/319での回転数別ハマり確率</h3>
+  <div class="table-scroll">
+  <table>
+    <tr><th>ハマり回転数</th><th>確率</th><th>何回に1度</th></tr>
+    <tr><td>319回転</td><td>約36.7%</td><td>約2.7回に1度</td></tr>
+    <tr><td>500回転</td><td>約20.8%</td><td>約4.8回に1度</td></tr>
+    <tr><td>1000回転</td><td>約4.3%</td><td>約23回に1度</td></tr>
+    <tr><td>1500回転</td><td>約0.9%</td><td>約111回に1度</td></tr>
+    <tr><td>2000回転</td><td>約0.19%</td><td>約535回に1度</td></tr>
+    <tr><td>2500回転</td><td>約0.04%</td><td>約2,570回に1度</td></tr>
+  </table>
+  </div>
+
+  <h3>大ハマりした台は当たりやすくなる？</h3>
+  <p>なりません。1000回転ハマった直後でも、次の1回転で当たる確率は1/319の台なら1/319のままです。「そろそろ来る」と感じるのはギャンブラーの誤謬と呼ばれる錯覚で、確率的な裏づけはありません。</p>
+
+  <h3>パチスロでも使える？</h3>
+  <p>使えます。ボーナスやAT当選確率の分母と、ハマったゲーム数を入力してください。ただし設定によって当選確率が変わる機種では、想定する設定の確率で計算する必要があります。</p>
+
+  <h3>この計算機でできること</h3>
+  <p>計算した結果は「大当たり履歴」として記録できます。履歴はお使いの端末のブラウザに保存されるため、ページを閉じても残ります。記録した内容はXに投稿することもできます。</p>
+</article>
+
+<footer>
+  <p>本ツールは確率計算の目安を示すものです。実際の遊技結果を保証するものではありません。<br>遊技は20歳以上・自己資金の範囲内でお楽しみください。</p>
+</footer>
+
+</div>
+
+<script>
+// ============================================
+//  ここから下がプログラム本体（JavaScript）
+// ============================================
+
+// --- 画面の部品を取得しておく ---
+const probInput  = document.getElementById('prob');
+const spinInput  = document.getElementById('spin');
+const calcBtn    = document.getElementById('calcBtn');
+const resultBox  = document.getElementById('result');
+const pctEl      = document.getElementById('pct');
+const oneInEl    = document.getElementById('oneIn');
+const ratioEl    = document.getElementById('ratio');
+const compareEl  = document.getElementById('compare');
+const recordBtn  = document.getElementById('recordBtn');
+const historyList= document.getElementById('historyList');
+const emptyMsg   = document.getElementById('emptyMsg');
+const resetBtn   = document.getElementById('resetBtn');
+const errMsg     = document.getElementById('errMsg');
+const confirmBox = document.getElementById('confirmBox');
+const confirmYes = document.getElementById('confirmYes');
+const confirmNo  = document.getElementById('confirmNo');
+const bulkShareBtn = document.getElementById('bulkShareBtn');
+const previewBox = document.getElementById('previewBox');
+const previewText= document.getElementById('previewText');
+const previewPost= document.getElementById('previewPost');
+const previewCancel = document.getElementById('previewCancel');
+const charCount  = document.getElementById('charCount');
+const summaryEl  = document.getElementById('summary');
+const chartWrap  = document.getElementById('chartWrap');
+const chartNote  = document.getElementById('chartNote');
+const yAxis      = document.getElementById('yAxis');
+const grid       = document.getElementById('grid');
+const bars       = document.getElementById('bars');
+const payoutInput= document.getElementById('payout');
+const slumpWrap  = document.getElementById('slumpWrap');
+const slumpNote  = document.getElementById('slumpNote');
+const slumpAxis  = document.getElementById('slumpAxis');
+const slumpGrid  = document.getElementById('slumpGrid');
+const slumpSvg   = document.getElementById('slumpSvg');
+
+const STORAGE_KEY = 'hamari_history_v1'; // 保存に使う名前
+let lastCalc = null;                      // 直近の計算結果を覚えておく箱
+
+// --- ① ハマり確率を計算する ---
+function calcHamari(prob, spin){
+  const missRate = (prob - 1) / prob;   // 1回外れる確率
+  const p = Math.pow(missRate, spin);   // それをspin回かけ算
+  return {
+    percent: p * 100,
+    oneIn: 1 / p,
+    ratio: spin / prob
+  };
+}
+
+// --- 数字を読みやすい形にする ---
+function fmtPercent(v){
+  if(v >= 10) return v.toFixed(1);
+  if(v >= 1)  return v.toFixed(2);
+  if(v >= 0.01) return v.toFixed(3);
+  return v.toFixed(5);
+}
+function fmtOneIn(v){
+  if(v >= 100000000) return (v/100000000).toFixed(1) + '億回に1度';
+  if(v >= 10000)     return (v/10000).toFixed(1) + '万回に1度';
+  return Math.round(v).toLocaleString() + '回に1度';
+}
+
+// --- 身近な出来事とくらべる文章を作る ---
+function makeCompare(oneIn){
+  const list = [
+    [3,      'ジャンケンで1回勝つ'],
+    [20,     'サイコロを2個振ってゾロ目を出す'],
+    [100,    '2桁の数字をひと言で当てる'],
+    [216,    'サイコロ3個でピンゾロを出す'],
+    [1000,   'スクラッチくじで1万円に当たる'],
+    [10000,  '宝くじで1万円に当たる'],
+    [1000000,'ナンバーズ4をストレートで当てる'],
+    [10000000,'ロト6で1等に当たる']
+  ];
+  let best = list[0];
+  for(const item of list){ if(oneIn >= item[0]) best = item; }
+  return 'これは「' + best[1] + '」（約1/' + best[0].toLocaleString() + '）と同じくらいの珍しさです。';
+}
+
+// --- エラーをページ内に表示する ---
+function showError(msg){
+  errMsg.textContent = msg;
+  errMsg.style.display = 'block';
+}
+
+// --- ② 計算ボタンを押したとき ---
+calcBtn.addEventListener('click', function(){
+  const prob = parseFloat(probInput.value);
+  const spin = parseInt(spinInput.value, 10);
+
+  if(!prob || prob <= 1){ showError('大当たり確率は1より大きい数字を入力してください。'); return; }
+  if(!spin || spin < 1){ showError('ハマり回転数は1以上の数字を入力してください。'); return; }
+  errMsg.style.display = 'none';
+
+  const r = calcHamari(prob, spin);
+
+  pctEl.textContent   = fmtPercent(r.percent);
+  oneInEl.textContent = fmtOneIn(r.oneIn);
+  ratioEl.textContent = r.ratio.toFixed(2) + '倍';
+  compareEl.textContent = makeCompare(r.oneIn);
+
+  lastCalc = { prob: prob, spin: spin, percent: r.percent, oneIn: r.oneIn };
+
+  resultBox.style.display = 'block';
+  resultBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+
+// --- ③ 履歴の読み書き（ブラウザに保存） ---
+function loadHistory(){
+  try{
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  }catch(e){
+    return [];
+  }
+}
+function saveHistory(arr){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+// --- ④ 履歴を画面に描く ---
+function renderHistory(){
+  const arr = loadHistory();
+  historyList.innerHTML = '';
+
+  if(arr.length === 0){
+    emptyMsg.style.display = 'block';
+    summaryEl.style.display = 'none';
+    bulkShareBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    previewBox.style.display = 'none';
+    renderChart([]);
+    renderSlump([]);
+    return;
+  }
+  emptyMsg.style.display = 'none';
+  bulkShareBtn.style.display = 'inline-block';
+  resetBtn.style.display = 'inline-block';
+
+  // 集計を出す
+  const spins = arr.map(function(i){ return i.spin; });
+  const max = Math.max.apply(null, spins);
+  const min = Math.min.apply(null, spins);
+  const avg = Math.round(spins.reduce(function(a,b){return a+b;},0) / spins.length);
+
+  const totalPayout = arr.reduce(function(a,b){ return a + (b.payout || 0); }, 0);
+
+  summaryEl.innerHTML =
+    '記録 <b>' + arr.length + '</b> 回 ／ 平均 <b>' + avg.toLocaleString() + '</b> 回転 ／ '
+    + '最大 <b>' + max.toLocaleString() + '</b> 回転 ／ 最小 <b>' + min.toLocaleString() + '</b> 回転'
+    + (totalPayout ? '<br>獲得出玉 合計 <b>' + totalPayout.toLocaleString() + '</b> 玉' : '');
+  summaryEl.style.display = 'block';
+
+  renderChart(arr);
+  renderSlump(arr);
+
+  arr.forEach(function(item){
+    const li = document.createElement('li');
+
+    const payoutTxt = item.payout ? '／ 獲得 ' + item.payout.toLocaleString() + '玉' : '';
+
+    const shareText = '【' + item.spin.toLocaleString() + '回転ハマって大当たり】\n'
+      + '1/' + item.prob + 'の台で ' + item.spin.toLocaleString() + '回転。\n'
+      + (item.payout ? '獲得出玉 ' + item.payout.toLocaleString() + '玉\n' : '')
+      + 'この確率 約' + fmtPercent(item.percent) + '%（' + fmtOneIn(item.oneIn) + '）\n'
+      + '#パチンコ #ハマり確率計算機';
+
+    const shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
+
+    li.innerHTML =
+      '<div class="hist-top">' +
+        '<span class="hist-spin">' + item.spin.toLocaleString() + '<span style="font-size:.5em"> 回転</span></span>' +
+        '<span class="hist-date">' + item.date + '</span>' +
+      '</div>' +
+      '<div class="hist-detail">1/' + item.prob + ' ／ 確率 約' + fmtPercent(item.percent) + '%（' + fmtOneIn(item.oneIn) + '）'
+        + (item.payout ? ' <span class="hist-payout">' + payoutTxt + '</span>' : '') + '</div>' +
+      '<a href="' + shareUrl + '" target="_blank" rel="noopener"><button class="btn-x">Xに投稿する</button></a>';
+
+    historyList.appendChild(li);
+  });
+}
+
+// --- グラフを描く ---
+function renderChart(arr){
+  bars.innerHTML = '';
+  grid.innerHTML = '';
+  yAxis.innerHTML = '';
+
+  if(arr.length === 0){
+    chartWrap.style.display = 'none';
+    return;
+  }
+  chartWrap.style.display = 'block';
+
+  // 表示する本数（狭い画面では減らして潰れを防ぐ）
+  const MAX_BARS = (window.innerWidth < 480) ? 25 : 40;
+  const shown = arr.slice(0, MAX_BARS).reverse(); // 古い→新しい順に並べ替え
+  chartNote.textContent = (arr.length > MAX_BARS)
+    ? '直近' + MAX_BARS + '回を表示（全' + arr.length + '回）'
+    : '全' + arr.length + '回';
+
+  // 目盛りの最大値をキリのいい数字に切り上げる
+  const peak = Math.max.apply(null, shown.map(function(i){ return i.spin; }));
+  let step = 250;
+  if(peak > 2000) step = 500;
+  if(peak > 5000) step = 1000;
+  const top = Math.max(step, Math.ceil(peak / step) * step);
+
+  // 目盛り線と目盛りラベル
+  for(let v = top; v >= 0; v -= step){
+    const line = document.createElement('div');
+    line.style.top = ((1 - v / top) * 100) + '%';
+    grid.appendChild(line);
+
+    const label = document.createElement('span');
+    label.textContent = v.toLocaleString();
+    yAxis.appendChild(label);
+  }
+
+  // 棒を並べる
+  shown.forEach(function(item){
+    const bar = document.createElement('div');
+    let lv = 'lv1';
+    if(item.spin > 1000)     lv = 'lv4';
+    else if(item.spin > 600) lv = 'lv3';
+    else if(item.spin > 300) lv = 'lv2';
+
+    bar.className = 'bar ' + lv;
+    bar.style.height = Math.max(2, (item.spin / top) * 100) + '%';
+    bar.title = item.spin.toLocaleString() + '回転（1/' + item.prob + '）' + ' ' + item.date;
+    bars.appendChild(bar);
+  });
+}
+
+// --- スランプグラフを描く（獲得出玉の累計） ---
+function renderSlump(arr){
+  slumpSvg.innerHTML = '';
+  slumpGrid.innerHTML = '';
+  slumpAxis.innerHTML = '';
+
+  // 出玉が1件も入力されていなければ、グラフ自体を出さない
+  const hasPayout = arr.some(function(i){ return (i.payout || 0) !== 0; });
+  if(arr.length === 0 || !hasPayout){
+    slumpWrap.style.display = 'none';
+    return;
+  }
+  slumpWrap.style.display = 'block';
+
+  // 古い順に並べ、累計を計算する
+  const chrono = arr.slice().reverse();
+  const cum = [0];
+  let sum = 0;
+  chrono.forEach(function(i){ sum += (i.payout || 0); cum.push(sum); });
+
+  slumpNote.textContent = '合計 ' + sum.toLocaleString() + '玉（' + chrono.length + '回）';
+
+  // 目盛りの上限をキリのいい数字にする
+  const peak = Math.max.apply(null, cum);
+  const low  = Math.min.apply(null, cum);
+  let step = 1000;
+  if(peak - low > 10000) step = 2500;
+  if(peak - low > 30000) step = 5000;
+  const top = Math.ceil(peak / step) * step || step;
+  const bottom = Math.floor(low / step) * step;
+  const range = (top - bottom) || step;
+
+  // 目盛り線とラベル
+  for(let v = top; v >= bottom; v -= step){
+    const y = (1 - (v - bottom) / range) * 100;
+    const line = document.createElement('div');
+    line.style.top = y + '%';
+    slumpGrid.appendChild(line);
+
+    const label = document.createElement('span');
+    label.textContent = v.toLocaleString();
+    slumpAxis.appendChild(label);
+  }
+
+  // 折れ線の座標を作る
+  const pts = cum.map(function(v, idx){
+    const x = (idx / (cum.length - 1)) * 100;
+    const y = (1 - (v - bottom) / range) * 100;
+    return x.toFixed(2) + ',' + y.toFixed(2);
+  });
+
+  const zeroY = (1 - (0 - bottom) / range) * 100;
+
+  // 0のライン
+  if(zeroY >= 0 && zeroY <= 100){
+    slumpSvg.innerHTML +=
+      '<line class="zero" x1="0" y1="' + zeroY.toFixed(2) + '" x2="100" y2="' + zeroY.toFixed(2) + '"/>';
+  }
+
+  // 塗りつぶし＋折れ線
+  slumpSvg.innerHTML +=
+    '<polygon class="area" points="0,' + zeroY.toFixed(2) + ' ' + pts.join(' ') + ' 100,' + zeroY.toFixed(2) + '"/>' +
+    '<polyline class="line" points="' + pts.join(' ') + '"/>';
+}
+
+// --- ⑤ 大当たりを記録する ---
+recordBtn.addEventListener('click', function(){
+  if(!lastCalc) return;
+
+  const now = new Date();
+  const date = (now.getMonth()+1) + '/' + now.getDate() + ' '
+    + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+
+  const payout = parseInt(payoutInput.value, 10) || 0;
+
+  const arr = loadHistory();
+  arr.unshift({           // 新しいものを先頭に追加
+    prob: lastCalc.prob,
+    spin: lastCalc.spin,
+    percent: lastCalc.percent,
+    oneIn: lastCalc.oneIn,
+    payout: payout,
+    date: date
+  });
+  saveHistory(arr);
+  renderHistory();
+  payoutInput.value = '';   // 次の入力にそなえて空にする
+
+  recordBtn.textContent = '記録しました！';
+  setTimeout(function(){ recordBtn.textContent = 'この内容で大当たりを記録する'; }, 1600);
+});
+
+// --- ⑥ 履歴をリセットする（ページ内で確認する方式） ---
+resetBtn.addEventListener('click', function(){
+  if(loadHistory().length === 0){
+    return;
+  }
+  previewBox.style.display = 'none';
+  confirmBox.style.display = 'block';   // 確認メッセージを出す
+});
+
+confirmNo.addEventListener('click', function(){
+  confirmBox.style.display = 'none';    // やめる
+});
+
+confirmYes.addEventListener('click', function(){
+  localStorage.removeItem(STORAGE_KEY); // 本当に消す
+  confirmBox.style.display = 'none';
+  renderHistory();
+});
+
+// ============================================
+//  ⑦ 履歴をまとめてXに投稿する
+// ============================================
+
+// Xの文字数は日本語1文字＝2、半角1文字＝1で数える
+function tweetLength(text){
+  let n = 0;
+  for(const ch of text){
+    n += (ch.charCodeAt(0) < 128) ? 1 : 2;
+  }
+  return n;
+}
+
+// 履歴から投稿用の文章を組み立てる
+function buildBulkText(){
+  const arr = loadHistory();
+  if(arr.length === 0) return '';
+
+  const spins = arr.map(function(i){ return i.spin; });
+  const max = Math.max.apply(null, spins);
+  const avg = Math.round(spins.reduce(function(a,b){return a+b;},0) / spins.length);
+
+  const total = arr.reduce(function(a,b){ return a + (b.payout || 0); }, 0);
+
+  let text = '【ハマり履歴まとめ】\n'
+    + '記録 ' + arr.length + '回 ／ 平均 ' + avg.toLocaleString() + '回転\n'
+    + '最大ハマり ' + max.toLocaleString() + '回転\n'
+    + (total ? '獲得出玉 ' + total.toLocaleString() + '玉\n' : '')
+    + '\n';
+
+  const footer = '\n#パチンコ #ハマり確率計算機';
+  const LIMIT = 280;   // Xの上限
+  let shown = 0;
+
+  // 上限に収まる範囲で1件ずつ足していく
+  for(const item of arr){
+    const line = '・' + item.spin.toLocaleString() + '回転（1/' + item.prob + '）\n';
+    const rest = (arr.length - shown - 1);
+    const tail = rest > 0 ? '…他' + rest + '件\n' : '';
+    if(tweetLength(text + line + tail + footer) > LIMIT) break;
+    text += line;
+    shown++;
+  }
+
+  const rest = arr.length - shown;
+  if(rest > 0) text += '…他' + rest + '件\n';
+
+  return text + footer;
+}
+
+// 文字数の表示を更新する
+function updateCharCount(){
+  const n = tweetLength(previewText.value);
+  charCount.textContent = n + ' / 280';
+  charCount.className = (n > 280) ? 'over' : '';
+}
+
+bulkShareBtn.addEventListener('click', function(){
+  if(loadHistory().length === 0) return;
+  confirmBox.style.display = 'none';
+  previewText.value = buildBulkText();
+  updateCharCount();
+  previewBox.style.display = 'block';
+  previewBox.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+
+previewText.addEventListener('input', updateCharCount);
+
+previewPost.addEventListener('click', function(){
+  const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(previewText.value);
+  window.open(url, '_blank', 'noopener');
+});
+
+previewCancel.addEventListener('click', function(){
+  previewBox.style.display = 'none';
+});
+
+// --- 起動時に履歴を表示 ---
+renderHistory();
+
+// --- 画面の幅が変わったらグラフを描き直す（スマホの横向き対応） ---
+let resizeTimer;
+window.addEventListener('resize', function(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(renderHistory, 200);
+});
+</script>
+</body>
+</html>

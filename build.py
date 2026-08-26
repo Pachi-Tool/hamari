@@ -150,6 +150,17 @@ tr.mark td{background:rgba(255,200,50,.09);}
 #out .big{font-family:"DotGothic16",monospace;font-size:clamp(30px,9vw,50px);
   color:var(--lamp-gold);line-height:1.2;text-shadow:0 0 18px rgba(255,200,50,.8);}
 #out .sub{font-family:"DotGothic16",monospace;font-size:16px;color:var(--neon-cyan);}
+#out .cmp{
+  font-size:13px;color:#d8d1e8;margin-top:12px;padding-top:12px;
+  border-top:1px solid rgba(200,194,216,.2);text-align:left;
+}
+#out .btn-x{
+  display:inline-block;margin-top:14px;
+  background:#000;color:#fff;border:1px solid #555;
+  text-decoration:none;font-weight:700;font-size:13px;
+  padding:11px 22px;border-radius:999px;
+}
+#out .btn-x:hover{background:#181818;}
 
 .cta{display:block;text-align:center;background:linear-gradient(180deg,#3ff0ff,var(--neon-cyan));
   color:#04222b;text-decoration:none;font-weight:900;font-size:14px;
@@ -200,6 +211,11 @@ def build_page(m, others):
     r_at_prob = hamari_rate(prob, round(prob))
     r1000 = hamari_rate(prob, 1000)
     r2000 = hamari_rate(prob, 2000)
+
+    # スペックの注記があれば表示する
+    note_html = ""
+    if m.get("note"):
+        note_html = "<br>※" + esc(m["note"])
 
     # 他機種へのリンク
     other_items = "\n".join(
@@ -282,6 +298,21 @@ def build_page(m, others):
   </div>
 </header>
 
+<section class="panel calc">
+  <h2>ハマり回転数を入れて計算する</h2>
+  <label for="spin">{esc(short)}で何回転ハマったか</label>
+  <input type="number" id="spin" value="1000" min="1" step="1" inputmode="numeric">
+  <button id="btn">計算する</button>
+
+  <div id="out">
+    <div class="lbl">この ハマリ が 起こる 確率</div>
+    <div class="big"><span id="pct">--</span></div>
+    <div class="sub" id="oneIn">--</div>
+    <div class="cmp" id="cmp"></div>
+    <a id="share" class="btn-x" href="#" target="_blank" rel="noopener">この結果をXに投稿する</a>
+  </div>
+</section>
+
 <section class="panel">
   <h2>回転数別 ハマり確率</h2>
   <div class="table-scroll">
@@ -293,21 +324,8 @@ def build_page(m, others):
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
     ※「遭遇する頻度」は、大当たりを引くたびにそのハマりに何回に1度出会うかの目安です。
     たとえば「約151回に1度」なら、大当たり151回につき1回はそこまでハマる計算になります。<br>
-    ※通常時の大当たり確率1/{prob}をもとに算出した理論値です。
+    ※通常時の大当たり確率1/{prob}をもとに算出した理論値です。{note_html}
   </p>
-</section>
-
-<section class="panel calc">
-  <h2>回転数を入れて計算する</h2>
-  <label for="spin">{esc(short)}で何回転ハマったか</label>
-  <input type="number" id="spin" value="1000" min="1" step="1" inputmode="numeric">
-  <button id="btn">計算する</button>
-
-  <div id="out">
-    <div class="lbl">この ハマリ が 起こる 確率</div>
-    <div class="big"><span id="pct">--</span></div>
-    <div class="sub" id="oneIn">--</div>
-  </div>
 </section>
 
 <section class="panel">
@@ -354,10 +372,15 @@ def build_page(m, others):
 
 <script>
 var PROB = {prob};
-var spin = document.getElementById('spin');
-var out  = document.getElementById('out');
-var pct  = document.getElementById('pct');
-var one  = document.getElementById('oneIn');
+var NAME = "{esc(short)}";
+var PAGE = "{SITE}m/{m['slug']}.html";
+
+var spin  = document.getElementById('spin');
+var out   = document.getElementById('out');
+var pct   = document.getElementById('pct');
+var one   = document.getElementById('oneIn');
+var cmp   = document.getElementById('cmp');
+var share = document.getElementById('share');
 
 function fmtPct(p){{
   if(p >= 10) return p.toFixed(1);
@@ -372,12 +395,46 @@ function fmtOneIn(n){{
   return '約' + Math.round(n).toLocaleString() + '回に1度';
 }}
 
+// 身近な出来事とくらべる
+var COMPARE = [
+  [2,'コイン投げで表を出す'],[4,'コイン投げで2回連続表を出す'],[6,'サイコロで1の目を出す'],
+  [8,'コイン投げで3回連続表を出す'],[13,'トランプでエースを引く'],[20,'サイコロ2個でゾロ目を出す'],
+  [36,'サイコロ2個で狙ったゾロ目を出す'],[50,'50人から自分が選ばれる'],[64,'コイン投げで6回連続表を出す'],
+  [100,'1から100の数字を当てる'],[216,'サイコロ3個でピンゾロを出す'],[365,'知らない人と誕生日が一致する'],
+  [500,'ペットボトルのキャンペーンで当たりが出る'],[1024,'コイン投げで10回連続表を出す'],
+  [2000,'四つ葉のクローバーを一発で見つける'],[4500,'同姓同名の人に出会う'],[10000,'宝くじで1万円に当たる'],
+  [43000,'宝くじで10万円に当たる'],[220000,'ナンバーズ4をストレートで当てる'],[1000000,'雷に打たれる'],
+  [6100000,'ロト6で1等に当たる'],[20000000,'宝くじ1等に当たる'],[60000000,'ロト7で1等に当たる']
+];
+function makeCompare(oneIn){{
+  var best = COMPARE[0], gap = Infinity;
+  for(var i=0;i<COMPARE.length;i++){{
+    var r = oneIn > COMPARE[i][0] ? oneIn/COMPARE[i][0] : COMPARE[i][0]/oneIn;
+    if(r < gap){{ gap = r; best = COMPARE[i]; }}
+  }}
+  var label = '約1/' + best[0].toLocaleString();
+  if(gap < 1.15) return 'これは「' + best[1] + '」（' + label + '）とほぼ同じ確率です。';
+  if(gap < 1.8)  return 'これは「' + best[1] + '」（' + label + '）と同じくらいの珍しさです。';
+  return 'これは「' + best[1] + '」（' + label + '）に近い珍しさです。';
+}}
+
 document.getElementById('btn').addEventListener('click', function(){{
   var s = parseInt(spin.value, 10);
   if(!s || s < 1) return;
   var p = Math.pow((PROB - 1) / PROB, s);
+
   pct.textContent = fmtPct(p * 100) + '%';
   one.textContent = fmtOneIn(1 / p);
+  cmp.textContent = makeCompare(1 / p);
+
+  // Xへの投稿文を組み立てる（機種名を入れる）
+  var text = '【' + NAME + '】\\n'
+    + s.toLocaleString() + '回転ハマりました（1/' + PROB + '）\\n'
+    + 'この確率 約' + fmtPct(p * 100) + '%（' + fmtOneIn(1 / p) + '）\\n'
+    + '#パチンコ #ハマり確率計算機';
+  share.href = 'https://twitter.com/intent/tweet?text='
+    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE);
+
   out.style.display = 'block';
 }});
 </script>

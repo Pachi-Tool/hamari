@@ -77,6 +77,17 @@ tr.mark td{background:rgba(255,200,50,.09);}
 #out .big{font-family:"DotGothic16",monospace;font-size:clamp(30px,9vw,50px);
   color:var(--lamp-gold);line-height:1.2;text-shadow:0 0 18px rgba(255,200,50,.8);}
 #out .sub{font-family:"DotGothic16",monospace;font-size:16px;color:var(--neon-cyan);}
+#out .cmp{
+  font-size:13px;color:#d8d1e8;margin-top:12px;padding-top:12px;
+  border-top:1px solid rgba(200,194,216,.2);text-align:left;
+}
+#out .btn-x{
+  display:inline-block;margin-top:14px;
+  background:#000;color:#fff;border:1px solid #555;
+  text-decoration:none;font-weight:700;font-size:13px;
+  padding:11px 22px;border-radius:999px;
+}
+#out .btn-x:hover{background:#181818;}
 
 .cta{display:block;text-align:center;background:linear-gradient(180deg,#3ff0ff,var(--neon-cyan));
   color:#04222b;text-decoration:none;font-weight:900;font-size:14px;

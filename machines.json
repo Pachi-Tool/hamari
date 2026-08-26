@@ -1,18 +1,90 @@
 {
-  "updated": "2026-08-25",
-  "note": "prob は通常時（ヘソ）の大当たり確率の分母。sources は確認した情報源の数。verified を true にする前に、必ずメーカー公式または遊技説明で確認してください。",
+  "updated": "2026-08-26",
+  "note": "prob は通常時（ヘソ）の大当たり確率の分母。出典: P-WORLD 新台スケジュール(2026-08)ほか。掲載前にメーカー公式または遊技説明で確認してください。",
   "machines": [
+    {
+      "name": "e ソードアート・オンライン アリシゼーション 夜空",
+      "maker": "京楽",
+      "type": "ライトミドル",
+      "prob": 199.9,
+      "intro": "2026-08-03",
+      "slug": "sao-alicization",
+      "short": "SAOアリシゼーション 夜空",
+      "page": true,
+      "note": "",
+      "verified": false
+    },
+    {
+      "name": "e 七つの大罪3",
+      "maker": "サミー",
+      "type": "ミドル",
+      "prob": 319.6,
+      "intro": "2026-08-03",
+      "slug": "nanatsu3",
+      "short": "七つの大罪3",
+      "page": true,
+      "note": "",
+      "verified": false
+    },
+    {
+      "name": "eアクセル・ワールド",
+      "maker": "ニューギン",
+      "type": "ライトミドル",
+      "prob": 184.6,
+      "intro": "2026-08-03",
+      "slug": "accel-world",
+      "short": "アクセル・ワールド",
+      "page": true,
+      "note": "",
+      "verified": false
+    },
+    {
+      "name": "ぱちんこ押忍!番長 漢の頂 99ver.",
+      "maker": "大都技研",
+      "type": "甘デジ",
+      "prob": 99.9,
+      "intro": "2026-08-03",
+      "slug": "banchou-otoko",
+      "short": "押忍!番長 漢の頂 99ver.",
+      "page": true,
+      "note": "P版・e版の2種類がありますが、大当たり確率はどちらも1/99.9です。",
+      "verified": false
+    },
+    {
+      "name": "eゾン100~ゾンビになるまでにしたい100のこと~",
+      "maker": "サンセイR&D",
+      "type": "ライトミドル",
+      "prob": 199.5,
+      "intro": "2026-08-17",
+      "slug": "zom100",
+      "short": "ゾン100",
+      "page": true,
+      "note": "",
+      "verified": false
+    },
+    {
+      "name": "P 春一番 2026",
+      "maker": "ソフィア",
+      "type": "甘デジ",
+      "prob": 89.9,
+      "intro": "2026-08-17",
+      "slug": "haruichiban2026",
+      "short": "春一番 2026",
+      "page": true,
+      "note": "",
+      "verified": false
+    },
     {
       "name": "eソードアート・オンライン オルタナティブ ガンゲイル・オンライン",
       "maker": "大都技研",
       "type": "ミドル",
       "prob": 319.9,
       "intro": "2026-06-08",
-      "sources": 5,
-      "verified": false,
       "slug": "sao-ggo",
       "short": "ガンゲイル・オンライン",
-      "page": true
+      "page": true,
+      "note": "",
+      "verified": false
     },
     {
       "name": "e学園黙示録ハイスクール・オブ・ザ・デッド3",
@@ -20,35 +92,11 @@
       "type": "ミドル",
       "prob": 299.2,
       "intro": "2026-06-08",
-      "sources": 5,
-      "verified": false,
       "slug": "hotd3",
       "short": "ハイスクール・オブ・ザ・デッド3",
-      "page": true
-    },
-    {
-      "name": "eソードアート・オンライン アリシゼーション 夜空",
-      "maker": "オッケー",
-      "type": "ミドル",
-      "prob": 319.6,
-      "intro": "2026-08-03",
-      "sources": 1,
-      "verified": false,
-      "slug": "sao-alicization",
-      "short": "SAOアリシゼーション 夜空",
-      "page": true
-    },
-    {
-      "name": "eリコリス・リコイル",
-      "maker": "サンセイR&D",
-      "type": "ライトミドル",
-      "prob": 259.7,
-      "intro": "",
-      "sources": 1,
-      "verified": false,
-      "slug": "lycoris",
-      "short": "リコリス・リコイル",
-      "page": true
+      "page": true,
+      "note": "",
+      "verified": false
     },
     {
       "name": "e大海物語5 ブラック",
@@ -56,11 +104,47 @@
       "type": "ライトミドル",
       "prob": 199.8,
       "intro": "",
-      "sources": 1,
-      "verified": false,
       "slug": "umi5-black",
       "short": "大海物語5 ブラック",
-      "page": true
+      "page": true,
+      "note": "",
+      "verified": false
+    },
+    {
+      "name": "eリコリス・リコイル",
+      "maker": "サンセイR&D",
+      "type": "ライトミドル",
+      "prob": 259.7,
+      "intro": "",
+      "slug": "lycoris",
+      "short": "リコリス・リコイル",
+      "page": true,
+      "note": "",
+      "verified": false
+    },
+    {
+      "name": "eF機動戦士ガンダムSEED クライマックス",
+      "maker": "SANKYO",
+      "type": "ハイミドル",
+      "prob": 399.9,
+      "intro": "2026-08-03",
+      "slug": "gundam-seed",
+      "short": "ガンダムSEED クライマックス",
+      "page": false,
+      "note": "特図1の1500個大当りとSEEDチャージからのLT突入の合算値です。",
+      "verified": false
+    },
+    {
+      "name": "e EDENS ZERO ~究極LT~",
+      "maker": "七匠",
+      "type": "ハイミドル",
+      "prob": 399.9,
+      "intro": "2026-08-03",
+      "slug": "edens-zero",
+      "short": "EDENS ZERO",
+      "page": false,
+      "note": "チャージ当り（入浴タイム）を除いた数値です。",
+      "verified": false
     },
     {
       "name": "e牙狼12 黄金騎士極限",
@@ -68,11 +152,11 @@
       "type": "ミドル",
       "prob": 319.6,
       "intro": "2025-10",
-      "sources": 1,
-      "verified": false,
       "slug": "garo12",
       "short": "牙狼12 黄金騎士極限",
-      "page": false
+      "page": false,
+      "note": "",
+      "verified": false
     }
   ]
 }

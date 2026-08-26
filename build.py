@@ -14,6 +14,7 @@ machines.json を読んで、機種ごとのページと sitemap.xml を生成�
 import json
 import math
 import os
+import re
 from datetime import date
 
 SITE = "https://pachi-tool.github.io/hamari/"
@@ -443,13 +444,50 @@ document.getElementById('btn').addEventListener('click', function(){{
 """
 
 
+def sort_by_new(machines):
+    """導入日の新しい順に並べる（導入日が未記入のものは後ろに回す）"""
+    return sorted(machines, key=lambda m: (m.get("intro") or "0000-00-00"), reverse=True)
+
+
+def update_index(targets):
+    """トップページの機種リンク一覧を書き換える"""
+    path = "index.html"
+    if not os.path.exists(path):
+        print("  ※ index.html が見つからないため、リンク一覧の更新をスキップしました")
+        return
+
+    items = "\n".join(
+        f'    <li><a href="./m/{m["slug"]}.html">'
+        f'<span>{esc(m["short"])}</span>'
+        f'<span class="p">1/{m["prob"]}</span></a></li>'
+        for m in targets
+    )
+    block = ('<!-- MACHINE_LINKS_START ここから下は build.py が自動生成します。'
+             '手で編集しないでください -->\n'
+             '  <ul class="machine-links">\n' + items + '\n  </ul>\n'
+             '  <!-- MACHINE_LINKS_END -->')
+
+    html = open(path, encoding="utf-8").read()
+    new_html, n = re.subn(
+        r"<!-- MACHINE_LINKS_START.*?MACHINE_LINKS_END -->",
+        lambda _: block, html, flags=re.S)
+
+    if n == 0:
+        print("  ※ index.html に目印が見つからないため更新できませんでした")
+        return
+
+    open(path, "w", encoding="utf-8").write(new_html)
+    print(f"  更新: index.html のリンク一覧（{len(targets)}件）")
+
+
 # ---------------------------------------------------------------
 #  実行
 # ---------------------------------------------------------------
 def main():
     data = json.load(open("machines.json", encoding="utf-8"))
     machines = data["machines"]
-    targets = [m for m in machines if m.get("page")]
+    # 新しい機種が上に来るように並べ替える
+    targets = sort_by_new([m for m in machines if m.get("page")])
 
     os.makedirs("m", exist_ok=True)
 
@@ -478,6 +516,9 @@ def main():
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                 + body + "\n</urlset>\n")
+
+    # トップページのリンク一覧
+    update_index(targets)
 
     print(f"\n完了: {len(targets)}ページ生成 / sitemap.xml に{len(urls)}件を登録")
 

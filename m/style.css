@@ -93,6 +93,38 @@ tr.mark td{background:rgba(255,200,50,.09);}
   color:#04222b;text-decoration:none;font-weight:900;font-size:14px;
   padding:14px;border-radius:999px;box-shadow:0 4px 0 #0b7f96;margin-top:8px;}
 
+/* 広告ブロック */
+.ad-block{
+  position:relative;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(200,194,216,.22);
+  border-radius:12px;
+  padding:18px 20px 20px;
+  margin:22px 0;
+  text-align:center;
+}
+.ad-label{
+  position:absolute;top:-9px;left:16px;
+  background:var(--hall-deep);
+  border:1px solid rgba(200,194,216,.3);
+  border-radius:4px;
+  color:var(--text-dim);
+  font-size:10px;letter-spacing:.14em;
+  padding:1px 8px;
+}
+.ad-lead{font-size:13px;color:var(--text-dim);margin:0 0 12px;}
+.ad-link{
+  display:inline-block;
+  color:var(--neon-cyan);
+  text-decoration:none;
+  font-size:14px;font-weight:700;
+  border:1px solid rgba(37,229,255,.5);
+  border-radius:999px;
+  padding:11px 24px;
+  transition:background .15s;
+}
+.ad-link:hover{background:rgba(37,229,255,.12);}
+
 .others{list-style:none;padding:0;margin:0;}
 .others li{border-bottom:1px solid rgba(200,194,216,.16);}
 .others a{display:flex;justify-content:space-between;gap:10px;

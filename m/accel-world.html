@@ -171,6 +171,7 @@
 var PROB = 184.6;
 var NAME = "アクセル・ワールド";
 var PAGE = "https://pachi-tool.github.io/hamari/m/accel-world.html";
+var TAGS = "#アクセルワールド #パチンコ";
 
 var spin  = document.getElementById('spin');
 var out   = document.getElementById('out');
@@ -228,7 +229,7 @@ document.getElementById('btn').addEventListener('click', function(){
   var text = '【' + NAME + '】\n'
     + s.toLocaleString() + '回転ハマりました（1/' + PROB + '）\n'
     + 'この確率 約' + fmtPct(p * 100) + '%（' + fmtOneIn(1 / p) + '）\n'
-    + '#パチンコ #ハマり確率計算機';
+    + TAGS;
   share.href = 'https://twitter.com/intent/tweet?text='
     + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE);
 

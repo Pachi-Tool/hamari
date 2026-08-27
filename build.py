@@ -70,6 +70,22 @@ def esc(s):
 
 
 # ---------------------------------------------------------------
+#  広告ブロック（1箇所直せば全ページに反映される）
+# ---------------------------------------------------------------
+AD_BLOCK = """<aside class="ad-block">
+  <span class="ad-label">PR</span>
+  <p class="ad-lead">自宅で好きなだけ回して確率を検証してみませんか。</p>
+  <a class="ad-link"
+     href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+AWY41E+2SY6+BZGEQ"
+     rel="sponsored nofollow noopener" target="_blank">
+    中古パチンコ台販売【A-PACHINKO】
+  </a>
+  <img border="0" width="1" height="1"
+       src="https://www13.a8.net/0.gif?a8mat=4BAFPF+AWY41E+2SY6+BZGEQ" alt="">
+</aside>"""
+
+
+# ---------------------------------------------------------------
 #  機種ページ共通のスタイル
 # ---------------------------------------------------------------
 STYLE = """:root{
@@ -166,6 +182,38 @@ tr.mark td{background:rgba(255,200,50,.09);}
 .cta{display:block;text-align:center;background:linear-gradient(180deg,#3ff0ff,var(--neon-cyan));
   color:#04222b;text-decoration:none;font-weight:900;font-size:14px;
   padding:14px;border-radius:999px;box-shadow:0 4px 0 #0b7f96;margin-top:8px;}
+
+/* 広告ブロック */
+.ad-block{
+  position:relative;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(200,194,216,.22);
+  border-radius:12px;
+  padding:18px 20px 20px;
+  margin:22px 0;
+  text-align:center;
+}
+.ad-label{
+  position:absolute;top:-9px;left:16px;
+  background:var(--hall-deep);
+  border:1px solid rgba(200,194,216,.3);
+  border-radius:4px;
+  color:var(--text-dim);
+  font-size:10px;letter-spacing:.14em;
+  padding:1px 8px;
+}
+.ad-lead{font-size:13px;color:var(--text-dim);margin:0 0 12px;}
+.ad-link{
+  display:inline-block;
+  color:var(--neon-cyan);
+  text-decoration:none;
+  font-size:14px;font-weight:700;
+  border:1px solid rgba(37,229,255,.5);
+  border-radius:999px;
+  padding:11px 24px;
+  transition:background .15s;
+}
+.ad-link:hover{background:rgba(37,229,255,.12);}
 
 .others{list-style:none;padding:0;margin:0;}
 .others li{border-bottom:1px solid rgba(200,194,216,.16);}
@@ -313,6 +361,8 @@ def build_page(m, others):
     <a id="share" class="btn-x" href="#" target="_blank" rel="noopener">この結果をXに投稿する</a>
   </div>
 </section>
+
+{AD_BLOCK}
 
 <section class="panel">
   <h2>回転数別 ハマり確率</h2>

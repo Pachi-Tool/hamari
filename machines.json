@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-27",
-  "note": "prob は通常時（ヘソ）の大当たり確率の分母。出典: P-WORLD 新台スケジュール(2026-08)ほか。掲載前にメーカー公式または遊技説明で確認してください。",
+  "updated": "2026-08-26",
+  "note": "prob は通常時（ヘソ）の大当たり確率の分母。tag はXへの投稿に使う呼称（スペースや記号は使えません）。出典: P-WORLD 新台スケジュールほか。掲載前にメーカー公式または遊技説明で確認してください。",
   "machines": [
     {
       "name": "e ソードアート・オンライン アリシゼーション 夜空",
@@ -12,7 +12,8 @@
       "short": "SAOアリシゼーション 夜空",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "SAO"
     },
     {
       "name": "e 七つの大罪3",
@@ -24,7 +25,8 @@
       "short": "七つの大罪3",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "七つの大罪"
     },
     {
       "name": "eアクセル・ワールド",
@@ -36,7 +38,8 @@
       "short": "アクセル・ワールド",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "アクセルワールド"
     },
     {
       "name": "ぱちんこ押忍!番長 漢の頂 99ver.",
@@ -48,7 +51,8 @@
       "short": "押忍!番長 漢の頂 99ver.",
       "page": true,
       "note": "P版・e版の2種類がありますが、大当たり確率はどちらも1/99.9です。",
-      "verified": false
+      "verified": false,
+      "tag": "押忍番長"
     },
     {
       "name": "eゾン100~ゾンビになるまでにしたい100のこと~",
@@ -60,7 +64,8 @@
       "short": "ゾン100",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "ゾン100"
     },
     {
       "name": "P 春一番 2026",
@@ -72,7 +77,8 @@
       "short": "春一番 2026",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "春一番"
     },
     {
       "name": "eソードアート・オンライン オルタナティブ ガンゲイル・オンライン",
@@ -84,7 +90,8 @@
       "short": "ガンゲイル・オンライン",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "GGO"
     },
     {
       "name": "e学園黙示録ハイスクール・オブ・ザ・デッド3",
@@ -96,7 +103,8 @@
       "short": "ハイスクール・オブ・ザ・デッド3",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "学園黙示録"
     },
     {
       "name": "e大海物語5 ブラック",
@@ -108,7 +116,8 @@
       "short": "大海物語5 ブラック",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "海物語"
     },
     {
       "name": "eリコリス・リコイル",
@@ -120,7 +129,8 @@
       "short": "リコリス・リコイル",
       "page": true,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "リコリコ"
     },
     {
       "name": "eF機動戦士ガンダムSEED クライマックス",
@@ -132,7 +142,8 @@
       "short": "ガンダムSEED クライマックス",
       "page": false,
       "note": "特図1の1500個大当りとSEEDチャージからのLT突入の合算値です。",
-      "verified": false
+      "verified": false,
+      "tag": "ガンダムSEED"
     },
     {
       "name": "e EDENS ZERO ~究極LT~",
@@ -144,7 +155,8 @@
       "short": "EDENS ZERO",
       "page": false,
       "note": "チャージ当り（入浴タイム）を除いた数値です。",
-      "verified": false
+      "verified": false,
+      "tag": "エデンズゼロ"
     },
     {
       "name": "e牙狼12 黄金騎士極限",
@@ -156,7 +168,8 @@
       "short": "牙狼12 黄金騎士極限",
       "page": false,
       "note": "",
-      "verified": false
+      "verified": false,
+      "tag": "牙狼"
     }
   ]
 }

@@ -266,6 +266,10 @@ def build_page(m, others):
     if m.get("note"):
         note_html = "<br>※" + esc(m["note"])
 
+    # Xへの投稿に付けるハッシュタグ（呼称 + パチンコ）
+    tag = (m.get("tag") or "").strip()
+    tag_text = (f"#{tag} #パチンコ" if tag else "#パチンコ")
+
     # 他機種へのリンク
     other_items = "\n".join(
         f'      <li><a href="./{o["slug"]}.html"><span>{esc(o["short"])}</span>'
@@ -425,6 +429,7 @@ def build_page(m, others):
 var PROB = {prob};
 var NAME = "{esc(short)}";
 var PAGE = "{SITE}m/{m['slug']}.html";
+var TAGS = "{tag_text}";
 
 var spin  = document.getElementById('spin');
 var out   = document.getElementById('out');
@@ -482,7 +487,7 @@ document.getElementById('btn').addEventListener('click', function(){{
   var text = '【' + NAME + '】\\n'
     + s.toLocaleString() + '回転ハマりました（1/' + PROB + '）\\n'
     + 'この確率 約' + fmtPct(p * 100) + '%（' + fmtOneIn(1 / p) + '）\\n'
-    + '#パチンコ #ハマり確率計算機';
+    + TAGS;
   share.href = 'https://twitter.com/intent/tweet?text='
     + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE);
 

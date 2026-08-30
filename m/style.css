@@ -113,6 +113,11 @@ tr.mark td{background:rgba(255,200,50,.09);}
   padding:1px 8px;
 }
 .ad-lead{font-size:13px;color:var(--text-dim);margin:0 0 12px;}
+.ad-banner{
+  display:block;margin:0 auto;
+  max-width:100%;height:auto;
+  border-radius:6px;
+}
 .ad-link{
   display:inline-block;
   color:var(--neon-cyan);

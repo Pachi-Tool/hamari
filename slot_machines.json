@@ -1,0 +1,56 @@
+{
+  "base_url": "https://pachi-tool.github.io/hamari/",
+  "section_path": "slot/",
+  "machines": [
+    {
+      "slug": "general",
+      "name": "汎用スロット",
+      "short": "汎用",
+      "maker": "",
+      "type": "",
+      "intro": "",
+      "note": "機種を問わず使える基本のレア役セットです。",
+      "page": true,
+      "roles": [
+        { "name": "弱チェリー", "probs": {} },
+        { "name": "強チェリー", "probs": {} },
+        { "name": "スイカ", "probs": {} },
+        { "name": "チャンス目", "probs": {} }
+      ]
+    },
+    {
+      "slug": "at-general",
+      "name": "AT機・汎用",
+      "short": "AT汎用",
+      "maker": "",
+      "type": "AT機",
+      "intro": "",
+      "note": "スマスロ・6号機AT機でよく使われるレア役セットです。",
+      "page": true,
+      "roles": [
+        { "name": "弱チェリー", "probs": {} },
+        { "name": "強チェリー", "probs": {} },
+        { "name": "中段チェリー", "probs": {} },
+        { "name": "スイカ", "probs": {} },
+        { "name": "チャンス目", "probs": {} },
+        { "name": "特殊役", "probs": {} }
+      ]
+    },
+    {
+      "slug": "a-type-general",
+      "name": "ノーマルタイプ・汎用",
+      "short": "ノーマル汎用",
+      "maker": "",
+      "type": "Aタイプ",
+      "intro": "",
+      "note": "ノーマルタイプ（Aタイプ）向けの小役セットです。",
+      "page": true,
+      "roles": [
+        { "name": "チェリー", "probs": {} },
+        { "name": "スイカ", "probs": {} },
+        { "name": "チャンス目", "probs": {} },
+        { "name": "中段チェリー", "probs": {} }
+      ]
+    }
+  ]
+}

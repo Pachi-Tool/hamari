@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://pachi-tool.github.io/hamari/sitemap.xml
+Sitemap: https://pachi-tool.github.io/hamari/slot/sitemap.xml

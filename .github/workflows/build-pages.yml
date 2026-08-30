@@ -6,6 +6,8 @@ on:
     paths:
       - 'machines.json'
       - 'build.py'
+      - 'slot_machines.json'
+      - 'build_slot.py'
   workflow_dispatch:
 
 permissions:
@@ -27,11 +29,14 @@ jobs:
       - name: ページを生成
         run: python build.py
 
+      - name: スロットのページを生成
+        run: python build_slot.py
+
       - name: 変更をコミット
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add m/ index.html sitemap.xml
+          git add m/ index.html sitemap.xml slot/
           if git diff --staged --quiet; then
             echo "変更なし。コミットはスキップします。"
           else

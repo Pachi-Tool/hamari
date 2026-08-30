@@ -96,7 +96,13 @@ h2{
   font-size:34px;line-height:1.15;color:var(--gold);margin:6px 0;
   text-shadow:0 0 12px rgba(255,200,50,.45);
 }
-.prob{font-family:"DotGothic16","Noto Sans JP",monospace;font-size:14px;color:var(--cyan);}
+.probs{display:flex;flex-direction:column;gap:2px;margin-top:6px;
+  border-top:1px solid rgba(255,255,255,.07);padding-top:6px;}
+.prob-row{display:flex;align-items:baseline;justify-content:space-between;gap:4px;line-height:1.45;flex-wrap:wrap;}
+.prob-row .k{font-size:10.5px;color:var(--muted);white-space:nowrap;}
+.prob-row .v{font-family:"DotGothic16","Noto Sans JP",monospace;font-size:12.5px;white-space:nowrap;margin-left:auto;}
+.prob-row .v.theory{color:var(--gold);}
+.prob-row .v.now{color:var(--cyan);}
 
 /* 合算 */
 .total{
@@ -172,3 +178,9 @@ table.ref .cap{display:block;font-size:11px;color:var(--muted);font-weight:400;}
   border:1px solid rgba(255,200,50,.4);border-radius:999px;padding:1px 8px;
   background:rgba(255,200,50,.07);
 }
+
+.total-theory{
+  text-align:right;font-family:"DotGothic16","Noto Sans JP",monospace;
+  font-size:12.5px;color:var(--gold);margin:6px 2px 0;
+}
+.total-theory:empty{display:none;}

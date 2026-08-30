@@ -1,4 +1,4 @@
-/* パチスロ レア役カウンター（機種切替つき） */
+/* パチスロ レア小役カウンター（機種切替つき） */
 (function () {
   var root = document.querySelector('.counter');
   if (!root) return;
@@ -62,17 +62,37 @@
   }
 
   /* ---------- 描画：カード ---------- */
+  /* 公表されている出現確率（1/○○ または 設定1〜6の範囲） */
+  function theory(item) {
+    if (!item) return null;
+    if (item.common) return { val: '1/' + esc(item.common), label: '解析' };
+    var probs = item.probs || {};
+    var keys = Object.keys(probs).sort();
+    if (keys.length === 1) return { val: '1/' + esc(probs[keys[0]]), label: '設定' + esc(keys[0]) };
+    if (keys.length > 1) {
+      return {
+        val: '1/' + esc(probs[keys[0]]) + '〜1/' + esc(probs[keys[keys.length - 1]]),
+        label: '設定' + esc(keys[0]) + '〜' + esc(keys[keys.length - 1])
+      };
+    }
+    return { val: '－', label: '解析' };
+  }
+
   function buildCards() {
     var h = '';
     machine.roles.forEach(function (r) {
       var n = esc(r.name);
+      var t = theory(r);
       h += '<li class="role" data-role="' + n + '">' +
         '<div class="role-name">' + n + '</div>' +
         (r.alias ? '<div class="role-alias">＝' + esc(r.alias) + '</div>' : '') +
         '<button type="button" class="arrow up" aria-label="' + n + ' を1回足す">▲</button>' +
         '<div class="count">0</div>' +
         '<button type="button" class="arrow down" aria-label="' + n + ' を1回減らす">▼</button>' +
-        '<div class="prob">1/－</div></li>';
+        '<div class="probs">' +
+        '<div class="prob-row"><span class="k">' + t.label + '</span><span class="v theory">' + t.val + '</span></div>' +
+        '<div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div>' +
+        '</div></li>';
     });
     rolesEl.innerHTML = h;
   }
@@ -82,10 +102,10 @@
     if (!refEl) return;
     var diffRoles = machine.roles.filter(function (r) { return r.diff && r.probs; });
     var headEl = document.getElementById('ref-heading');
-    if (headEl) headEl.textContent = diffRoles.length ? '設定推測に使えるレア役' : 'レア役の出現率';
+    if (headEl) headEl.textContent = diffRoles.length ? '設定推測に使えるレア小役' : 'レア小役の出現率';
     var h = '';
     if (!diffRoles.length) {
-      h += '<p class="note">この機種は、レア役の出現率に設定差が確認されていません。' +
+      h += '<p class="note">この機種は、レア小役の出現率に設定差が確認されていません。' +
         'カウントは実戦データの記録用としてお使いください。</p>';
     } else {
       var settings = [];
@@ -93,7 +113,7 @@
         Object.keys(r.probs).forEach(function (k) { if (settings.indexOf(k) < 0) settings.push(k); });
       });
       settings.sort();
-      h += '<div class="tablewrap"><table class="ref"><tr><th>レア役</th>';
+      h += '<div class="tablewrap"><table class="ref"><tr><th>レア小役</th>';
       settings.forEach(function (s) { h += '<th>設定' + esc(s) + '</th>'; });
       h += '</tr>';
       diffRoles.forEach(function (r) {
@@ -103,14 +123,14 @@
         });
         h += '</tr>';
       });
-      h += '</table></div><p class="note">設定差が確認されているのはこのレア役です。' +
+      h += '</table></div><p class="note">設定差が確認されているのはこのレア小役です。' +
         'ここが伸びているかどうかが設定推測の手がかりになります。</p>';
     }
 
     var others = machine.roles.filter(function (r) { return !(r.diff && r.probs); });
     if (others.length) {
-      h += '<h3 class="sub-h">そのほかのレア役</h3>' +
-        '<div class="tablewrap"><table class="ref"><tr><th>レア役</th><th>出現率</th></tr>';
+      h += '<h3 class="sub-h">そのほかのレア小役</h3>' +
+        '<div class="tablewrap"><table class="ref"><tr><th>レア小役</th><th>出現率</th></tr>';
       others.forEach(function (r) {
         var v;
         if (r.common) v = '1/' + esc(r.common) + '<span class="cap">全設定共通</span>';
@@ -136,7 +156,7 @@
     Array.prototype.forEach.call(rolesEl.querySelectorAll('.role'), function (el) {
       var key = el.dataset.role;
       el.querySelector('.count').textContent = state.counts[key] || 0;
-      el.querySelector('.prob').textContent = probText(state.counts[key] || 0);
+      el.querySelector('.v.now').textContent = probText(state.counts[key] || 0);
     });
     var t = totalCount();
     totalCountEl.textContent = t;
@@ -149,7 +169,7 @@
     machine = m;
     root.dataset.slug = m.slug;
     root.dataset.name = m.name;
-    var title = m.name + ' レア役合算・レア役カウンター';
+    var title = m.name + ' レア小役合算・レア小役カウンター';
     if (titleEl) titleEl.textContent = title;
     document.title = title;
     if (noteEl) noteEl.textContent = m.note || '';
@@ -160,6 +180,11 @@
     if (select) select.value = m.slug;
     buildCards();
     buildRef();
+    var totalTheoryEl = document.getElementById('total-theory');
+    if (totalTheoryEl) {
+      var ct = m.combined ? theory(m.combined) : null;
+      totalTheoryEl.textContent = ct ? '解析値（' + ct.label + '）：' + ct.val : '';
+    }
     load();
     renderCounts();
     if (pushUrl && window.history && history.pushState) {
@@ -222,16 +247,16 @@
   /* ---------- Xに投稿 ---------- */
   if (shareBtn) {
     shareBtn.addEventListener('click', function () {
-      var lines = [machine.name + ' レア役カウンター', '総ゲーム数 ' + state.games + 'G'];
+      var lines = [machine.name + ' レア小役カウンター', '総ゲーム数 ' + state.games + 'G'];
       machine.roles.forEach(function (r) {
         lines.push(r.name + ' ' + (state.counts[r.name] || 0) + '回 (' + probText(state.counts[r.name] || 0) + ')');
       });
       var t = totalCount();
-      lines.push('レア役合算 ' + t + '回 (' + probText(t) + ')');
+      lines.push('レア小役合算 ' + t + '回 (' + probText(t) + ')');
       window.open('https://twitter.com/intent/tweet?text=' +
         encodeURIComponent(lines.join('\n') + '\n') +
         '&url=' + encodeURIComponent(location.href) +
-        '&hashtags=' + encodeURIComponent('パチスロ,レア役カウンター'), '_blank', 'noopener');
+        '&hashtags=' + encodeURIComponent('パチスロ,レア小役カウンター'), '_blank', 'noopener');
     });
   }
 

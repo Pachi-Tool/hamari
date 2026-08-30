@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ノーマルタイプ・汎用 レア役合算・レア役カウンター</title>
-<meta name="description" content="ノーマルタイプ・汎用 のレア役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<title>ノーマルタイプ・汎用 レア小役合算・レア小役カウンター</title>
+<meta name="description" content="ノーマルタイプ・汎用 のレア小役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
 <link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/a-type-general.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ノーマルタイプ・汎用 レア役合算・レア役カウンター">
-<meta property="og:description" content="ノーマルタイプ・汎用 のレア役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<meta property="og:title" content="ノーマルタイプ・汎用 レア小役合算・レア小役カウンター">
+<meta property="og:description" content="ノーマルタイプ・汎用 のレア小役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
 <meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/a-type-general.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,11 +21,11 @@
 <header class="site">
   <a class="logo" href="../../">PACHI-TOOL</a>
   <nav>
-    <a href="../">レア役カウンター</a>
+    <a href="../">レア小役カウンター</a>
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">ノーマルタイプ・汎用 レア役合算・レア役カウンター</h1>
+<h1 id="machine-title">ノーマルタイプ・汎用 レア小役合算・レア小役カウンター</h1>
 <div class="tagrow" id="machine-tags"><span class="tag">Aタイプ</span></div>
 <p class="lead" id="machine-note">ノーマルタイプ（Aタイプ）向けの小役セットです。</p>
 
@@ -66,44 +66,45 @@
     <span class="unit">G</span>
   </div>
 
-  <div class="label" style="margin-top:18px">レア役カウント（▲で＋1／▼で−1）</div>
+  <div class="label" style="margin-top:18px">レア小役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
       <li class="role" data-role="チェリー">
         <div class="role-name">チェリー</div>
         <button type="button" class="arrow up" aria-label="チェリー を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="チェリー を1回減らす">▼</button>
-        <div class="prob">1/－</div>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
       <li class="role" data-role="スイカ">
         <div class="role-name">スイカ</div>
         <button type="button" class="arrow up" aria-label="スイカ を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
-        <div class="prob">1/－</div>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
       <li class="role" data-role="チャンス目">
         <div class="role-name">チャンス目</div>
         <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
-        <div class="prob">1/－</div>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
       <li class="role" data-role="中段チェリー">
         <div class="role-name">中段チェリー</div>
         <button type="button" class="arrow up" aria-label="中段チェリー を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="中段チェリー を1回減らす">▼</button>
-        <div class="prob">1/－</div>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
   </ul>
 
   <div class="label" style="margin-top:18px">合算</div>
   <div class="total">
-    <div class="t-label">レア役合算</div>
+    <div class="t-label">レア小役合算</div>
     <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
-    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">合算確率</div></div>
+    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の合算確率</div></div>
   </div>
+  <div class="total-theory" id="total-theory"></div>
 
   <div class="actions">
     <button type="button" class="btn danger" id="reset">リセット</button>
@@ -111,12 +112,12 @@
   </div>
 </section>
 
-<h2 id="ref-heading">レア役の出現率</h2>
+<h2 id="ref-heading">レア小役の出現率</h2>
 <div class="panel" id="ref-area">
-<p class="note">この機種は、レア役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
-<h3 class="sub-h">そのほかのレア役</h3>
+<p class="note">この機種は、レア小役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
+<h3 class="sub-h">そのほかのレア小役</h3>
 <div class="tablewrap"><table class="ref">
-<tr><th>レア役</th><th>出現率</th></tr>
+<tr><th>レア小役</th><th>出現率</th></tr>
 <tr><td class="rolecell">チェリー</td><td><span class="cap">調査中</span></td></tr>
 <tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
 <tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
@@ -127,10 +128,10 @@
 
 <h2>使い方</h2>
 <div class="panel">
-  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア役が並びます。<br>
+  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア小役が並びます。<br>
   2. 打ち始めに「総ゲーム数」を入力します（あとから直しても確率は再計算されます）。<br>
-  3. レア役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
-  4. 各レア役の出現率と、全レア役を足した「レア役合算」の確率が 1/○○ で自動表示されます。<br>
+  3. レア小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
+  4. 各レア小役の出現率と、全レア小役を足した「レア小役合算」の確率が 1/○○ で自動表示されます。<br>
   5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
 </div>
 
@@ -138,7 +139,7 @@
 <div class="panel"><p class="note">上のプルダウンで切り替えられます。<a href="../">機種一覧ページ</a>からも開けます。</p></div>
 
 <footer class="site">
-  <a href="../">レア役カウンター トップ</a>
+  <a href="../">レア小役カウンター トップ</a>
   <a href="../../">ハマり確率計算機</a>
   <a href="../../privacy.html">プライバシーポリシー</a>
 </footer>

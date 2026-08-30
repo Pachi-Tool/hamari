@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-slot_machines.json から スロット「レア役カウンター」ページを自動生成する。
+slot_machines.json から スロット「レア小役カウンター」ページを自動生成する。
 
 出力:
   slot/index.html        機種一覧
@@ -45,7 +45,7 @@ HEAD = """<!DOCTYPE html>
 <header class="site">
   <a class="logo" href="__HOME__">PACHI-TOOL</a>
   <nav>
-    <a href="__SLOT_HOME__">レア役カウンター</a>
+    <a href="__SLOT_HOME__">レア小役カウンター</a>
     <a href="__HOME__">ハマり確率計算機</a>
   </nav>
 </header>
@@ -53,7 +53,7 @@ HEAD = """<!DOCTYPE html>
 
 FOOT = """
 <footer class="site">
-  <a href="__SLOT_HOME__">レア役カウンター トップ</a>
+  <a href="__SLOT_HOME__">レア小役カウンター トップ</a>
   <a href="__HOME__">ハマり確率計算機</a>
   <a href="__PRIVACY__">プライバシーポリシー</a>
 </footer>
@@ -88,6 +88,28 @@ def foot(home, slot_home, privacy, scripts):
 
 # ---------------- 部品 ----------------
 
+def theory_text(item):
+    """公表されている出現確率の表示（1/○○ もしくは 設定1〜6の範囲）。"""
+    if item.get("common"):
+        return "1/" + esc(item["common"]), "解析"
+    probs = item.get("probs") or {}
+    keys = sorted(probs.keys())
+    if len(keys) == 1:
+        return "1/" + esc(probs[keys[0]]), "設定" + esc(keys[0])
+    if len(keys) > 1:
+        return ("1/" + esc(probs[keys[0]]) + "〜1/" + esc(probs[keys[-1]]),
+                "設定" + esc(keys[0]) + "〜" + esc(keys[-1]))
+    return "－", "解析"
+
+
+def prob_block(item):
+    val, label = theory_text(item)
+    return (f'<div class="probs">'
+            f'<div class="prob-row"><span class="k">{label}</span><span class="v theory">{val}</span></div>'
+            f'<div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div>'
+            f'</div>')
+
+
 def role_card(role):
     name = esc(role["name"])
     alias = f'<div class="role-alias">＝{esc(role["alias"])}</div>' if role.get("alias") else ""
@@ -96,7 +118,7 @@ def role_card(role):
         <button type="button" class="arrow up" aria-label="{name} を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="{name} を1回減らす">▼</button>
-        <div class="prob">1/－</div>
+{prob_block(role)}
       </li>
 """
 
@@ -109,10 +131,10 @@ def machine_tags(machine):
 
 
 def settei_table(machine):
-    """設定差のあるレア役だけを設定別の表にする。"""
+    """設定差のあるレア小役だけを設定別の表にする。"""
     roles = [r for r in machine["roles"] if r.get("diff") and r.get("probs")]
     if not roles:
-        return ('<p class="note">この機種は、レア役の出現率に設定差が確認されていません。'
+        return ('<p class="note">この機種は、レア小役の出現率に設定差が確認されていません。'
                 'カウントは実戦データの記録用としてお使いください。</p>')
     settings = []
     for r in roles:
@@ -129,13 +151,13 @@ def settei_table(machine):
             tds += f"<td>{'1/' + esc(v) if v else '－'}</td>"
         rows += f'<tr><td class="rolecell hit">{esc(r["name"])}</td>{tds}</tr>\n'
     return f"""<div class="tablewrap"><table class="ref">
-<tr><th>レア役</th>{ths}</tr>
+<tr><th>レア小役</th>{ths}</tr>
 {rows}</table></div>
-<p class="note">設定差が確認されているのはこのレア役です。ここが伸びているかどうかが設定推測の手がかりになります。</p>"""
+<p class="note">設定差が確認されているのはこのレア小役です。ここが伸びているかどうかが設定推測の手がかりになります。</p>"""
 
 
 def other_table(machine):
-    """設定差のない・不明なレア役の確率一覧。"""
+    """設定差のない・不明なレア小役の確率一覧。"""
     roles = [r for r in machine["roles"] if not (r.get("diff") and r.get("probs"))]
     if not roles:
         return ""
@@ -148,9 +170,9 @@ def other_table(machine):
         else:
             v = '<span class="cap">調査中</span>'
         rows += f'<tr><td class="rolecell">{esc(r["name"])}</td><td>{v}</td></tr>\n'
-    return f"""<h3 class="sub-h">そのほかのレア役</h3>
+    return f"""<h3 class="sub-h">そのほかのレア小役</h3>
 <div class="tablewrap"><table class="ref">
-<tr><th>レア役</th><th>出現率</th></tr>
+<tr><th>レア小役</th><th>出現率</th></tr>
 {rows}</table></div>"""
 
 
@@ -187,14 +209,19 @@ def machine_select(machines, current_slug):
 def build_machine_page(machine, cfg, machines):
     base = cfg["base_url"] + cfg["section_path"]
     name = machine["name"]
-    title = f'{name} レア役合算・レア役カウンター'
+    title = f'{name} レア小役合算・レア小役カウンター'
     role_names = "・".join(r["name"] for r in machine["roles"][:4])
-    desc = (f'{name} のレア役（{role_names}など）を▲▼ボタンのタップで1回ずつカウント。'
-            f'合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。')
+    desc = (f'{name} のレア小役（{role_names}など）を▲▼ボタンのタップで1回ずつカウント。'
+            f'合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。')
     canonical = f'{base}m/{machine["slug"]}.html'
     cards = "".join(role_card(r) for r in machine["roles"])
     has_diff = any(r.get("diff") and r.get("probs") for r in machine["roles"])
-    ref_heading = "設定推測に使えるレア役" if has_diff else "レア役の出現率"
+    if machine.get("combined"):
+        cval, clabel = theory_text(machine["combined"])
+        total_theory = f'解析値（{clabel}）：{cval}'
+    else:
+        total_theory = ""
+    ref_heading = "設定推測に使えるレア小役" if has_diff else "レア小役の出現率"
 
     body = f"""<h1 id="machine-title">{esc(title)}</h1>
 <div class="tagrow" id="machine-tags">{machine_tags(machine)}</div>
@@ -216,16 +243,17 @@ def build_machine_page(machine, cfg, machines):
     <span class="unit">G</span>
   </div>
 
-  <div class="label" style="margin-top:18px">レア役カウント（▲で＋1／▼で−1）</div>
+  <div class="label" style="margin-top:18px">レア小役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
 {cards}  </ul>
 
   <div class="label" style="margin-top:18px">合算</div>
   <div class="total">
-    <div class="t-label">レア役合算</div>
+    <div class="t-label">レア小役合算</div>
     <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
-    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">合算確率</div></div>
+    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の合算確率</div></div>
   </div>
+  <div class="total-theory" id="total-theory">{total_theory}</div>
 
   <div class="actions">
     <button type="button" class="btn danger" id="reset">リセット</button>
@@ -242,10 +270,10 @@ def build_machine_page(machine, cfg, machines):
 
 <h2>使い方</h2>
 <div class="panel">
-  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア役が並びます。<br>
+  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア小役が並びます。<br>
   2. 打ち始めに「総ゲーム数」を入力します（あとから直しても確率は再計算されます）。<br>
-  3. レア役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
-  4. 各レア役の出現率と、全レア役を足した「レア役合算」の確率が 1/○○ で自動表示されます。<br>
+  3. レア小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
+  4. 各レア小役の出現率と、全レア小役を足した「レア小役合算」の確率が 1/○○ で自動表示されます。<br>
   5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
 </div>
 
@@ -260,9 +288,9 @@ def build_machine_page(machine, cfg, machines):
 
 def build_index(cfg, machines):
     base = cfg["base_url"] + cfg["section_path"]
-    title = "スロット レア役カウンター｜機種別のレア役合算をタップで集計"
-    desc = ("パチスロのレア役（チェリー・スイカ・チャンス目など）を▲▼のタップで1回ずつカウントし、"
-            "合算回数と出現率（1/○○）を自動計算できる無料ツールです。機種を選ぶとその機種のレア役が並びます。")
+    title = "スロット レア小役カウンター｜機種別のレア小役合算をタップで集計"
+    desc = ("パチスロのレア小役（チェリー・スイカ・チャンス目など）を▲▼のタップで1回ずつカウントし、"
+            "合算回数と出現率（1/○○）を自動計算できる無料ツールです。機種を選ぶとその機種のレア小役が並びます。")
     real = [m for m in machines if not m["slug"].endswith("general")]
     gen = [m for m in machines if m["slug"].endswith("general")]
 
@@ -274,11 +302,11 @@ def build_index(cfg, machines):
             badge = f'<span class="m-badge">設定差：{esc("・".join(diff))}</span>' if diff else ""
             out += f"""    <li><a href="m/{esc(m['slug'])}.html">
       <div class="m-name">{esc(m['name'])}</div>
-      <div class="m-sub">{esc(sub) if sub else 'レア役 ' + str(len(m['roles'])) + '種'}</div>{badge}</a></li>
+      <div class="m-sub">{esc(sub) if sub else 'レア小役 ' + str(len(m['roles'])) + '種'}</div>{badge}</a></li>
 """
         return out
-    body = f"""<h1>スロット レア役カウンター</h1>
-<p class="lead">レア役を引くたびに▲をタップするだけ。各レア役の回数・合算回数と、1/○○の出現率が自動で出ます。機種を選べば、その機種のレア役がそのまま並びます。</p>
+    body = f"""<h1>スロット レア小役カウンター</h1>
+<p class="lead">レア小役を引くたびに▲をタップするだけ。各レア小役の回数・合算回数と、1/○○の出現率が自動で出ます。機種を選べば、その機種のレア小役がそのまま並びます。</p>
 <h2>機種を選ぶ</h2>
 <div class="panel">
   <ul class="machines">
@@ -291,9 +319,9 @@ def build_index(cfg, machines):
 </div>
 <h2>このツールについて</h2>
 <div class="panel">
-  <p class="note">総ゲーム数とレア役の回数から、レア役ごとの出現率と合算確率を計算します。
+  <p class="note">総ゲーム数とレア小役の回数から、レア小役ごとの出現率と合算確率を計算します。
   カウントは機種ごとに端末のブラウザへ保存されるため、ページを閉じても残ります。<br>
-  なお、レア役の出現率に設定差がある機種は多くありません。設定差が確認されている役は機種ページに明記しているので、そこを見比べてください。</p>
+  なお、レア小役の出現率に設定差がある機種は多くありません。設定差が確認されている役は機種ページに明記しているので、そこを見比べてください。</p>
 </div>
 """
     return (head(title, desc, base, "style.css", "../", "./")
@@ -308,6 +336,7 @@ def build_data_js(machines):
             "slug": m["slug"], "name": m["name"], "maker": m.get("maker", ""),
             "type": m.get("type", ""), "intro": m.get("intro", ""),
             "note": m.get("note", ""), "sources": m.get("sources", []),
+            "combined": m.get("combined"),
             "roles": m["roles"],
         })
     return ("/* 自動生成ファイル。編集しないでください（slot_machines.json を直してください） */\n"

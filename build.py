@@ -74,14 +74,14 @@ def esc(s):
 # ---------------------------------------------------------------
 AD_BLOCK = """<aside class="ad-block">
   <span class="ad-label">PR</span>
-  <p class="ad-lead">自宅で好きなだけ回して確率を検証してみませんか。</p>
-  <a class="ad-link"
-     href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+AWY41E+2SY6+BZGEQ"
+  <a href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+FM17UA+5PLE+5YZ75"
      rel="sponsored nofollow noopener" target="_blank">
-    中古パチンコ台販売【A-PACHINKO】
+    <img class="ad-banner" border="0" width="300" height="250" alt="広告"
+         loading="lazy"
+         src="https://www25.a8.net/svt/bgt?aid=260827395944&amp;wid=001&amp;eno=01&amp;mid=s00000026645001003000&amp;mc=1">
   </a>
   <img border="0" width="1" height="1"
-       src="https://www13.a8.net/0.gif?a8mat=4BAFPF+AWY41E+2SY6+BZGEQ" alt="">
+       src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
 </aside>"""
 
 
@@ -203,6 +203,11 @@ tr.mark td{background:rgba(255,200,50,.09);}
   padding:1px 8px;
 }
 .ad-lead{font-size:13px;color:var(--text-dim);margin:0 0 12px;}
+.ad-banner{
+  display:block;margin:0 auto;
+  max-width:100%;height:auto;
+  border-radius:6px;
+}
 .ad-link{
   display:inline-block;
   color:var(--neon-cyan);

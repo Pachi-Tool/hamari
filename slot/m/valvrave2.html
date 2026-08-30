@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AT機・汎用 レア役合算・レア役カウンター</title>
-<meta name="description" content="AT機・汎用 のレア役（弱チェリー・強チェリー・中段チェリー・スイカなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
-<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/at-general.html">
+<title>Lパチスロ革命機ヴァルヴレイヴ2 レア役合算・レア役カウンター</title>
+<meta name="description" content="Lパチスロ革命機ヴァルヴレイヴ2 のレア役（チェリールーン・ルーン1個（2枚）・ルーン1個（リプレイ）・ルーン2個など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/valvrave2.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AT機・汎用 レア役合算・レア役カウンター">
-<meta property="og:description" content="AT機・汎用 のレア役（弱チェリー・強チェリー・中段チェリー・スイカなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
-<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/at-general.html">
+<meta property="og:title" content="Lパチスロ革命機ヴァルヴレイヴ2 レア役合算・レア役カウンター">
+<meta property="og:description" content="Lパチスロ革命機ヴァルヴレイヴ2 のレア役（チェリールーン・ルーン1個（2枚）・ルーン1個（リプレイ）・ルーン2個など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/valvrave2.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +25,11 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">AT機・汎用 レア役合算・レア役カウンター</h1>
-<div class="tagrow" id="machine-tags"><span class="tag">AT機</span></div>
-<p class="lead" id="machine-note">スマスロ・6号機AT機でよく使われるレア役セットです。</p>
+<h1 id="machine-title">Lパチスロ革命機ヴァルヴレイヴ2 レア役合算・レア役カウンター</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">SANKYO</span><span class="tag">スマスロ</span></div>
+<p class="lead" id="machine-note">この機種はルーンの停止個数でレア役を区別します（1個＜2個＜3個の順に強い）。個別のレア役確率は各解析サイトとも調査中で、レア役合算が約1/28、BAR揃いが約1/682とされています。</p>
 
-<section class="panel counter" data-slug="at-general" data-name="AT機・汎用">
+<section class="panel counter" data-slug="valvrave2" data-name="Lパチスロ革命機ヴァルヴレイヴ2">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
   <optgroup label="機種を選ぶ">
@@ -38,7 +38,7 @@
     <option value="tokyo-ghoul">L東京喰種</option>
     <option value="hokuto-tensei2">L北斗の拳 転生の章2</option>
     <option value="bakemonogatari">L化物語</option>
-    <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
+    <option value="valvrave2" selected>Lパチスロ革命機ヴァルヴレイヴ2</option>
     <option value="iza-bancho">Lいざ！番長</option>
     <option value="monkey-turn5">Lモンキーターン5</option>
     <option value="my-juggler5">マイジャグラーⅤ</option>
@@ -48,7 +48,7 @@
   </optgroup>
   <optgroup label="機種が一覧にないとき">
     <option value="general">汎用スロット</option>
-    <option value="at-general" selected>AT機・汎用</option>
+    <option value="at-general">AT機・汎用</option>
     <option value="a-type-general">ノーマルタイプ・汎用</option>
   </optgroup>
   </select>
@@ -68,46 +68,53 @@
 
   <div class="label" style="margin-top:18px">レア役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
-      <li class="role" data-role="弱チェリー">
-        <div class="role-name">弱チェリー</div>
-        <button type="button" class="arrow up" aria-label="弱チェリー を1回足す">▲</button>
+      <li class="role" data-role="チェリールーン">
+        <div class="role-name">チェリールーン</div>
+        <button type="button" class="arrow up" aria-label="チェリールーン を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="弱チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="チェリールーン を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="強チェリー">
-        <div class="role-name">強チェリー</div>
-        <button type="button" class="arrow up" aria-label="強チェリー を1回足す">▲</button>
+      <li class="role" data-role="ルーン1個（2枚）">
+        <div class="role-name">ルーン1個（2枚）</div>
+        <button type="button" class="arrow up" aria-label="ルーン1個（2枚） を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="強チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="ルーン1個（2枚） を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="中段チェリー">
-        <div class="role-name">中段チェリー</div>
-        <button type="button" class="arrow up" aria-label="中段チェリー を1回足す">▲</button>
+      <li class="role" data-role="ルーン1個（リプレイ）">
+        <div class="role-name">ルーン1個（リプレイ）</div>
+        <button type="button" class="arrow up" aria-label="ルーン1個（リプレイ） を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="中段チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="ルーン1個（リプレイ） を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="スイカ">
-        <div class="role-name">スイカ</div>
-        <button type="button" class="arrow up" aria-label="スイカ を1回足す">▲</button>
+      <li class="role" data-role="ルーン2個">
+        <div class="role-name">ルーン2個</div>
+        <button type="button" class="arrow up" aria-label="ルーン2個 を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="ルーン2個 を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="チャンス目">
-        <div class="role-name">チャンス目</div>
-        <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
+      <li class="role" data-role="ルーン3個">
+        <div class="role-name">ルーン3個</div>
+        <button type="button" class="arrow up" aria-label="ルーン3個 を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="ルーン3個 を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="特殊役">
-        <div class="role-name">特殊役</div>
-        <button type="button" class="arrow up" aria-label="特殊役 を1回足す">▲</button>
+      <li class="role" data-role="BAR揃い">
+        <div class="role-name">BAR揃い</div>
+        <button type="button" class="arrow up" aria-label="BAR揃い を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="特殊役 を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="BAR揃い を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="BARハズレ">
+        <div class="role-name">BARハズレ</div>
+        <button type="button" class="arrow up" aria-label="BARハズレ を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="BARハズレ を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
   </ul>
@@ -131,14 +138,15 @@
 <h3 class="sub-h">そのほかのレア役</h3>
 <div class="tablewrap"><table class="ref">
 <tr><th>レア役</th><th>出現率</th></tr>
-<tr><td class="rolecell">弱チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">強チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">中段チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">特殊役</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">チェリールーン</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">ルーン1個（2枚）</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">ルーン1個（リプレイ）</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">ルーン2個</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">ルーン3個</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">BAR揃い</td><td>1/682<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">BARハズレ</td><td><span class="cap">調査中</span></td></tr>
 </table></div>
-
+<p class="note src">確率の出典：<a href="https://1geki.jp/slot/l_valvrave2/4/" target="_blank" rel="nofollow noopener">1geki.jp</a>、<a href="https://chonborista.com/slot/sankyo-slot/243853/" target="_blank" rel="nofollow noopener">chonborista.com</a></p>
 </div>
 
 <h2>使い方</h2>

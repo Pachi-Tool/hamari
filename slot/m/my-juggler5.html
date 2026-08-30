@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AT機・汎用 レア役合算・レア役カウンター</title>
-<meta name="description" content="AT機・汎用 のレア役（弱チェリー・強チェリー・中段チェリー・スイカなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
-<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/at-general.html">
+<title>マイジャグラーⅤ レア役合算・レア役カウンター</title>
+<meta name="description" content="マイジャグラーⅤ のレア役（ぶどう・角チェリー・ピエロ・ベルなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/my-juggler5.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AT機・汎用 レア役合算・レア役カウンター">
-<meta property="og:description" content="AT機・汎用 のレア役（弱チェリー・強チェリー・中段チェリー・スイカなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
-<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/at-general.html">
+<meta property="og:title" content="マイジャグラーⅤ レア役合算・レア役カウンター">
+<meta property="og:description" content="マイジャグラーⅤ のレア役（ぶどう・角チェリー・ピエロ・ベルなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/my-juggler5.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +25,11 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">AT機・汎用 レア役合算・レア役カウンター</h1>
-<div class="tagrow" id="machine-tags"><span class="tag">AT機</span></div>
-<p class="lead" id="machine-note">スマスロ・6号機AT機でよく使われるレア役セットです。</p>
+<h1 id="machine-title">マイジャグラーⅤ レア役合算・レア役カウンター</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">北電子</span><span class="tag">Aタイプ</span></div>
+<p class="lead" id="machine-note">設定差があるのはぶどうと角チェリー。ピエロ・ベルは設定順に増減せず設定判別には使えません。ぶどう確率は解析サイトによって数値がわずかに異なります（ここはスロベースの値）。</p>
 
-<section class="panel counter" data-slug="at-general" data-name="AT機・汎用">
+<section class="panel counter" data-slug="my-juggler5" data-name="マイジャグラーⅤ">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
   <optgroup label="機種を選ぶ">
@@ -41,14 +41,14 @@
     <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
     <option value="iza-bancho">Lいざ！番長</option>
     <option value="monkey-turn5">Lモンキーターン5</option>
-    <option value="my-juggler5">マイジャグラーⅤ</option>
+    <option value="my-juggler5" selected>マイジャグラーⅤ</option>
     <option value="magireco">Lマギアレコード</option>
     <option value="hokuto">スマスロ北斗の拳</option>
     <option value="shin-onimusha3">スマスロ新鬼武者3</option>
   </optgroup>
   <optgroup label="機種が一覧にないとき">
     <option value="general">汎用スロット</option>
-    <option value="at-general" selected>AT機・汎用</option>
+    <option value="at-general">AT機・汎用</option>
     <option value="a-type-general">ノーマルタイプ・汎用</option>
   </optgroup>
   </select>
@@ -68,18 +68,32 @@
 
   <div class="label" style="margin-top:18px">レア役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
-      <li class="role" data-role="弱チェリー">
-        <div class="role-name">弱チェリー</div>
-        <button type="button" class="arrow up" aria-label="弱チェリー を1回足す">▲</button>
+      <li class="role" data-role="ぶどう">
+        <div class="role-name">ぶどう</div>
+        <button type="button" class="arrow up" aria-label="ぶどう を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="弱チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="ぶどう を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="強チェリー">
-        <div class="role-name">強チェリー</div>
-        <button type="button" class="arrow up" aria-label="強チェリー を1回足す">▲</button>
+      <li class="role" data-role="角チェリー">
+        <div class="role-name">角チェリー</div>
+        <button type="button" class="arrow up" aria-label="角チェリー を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="強チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="角チェリー を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="ピエロ">
+        <div class="role-name">ピエロ</div>
+        <button type="button" class="arrow up" aria-label="ピエロ を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="ピエロ を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="ベル">
+        <div class="role-name">ベル</div>
+        <button type="button" class="arrow up" aria-label="ベル を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="ベル を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
       <li class="role" data-role="中段チェリー">
@@ -87,27 +101,6 @@
         <button type="button" class="arrow up" aria-label="中段チェリー を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="中段チェリー を1回減らす">▼</button>
-        <div class="prob">1/－</div>
-      </li>
-      <li class="role" data-role="スイカ">
-        <div class="role-name">スイカ</div>
-        <button type="button" class="arrow up" aria-label="スイカ を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
-        <div class="prob">1/－</div>
-      </li>
-      <li class="role" data-role="チャンス目">
-        <div class="role-name">チャンス目</div>
-        <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
-        <div class="prob">1/－</div>
-      </li>
-      <li class="role" data-role="特殊役">
-        <div class="role-name">特殊役</div>
-        <button type="button" class="arrow up" aria-label="特殊役 を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="特殊役 を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
   </ul>
@@ -125,20 +118,22 @@
   </div>
 </section>
 
-<h2 id="ref-heading">レア役の出現率</h2>
+<h2 id="ref-heading">設定推測に使えるレア役</h2>
 <div class="panel" id="ref-area">
-<p class="note">この機種は、レア役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
+<div class="tablewrap"><table class="ref">
+<tr><th>レア役</th><th>設定1</th><th>設定2</th><th>設定3</th><th>設定4</th><th>設定5</th><th>設定6</th></tr>
+<tr><td class="rolecell hit">ぶどう</td><td>1/5.90</td><td>1/5.88</td><td>1/5.82</td><td>1/5.81</td><td>1/5.79</td><td>1/5.69</td></tr>
+<tr><td class="rolecell hit">角チェリー</td><td>1/38.43</td><td>1/38.29</td><td>1/37.04</td><td>1/35.89</td><td>1/35.82</td><td>1/35.79</td></tr>
+</table></div>
+<p class="note">設定差が確認されているのはこのレア役です。ここが伸びているかどうかが設定推測の手がかりになります。</p>
 <h3 class="sub-h">そのほかのレア役</h3>
 <div class="tablewrap"><table class="ref">
 <tr><th>レア役</th><th>出現率</th></tr>
-<tr><td class="rolecell">弱チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">強チェリー</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">ピエロ</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">ベル</td><td><span class="cap">調査中</span></td></tr>
 <tr><td class="rolecell">中段チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">特殊役</td><td><span class="cap">調査中</span></td></tr>
 </table></div>
-
+<p class="note src">確率の出典：<a href="https://slobase.jp/machines/myjuggler5" target="_blank" rel="nofollow noopener">slobase.jp</a>、<a href="https://jugglertopics.jp/mjv/256/" target="_blank" rel="nofollow noopener">jugglertopics.jp</a></p>
 </div>
 
 <h2>使い方</h2>

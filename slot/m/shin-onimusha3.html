@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スマスロ新鬼武者3 レア役合算・レア役カウンター</title>
+<meta name="description" content="スマスロ新鬼武者3 のレア役（弱チェリー・弱スイカ・弱チャンス目・押し順弱チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/shin-onimusha3.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="スマスロ新鬼武者3 レア役合算・レア役カウンター">
+<meta property="og:description" content="スマスロ新鬼武者3 のレア役（弱チェリー・弱スイカ・弱チャンス目・押し順弱チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/shin-onimusha3.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@400;700&family=Reggae+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="logo" href="../../">PACHI-TOOL</a>
+  <nav>
+    <a href="../">レア役カウンター</a>
+    <a href="../../">ハマり確率計算機</a>
+  </nav>
+</header>
+<h1 id="machine-title">スマスロ新鬼武者3 レア役合算・レア役カウンター</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">エンターライズ</span><span class="tag">スマスロ</span></div>
+<p class="lead" id="machine-note">掲載している確率は設定1の値です。設定6の小役確率は公開されておらず、設定差の有無も不明です（設定判別は初当たり確率や鬼斬チャージのほうが有効とされています）。</p>
+
+<section class="panel counter" data-slug="shin-onimusha3" data-name="スマスロ新鬼武者3">
+  <div class="label">機種</div>
+  <select id="machine-select" aria-label="機種を選ぶ">
+  <optgroup label="機種を選ぶ">
+    <option value="karakuri-circus2">Lからくりサーカス2</option>
+    <option value="kabaneri-unato">L甲鉄城のカバネリ 海門決戦</option>
+    <option value="tokyo-ghoul">L東京喰種</option>
+    <option value="hokuto-tensei2">L北斗の拳 転生の章2</option>
+    <option value="bakemonogatari">L化物語</option>
+    <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
+    <option value="iza-bancho">Lいざ！番長</option>
+    <option value="monkey-turn5">Lモンキーターン5</option>
+    <option value="my-juggler5">マイジャグラーⅤ</option>
+    <option value="magireco">Lマギアレコード</option>
+    <option value="hokuto">スマスロ北斗の拳</option>
+    <option value="shin-onimusha3" selected>スマスロ新鬼武者3</option>
+  </optgroup>
+  <optgroup label="機種が一覧にないとき">
+    <option value="general">汎用スロット</option>
+    <option value="at-general">AT機・汎用</option>
+    <option value="a-type-general">ノーマルタイプ・汎用</option>
+  </optgroup>
+  </select>
+
+
+  <div class="label" style="margin-top:16px">総ゲーム数</div>
+  <div class="games-row">
+    <button type="button" class="step" data-step="-100">−100</button>
+    <input id="games" type="number" inputmode="numeric" min="0" step="1" value="0" aria-label="総ゲーム数">
+    <button type="button" class="step" data-step="100">＋100</button>
+  </div>
+  <div class="label" style="margin-top:6px">
+    <button type="button" class="step" data-step="-10">−10</button>
+    <button type="button" class="step" data-step="10">＋10</button>
+    <span class="unit">G</span>
+  </div>
+
+  <div class="label" style="margin-top:18px">レア役カウント（▲で＋1／▼で−1）</div>
+  <ul class="roles">
+      <li class="role" data-role="弱チェリー">
+        <div class="role-name">弱チェリー</div>
+        <button type="button" class="arrow up" aria-label="弱チェリー を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="弱チェリー を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="弱スイカ">
+        <div class="role-name">弱スイカ</div>
+        <button type="button" class="arrow up" aria-label="弱スイカ を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="弱スイカ を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="弱チャンス目">
+        <div class="role-name">弱チャンス目</div>
+        <button type="button" class="arrow up" aria-label="弱チャンス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="弱チャンス目 を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="押し順弱チャンス目">
+        <div class="role-name">押し順弱チャンス目</div>
+        <button type="button" class="arrow up" aria-label="押し順弱チャンス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="押し順弱チャンス目 を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="強チェリー">
+        <div class="role-name">強チェリー</div>
+        <button type="button" class="arrow up" aria-label="強チェリー を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="強チェリー を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="強チャンス目">
+        <div class="role-name">強チャンス目</div>
+        <button type="button" class="arrow up" aria-label="強チャンス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="強チャンス目 を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="押し順強チャンス目">
+        <div class="role-name">押し順強チャンス目</div>
+        <button type="button" class="arrow up" aria-label="押し順強チャンス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="押し順強チャンス目 を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="強ベル">
+        <div class="role-name">強ベル</div>
+        <button type="button" class="arrow up" aria-label="強ベル を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="強ベル を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="強スイカ">
+        <div class="role-name">強スイカ</div>
+        <button type="button" class="arrow up" aria-label="強スイカ を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="強スイカ を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="強リプレイ">
+        <div class="role-name">強リプレイ</div>
+        <button type="button" class="arrow up" aria-label="強リプレイ を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="強リプレイ を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+  </ul>
+
+  <div class="label" style="margin-top:18px">合算</div>
+  <div class="total">
+    <div class="t-label">レア役合算</div>
+    <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
+    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">合算確率</div></div>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn danger" id="reset">リセット</button>
+    <button type="button" class="btn share" id="share">Xに投稿する</button>
+  </div>
+</section>
+
+<h2 id="ref-heading">レア役の出現率</h2>
+<div class="panel" id="ref-area">
+<p class="note">この機種は、レア役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
+<h3 class="sub-h">そのほかのレア役</h3>
+<div class="tablewrap"><table class="ref">
+<tr><th>レア役</th><th>出現率</th></tr>
+<tr><td class="rolecell">弱チェリー</td><td>1/102.2<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">弱スイカ</td><td>1/123.7<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">弱チャンス目</td><td>1/168.9<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">押し順弱チャンス目</td><td>1/193.1<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">強チェリー</td><td>1/269.7<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">強チャンス目</td><td>1/383.3<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">押し順強チャンス目</td><td>1/393.8<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">強ベル</td><td>1/993.0<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">強スイカ</td><td>1/13107.2<span class="cap">設定1の値</span></td></tr>
+<tr><td class="rolecell">強リプレイ</td><td>1/13107.2<span class="cap">設定1の値</span></td></tr>
+</table></div>
+<p class="note src">確率の出典：<a href="https://chonborista.com/slot/enta-slot/240678/" target="_blank" rel="nofollow noopener">chonborista.com</a>、<a href="https://1geki.jp/slot/l_shinnoni3/43/" target="_blank" rel="nofollow noopener">1geki.jp</a></p>
+</div>
+
+<h2>使い方</h2>
+<div class="panel">
+  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア役が並びます。<br>
+  2. 打ち始めに「総ゲーム数」を入力します（あとから直しても確率は再計算されます）。<br>
+  3. レア役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
+  4. 各レア役の出現率と、全レア役を足した「レア役合算」の確率が 1/○○ で自動表示されます。<br>
+  5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
+</div>
+
+<h2>他の機種を選ぶ</h2>
+<div class="panel"><p class="note">上のプルダウンで切り替えられます。<a href="../">機種一覧ページ</a>からも開けます。</p></div>
+
+<footer class="site">
+  <a href="../">レア役カウンター トップ</a>
+  <a href="../../">ハマり確率計算機</a>
+  <a href="../../privacy.html">プライバシーポリシー</a>
+</footer>
+</div>
+<script src="../machines-data.js"></script>
+<script src="../counter.js"></script>
+</body>
+</html>

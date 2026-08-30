@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ノーマルタイプ・汎用 レア役合算・レア役カウンター</title>
-<meta name="description" content="ノーマルタイプ・汎用 のレア役（チェリー・スイカ・チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。">
+<meta name="description" content="ノーマルタイプ・汎用 のレア役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
 <link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/a-type-general.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ノーマルタイプ・汎用 レア役合算・レア役カウンター">
-<meta property="og:description" content="ノーマルタイプ・汎用 のレア役（チェリー・スイカ・チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。">
+<meta property="og:description" content="ノーマルタイプ・汎用 のレア役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
 <meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/a-type-general.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,10 +25,36 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1>ノーマルタイプ・汎用 レア役合算・レア役カウンター</h1>
-<div class="tagrow"><span class="tag">Aタイプ</span></div><p class="lead">ノーマルタイプ（Aタイプ）向けの小役セットです。</p>
+<h1 id="machine-title">ノーマルタイプ・汎用 レア役合算・レア役カウンター</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">Aタイプ</span></div>
+<p class="lead" id="machine-note">ノーマルタイプ（Aタイプ）向けの小役セットです。</p>
+
 <section class="panel counter" data-slug="a-type-general" data-name="ノーマルタイプ・汎用">
-  <div class="label">総ゲーム数</div>
+  <div class="label">機種</div>
+  <select id="machine-select" aria-label="機種を選ぶ">
+  <optgroup label="機種を選ぶ">
+    <option value="karakuri-circus2">Lからくりサーカス2</option>
+    <option value="kabaneri-unato">L甲鉄城のカバネリ 海門決戦</option>
+    <option value="tokyo-ghoul">L東京喰種</option>
+    <option value="hokuto-tensei2">L北斗の拳 転生の章2</option>
+    <option value="bakemonogatari">L化物語</option>
+    <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
+    <option value="iza-bancho">Lいざ！番長</option>
+    <option value="monkey-turn5">Lモンキーターン5</option>
+    <option value="my-juggler5">マイジャグラーⅤ</option>
+    <option value="magireco">Lマギアレコード</option>
+    <option value="hokuto">スマスロ北斗の拳</option>
+    <option value="shin-onimusha3">スマスロ新鬼武者3</option>
+  </optgroup>
+  <optgroup label="機種が一覧にないとき">
+    <option value="general">汎用スロット</option>
+    <option value="at-general">AT機・汎用</option>
+    <option value="a-type-general" selected>ノーマルタイプ・汎用</option>
+  </optgroup>
+  </select>
+
+
+  <div class="label" style="margin-top:16px">総ゲーム数</div>
   <div class="games-row">
     <button type="button" class="step" data-step="-100">−100</button>
     <input id="games" type="number" inputmode="numeric" min="0" step="1" value="0" aria-label="総ゲーム数">
@@ -85,17 +111,31 @@
   </div>
 </section>
 
+<h2 id="ref-heading">レア役の出現率</h2>
+<div class="panel" id="ref-area">
+<p class="note">この機種は、レア役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
+<h3 class="sub-h">そのほかのレア役</h3>
+<div class="tablewrap"><table class="ref">
+<tr><th>レア役</th><th>出現率</th></tr>
+<tr><td class="rolecell">チェリー</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">中段チェリー</td><td><span class="cap">調査中</span></td></tr>
+</table></div>
+
+</div>
 
 <h2>使い方</h2>
 <div class="panel">
-  <p class="note">1. 打ち始めに「総ゲーム数」を入力します（あとから直しても確率は再計算されます）。<br>
-  2. レア役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
-  3. 各レア役の出現率と、全レア役を足した「レア役合算」の確率が 1/○○ で自動表示されます。<br>
-  4. カウントはこの端末のブラウザに自動保存されるので、席を立っても消えません。消したいときは「リセット」を2回押してください。</p>
+  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア役が並びます。<br>
+  2. 打ち始めに「総ゲーム数」を入力します（あとから直しても確率は再計算されます）。<br>
+  3. レア役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
+  4. 各レア役の出現率と、全レア役を足した「レア役合算」の確率が 1/○○ で自動表示されます。<br>
+  5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
 </div>
 
 <h2>他の機種を選ぶ</h2>
-<div class="panel"><p class="note"><a href="../">機種一覧ページ</a>から他の機種のレア役カウンターを開けます。</p></div>
+<div class="panel"><p class="note">上のプルダウンで切り替えられます。<a href="../">機種一覧ページ</a>からも開けます。</p></div>
 
 <footer class="site">
   <a href="../">レア役カウンター トップ</a>
@@ -103,6 +143,7 @@
   <a href="../../privacy.html">プライバシーポリシー</a>
 </footer>
 </div>
+<script src="../machines-data.js"></script>
 <script src="../counter.js"></script>
 </body>
 </html>

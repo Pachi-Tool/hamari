@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AT機・汎用 レア役合算・レア役カウンター</title>
-<meta name="description" content="AT機・汎用 のレア役（弱チェリー・強チェリー・中段チェリー・スイカなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
-<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/at-general.html">
+<title>Lモンキーターン5 レア役合算・レア役カウンター</title>
+<meta name="description" content="Lモンキーターン5 のレア役（弱チェリー・ボート・弱チャンス目・強チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/monkey-turn5.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AT機・汎用 レア役合算・レア役カウンター">
-<meta property="og:description" content="AT機・汎用 のレア役（弱チェリー・強チェリー・中段チェリー・スイカなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
-<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/at-general.html">
+<meta property="og:title" content="Lモンキーターン5 レア役合算・レア役カウンター">
+<meta property="og:description" content="Lモンキーターン5 のレア役（弱チェリー・ボート・弱チャンス目・強チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア役も確認できます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/monkey-turn5.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +25,11 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">AT機・汎用 レア役合算・レア役カウンター</h1>
-<div class="tagrow" id="machine-tags"><span class="tag">AT機</span></div>
-<p class="lead" id="machine-note">スマスロ・6号機AT機でよく使われるレア役セットです。</p>
+<h1 id="machine-title">Lモンキーターン5 レア役合算・レア役カウンター</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">山佐</span><span class="tag">スマスロ</span></div>
+<p class="lead" id="machine-note">レア役の確率は全設定共通で、レア役合算は約1/30.5。設定差はレア役成立後の抽選側にあります。</p>
 
-<section class="panel counter" data-slug="at-general" data-name="AT機・汎用">
+<section class="panel counter" data-slug="monkey-turn5" data-name="Lモンキーターン5">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
   <optgroup label="機種を選ぶ">
@@ -40,7 +40,7 @@
     <option value="bakemonogatari">L化物語</option>
     <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
     <option value="iza-bancho">Lいざ！番長</option>
-    <option value="monkey-turn5">Lモンキーターン5</option>
+    <option value="monkey-turn5" selected>Lモンキーターン5</option>
     <option value="my-juggler5">マイジャグラーⅤ</option>
     <option value="magireco">Lマギアレコード</option>
     <option value="hokuto">スマスロ北斗の拳</option>
@@ -48,7 +48,7 @@
   </optgroup>
   <optgroup label="機種が一覧にないとき">
     <option value="general">汎用スロット</option>
-    <option value="at-general" selected>AT機・汎用</option>
+    <option value="at-general">AT機・汎用</option>
     <option value="a-type-general">ノーマルタイプ・汎用</option>
   </optgroup>
   </select>
@@ -75,6 +75,27 @@
         <button type="button" class="arrow down" aria-label="弱チェリー を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
+      <li class="role" data-role="ボート">
+        <div class="role-name">ボート</div>
+        <button type="button" class="arrow up" aria-label="ボート を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="ボート を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="弱チャンス目">
+        <div class="role-name">弱チャンス目</div>
+        <button type="button" class="arrow up" aria-label="弱チャンス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="弱チャンス目 を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
+      <li class="role" data-role="強チャンス目">
+        <div class="role-name">強チャンス目</div>
+        <button type="button" class="arrow up" aria-label="強チャンス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="強チャンス目 を1回減らす">▼</button>
+        <div class="prob">1/－</div>
+      </li>
       <li class="role" data-role="強チェリー">
         <div class="role-name">強チェリー</div>
         <button type="button" class="arrow up" aria-label="強チェリー を1回足す">▲</button>
@@ -82,32 +103,11 @@
         <button type="button" class="arrow down" aria-label="強チェリー を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
-      <li class="role" data-role="中段チェリー">
-        <div class="role-name">中段チェリー</div>
-        <button type="button" class="arrow up" aria-label="中段チェリー を1回足す">▲</button>
+      <li class="role" data-role="究極目">
+        <div class="role-name">究極目</div>
+        <button type="button" class="arrow up" aria-label="究極目 を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="中段チェリー を1回減らす">▼</button>
-        <div class="prob">1/－</div>
-      </li>
-      <li class="role" data-role="スイカ">
-        <div class="role-name">スイカ</div>
-        <button type="button" class="arrow up" aria-label="スイカ を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
-        <div class="prob">1/－</div>
-      </li>
-      <li class="role" data-role="チャンス目">
-        <div class="role-name">チャンス目</div>
-        <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
-        <div class="prob">1/－</div>
-      </li>
-      <li class="role" data-role="特殊役">
-        <div class="role-name">特殊役</div>
-        <button type="button" class="arrow up" aria-label="特殊役 を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="特殊役 を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="究極目 を1回減らす">▼</button>
         <div class="prob">1/－</div>
       </li>
   </ul>
@@ -131,14 +131,14 @@
 <h3 class="sub-h">そのほかのレア役</h3>
 <div class="tablewrap"><table class="ref">
 <tr><th>レア役</th><th>出現率</th></tr>
-<tr><td class="rolecell">弱チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">強チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">中段チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">特殊役</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">弱チェリー</td><td>1/69.9<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">ボート</td><td>1/89.9<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">弱チャンス目</td><td>1/297.9<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">強チャンス目</td><td>1/448.9<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">強チェリー</td><td>1/569.9<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">究極目</td><td><span class="cap">調査中</span></td></tr>
 </table></div>
-
+<p class="note src">確率の出典：<a href="https://1geki.jp/slot/l_monkeyturn5/4/" target="_blank" rel="nofollow noopener">1geki.jp</a>、<a href="https://chonborista.com/slot/yamasa-slot/198173/" target="_blank" rel="nofollow noopener">chonborista.com</a></p>
 </div>
 
 <h2>使い方</h2>

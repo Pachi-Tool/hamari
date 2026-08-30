@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>スロット レア役カウンター｜機種別のレア役合算をタップで集計</title>
-<meta name="description" content="パチスロのレア役（チェリー・スイカ・チャンス目など）を▲▼のタップで1回ずつカウントし、合算回数と出現率（1/○○）を自動計算できる無料ツールです。機種別ページを用意しています。">
+<meta name="description" content="パチスロのレア役（チェリー・スイカ・チャンス目など）を▲▼のタップで1回ずつカウントし、合算回数と出現率（1/○○）を自動計算できる無料ツールです。機種を選ぶとその機種のレア役が並びます。">
 <link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="スロット レア役カウンター｜機種別のレア役合算をタップで集計">
-<meta property="og:description" content="パチスロのレア役（チェリー・スイカ・チャンス目など）を▲▼のタップで1回ずつカウントし、合算回数と出現率（1/○○）を自動計算できる無料ツールです。機種別ページを用意しています。">
+<meta property="og:description" content="パチスロのレア役（チェリー・スイカ・チャンス目など）を▲▼のタップで1回ずつカウントし、合算回数と出現率（1/○○）を自動計算できる無料ツールです。機種を選ぶとその機種のレア役が並びます。">
 <meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,25 +26,67 @@
   </nav>
 </header>
 <h1>スロット レア役カウンター</h1>
-<p class="lead">レア役を引くたびに▲をタップするだけ。各レア役の回数・合算回数と、1/○○の出現率が自動で出ます。</p>
+<p class="lead">レア役を引くたびに▲をタップするだけ。各レア役の回数・合算回数と、1/○○の出現率が自動で出ます。機種を選べば、その機種のレア役がそのまま並びます。</p>
 <h2>機種を選ぶ</h2>
 <div class="panel">
   <ul class="machines">
+    <li><a href="m/karakuri-circus2.html">
+      <div class="m-name">Lからくりサーカス2</div>
+      <div class="m-sub">SANKYO / スマスロ</div></a></li>
+    <li><a href="m/kabaneri-unato.html">
+      <div class="m-name">L甲鉄城のカバネリ 海門決戦</div>
+      <div class="m-sub">サミー / スマスロ</div></a></li>
+    <li><a href="m/tokyo-ghoul.html">
+      <div class="m-name">L東京喰種</div>
+      <div class="m-sub">スパイキー / スマスロ</div><span class="m-badge">設定差：下段リプレイ</span></a></li>
+    <li><a href="m/hokuto-tensei2.html">
+      <div class="m-name">L北斗の拳 転生の章2</div>
+      <div class="m-sub">サミー / スマスロ</div></a></li>
+    <li><a href="m/bakemonogatari.html">
+      <div class="m-name">L化物語</div>
+      <div class="m-sub">サミー / スマスロ</div><span class="m-badge">設定差：スイカ</span></a></li>
+    <li><a href="m/valvrave2.html">
+      <div class="m-name">Lパチスロ革命機ヴァルヴレイヴ2</div>
+      <div class="m-sub">SANKYO / スマスロ</div></a></li>
+    <li><a href="m/iza-bancho.html">
+      <div class="m-name">Lいざ！番長</div>
+      <div class="m-sub">大都技研 / スマスロ</div><span class="m-badge">設定差：共通ベルA・弱チェリー</span></a></li>
+    <li><a href="m/monkey-turn5.html">
+      <div class="m-name">Lモンキーターン5</div>
+      <div class="m-sub">山佐 / スマスロ</div></a></li>
+    <li><a href="m/my-juggler5.html">
+      <div class="m-name">マイジャグラーⅤ</div>
+      <div class="m-sub">北電子 / Aタイプ</div><span class="m-badge">設定差：ぶどう・角チェリー</span></a></li>
+    <li><a href="m/magireco.html">
+      <div class="m-name">Lマギアレコード</div>
+      <div class="m-sub">ユニバーサル / スマスロ</div><span class="m-badge">設定差：弱チェリー</span></a></li>
+    <li><a href="m/hokuto.html">
+      <div class="m-name">スマスロ北斗の拳</div>
+      <div class="m-sub">サミー / スマスロ</div><span class="m-badge">設定差：弱スイカ・中段チェリー・強スイカ・リーチ目</span></a></li>
+    <li><a href="m/shin-onimusha3.html">
+      <div class="m-name">スマスロ新鬼武者3</div>
+      <div class="m-sub">エンターライズ / スマスロ</div></a></li>
+  </ul>
+</div>
+<h2>機種が一覧にないとき</h2>
+<div class="panel">
+  <ul class="machines">
     <li><a href="m/general.html">
-      <div class="m-name">汎用スロット レア役カウンター</div>
+      <div class="m-name">汎用スロット</div>
       <div class="m-sub">レア役 4種</div></a></li>
     <li><a href="m/at-general.html">
-      <div class="m-name">AT機・汎用 レア役カウンター</div>
+      <div class="m-name">AT機・汎用</div>
       <div class="m-sub">AT機</div></a></li>
     <li><a href="m/a-type-general.html">
-      <div class="m-name">ノーマルタイプ・汎用 レア役カウンター</div>
+      <div class="m-name">ノーマルタイプ・汎用</div>
       <div class="m-sub">Aタイプ</div></a></li>
   </ul>
 </div>
 <h2>このツールについて</h2>
 <div class="panel">
   <p class="note">総ゲーム数とレア役の回数から、レア役ごとの出現率と合算確率を計算します。
-  カウントは端末のブラウザに保存されるため、ページを閉じても残ります。設定推測や自身の実戦データの記録にお使いください。</p>
+  カウントは機種ごとに端末のブラウザへ保存されるため、ページを閉じても残ります。<br>
+  なお、レア役の出現率に設定差がある機種は多くありません。設定差が確認されている役は機種ページに明記しているので、そこを見比べてください。</p>
 </div>
 
 <footer class="site">
@@ -53,6 +95,6 @@
   <a href="../privacy.html">プライバシーポリシー</a>
 </footer>
 </div>
-<script src="counter.js"></script>
+
 </body>
 </html>

@@ -117,6 +117,19 @@ body{
 
 .wrap{max-width:760px;margin:0 auto;}
 
+/* ===== サイト共通ナビ ===== */
+header.site{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:10px 0 14px;border-bottom:1px solid rgba(200,194,216,.25);margin-bottom:4px;
+}
+header.site .logo{
+  font-family:"Reggae One",cursive;font-size:15px;
+  color:var(--lamp-gold);text-decoration:none;text-shadow:0 0 12px rgba(255,200,50,.5);
+}
+header.site nav a{font-size:13px;margin-left:12px;text-decoration:none;color:var(--text-dim);}
+header.site nav a:hover{color:var(--neon-cyan);}
+header.site nav a[aria-current="page"]{color:var(--neon-cyan);}
+
 /* ===== ヘッダー（電飾看板風） ===== */
 header{text-align:center;padding:36px 0 24px;}
 
@@ -592,6 +605,14 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
 </head>
 <body>
 <div class="wrap">
+
+<header class="site">
+  <a class="logo" href="./">PACHI-TOOL</a>
+  <nav>
+    <a href="./" aria-current="page">ハマり確率計算機</a>
+    <a href="./slot/">レア小役カウンター</a>
+  </nav>
+</header>
 
 <header>
   <p class="eyebrow">PACHINKO PROBABILITY</p>

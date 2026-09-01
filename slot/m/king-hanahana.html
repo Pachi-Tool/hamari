@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>汎用スロット レア小役合算・レア小役カウンター</title>
-<meta name="description" content="汎用スロット のレア小役（弱チェリー・強チェリー・スイカ・チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
-<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/general.html">
+<title>キングハナハナ-30 小役カウンター・設定判別</title>
+<meta name="description" content="キングハナハナ-30 の小役（BIG・REG・ベル・スイカなど）を▲▼ボタンのタップで1回ずつカウント。ボーナス合算とぶどう・小役の出現率（1/○○）を自動計算し、設定別の解析値と見比べられます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/king-hanahana.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="汎用スロット レア小役合算・レア小役カウンター">
-<meta property="og:description" content="汎用スロット のレア小役（弱チェリー・強チェリー・スイカ・チャンス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
-<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/general.html">
+<meta property="og:title" content="キングハナハナ-30 小役カウンター・設定判別">
+<meta property="og:description" content="キングハナハナ-30 の小役（BIG・REG・ベル・スイカなど）を▲▼ボタンのタップで1回ずつカウント。ボーナス合算とぶどう・小役の出現率（1/○○）を自動計算し、設定別の解析値と見比べられます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/king-hanahana.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +25,11 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">汎用スロット レア小役合算・レア小役カウンター</h1>
-<div class="tagrow" id="machine-tags"></div>
-<p class="lead" id="machine-note">機種を問わず使える基本のレア小役セットです。一覧にない機種はこちらをお使いください。</p>
+<h1 id="machine-title">キングハナハナ-30 小役カウンター・設定判別</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">パイオニア</span><span class="tag">Aタイプ</span></div>
+<p class="lead" id="machine-note">小役の設定別確率は公開されていません（BIG中スイカとベルに設定差ありとされています）。ボーナス確率で判断してください。</p>
 
-<section class="panel counter" data-slug="general" data-name="汎用スロット">
+<section class="panel counter" data-slug="king-hanahana" data-name="キングハナハナ-30">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
   <optgroup label="スマスロ・AT機">
@@ -52,13 +52,13 @@
     <option value="gogo-juggler3">ゴーゴージャグラー3</option>
     <option value="happy-juggler-v3">ハッピージャグラーVⅢ</option>
     <option value="hanahana-houou-tensho">ハナハナホウオウ〜天翔〜-30</option>
-    <option value="king-hanahana">キングハナハナ-30</option>
+    <option value="king-hanahana" selected>キングハナハナ-30</option>
     <option value="dragon-hanahana-senko">ドラゴンハナハナ〜閃光〜-30</option>
     <option value="star-hanahana">スターハナハナ-30</option>
     <option value="new-king-hanahana-v">ニューキングハナハナV-30</option>
   </optgroup>
   <optgroup label="機種が一覧にないとき">
-    <option value="general" selected>汎用スロット</option>
+    <option value="general">汎用スロット</option>
     <option value="at-general">AT機・汎用</option>
     <option value="a-type-general">ノーマルタイプ・汎用</option>
   </optgroup>
@@ -77,20 +77,27 @@
     <span class="unit">G</span>
   </div>
 
-  <div class="label" id="count-label" style="margin-top:18px">レア小役カウント（▲で＋1／▼で−1）</div>
+  <div class="label" id="count-label" style="margin-top:18px">小役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
-      <li class="role" data-role="弱チェリー">
-        <div class="role-name">弱チェリー</div>
-        <button type="button" class="arrow up" aria-label="弱チェリー を1回足す">▲</button>
+      <li class="role" data-role="BIG">
+        <div class="role-name">BIG</div>
+        <button type="button" class="arrow up" aria-label="BIG を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="弱チェリー を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+        <button type="button" class="arrow down" aria-label="BIG を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">設定1〜6</span><span class="v theory">1/292〜1/232</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="強チェリー">
-        <div class="role-name">強チェリー</div>
-        <button type="button" class="arrow up" aria-label="強チェリー を1回足す">▲</button>
+      <li class="role" data-role="REG">
+        <div class="role-name">REG</div>
+        <button type="button" class="arrow up" aria-label="REG を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="強チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="REG を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">設定1〜6</span><span class="v theory">1/489〜1/332</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+      </li>
+      <li class="role" data-role="ベル">
+        <div class="role-name">ベル</div>
+        <button type="button" class="arrow up" aria-label="ベル を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="ベル を1回減らす">▼</button>
 <div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
       <li class="role" data-role="スイカ">
@@ -100,23 +107,23 @@
         <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
 <div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="チャンス目">
-        <div class="role-name">チャンス目</div>
-        <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
+      <li class="role" data-role="チェリー">
+        <div class="role-name">チェリー</div>
+        <button type="button" class="arrow up" aria-label="チェリー を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="チェリー を1回減らす">▼</button>
 <div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
   </ul>
 
 <div id="totals">
-  <div class="label" style="margin-top:18px">レア小役合算</div>
-  <div class="total" data-group="rare">
-    <div class="t-label">レア小役合算</div>
-    <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
-    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の確率</div></div>
+  <div class="label" style="margin-top:18px">ボーナス合算</div>
+  <div class="total bonus" data-group="bonus">
+    <div class="t-label">ボーナス合算</div>
+    <div class="t-box"><div class="b-count">0</div><div class="t-cap">回</div></div>
+    <div class="t-box"><div class="b-prob">1/－</div><div class="t-cap">現在の確率</div></div>
   </div>
-
+<div class="total-theory">解析値（設定1〜6）：1/183〜1/136</div>
 </div>
 
   <div class="actions">
@@ -137,28 +144,32 @@
        src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
 </aside>
 
-<h2 id="ref-heading">レア小役の出現率</h2>
+<h2 id="ref-heading">設定推測に使える小役</h2>
 <div class="panel" id="ref-area">
-<p class="note">この機種は、レア小役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
-<h3 class="sub-h">そのほかのレア小役</h3>
 <div class="tablewrap"><table class="ref">
-<tr><th>レア小役</th><th>出現率</th></tr>
-<tr><td class="rolecell">弱チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">強チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
+<tr><th>小役</th><th>設定1</th><th>設定2</th><th>設定3</th><th>設定4</th><th>設定5</th><th>設定6</th></tr>
+<tr><td class="rolecell hit">BIG</td><td>1/292</td><td>1/280</td><td>1/268</td><td>1/257</td><td>1/244</td><td>1/232</td></tr>
+<tr><td class="rolecell hit">REG</td><td>1/489</td><td>1/452</td><td>1/420</td><td>1/390</td><td>1/360</td><td>1/332</td></tr>
 </table></div>
-
+<p class="note">設定差が確認されているのはこの小役です。ここが伸びているかどうかが設定推測の手がかりになります。</p>
+<h3 class="sub-h">そのほかの小役</h3>
+<div class="tablewrap"><table class="ref">
+<tr><th>小役</th><th>出現率</th></tr>
+<tr><td class="rolecell">ベル</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
+<tr><td class="rolecell">チェリー</td><td><span class="cap">調査中</span></td></tr>
+</table></div>
+<p class="note src">確率の出典：<a href="https://chonborista.com/slot/pionia-slot/181140/" target="_blank" rel="nofollow noopener">chonborista.com</a>、<a href="https://1geki.jp/slot/s_kinghanahana2023/" target="_blank" rel="nofollow noopener">1geki.jp</a></p>
 </div>
 
 <h2>使い方</h2>
 <div class="panel">
-  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種のレア小役が並びます。<br>
+  <p class="note">1. 上の「機種」から打っている機種を選ぶと、その機種の小役が並びます。<br>
   2. 打ち始めに「総ゲーム数」を入力します（あとから直しても確率は再計算されます）。<br>
-  3. レア小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
+  3. 小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
   4. 各レア小役の出現率と、全レア小役を足した「レア小役合算」の確率が 1/○○ で自動表示されます。<br>
   5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
-  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。汎用スロットのレア役カウンター／レア子役カウンターとしてお使いください。</p>
+  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。キングハナハナ-30のレア役カウンター／レア子役カウンターとしてお使いください。</p>
 </div>
 
 <h2>他の機種を選ぶ</h2>

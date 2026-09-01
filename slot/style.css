@@ -184,3 +184,22 @@ table.ref .cap{display:block;font-size:11px;color:var(--muted);font-weight:400;}
   font-size:12.5px;color:var(--gold);margin:6px 2px 0;
 }
 .total-theory:empty{display:none;}
+
+/* ===== 広告（PR） ===== */
+.ad-block{
+  position:relative;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);border-radius:12px;
+  padding:18px 16px 16px;margin:22px 0;text-align:center;
+}
+.ad-label{
+  position:absolute;top:-9px;left:16px;background:var(--bg);
+  border:1px solid var(--line);border-radius:4px;color:var(--muted);
+  font-size:10px;letter-spacing:.14em;padding:1px 8px;
+}
+.ad-banner{display:block;margin:0 auto;max-width:100%;height:auto;border-radius:6px;}
+
+/* ボーナス合算パネル */
+.total.bonus{border-color:var(--gold);box-shadow:0 0 24px rgba(255,200,50,.2);}
+.total.bonus .b-count{font-family:"DotGothic16",monospace;font-size:40px;color:var(--gold);
+  text-shadow:0 0 16px rgba(255,200,50,.5);line-height:1;}
+.total.bonus .b-prob{font-family:"DotGothic16",monospace;font-size:20px;color:var(--cyan);}

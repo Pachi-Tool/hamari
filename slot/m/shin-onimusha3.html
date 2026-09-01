@@ -32,7 +32,7 @@
 <section class="panel counter" data-slug="shin-onimusha3" data-name="スマスロ新鬼武者3">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
-  <optgroup label="機種を選ぶ">
+  <optgroup label="スマスロ・AT機">
     <option value="karakuri-circus2">Lからくりサーカス2</option>
     <option value="kabaneri-unato">L甲鉄城のカバネリ 海門決戦</option>
     <option value="tokyo-ghoul">L東京喰種</option>
@@ -41,10 +41,21 @@
     <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
     <option value="iza-bancho">Lいざ！番長</option>
     <option value="monkey-turn5">Lモンキーターン5</option>
-    <option value="my-juggler5">マイジャグラーⅤ</option>
     <option value="magireco">Lマギアレコード</option>
     <option value="hokuto">スマスロ北斗の拳</option>
     <option value="shin-onimusha3" selected>スマスロ新鬼武者3</option>
+  </optgroup>
+  <optgroup label="ジャグラー・ハナハナ（Aタイプ）">
+    <option value="my-juggler5">マイジャグラーⅤ</option>
+    <option value="im-juggler-ex">アイムジャグラーEX</option>
+    <option value="funky-juggler2">ファンキージャグラー2</option>
+    <option value="gogo-juggler3">ゴーゴージャグラー3</option>
+    <option value="happy-juggler-v3">ハッピージャグラーVⅢ</option>
+    <option value="hanahana-houou-tensho">ハナハナホウオウ〜天翔〜-30</option>
+    <option value="king-hanahana">キングハナハナ-30</option>
+    <option value="dragon-hanahana-senko">ドラゴンハナハナ〜閃光〜-30</option>
+    <option value="star-hanahana">スターハナハナ-30</option>
+    <option value="new-king-hanahana-v">ニューキングハナハナV-30</option>
   </optgroup>
   <optgroup label="機種が一覧にないとき">
     <option value="general">汎用スロット</option>
@@ -66,7 +77,7 @@
     <span class="unit">G</span>
   </div>
 
-  <div class="label" style="margin-top:18px">レア小役カウント（▲で＋1／▼で−1）</div>
+  <div class="label" id="count-label" style="margin-top:18px">レア小役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
       <li class="role" data-role="弱チェリー">
         <div class="role-name">弱チェリー</div>
@@ -140,19 +151,33 @@
       </li>
   </ul>
 
-  <div class="label" style="margin-top:18px">合算</div>
-  <div class="total">
+<div id="totals">
+  <div class="label" style="margin-top:18px">レア小役合算</div>
+  <div class="total" data-group="rare">
     <div class="t-label">レア小役合算</div>
     <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
-    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の合算確率</div></div>
+    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の確率</div></div>
   </div>
-  <div class="total-theory" id="total-theory"></div>
+
+</div>
 
   <div class="actions">
     <button type="button" class="btn danger" id="reset">リセット</button>
     <button type="button" class="btn share" id="share">Xに投稿する</button>
   </div>
 </section>
+
+<aside class="ad-block">
+  <span class="ad-label">PR</span>
+  <a href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+FM17UA+5PLE+5YZ75"
+     rel="sponsored nofollow noopener" target="_blank">
+    <img class="ad-banner" border="0" width="300" height="250" alt="広告"
+         loading="lazy"
+         src="https://www25.a8.net/svt/bgt?aid=260827395944&amp;wid=001&amp;eno=01&amp;mid=s00000026645001003000&amp;mc=1">
+  </a>
+  <img border="0" width="1" height="1"
+       src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
+</aside>
 
 <h2 id="ref-heading">レア小役の出現率</h2>
 <div class="panel" id="ref-area">
@@ -181,6 +206,7 @@
   3. レア小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
   4. 各レア小役の出現率と、全レア小役を足した「レア小役合算」の確率が 1/○○ で自動表示されます。<br>
   5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
+  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。スマスロ新鬼武者3のレア役カウンター／レア子役カウンターとしてお使いください。</p>
 </div>
 
 <h2>他の機種を選ぶ</h2>

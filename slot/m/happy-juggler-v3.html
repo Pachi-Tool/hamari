@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ノーマルタイプ・汎用 レア小役合算・レア小役カウンター</title>
-<meta name="description" content="ノーマルタイプ・汎用 の小役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。ボーナス合算とぶどう・小役の出現率（1/○○）を自動計算し、設定別の解析値と見比べられます。">
-<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/a-type-general.html">
+<title>ハッピージャグラーVⅢ 小役カウンター・設定判別</title>
+<meta name="description" content="ハッピージャグラーVⅢ の小役（BIG・REG・ぶどう・角チェリーなど）を▲▼ボタンのタップで1回ずつカウント。ボーナス合算とぶどう・小役の出現率（1/○○）を自動計算し、設定別の解析値と見比べられます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/happy-juggler-v3.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ノーマルタイプ・汎用 レア小役合算・レア小役カウンター">
-<meta property="og:description" content="ノーマルタイプ・汎用 の小役（チェリー・スイカ・チャンス目・中段チェリーなど）を▲▼ボタンのタップで1回ずつカウント。ボーナス合算とぶどう・小役の出現率（1/○○）を自動計算し、設定別の解析値と見比べられます。">
-<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/a-type-general.html">
+<meta property="og:title" content="ハッピージャグラーVⅢ 小役カウンター・設定判別">
+<meta property="og:description" content="ハッピージャグラーVⅢ の小役（BIG・REG・ぶどう・角チェリーなど）を▲▼ボタンのタップで1回ずつカウント。ボーナス合算とぶどう・小役の出現率（1/○○）を自動計算し、設定別の解析値と見比べられます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/happy-juggler-v3.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +25,11 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">ノーマルタイプ・汎用 レア小役合算・レア小役カウンター</h1>
-<div class="tagrow" id="machine-tags"><span class="tag">Aタイプ</span></div>
-<p class="lead" id="machine-note">ノーマルタイプ（Aタイプ）向けの小役セットです。</p>
+<h1 id="machine-title">ハッピージャグラーVⅢ 小役カウンター・設定判別</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">北電子</span><span class="tag">Aタイプ</span></div>
+<p class="lead" id="machine-note">角チェリーは高設定ほど出にくい逆方向の設定差です（設定1で1/62.24、設定6で1/65.34）。ぶどうと合わせて見てください。</p>
 
-<section class="panel counter" data-slug="a-type-general" data-name="ノーマルタイプ・汎用">
+<section class="panel counter" data-slug="happy-juggler-v3" data-name="ハッピージャグラーVⅢ">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
   <optgroup label="スマスロ・AT機">
@@ -50,7 +50,7 @@
     <option value="im-juggler-ex">アイムジャグラーEX</option>
     <option value="funky-juggler2">ファンキージャグラー2</option>
     <option value="gogo-juggler3">ゴーゴージャグラー3</option>
-    <option value="happy-juggler-v3">ハッピージャグラーVⅢ</option>
+    <option value="happy-juggler-v3" selected>ハッピージャグラーVⅢ</option>
     <option value="hanahana-houou-tensho">ハナハナホウオウ〜天翔〜-30</option>
     <option value="king-hanahana">キングハナハナ-30</option>
     <option value="dragon-hanahana-senko">ドラゴンハナハナ〜閃光〜-30</option>
@@ -60,7 +60,7 @@
   <optgroup label="機種が一覧にないとき">
     <option value="general">汎用スロット</option>
     <option value="at-general">AT機・汎用</option>
-    <option value="a-type-general" selected>ノーマルタイプ・汎用</option>
+    <option value="a-type-general">ノーマルタイプ・汎用</option>
   </optgroup>
   </select>
 
@@ -79,44 +79,44 @@
 
   <div class="label" id="count-label" style="margin-top:18px">小役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
-      <li class="role" data-role="チェリー">
-        <div class="role-name">チェリー</div>
-        <button type="button" class="arrow up" aria-label="チェリー を1回足す">▲</button>
+      <li class="role" data-role="BIG">
+        <div class="role-name">BIG</div>
+        <button type="button" class="arrow up" aria-label="BIG を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チェリー を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+        <button type="button" class="arrow down" aria-label="BIG を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">設定1〜6</span><span class="v theory">1/273.1〜1/226.0</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="スイカ">
-        <div class="role-name">スイカ</div>
-        <button type="button" class="arrow up" aria-label="スイカ を1回足す">▲</button>
+      <li class="role" data-role="REG">
+        <div class="role-name">REG</div>
+        <button type="button" class="arrow up" aria-label="REG を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+        <button type="button" class="arrow down" aria-label="REG を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">設定1〜6</span><span class="v theory">1/397.2〜1/256.0</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="チャンス目">
-        <div class="role-name">チャンス目</div>
-        <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
+      <li class="role" data-role="ぶどう">
+        <div class="role-name">ぶどう</div>
+        <button type="button" class="arrow up" aria-label="ぶどう を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+        <button type="button" class="arrow down" aria-label="ぶどう を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">設定1〜6</span><span class="v theory">1/6.05〜1/5.79</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="中段チェリー">
-        <div class="role-name">中段チェリー</div>
-        <button type="button" class="arrow up" aria-label="中段チェリー を1回足す">▲</button>
+      <li class="role" data-role="角チェリー">
+        <div class="role-name">角チェリー</div>
+        <button type="button" class="arrow up" aria-label="角チェリー を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="中段チェリー を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">－</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+        <button type="button" class="arrow down" aria-label="角チェリー を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">設定1〜6</span><span class="v theory">1/62.24〜1/65.34</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
   </ul>
 
 <div id="totals">
-  <div class="label" style="margin-top:18px">レア小役合算</div>
-  <div class="total" data-group="rare">
-    <div class="t-label">レア小役合算</div>
-    <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
-    <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の確率</div></div>
+  <div class="label" style="margin-top:18px">ボーナス合算</div>
+  <div class="total bonus" data-group="bonus">
+    <div class="t-label">ボーナス合算</div>
+    <div class="t-box"><div class="b-count">0</div><div class="t-cap">回</div></div>
+    <div class="t-box"><div class="b-prob">1/－</div><div class="t-cap">現在の確率</div></div>
   </div>
-
+<div class="total-theory">解析値（設定1〜6）：1/161.8〜1/120.0</div>
 </div>
 
   <div class="actions">
@@ -137,18 +137,18 @@
        src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
 </aside>
 
-<h2 id="ref-heading">小役の出現率</h2>
+<h2 id="ref-heading">設定推測に使える小役</h2>
 <div class="panel" id="ref-area">
-<p class="note">この機種は、小役の出現率に設定差が確認されていません。カウントは実戦データの記録用としてお使いください。</p>
-<h3 class="sub-h">そのほかの小役</h3>
 <div class="tablewrap"><table class="ref">
-<tr><th>小役</th><th>出現率</th></tr>
-<tr><td class="rolecell">チェリー</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">スイカ</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">チャンス目</td><td><span class="cap">調査中</span></td></tr>
-<tr><td class="rolecell">中段チェリー</td><td><span class="cap">調査中</span></td></tr>
+<tr><th>小役</th><th>設定1</th><th>設定2</th><th>設定3</th><th>設定4</th><th>設定5</th><th>設定6</th></tr>
+<tr><td class="rolecell hit">BIG</td><td>1/273.1</td><td>1/270.8</td><td>1/263.2</td><td>1/254.0</td><td>1/239.2</td><td>1/226.0</td></tr>
+<tr><td class="rolecell hit">REG</td><td>1/397.2</td><td>1/362.1</td><td>1/332.7</td><td>1/300.6</td><td>1/273.1</td><td>1/256.0</td></tr>
+<tr><td class="rolecell hit">ぶどう</td><td>1/6.05</td><td>1/6.01</td><td>1/5.98</td><td>1/5.83</td><td>1/5.81</td><td>1/5.79</td></tr>
+<tr><td class="rolecell hit">角チェリー</td><td>1/62.24</td><td>1/62.47</td><td>1/62.95</td><td>1/64.0</td><td>1/64.57</td><td>1/65.34</td></tr>
 </table></div>
+<p class="note">設定差が確認されているのはこの小役です。ここが伸びているかどうかが設定推測の手がかりになります。</p>
 
+<p class="note src">確率の出典：<a href="https://chonborista.com/slot/kitadenshi/173776/" target="_blank" rel="nofollow noopener">chonborista.com</a>、<a href="https://1geki.jp/slot/s_happyjuggler_v3/0/" target="_blank" rel="nofollow noopener">1geki.jp</a></p>
 </div>
 
 <h2>使い方</h2>
@@ -158,7 +158,7 @@
   3. 小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
   4. 各レア小役の出現率と、全レア小役を足した「レア小役合算」の確率が 1/○○ で自動表示されます。<br>
   5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
-  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。ノーマルタイプ・汎用のレア役カウンター／レア子役カウンターとしてお使いください。</p>
+  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。ハッピージャグラーVⅢのレア役カウンター／レア子役カウンターとしてお使いください。</p>
 </div>
 
 <h2>他の機種を選ぶ</h2>

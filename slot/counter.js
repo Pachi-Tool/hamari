@@ -11,8 +11,7 @@
   var noteEl = document.getElementById('machine-note');
   var rolesEl = root.querySelector('.roles');
   var refEl = document.getElementById('ref-area');
-  var totalCountEl = root.querySelector('.t-count');
-  var totalProbEl = root.querySelector('.t-prob');
+  var totalsEl = document.getElementById('totals');
   var resetBtn = document.getElementById('reset');
   var shareBtn = document.getElementById('share');
 
@@ -57,8 +56,12 @@
     var d = state.games / count;
     return '1/' + (d >= 1000 ? Math.round(d) : d.toFixed(1));
   }
-  function totalCount() {
-    return machine.roles.reduce(function (s, r) { return s + (state.counts[r.name] || 0); }, 0);
+  function groupOf(r) { return r.group || 'rare'; }
+  function rolesIn(g) {
+    return machine.roles.filter(function (r) { return groupOf(r) === g; });
+  }
+  function groupCount(g) {
+    return rolesIn(g).reduce(function (s, r) { return s + (state.counts[r.name] || 0); }, 0);
   }
 
   /* ---------- 描画：カード ---------- */
@@ -76,6 +79,30 @@
       };
     }
     return { val: '－', label: '解析' };
+  }
+
+  function buildTotals() {
+    if (!totalsEl) return;
+    var h = '';
+    if (rolesIn('rare').length) {
+      var ct = machine.combined ? theory(machine.combined) : null;
+      h += '<div class="label" style="margin-top:18px">レア小役合算</div>' +
+        '<div class="total" data-group="rare">' +
+        '<div class="t-label">レア小役合算</div>' +
+        '<div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>' +
+        '<div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の確率</div></div></div>' +
+        (ct ? '<div class="total-theory">解析値（' + ct.label + '）：' + ct.val + '</div>' : '');
+    }
+    if (rolesIn('bonus').length) {
+      var bt = machine.bonus_combined ? theory(machine.bonus_combined) : null;
+      h += '<div class="label" style="margin-top:18px">ボーナス合算</div>' +
+        '<div class="total bonus" data-group="bonus">' +
+        '<div class="t-label">ボーナス合算</div>' +
+        '<div class="t-box"><div class="b-count">0</div><div class="t-cap">回</div></div>' +
+        '<div class="t-box"><div class="b-prob">1/－</div><div class="t-cap">現在の確率</div></div></div>' +
+        (bt ? '<div class="total-theory">解析値（' + bt.label + '）：' + bt.val + '</div>' : '');
+    }
+    totalsEl.innerHTML = h;
   }
 
   function buildCards() {
@@ -101,11 +128,12 @@
   function buildRef() {
     if (!refEl) return;
     var diffRoles = machine.roles.filter(function (r) { return r.diff && r.probs; });
+    var noun = machine.type === 'Aタイプ' ? '小役' : 'レア小役';
     var headEl = document.getElementById('ref-heading');
-    if (headEl) headEl.textContent = diffRoles.length ? '設定推測に使えるレア小役' : 'レア小役の出現率';
+    if (headEl) headEl.textContent = (diffRoles.length ? '設定推測に使える' : '') + noun + (diffRoles.length ? '' : 'の出現率');
     var h = '';
     if (!diffRoles.length) {
-      h += '<p class="note">この機種は、レア小役の出現率に設定差が確認されていません。' +
+      h += '<p class="note">この機種は、' + noun + 'の出現率に設定差が確認されていません。' +
         'カウントは実戦データの記録用としてお使いください。</p>';
     } else {
       var settings = [];
@@ -113,7 +141,7 @@
         Object.keys(r.probs).forEach(function (k) { if (settings.indexOf(k) < 0) settings.push(k); });
       });
       settings.sort();
-      h += '<div class="tablewrap"><table class="ref"><tr><th>レア小役</th>';
+      h += '<div class="tablewrap"><table class="ref"><tr><th>' + noun + '</th>';
       settings.forEach(function (s) { h += '<th>設定' + esc(s) + '</th>'; });
       h += '</tr>';
       diffRoles.forEach(function (r) {
@@ -123,18 +151,21 @@
         });
         h += '</tr>';
       });
-      h += '</table></div><p class="note">設定差が確認されているのはこのレア小役です。' +
+      h += '</table></div><p class="note">設定差が確認されているのはこの' + noun + 'です。' +
         'ここが伸びているかどうかが設定推測の手がかりになります。</p>';
     }
 
     var others = machine.roles.filter(function (r) { return !(r.diff && r.probs); });
     if (others.length) {
-      h += '<h3 class="sub-h">そのほかのレア小役</h3>' +
-        '<div class="tablewrap"><table class="ref"><tr><th>レア小役</th><th>出現率</th></tr>';
+      h += '<h3 class="sub-h">そのほかの' + noun + '</h3>' +
+        '<div class="tablewrap"><table class="ref"><tr><th>' + noun + '</th><th>出現率</th></tr>';
       others.forEach(function (r) {
         var v;
         if (r.common) v = '1/' + esc(r.common) + '<span class="cap">全設定共通</span>';
-        else if (r.probs && r.probs['1']) v = '1/' + esc(r.probs['1']) + '<span class="cap">設定1の値</span>';
+        else if (r.probs && Object.keys(r.probs).length) {
+          var k0 = Object.keys(r.probs).sort()[0];
+          v = '1/' + esc(r.probs[k0]) + '<span class="cap">設定' + esc(k0) + 'の値</span>';
+        }
         else v = '<span class="cap">調査中</span>';
         h += '<tr><td class="rolecell">' + esc(r.name) + '</td><td>' + v + '</td></tr>';
       });
@@ -158,9 +189,18 @@
       el.querySelector('.count').textContent = state.counts[key] || 0;
       el.querySelector('.v.now').textContent = probText(state.counts[key] || 0);
     });
-    var t = totalCount();
-    totalCountEl.textContent = t;
-    totalProbEl.textContent = probText(t);
+    var rc = document.querySelector('.t-count');
+    if (rc) {
+      var t = groupCount('rare');
+      rc.textContent = t;
+      document.querySelector('.t-prob').textContent = probText(t);
+    }
+    var bc = document.querySelector('.b-count');
+    if (bc) {
+      var bn = groupCount('bonus');
+      bc.textContent = bn;
+      document.querySelector('.b-prob').textContent = probText(bn);
+    }
     disarmReset();
   }
 
@@ -169,7 +209,7 @@
     machine = m;
     root.dataset.slug = m.slug;
     root.dataset.name = m.name;
-    var title = m.name + ' レア小役合算・レア小役カウンター';
+    var title = m.name + ' ' + (m.suffix || 'レア小役合算・レア小役カウンター');
     if (titleEl) titleEl.textContent = title;
     document.title = title;
     if (noteEl) noteEl.textContent = m.note || '';
@@ -179,12 +219,11 @@
     }
     if (select) select.value = m.slug;
     buildCards();
+    buildTotals();
     buildRef();
-    var totalTheoryEl = document.getElementById('total-theory');
-    if (totalTheoryEl) {
-      var ct = m.combined ? theory(m.combined) : null;
-      totalTheoryEl.textContent = ct ? '解析値（' + ct.label + '）：' + ct.val : '';
-    }
+    var cardHead = document.getElementById('count-label');
+    if (cardHead) cardHead.textContent =
+      (m.type === 'Aタイプ' ? '小役' : 'レア小役') + 'カウント（▲で＋1／▼で−1）';
     load();
     renderCounts();
     if (pushUrl && window.history && history.pushState) {
@@ -251,8 +290,14 @@
       machine.roles.forEach(function (r) {
         lines.push(r.name + ' ' + (state.counts[r.name] || 0) + '回 (' + probText(state.counts[r.name] || 0) + ')');
       });
-      var t = totalCount();
-      lines.push('レア小役合算 ' + t + '回 (' + probText(t) + ')');
+      if (rolesIn('rare').length) {
+        var t = groupCount('rare');
+        lines.push('レア小役合算 ' + t + '回 (' + probText(t) + ')');
+      }
+      if (rolesIn('bonus').length) {
+        var bn = groupCount('bonus');
+        lines.push('ボーナス合算 ' + bn + '回 (' + probText(bn) + ')');
+      }
       window.open('https://twitter.com/intent/tweet?text=' +
         encodeURIComponent(lines.join('\n') + '\n') +
         '&url=' + encodeURIComponent(location.href) +

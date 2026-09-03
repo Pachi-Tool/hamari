@@ -44,19 +44,25 @@ def fmt_pct(v):
     return f"{p:.7f}%"
 
 
-def fmt_one_in(v):
-    """頻度の表現。よく起こる場合は「10回中◯回」で表す"""
+def fmt_freq(v, prefix=True):
+    """頻度の表現。50%以上は回数で言わず「よくあるハマり」とする"""
     if v <= 0:
         return "-"
-    # 3回に1度より頻繁な場合は「〇回に1度」では表現できないので言い換える
-    if v > 1 / 3:
-        return f"10回中 約{round(v * 10)}回"
+    if v >= 0.5:
+        return "よくあるハマり"
     n = 1 / v
-    if n >= 100000000:
-        return f"約{n/100000000:.1f}億回に1度"
-    if n >= 10000:
-        return f"約{n/10000:.1f}万回に1度"
-    return f"約{round(n):,}回に1度"
+    head = "初当たり約" if prefix else "約"
+    # 桁が多すぎると読めなくなるので、1億を超えたら単位を使う
+    if n >= 1_0000_0000_0000:
+        return f"{head}{n/1_0000_0000_0000:,.1f}兆回に1回"
+    if n >= 1_0000_0000:
+        return f"{head}{n/1_0000_0000:,.1f}億回に1回"
+    return f"{head}{round(n):,}回に1回"
+
+
+def fmt_one_in(v):
+    """表の頻度欄で使う（接頭辞なし）"""
+    return fmt_freq(v, prefix=False)
 
 
 def half_point(prob):
@@ -271,9 +277,13 @@ def build_page(m, others):
     if m.get("note"):
         note_html = "<br>※" + esc(m["note"])
 
-    # Xへの投稿に付けるハッシュタグ（呼称 + パチンコ）
+    # Xへの投稿に付けるハッシュタグ（呼称 + サイト名 + ジャンル）
     tag = (m.get("tag") or "").strip()
-    tag_text = (f"#{tag} #パチンコ" if tag else "#パチンコ")
+    tag_text = (f"#{tag} #ハマり計算機 #パチンコ" if tag else "#ハマり計算機 #パチンコ")
+
+    # 投稿の先頭に付ける絵文字（machines.json で変更できる）
+    emoji = (m.get("emoji") or "").strip()
+    emoji_text = (emoji + " ") if emoji else ""
 
     # 他機種へのリンク
     other_items = "\n".join(
@@ -435,6 +445,7 @@ var PROB = {prob};
 var NAME = "{esc(short)}";
 var PAGE = "{SITE}m/{m['slug']}.html";
 var TAGS = "{tag_text}";
+var EMOJI = "{emoji_text}";
 
 var spin  = document.getElementById('spin');
 var out   = document.getElementById('out');
@@ -449,11 +460,15 @@ function fmtPct(p){{
   if(p >= 0.01) return p.toFixed(3);
   return p.toFixed(5);
 }}
-function fmtOneIn(n){{
-  if(n <= 3) return '10回中 約' + Math.round(10 / n) + '回';
-  if(n >= 100000000) return '約' + (n/100000000).toFixed(1) + '億回に1度';
-  if(n >= 10000)     return '約' + (n/10000).toFixed(1) + '万回に1度';
-  return '約' + Math.round(n).toLocaleString() + '回に1度';
+function fmtFreq(p, prefix){{
+  // 50%以上は回数で言わない
+  if(p >= 0.5) return 'よくあるハマり';
+  var n = 1 / p;
+  var head = prefix ? '初当たり約' : '約';
+  // 桁が多すぎると読めなくなるので単位を使う
+  if(n >= 1e12) return head + (n/1e12).toFixed(1) + '兆回に1回';
+  if(n >= 1e8)  return head + (n/1e8).toFixed(1) + '億回に1回';
+  return head + Math.round(n).toLocaleString() + '回に1回';
 }}
 
 // 身近な出来事とくらべる
@@ -485,16 +500,18 @@ document.getElementById('btn').addEventListener('click', function(){{
   var p = Math.pow((PROB - 1) / PROB, s);
 
   pct.textContent = fmtPct(p * 100) + '%';
-  one.textContent = fmtOneIn(1 / p);
+  one.textContent = fmtFreq(p, true);
   cmp.textContent = makeCompare(1 / p);
 
-  // Xへの投稿文を組み立てる（機種名を入れる）
-  var text = '【' + NAME + '】\\n'
-    + s.toLocaleString() + '回転ハマりました（1/' + PROB + '）\\n'
-    + 'この確率 約' + fmtPct(p * 100) + '%（' + fmtOneIn(1 / p) + '）\\n'
+  // Xへの投稿文を組み立てる
+  var freq = (p >= 0.5) ? 'よくあるハマり'
+                        : '初当たり約' + Math.round(1 / p).toLocaleString() + '回に1回のレア度';
+  var text = EMOJI + NAME + '\\n'
+    + s.toLocaleString() + '回転ハマり（1/' + PROB + '）\\n'
+    + freq + '\\n'
     + TAGS;
   share.href = 'https://twitter.com/intent/tweet?text='
-    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE);
+    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE + '?utm_source=x');
 
   out.style.display = 'block';
 }});

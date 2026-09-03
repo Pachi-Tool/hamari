@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-26",
-  "note": "prob は通常時（ヘソ）の大当たり確率の分母。tag はXへの投稿に使う呼称（スペースや記号は使えません）。出典: P-WORLD 新台スケジュールほか。掲載前にメーカー公式または遊技説明で確認してください。",
+  "note": "prob は通常時（ヘソ）の大当たり確率の分母。tag はXへの投稿に使う呼称（スペースや記号は不可）、emoji は投稿の先頭に付く絵文字（空欄可）。出典: P-WORLD 新台スケジュールほか。掲載前にメーカー公式または遊技説明で確認してください。",
   "machines": [
     {
       "name": "e ソードアート・オンライン アリシゼーション 夜空",
@@ -13,7 +13,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "SAO"
+      "tag": "SAO",
+      "emoji": "⚔️"
     },
     {
       "name": "e 七つの大罪3",
@@ -26,7 +27,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "七つの大罪"
+      "tag": "七つの大罪",
+      "emoji": "🔥"
     },
     {
       "name": "eアクセル・ワールド",
@@ -39,7 +41,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "アクセルワールド"
+      "tag": "アクセルワールド",
+      "emoji": "⚡"
     },
     {
       "name": "ぱちんこ押忍!番長 漢の頂 99ver.",
@@ -52,7 +55,8 @@
       "page": true,
       "note": "P版・e版の2種類がありますが、大当たり確率はどちらも1/99.9です。",
       "verified": false,
-      "tag": "押忍番長"
+      "tag": "押忍番長",
+      "emoji": "💪"
     },
     {
       "name": "eゾン100~ゾンビになるまでにしたい100のこと~",
@@ -65,7 +69,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "ゾン100"
+      "tag": "ゾン100",
+      "emoji": "🍺"
     },
     {
       "name": "P 春一番 2026",
@@ -78,7 +83,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "春一番"
+      "tag": "春一番",
+      "emoji": "🌸"
     },
     {
       "name": "eソードアート・オンライン オルタナティブ ガンゲイル・オンライン",
@@ -91,7 +97,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "GGO"
+      "tag": "GGO",
+      "emoji": "🔫"
     },
     {
       "name": "e学園黙示録ハイスクール・オブ・ザ・デッド3",
@@ -104,7 +111,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "学園黙示録"
+      "tag": "学園黙示録",
+      "emoji": "🧟"
     },
     {
       "name": "e大海物語5 ブラック",
@@ -117,7 +125,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "海物語"
+      "tag": "海物語",
+      "emoji": "🌊"
     },
     {
       "name": "eリコリス・リコイル",
@@ -130,7 +139,8 @@
       "page": true,
       "note": "",
       "verified": false,
-      "tag": "リコリコ"
+      "tag": "リコリコ",
+      "emoji": "☕"
     },
     {
       "name": "eF機動戦士ガンダムSEED クライマックス",
@@ -143,7 +153,8 @@
       "page": false,
       "note": "特図1の1500個大当りとSEEDチャージからのLT突入の合算値です。",
       "verified": false,
-      "tag": "ガンダムSEED"
+      "tag": "ガンダムSEED",
+      "emoji": "🤖"
     },
     {
       "name": "e EDENS ZERO ~究極LT~",
@@ -156,7 +167,8 @@
       "page": false,
       "note": "チャージ当り（入浴タイム）を除いた数値です。",
       "verified": false,
-      "tag": "エデンズゼロ"
+      "tag": "エデンズゼロ",
+      "emoji": "🚀"
     },
     {
       "name": "e牙狼12 黄金騎士極限",
@@ -169,7 +181,8 @@
       "page": false,
       "note": "",
       "verified": false,
-      "tag": "牙狼"
+      "tag": "牙狼",
+      "emoji": "🐺"
     }
   ]
 }

@@ -6,7 +6,7 @@
 
 <!-- ▼▼▼ ここからSEO（検索対策）用の設定 ▼▼▼ -->
 <title>ハマり確率計算機｜パチンコの大当たり確率から連続ハズレ確率を計算</title>
-<meta name="description" content="パチンコ・パチスロのハマり確率を無料で計算。大当たり確率とハマり回転数を入力するだけで、そのハマりが何％の確率で起こるのか、何回に1度の出来事なのかがわかります。大当たり履歴の記録・グラフ表示・Xへの投稿にも対応。">
+<meta name="description" content="パチンコ・パチスロのハマり確率を無料で計算。大当たり確率とハマり回転数を入力するだけで、そのハマりが何％の確率で起こるのか、初当たり何回に1回の出来事なのかがわかります。大当たり履歴の記録・グラフ表示・Xへの投稿にも対応。">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://pachi-tool.github.io/hamari/">
 
@@ -116,19 +116,6 @@ body{
 }
 
 .wrap{max-width:760px;margin:0 auto;}
-
-/* ===== サイト共通ナビ ===== */
-header.site{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:10px 0 14px;border-bottom:1px solid rgba(200,194,216,.25);margin-bottom:4px;
-}
-header.site .logo{
-  font-family:"Reggae One",cursive;font-size:15px;
-  color:var(--lamp-gold);text-decoration:none;text-shadow:0 0 12px rgba(255,200,50,.5);
-}
-header.site nav a{font-size:13px;margin-left:12px;text-decoration:none;color:var(--text-dim);}
-header.site nav a:hover{color:var(--neon-cyan);}
-header.site nav a[aria-current="page"]{color:var(--neon-cyan);}
 
 /* ===== ヘッダー（電飾看板風） ===== */
 header{text-align:center;padding:36px 0 24px;}
@@ -606,29 +593,12 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
 <body>
 <div class="wrap">
 
-<header class="site">
-  <a class="logo" href="./">PACHI-TOOL</a>
-  <nav>
-    <a href="./" aria-current="page">ハマり確率計算機</a>
-    <a href="./slot/">レア小役カウンター</a>
-  </nav>
-</header>
-
 <header>
   <p class="eyebrow">PACHINKO PROBABILITY</p>
   <h1>ハマり確率計算機</h1>
   <div class="lamps"><span></span><span></span><span></span><span></span><span></span></div>
   <p class="lead">大当たり確率とハマり回転数を入れるだけ。<br>そのハマりが何％の出来事なのかがわかります。</p>
 </header>
-
-<!-- ========== スロット版へのリンク（手動で追加：build.py は書き換えません） ========== -->
-<section class="panel" style="text-align:center;">
-  <h2>スロットの「レア小役カウンター」</h2>
-  <p style="font-size:13px;color:var(--text-dim);margin:0 0 14px;">
-    パチスロのレア小役を▲▼のタップで1回ずつカウント。合算回数と出現率（1/○○）が自動で計算されます。
-  </p>
-  <a href="./slot/" style="display:inline-block;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:700;background:linear-gradient(180deg,#3ff0ff,var(--neon-cyan));color:#04222b;box-shadow:0 4px 0 #0b7f96;">▶ レア小役カウンターを開く</a>
-</section>
 
 <!-- ========== 計算機 ========== -->
 <section class="panel">
@@ -667,7 +637,7 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
     </div>
 
     <div class="sub-grid">
-      <div class="sub-cell"><div class="l">何回に1度の出来事か</div><div class="v" id="oneIn">--</div></div>
+      <div class="sub-cell"><div class="l">遭遇する頻度</div><div class="v" id="oneIn">--</div></div>
       <div class="sub-cell"><div class="l">大当たり確率の何倍ハマりか</div><div class="v" id="ratio">--</div></div>
     </div>
 
@@ -808,13 +778,13 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
   <h3>1/319での回転数別ハマり確率</h3>
   <div class="table-scroll">
   <table>
-    <tr><th>ハマり回転数</th><th>確率</th><th>何回に1度</th></tr>
-    <tr><td>319回転</td><td>約36.7%</td><td>約2.7回に1度</td></tr>
-    <tr><td>500回転</td><td>約20.8%</td><td>約4.8回に1度</td></tr>
-    <tr><td>1000回転</td><td>約4.3%</td><td>約23回に1度</td></tr>
-    <tr><td>1500回転</td><td>約0.9%</td><td>約111回に1度</td></tr>
-    <tr><td>2000回転</td><td>約0.19%</td><td>約535回に1度</td></tr>
-    <tr><td>2500回転</td><td>約0.04%</td><td>約2,570回に1度</td></tr>
+    <tr><th>ハマり回転数</th><th>確率</th><th>遭遇する頻度</th></tr>
+    <tr><td>319回転</td><td>約36.7%</td><td>約2回に1回</td></tr>
+    <tr><td>500回転</td><td>約20.8%</td><td>約5回に1回</td></tr>
+    <tr><td>1000回転</td><td>約4.3%</td><td>約23回に1回</td></tr>
+    <tr><td>1500回転</td><td>約0.9%</td><td>約111回に1回</td></tr>
+    <tr><td>2000回転</td><td>約0.19%</td><td>約535回に1回</td></tr>
+    <tr><td>2500回転</td><td>約0.04%</td><td>約2,570回に1回</td></tr>
   </table>
   </div>
 
@@ -898,12 +868,15 @@ function fmtPercent(v){
   if(v >= 0.01) return v.toFixed(3);
   return v.toFixed(5);
 }
-function fmtOneIn(v){
-  // 3回に1度より頻繁だと「〇回に1度」では表せないので言い換える
-  if(v <= 3) return '10回中 約' + Math.round(10 / v) + '回';
-  if(v >= 100000000) return (v/100000000).toFixed(1) + '億回に1度';
-  if(v >= 10000)     return (v/10000).toFixed(1) + '万回に1度';
-  return Math.round(v).toLocaleString() + '回に1度';
+function fmtFreq(p, prefix){
+  // 50%以上は「〇回に1回」では表せないので言い換える
+  if(p >= 0.5) return 'よくあるハマり';
+  var n = 1 / p;
+  var head = prefix ? '初当たり約' : '約';
+  // 桁が多すぎると読めなくなるので単位を使う
+  if(n >= 1e12) return head + (n/1e12).toFixed(1) + '兆回に1回';
+  if(n >= 1e8)  return head + (n/1e8).toFixed(1) + '億回に1回';
+  return head + Math.round(n).toLocaleString() + '回に1回';
 }
 
 // --- 身近な出来事とくらべる文章を作る ---
@@ -1062,7 +1035,7 @@ calcBtn.addEventListener('click', function(){
   const r = calcHamari(prob, spin);
 
   pctEl.textContent   = fmtPercent(r.percent);
-  oneInEl.textContent = fmtOneIn(r.oneIn);
+  oneInEl.textContent = fmtFreq(r.percent / 100, true);
   ratioEl.textContent = r.ratio.toFixed(2) + '倍';
   compareEl.textContent = makeCompare(r.oneIn);
 
@@ -1128,18 +1101,18 @@ function renderHistory(){
     const shareText = '【' + item.spin.toLocaleString() + '回転ハマって大当たり】\n'
       + '1/' + item.prob + 'の台で ' + item.spin.toLocaleString() + '回転。\n'
       + (item.payout ? '獲得出玉 ' + item.payout.toLocaleString() + '玉\n' : '')
-      + 'この確率 約' + fmtPercent(item.percent) + '%（' + fmtOneIn(item.oneIn) + '）\n'
-      + '#パチンコ #ハマり確率計算機';
+      + 'この確率 ' + fmtPercent(item.percent) + '%（' + fmtFreq(item.percent / 100, true) + '）\n'
+      + '#ハマり計算機 #パチンコ';
 
     const shareUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText)
-      + '&url=' + encodeURIComponent(SITE_URL);
+      + '&url=' + encodeURIComponent(SITE_URL + '?utm_source=x');
 
     li.innerHTML =
       '<div class="hist-top">' +
         '<span class="hist-spin">' + item.spin.toLocaleString() + '<span style="font-size:.5em"> 回転</span></span>' +
         '<span class="hist-date">' + item.date + '</span>' +
       '</div>' +
-      '<div class="hist-detail">1/' + item.prob + ' ／ 確率 約' + fmtPercent(item.percent) + '%（' + fmtOneIn(item.oneIn) + '）'
+      '<div class="hist-detail">1/' + item.prob + ' ／ ' + fmtPercent(item.percent) + '%（' + fmtFreq(item.percent / 100, true) + '）'
         + (item.payout ? ' <span class="hist-payout">' + payoutTxt + '</span>' : '') + '</div>' +
       '<a href="' + shareUrl + '" target="_blank" rel="noopener"><button class="btn-x">Xに投稿する</button></a>';
 
@@ -1340,7 +1313,7 @@ function buildBulkText(){
     + (total ? '獲得出玉 ' + total.toLocaleString() + '玉\n' : '')
     + '\n';
 
-  const footer = '\n#パチンコ #ハマり確率計算機';
+  const footer = '\n#ハマり計算機 #パチンコ';
   const URL_COST = 24;      // Xでは全URLが23文字換算＋区切りの空白1文字
   const LIMIT = 280 - URL_COST;
   let shown = 0;
@@ -1381,7 +1354,7 @@ previewText.addEventListener('input', updateCharCount);
 
 previewPost.addEventListener('click', function(){
   const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(previewText.value)
-    + '&url=' + encodeURIComponent(SITE_URL);
+    + '&url=' + encodeURIComponent(SITE_URL + '?utm_source=x');
   window.open(url, '_blank', 'noopener');
 });
 

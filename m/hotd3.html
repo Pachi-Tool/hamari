@@ -27,7 +27,7 @@
       "name": "ハイスクール・オブ・ザ・デッド3で1000回転ハマる確率は？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "大当たり確率1/299.2のe学園黙示録ハイスクール・オブ・ザ・デッド3で1000回転ハマる確率は3.52%です。これは約28回に1度起こる計算になります。"
+        "text": "大当たり確率1/299.2のe学園黙示録ハイスクール・オブ・ザ・デッド3で1000回転ハマる確率は3.52%です。これは約28回に1回起こる計算になります。"
       }
     },
     {
@@ -97,17 +97,17 @@
   <div class="table-scroll">
     <table>
       <tr><th>ハマり回転数</th><th>そこまで当たらない確率</th><th>遭遇する頻度</th></tr>
-      <tr><td>100回転</td><td>71.5%</td><td>10回中 約7回</td></tr>
-      <tr><td>200回転</td><td>51.2%</td><td>10回中 約5回</td></tr>
-      <tr><td>300回転</td><td>36.6%</td><td>10回中 約4回</td></tr>
-      <tr><td>500回転</td><td>18.8%</td><td>約5回に1度</td></tr>
-      <tr><td>700回転</td><td>9.60%</td><td>約10回に1度</td></tr>
-      <tr class="mark"><td>1,000回転</td><td>3.52%</td><td>約28回に1度</td></tr>
-      <tr><td>1,200回転</td><td>1.80%</td><td>約56回に1度</td></tr>
-      <tr><td>1,500回転</td><td>0.659%</td><td>約152回に1度</td></tr>
-      <tr class="mark"><td>2,000回転</td><td>0.124%</td><td>約809回に1度</td></tr>
-      <tr><td>2,500回転</td><td>0.023%</td><td>約4,314回に1度</td></tr>
-      <tr><td>3,000回転</td><td>0.00435%</td><td>約2.3万回に1度</td></tr>
+      <tr><td>100回転</td><td>71.5%</td><td>よくあるハマり</td></tr>
+      <tr><td>200回転</td><td>51.2%</td><td>よくあるハマり</td></tr>
+      <tr><td>300回転</td><td>36.6%</td><td>約3回に1回</td></tr>
+      <tr><td>500回転</td><td>18.8%</td><td>約5回に1回</td></tr>
+      <tr><td>700回転</td><td>9.60%</td><td>約10回に1回</td></tr>
+      <tr class="mark"><td>1,000回転</td><td>3.52%</td><td>約28回に1回</td></tr>
+      <tr><td>1,200回転</td><td>1.80%</td><td>約56回に1回</td></tr>
+      <tr><td>1,500回転</td><td>0.659%</td><td>約152回に1回</td></tr>
+      <tr class="mark"><td>2,000回転</td><td>0.124%</td><td>約809回に1回</td></tr>
+      <tr><td>2,500回転</td><td>0.023%</td><td>約4,314回に1回</td></tr>
+      <tr><td>3,000回転</td><td>0.00435%</td><td>約23,006回に1回</td></tr>
     </table>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
@@ -131,8 +131,8 @@
      ようやく五分五分になります。</p>
 
   <h3>1000回転・2000回転のハマりはどのくらい珍しいか</h3>
-  <p>1000回転のハマりは3.52%（約28回に1度）、
-     2000回転のハマりは0.124%（約809回に1度）です。
+  <p>1000回転のハマりは3.52%（約28回に1回）、
+     2000回転のハマりは0.124%（約809回に1回）です。
      1000回転程度であれば長く打っていれば遭遇する範囲ですが、
      2000回転を超えると相当まれな部類に入ります。</p>
 
@@ -171,7 +171,8 @@
 var PROB = 299.2;
 var NAME = "ハイスクール・オブ・ザ・デッド3";
 var PAGE = "https://pachi-tool.github.io/hamari/m/hotd3.html";
-var TAGS = "#学園黙示録 #パチンコ";
+var TAGS = "#学園黙示録 #ハマり計算機 #パチンコ";
+var EMOJI = "🧟 ";
 
 var spin  = document.getElementById('spin');
 var out   = document.getElementById('out');
@@ -186,11 +187,15 @@ function fmtPct(p){
   if(p >= 0.01) return p.toFixed(3);
   return p.toFixed(5);
 }
-function fmtOneIn(n){
-  if(n <= 3) return '10回中 約' + Math.round(10 / n) + '回';
-  if(n >= 100000000) return '約' + (n/100000000).toFixed(1) + '億回に1度';
-  if(n >= 10000)     return '約' + (n/10000).toFixed(1) + '万回に1度';
-  return '約' + Math.round(n).toLocaleString() + '回に1度';
+function fmtFreq(p, prefix){
+  // 50%以上は回数で言わない
+  if(p >= 0.5) return 'よくあるハマり';
+  var n = 1 / p;
+  var head = prefix ? '初当たり約' : '約';
+  // 桁が多すぎると読めなくなるので単位を使う
+  if(n >= 1e12) return head + (n/1e12).toFixed(1) + '兆回に1回';
+  if(n >= 1e8)  return head + (n/1e8).toFixed(1) + '億回に1回';
+  return head + Math.round(n).toLocaleString() + '回に1回';
 }
 
 // 身近な出来事とくらべる
@@ -222,16 +227,18 @@ document.getElementById('btn').addEventListener('click', function(){
   var p = Math.pow((PROB - 1) / PROB, s);
 
   pct.textContent = fmtPct(p * 100) + '%';
-  one.textContent = fmtOneIn(1 / p);
+  one.textContent = fmtFreq(p, true);
   cmp.textContent = makeCompare(1 / p);
 
-  // Xへの投稿文を組み立てる（機種名を入れる）
-  var text = '【' + NAME + '】\n'
-    + s.toLocaleString() + '回転ハマりました（1/' + PROB + '）\n'
-    + 'この確率 約' + fmtPct(p * 100) + '%（' + fmtOneIn(1 / p) + '）\n'
+  // Xへの投稿文を組み立てる
+  var freq = (p >= 0.5) ? 'よくあるハマり'
+                        : '初当たり約' + Math.round(1 / p).toLocaleString() + '回に1回のレア度';
+  var text = EMOJI + NAME + '\n'
+    + s.toLocaleString() + '回転ハマり（1/' + PROB + '）\n'
+    + freq + '\n'
     + TAGS;
   share.href = 'https://twitter.com/intent/tweet?text='
-    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE);
+    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE + '?utm_source=x');
 
   out.style.display = 'block';
 });

@@ -27,7 +27,7 @@
       "name": "アクセル・ワールドで1000回転ハマる確率は？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "大当たり確率1/184.6のeアクセル・ワールドで1000回転ハマる確率は0.438%です。これは約229回に1度起こる計算になります。"
+        "text": "大当たり確率1/184.6のeアクセル・ワールドで1000回転ハマる確率は0.438%です。これは約229回に1回起こる計算になります。"
       }
     },
     {
@@ -97,17 +97,17 @@
   <div class="table-scroll">
     <table>
       <tr><th>ハマり回転数</th><th>そこまで当たらない確率</th><th>遭遇する頻度</th></tr>
-      <tr><td>100回転</td><td>58.1%</td><td>10回中 約6回</td></tr>
-      <tr><td>200回転</td><td>33.7%</td><td>10回中 約3回</td></tr>
-      <tr><td>300回転</td><td>19.6%</td><td>約5回に1度</td></tr>
-      <tr><td>500回転</td><td>6.61%</td><td>約15回に1度</td></tr>
-      <tr><td>700回転</td><td>2.23%</td><td>約45回に1度</td></tr>
-      <tr class="mark"><td>1,000回転</td><td>0.438%</td><td>約229回に1度</td></tr>
-      <tr><td>1,200回転</td><td>0.148%</td><td>約677回に1度</td></tr>
-      <tr><td>1,500回転</td><td>0.029%</td><td>約3,456回に1度</td></tr>
-      <tr class="mark"><td>2,000回転</td><td>0.00191%</td><td>約5.2万回に1度</td></tr>
-      <tr><td>2,500回転</td><td>0.00013%</td><td>約79.0万回に1度</td></tr>
-      <tr><td>3,000回転</td><td>0.0000084%</td><td>約1194.2万回に1度</td></tr>
+      <tr><td>100回転</td><td>58.1%</td><td>よくあるハマり</td></tr>
+      <tr><td>200回転</td><td>33.7%</td><td>約3回に1回</td></tr>
+      <tr><td>300回転</td><td>19.6%</td><td>約5回に1回</td></tr>
+      <tr><td>500回転</td><td>6.61%</td><td>約15回に1回</td></tr>
+      <tr><td>700回転</td><td>2.23%</td><td>約45回に1回</td></tr>
+      <tr class="mark"><td>1,000回転</td><td>0.438%</td><td>約229回に1回</td></tr>
+      <tr><td>1,200回転</td><td>0.148%</td><td>約677回に1回</td></tr>
+      <tr><td>1,500回転</td><td>0.029%</td><td>約3,456回に1回</td></tr>
+      <tr class="mark"><td>2,000回転</td><td>0.00191%</td><td>約52,244回に1回</td></tr>
+      <tr><td>2,500回転</td><td>0.00013%</td><td>約789,859回に1回</td></tr>
+      <tr><td>3,000回転</td><td>0.0000084%</td><td>約11,941,516回に1回</td></tr>
     </table>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
@@ -131,8 +131,8 @@
      ようやく五分五分になります。</p>
 
   <h3>1000回転・2000回転のハマりはどのくらい珍しいか</h3>
-  <p>1000回転のハマりは0.438%（約229回に1度）、
-     2000回転のハマりは0.00191%（約5.2万回に1度）です。
+  <p>1000回転のハマりは0.438%（約229回に1回）、
+     2000回転のハマりは0.00191%（約52,244回に1回）です。
      1000回転程度であれば長く打っていれば遭遇する範囲ですが、
      2000回転を超えると相当まれな部類に入ります。</p>
 
@@ -171,7 +171,8 @@
 var PROB = 184.6;
 var NAME = "アクセル・ワールド";
 var PAGE = "https://pachi-tool.github.io/hamari/m/accel-world.html";
-var TAGS = "#アクセルワールド #パチンコ";
+var TAGS = "#アクセルワールド #ハマり計算機 #パチンコ";
+var EMOJI = "⚡ ";
 
 var spin  = document.getElementById('spin');
 var out   = document.getElementById('out');
@@ -186,11 +187,15 @@ function fmtPct(p){
   if(p >= 0.01) return p.toFixed(3);
   return p.toFixed(5);
 }
-function fmtOneIn(n){
-  if(n <= 3) return '10回中 約' + Math.round(10 / n) + '回';
-  if(n >= 100000000) return '約' + (n/100000000).toFixed(1) + '億回に1度';
-  if(n >= 10000)     return '約' + (n/10000).toFixed(1) + '万回に1度';
-  return '約' + Math.round(n).toLocaleString() + '回に1度';
+function fmtFreq(p, prefix){
+  // 50%以上は回数で言わない
+  if(p >= 0.5) return 'よくあるハマり';
+  var n = 1 / p;
+  var head = prefix ? '初当たり約' : '約';
+  // 桁が多すぎると読めなくなるので単位を使う
+  if(n >= 1e12) return head + (n/1e12).toFixed(1) + '兆回に1回';
+  if(n >= 1e8)  return head + (n/1e8).toFixed(1) + '億回に1回';
+  return head + Math.round(n).toLocaleString() + '回に1回';
 }
 
 // 身近な出来事とくらべる
@@ -222,16 +227,18 @@ document.getElementById('btn').addEventListener('click', function(){
   var p = Math.pow((PROB - 1) / PROB, s);
 
   pct.textContent = fmtPct(p * 100) + '%';
-  one.textContent = fmtOneIn(1 / p);
+  one.textContent = fmtFreq(p, true);
   cmp.textContent = makeCompare(1 / p);
 
-  // Xへの投稿文を組み立てる（機種名を入れる）
-  var text = '【' + NAME + '】\n'
-    + s.toLocaleString() + '回転ハマりました（1/' + PROB + '）\n'
-    + 'この確率 約' + fmtPct(p * 100) + '%（' + fmtOneIn(1 / p) + '）\n'
+  // Xへの投稿文を組み立てる
+  var freq = (p >= 0.5) ? 'よくあるハマり'
+                        : '初当たり約' + Math.round(1 / p).toLocaleString() + '回に1回のレア度';
+  var text = EMOJI + NAME + '\n'
+    + s.toLocaleString() + '回転ハマり（1/' + PROB + '）\n'
+    + freq + '\n'
     + TAGS;
   share.href = 'https://twitter.com/intent/tweet?text='
-    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE);
+    + encodeURIComponent(text) + '&url=' + encodeURIComponent(PAGE + '?utm_source=x');
 
   out.style.display = 'block';
 });

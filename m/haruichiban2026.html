@@ -104,10 +104,10 @@
       <tr><td>700回転</td><td>0.040%</td><td>約2,515回に1回</td></tr>
       <tr class="mark"><td>1,000回転</td><td>0.00139%</td><td>約72,099回に1回</td></tr>
       <tr><td>1,200回転</td><td>0.00015%</td><td>約675,331回に1回</td></tr>
-      <tr><td>1,500回転</td><td>0.0000052%</td><td>約19,359,590回に1回</td></tr>
-      <tr class="mark"><td>2,000回転</td><td>0.0000000%</td><td>約52.0億回に1回</td></tr>
-      <tr><td>2,500回転</td><td>0.0000000%</td><td>約1.4兆回に1回</td></tr>
-      <tr><td>3,000回転</td><td>0.0000000%</td><td>約374.8兆回に1回</td></tr>
+      <tr><td>1,500回転</td><td>ほぼ0%</td><td>約19,359,590回に1回</td></tr>
+      <tr class="mark"><td>2,000回転</td><td>ほぼ0%</td><td>約52.0億回に1回</td></tr>
+      <tr><td>2,500回転</td><td>ほぼ0%</td><td>約1.4兆回に1回</td></tr>
+      <tr><td>3,000回転</td><td>ほぼ0%</td><td>約374.8兆回に1回</td></tr>
     </table>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
@@ -132,7 +132,7 @@
 
   <h3>1000回転・2000回転のハマりはどのくらい珍しいか</h3>
   <p>1000回転のハマりは0.00139%（約72,099回に1回）、
-     2000回転のハマりは0.0000000%（約52.0億回に1回）です。
+     2000回転のハマりはほぼ0%（約52.0億回に1回）です。
      1000回転程度であれば長く打っていれば遭遇する範囲ですが、
      2000回転を超えると相当まれな部類に入ります。</p>
 
@@ -145,6 +145,15 @@
 <section class="panel">
   <h2>他の機種のハマり確率</h2>
   <ul class="others">
+      <li><a href="./shin-ultraman-79.html"><span>シン・ウルトラマン 79ver.</span><span class="p">1/79.9</span></a></li>
+      <li><a href="./enen2-99.html"><span>炎炎ノ消防隊2 99ver.</span><span class="p">1/99.9</span></a></li>
+      <li><a href="./ushiotora-100.html"><span>うしおととら 100ver.</span><span class="p">1/100</span></a></li>
+      <li><a href="./kabaneri2-119.html"><span>甲鉄城のカバネリ2</span><span class="p">1/119.8</span></a></li>
+      <li><a href="./assault-lily.html"><span>アサルトリリィ</span><span class="p">1/164.4</span></a></li>
+      <li><a href="./fujichaku-99.html"><span>愛の不時着 99スイート</span><span class="p">1/99.9</span></a></li>
+      <li><a href="./majo-yajuu.html"><span>魔女と野獣</span><span class="p">1/399</span></a></li>
+      <li><a href="./tact-opus.html"><span>タクトオーパス デスティニー</span><span class="p">1/1394.38</span></a></li>
+      <li><a href="./umi-agnes-pe.html"><span>大海物語Withアグネス・ラム PE</span><span class="p">1/99.9</span></a></li>
       <li><a href="./zom100.html"><span>ゾン100</span><span class="p">1/199.5</span></a></li>
       <li><a href="./sao-alicization.html"><span>SAOアリシゼーション 夜空</span><span class="p">1/199.9</span></a></li>
       <li><a href="./nanatsu3.html"><span>七つの大罪3</span><span class="p">1/319.6</span></a></li>
@@ -185,7 +194,8 @@ function fmtPct(p){
   if(p >= 10) return p.toFixed(1);
   if(p >= 1)  return p.toFixed(2);
   if(p >= 0.01) return p.toFixed(3);
-  return p.toFixed(5);
+  if(p >= 0.00001) return p.toFixed(5);
+  return 'ほぼ0';   // 0が並ぶだけになるので言葉で表す
 }
 function fmtFreq(p, prefix){
   // 50%以上は回数で言わない

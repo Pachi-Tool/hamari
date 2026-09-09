@@ -145,6 +145,15 @@
 <section class="panel">
   <h2>他の機種のハマり確率</h2>
   <ul class="others">
+      <li><a href="./shin-ultraman-79.html"><span>シン・ウルトラマン 79ver.</span><span class="p">1/79.9</span></a></li>
+      <li><a href="./enen2-99.html"><span>炎炎ノ消防隊2 99ver.</span><span class="p">1/99.9</span></a></li>
+      <li><a href="./ushiotora-100.html"><span>うしおととら 100ver.</span><span class="p">1/100</span></a></li>
+      <li><a href="./kabaneri2-119.html"><span>甲鉄城のカバネリ2</span><span class="p">1/119.8</span></a></li>
+      <li><a href="./assault-lily.html"><span>アサルトリリィ</span><span class="p">1/164.4</span></a></li>
+      <li><a href="./fujichaku-99.html"><span>愛の不時着 99スイート</span><span class="p">1/99.9</span></a></li>
+      <li><a href="./majo-yajuu.html"><span>魔女と野獣</span><span class="p">1/399</span></a></li>
+      <li><a href="./tact-opus.html"><span>タクトオーパス デスティニー</span><span class="p">1/1394.38</span></a></li>
+      <li><a href="./umi-agnes-pe.html"><span>大海物語Withアグネス・ラム PE</span><span class="p">1/99.9</span></a></li>
       <li><a href="./zom100.html"><span>ゾン100</span><span class="p">1/199.5</span></a></li>
       <li><a href="./haruichiban2026.html"><span>春一番 2026</span><span class="p">1/89.9</span></a></li>
       <li><a href="./sao-alicization.html"><span>SAOアリシゼーション 夜空</span><span class="p">1/199.9</span></a></li>
@@ -185,7 +194,8 @@ function fmtPct(p){
   if(p >= 10) return p.toFixed(1);
   if(p >= 1)  return p.toFixed(2);
   if(p >= 0.01) return p.toFixed(3);
-  return p.toFixed(5);
+  if(p >= 0.00001) return p.toFixed(5);
+  return 'ほぼ0';   // 0が並ぶだけになるので言葉で表す
 }
 function fmtFreq(p, prefix){
   // 50%以上は回数で言わない

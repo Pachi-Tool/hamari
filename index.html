@@ -753,6 +753,15 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
   </p>
   <!-- MACHINE_LINKS_START ここから下は build.py が自動生成します。手で編集しないでください -->
   <ul class="machine-links">
+    <li><a href="./m/shin-ultraman-79.html"><span>シン・ウルトラマン 79ver.</span><span class="p">1/79.9</span></a></li>
+    <li><a href="./m/enen2-99.html"><span>炎炎ノ消防隊2 99ver.</span><span class="p">1/99.9</span></a></li>
+    <li><a href="./m/ushiotora-100.html"><span>うしおととら 100ver.</span><span class="p">1/100</span></a></li>
+    <li><a href="./m/kabaneri2-119.html"><span>甲鉄城のカバネリ2</span><span class="p">1/119.8</span></a></li>
+    <li><a href="./m/assault-lily.html"><span>アサルトリリィ</span><span class="p">1/164.4</span></a></li>
+    <li><a href="./m/fujichaku-99.html"><span>愛の不時着 99スイート</span><span class="p">1/99.9</span></a></li>
+    <li><a href="./m/majo-yajuu.html"><span>魔女と野獣</span><span class="p">1/399</span></a></li>
+    <li><a href="./m/tact-opus.html"><span>タクトオーパス デスティニー</span><span class="p">1/1394.38</span></a></li>
+    <li><a href="./m/umi-agnes-pe.html"><span>大海物語Withアグネス・ラム PE</span><span class="p">1/99.9</span></a></li>
     <li><a href="./m/zom100.html"><span>ゾン100</span><span class="p">1/199.5</span></a></li>
     <li><a href="./m/haruichiban2026.html"><span>春一番 2026</span><span class="p">1/89.9</span></a></li>
     <li><a href="./m/sao-alicization.html"><span>SAOアリシゼーション 夜空</span><span class="p">1/199.9</span></a></li>
@@ -866,7 +875,8 @@ function fmtPercent(v){
   if(v >= 10) return v.toFixed(1);
   if(v >= 1)  return v.toFixed(2);
   if(v >= 0.01) return v.toFixed(3);
-  return v.toFixed(5);
+  if(v >= 0.00001) return v.toFixed(5);
+  return 'ほぼ0';   // 0が並ぶだけになるので言葉で表す
 }
 function fmtFreq(p, prefix){
   // 50%以上は「〇回に1回」では表せないので言い換える

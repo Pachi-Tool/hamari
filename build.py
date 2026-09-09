@@ -38,10 +38,10 @@ def fmt_pct(v):
         return f"{p:.2f}%"
     if p >= 0.01:
         return f"{p:.3f}%"
-    if p >= 0.0001:
+    if p >= 0.00001:
         return f"{p:.5f}%"
-    # これ以上小さいと0が並んで読めないので「◯万回に1度」側に任せる
-    return f"{p:.7f}%"
+    # これ以上小さいと0が並ぶだけなので言葉で表す（頻度欄が実態を伝える）
+    return "ほぼ0%"
 
 
 def fmt_freq(v, prefix=True):
@@ -458,7 +458,8 @@ function fmtPct(p){{
   if(p >= 10) return p.toFixed(1);
   if(p >= 1)  return p.toFixed(2);
   if(p >= 0.01) return p.toFixed(3);
-  return p.toFixed(5);
+  if(p >= 0.00001) return p.toFixed(5);
+  return 'ほぼ0';   // 0が並ぶだけになるので言葉で表す
 }}
 function fmtFreq(p, prefix){{
   // 50%以上は回数で言わない

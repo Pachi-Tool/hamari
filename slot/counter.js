@@ -81,6 +81,10 @@
     return { val: '－', label: '解析' };
   }
 
+  function theoryCap(t) {
+    return (t.label === '解析' ? '解析値' : '解析値（' + t.label + '）') + '：' + t.val;
+  }
+
   function buildTotals() {
     if (!totalsEl) return;
     var h = '';
@@ -91,7 +95,7 @@
         '<div class="t-label">レア小役合算</div>' +
         '<div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>' +
         '<div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の確率</div></div></div>' +
-        (ct ? '<div class="total-theory">解析値（' + ct.label + '）：' + ct.val + '</div>' : '');
+        (ct ? '<div class="total-theory">' + theoryCap(ct) + '</div>' : '');
     }
     if (rolesIn('bonus').length) {
       var bt = machine.bonus_combined ? theory(machine.bonus_combined) : null;
@@ -100,7 +104,7 @@
         '<div class="t-label">ボーナス合算</div>' +
         '<div class="t-box"><div class="b-count">0</div><div class="t-cap">回</div></div>' +
         '<div class="t-box"><div class="b-prob">1/－</div><div class="t-cap">現在の確率</div></div></div>' +
-        (bt ? '<div class="total-theory">解析値（' + bt.label + '）：' + bt.val + '</div>' : '');
+        (bt ? '<div class="total-theory">' + theoryCap(bt) + '</div>' : '');
     }
     totalsEl.innerHTML = h;
   }

@@ -198,7 +198,8 @@ def totals_html(machine):
         theory = ""
         if machine.get("combined"):
             v, lab = theory_text(machine["combined"])
-            theory = f'<div class="total-theory">解析値（{lab}）：{v}</div>'
+            cap = "解析値" if lab == "解析" else f"解析値（{lab}）"
+            theory = f'<div class="total-theory">{cap}：{v}</div>'
         out += f"""  <div class="label" style="margin-top:18px">レア小役合算</div>
   <div class="total" data-group="rare">
     <div class="t-label">レア小役合算</div>
@@ -211,7 +212,8 @@ def totals_html(machine):
         theory = ""
         if machine.get("bonus_combined"):
             v, lab = theory_text(machine["bonus_combined"])
-            theory = f'<div class="total-theory">解析値（{lab}）：{v}</div>'
+            cap = "解析値" if lab == "解析" else f"解析値（{lab}）"
+            theory = f'<div class="total-theory">{cap}：{v}</div>'
         out += f"""  <div class="label" style="margin-top:18px">ボーナス合算</div>
   <div class="total bonus" data-group="bonus">
     <div class="t-label">ボーナス合算</div>

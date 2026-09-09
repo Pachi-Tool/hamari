@@ -3,6 +3,303 @@
   "section_path": "slot/",
   "machines": [
     {
+      "slug": "lycoris-recoil",
+      "name": "スマスロ リコリス・リコイル",
+      "short": "リコリコ",
+      "maker": "サミー",
+      "type": "スマスロ",
+      "intro": "2026-09-07",
+      "note": "レア小役の確率は全設定共通です。設定差はCZ確率とAT初当り確率にあります。チャンス目にあたるのが「リコリス目」です。",
+      "page": true,
+      "sources": [
+        "https://chonborista.com/slot/sammy-slot/261631/",
+        "https://slobase.jp/machines/lycoris-recoil"
+      ],
+      "roles": [
+        {
+          "name": "弱リコリス目",
+          "common": "50.3"
+        },
+        {
+          "name": "チェリー",
+          "common": "89.2"
+        },
+        {
+          "name": "スイカ",
+          "common": "89.2"
+        },
+        {
+          "name": "強リコリス目",
+          "common": "728.2"
+        },
+        {
+          "name": "中段チェリー",
+          "common": "16384.0"
+        }
+      ],
+      "combined": {
+        "common": "22.9"
+      }
+    },
+    {
+      "slug": "aobuta",
+      "name": "L青春ブタ野郎はバニーガール先輩の夢を見ない",
+      "short": "青ブタ",
+      "maker": "オリンピア",
+      "type": "スマスロ",
+      "intro": "2026-09-07",
+      "note": "チェリーは弱・強に分かれず1種類です。観測目（BAR揃い系）は通常時とCZ・ボーナス中で確率が異なり、解析サイトによって記載が割れているため確率は載せていません。レア小役の設定差は確認されていません。",
+      "page": true,
+      "sources": [
+        "https://1geki.jp/slot/l_ao_buta/4/",
+        "https://chonborista.com/slot/orinpia-slot/261018/"
+      ],
+      "roles": [
+        {
+          "name": "チェリー",
+          "common": "66.9"
+        },
+        {
+          "name": "スイカ",
+          "common": "99.4"
+        },
+        {
+          "name": "チャンス目B",
+          "alias": "スイカハズレ",
+          "common": "250.1"
+        },
+        {
+          "name": "チャンス目A",
+          "alias": "中段リリベ",
+          "common": "978.1"
+        },
+        {
+          "name": "観測目"
+        }
+      ]
+    },
+    {
+      "slug": "kanokari",
+      "name": "Lパチスロ 彼女、お借りします",
+      "short": "かのかり",
+      "maker": "SANKYO",
+      "type": "スマスロ",
+      "intro": "2026-09-07",
+      "note": "この機種はレア小役がチャンス目系に一本化されており、チェリー・スイカの記載がありません。弱チャンス目は1/12と高頻度ですが、2サイトで一致した値です。導入直後のため今後の解析で変わる可能性があります。",
+      "page": true,
+      "sources": [
+        "https://chonborista.com/slot/sankyo-slot/263079/",
+        "https://slogati.com/lkanokari/"
+      ],
+      "roles": [
+        {
+          "name": "弱チャンス目",
+          "common": "12"
+        },
+        {
+          "name": "チャンス目",
+          "common": "80"
+        },
+        {
+          "name": "強チャンス目",
+          "common": "256"
+        },
+        {
+          "name": "ガチ恋目",
+          "common": "730"
+        },
+        {
+          "name": "最強目",
+          "common": "11990"
+        }
+      ]
+    },
+    {
+      "slug": "garei-zero-re",
+      "name": "Lパチスロ 喰霊-零-Re",
+      "short": "喰霊零Re",
+      "maker": "オーイズミ",
+      "type": "スマスロ",
+      "intro": "2026-08-17",
+      "note": "スイカと弱チェリーに設定差がある、レア小役で設定判別ができる貴重な機種です。特戦四課リプレイは見た目上の中段チェリーで、特化ゾーン突入濃厚。確率は非公開です。",
+      "page": true,
+      "sources": [
+        "https://1geki.jp/slot/l_garei0_re/4/",
+        "https://chonborista.com/slot/oizumi-slot/259743/"
+      ],
+      "roles": [
+        {
+          "name": "スイカ",
+          "probs": {
+            "1": "81.9",
+            "2": "79.9",
+            "3": "77.8",
+            "4": "75.6",
+            "5": "73.8",
+            "6": "72.1"
+          },
+          "diff": true
+        },
+        {
+          "name": "弱チェリー",
+          "probs": {
+            "1": "99.0",
+            "2": "95.3",
+            "3": "91.0",
+            "4": "85.1",
+            "5": "80.5",
+            "6": "78.2"
+          },
+          "diff": true
+        },
+        {
+          "name": "弱チャンス目",
+          "common": "136.5"
+        },
+        {
+          "name": "強チェリー",
+          "common": "481.9"
+        },
+        {
+          "name": "強チャンス目",
+          "common": "546.1"
+        },
+        {
+          "name": "リーチ目リプレイ",
+          "common": "4096.0"
+        },
+        {
+          "name": "特戦四課リプレイ",
+          "alias": "中段チェリー"
+        }
+      ],
+      "combined": {
+        "probs": {
+          "1": "29.8"
+        }
+      }
+    },
+    {
+      "slug": "toaru-index2",
+      "name": "スマスロ とある魔術の禁書目録2",
+      "short": "とある2",
+      "maker": "藤商事",
+      "type": "スマスロ",
+      "intro": "2026-08-03",
+      "note": "強チェリーとチャンス目は個別の確率が公開されておらず、2役合算で1/399.6です。中段チェリーは非搭載。設定差はスイカ成立時の高確移行率にあります。",
+      "page": true,
+      "sources": [
+        "https://1geki.jp/slot/l_toaru_index2/4/",
+        "https://chonborista.com/slot/fuji-slot/260325/"
+      ],
+      "roles": [
+        {
+          "name": "弱チェリー",
+          "common": "69.4"
+        },
+        {
+          "name": "スイカ",
+          "common": "98.6"
+        },
+        {
+          "name": "幻想リプレイ",
+          "common": "99.3"
+        },
+        {
+          "name": "強チェリー"
+        },
+        {
+          "name": "チャンス目"
+        }
+      ],
+      "combined": {
+        "common": "36.9"
+      }
+    },
+    {
+      "slug": "street-fighter6",
+      "name": "スマスロ ストリートファイター6",
+      "short": "スト6",
+      "maker": "レオスター",
+      "type": "スマスロ",
+      "intro": "2026-08-03",
+      "note": "レア小役はすべて全設定共通で、設定判別には使えません。中段チェリーは非搭載です。",
+      "page": true,
+      "sources": [
+        "https://1geki.jp/slot/l_streetfighter6/4/",
+        "https://slobase.jp/machines/street-fighter6"
+      ],
+      "roles": [
+        {
+          "name": "スイカ",
+          "common": "72.8"
+        },
+        {
+          "name": "弱チェリー",
+          "common": "81.9"
+        },
+        {
+          "name": "チャンス目",
+          "common": "163.8"
+        },
+        {
+          "name": "強チェリー",
+          "common": "655.4"
+        }
+      ],
+      "combined": {
+        "common": "29.8"
+      }
+    },
+    {
+      "slug": "yajikita",
+      "name": "スマスロ やじきた道中記参る！",
+      "short": "やじきた",
+      "maker": "ユニバーサルブロス",
+      "type": "スマスロ",
+      "intro": "2026-08-03",
+      "note": "祭目が1/19.8と高頻度なのが特徴です。小役はすべて全設定共通で設定差はありません。",
+      "page": true,
+      "sources": [
+        "https://1geki.jp/slot/l_yajikita/4/",
+        "https://chonborista.com/slot/universal-slot/259841/"
+      ],
+      "roles": [
+        {
+          "name": "祭目",
+          "common": "19.8"
+        },
+        {
+          "name": "弱チェリー",
+          "common": "75.0"
+        },
+        {
+          "name": "スイカ",
+          "common": "100.8"
+        },
+        {
+          "name": "弱チャンス目A",
+          "common": "360.1"
+        },
+        {
+          "name": "弱チャンス目B",
+          "common": "360.1"
+        },
+        {
+          "name": "強チェリー",
+          "common": "364.1"
+        },
+        {
+          "name": "強チャンスリプレイ",
+          "common": "565.0"
+        },
+        {
+          "name": "強チャンス目",
+          "common": "1024.0"
+        }
+      ]
+    },
+    {
       "slug": "karakuri-circus2",
       "name": "Lからくりサーカス2",
       "short": "からくり2",

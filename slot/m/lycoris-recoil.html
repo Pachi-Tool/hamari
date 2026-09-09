@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L北斗の拳 転生の章2 レア小役合算・レア小役カウンター</title>
-<meta name="description" content="L北斗の拳 転生の章2 のレア小役（スイカ・弱チェリー・チャンス目・勝舞揃いなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
-<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/hokuto-tensei2.html">
+<title>スマスロ リコリス・リコイル レア小役合算・レア小役カウンター</title>
+<meta name="description" content="スマスロ リコリス・リコイル のレア小役（弱リコリス目・チェリー・スイカ・強リコリス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
+<link rel="canonical" href="https://pachi-tool.github.io/hamari/slot/m/lycoris-recoil.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="L北斗の拳 転生の章2 レア小役合算・レア小役カウンター">
-<meta property="og:description" content="L北斗の拳 転生の章2 のレア小役（スイカ・弱チェリー・チャンス目・勝舞揃いなど）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
-<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/hokuto-tensei2.html">
+<meta property="og:title" content="スマスロ リコリス・リコイル レア小役合算・レア小役カウンター">
+<meta property="og:description" content="スマスロ リコリス・リコイル のレア小役（弱リコリス目・チェリー・スイカ・強リコリス目など）を▲▼ボタンのタップで1回ずつカウント。合算回数と出現率（1/○○）を自動計算します。設定差のあるレア小役も確認できます。">
+<meta property="og:url" content="https://pachi-tool.github.io/hamari/slot/m/lycoris-recoil.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,15 +25,15 @@
     <a href="../../">ハマり確率計算機</a>
   </nav>
 </header>
-<h1 id="machine-title">L北斗の拳 転生の章2 レア小役合算・レア小役カウンター</h1>
-<div class="tagrow" id="machine-tags"><span class="tag">サミー</span><span class="tag">スマスロ</span></div>
-<p class="lead" id="machine-note">レア小役の確率は全設定共通で、レア小役合算は約1/26.5です。弱チェリー・強チェリーはA/Bの合算値を載せています。</p>
+<h1 id="machine-title">スマスロ リコリス・リコイル レア小役合算・レア小役カウンター</h1>
+<div class="tagrow" id="machine-tags"><span class="tag">サミー</span><span class="tag">スマスロ</span><span class="tag">2026-09-07</span></div>
+<p class="lead" id="machine-note">レア小役の確率は全設定共通です。設定差はCZ確率とAT初当り確率にあります。チャンス目にあたるのが「リコリス目」です。</p>
 
-<section class="panel counter" data-slug="hokuto-tensei2" data-name="L北斗の拳 転生の章2">
+<section class="panel counter" data-slug="lycoris-recoil" data-name="スマスロ リコリス・リコイル">
   <div class="label">機種</div>
   <select id="machine-select" aria-label="機種を選ぶ">
   <optgroup label="スマスロ・AT機">
-    <option value="lycoris-recoil">スマスロ リコリス・リコイル</option>
+    <option value="lycoris-recoil" selected>スマスロ リコリス・リコイル</option>
     <option value="aobuta">L青春ブタ野郎はバニーガール先輩の夢を見ない</option>
     <option value="kanokari">Lパチスロ 彼女、お借りします</option>
     <option value="garei-zero-re">Lパチスロ 喰霊-零-Re</option>
@@ -43,7 +43,7 @@
     <option value="karakuri-circus2">Lからくりサーカス2</option>
     <option value="kabaneri-unato">L甲鉄城のカバネリ 海門決戦</option>
     <option value="tokyo-ghoul">L東京喰種</option>
-    <option value="hokuto-tensei2" selected>L北斗の拳 転生の章2</option>
+    <option value="hokuto-tensei2">L北斗の拳 転生の章2</option>
     <option value="bakemonogatari">L化物語</option>
     <option value="valvrave2">Lパチスロ革命機ヴァルヴレイヴ2</option>
     <option value="iza-bancho">Lいざ！番長</option>
@@ -86,46 +86,39 @@
 
   <div class="label" id="count-label" style="margin-top:18px">レア小役カウント（▲で＋1／▼で−1）</div>
   <ul class="roles">
+      <li class="role" data-role="弱リコリス目">
+        <div class="role-name">弱リコリス目</div>
+        <button type="button" class="arrow up" aria-label="弱リコリス目 を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="弱リコリス目 を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/50.3</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+      </li>
+      <li class="role" data-role="チェリー">
+        <div class="role-name">チェリー</div>
+        <button type="button" class="arrow up" aria-label="チェリー を1回足す">▲</button>
+        <div class="count">0</div>
+        <button type="button" class="arrow down" aria-label="チェリー を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/89.2</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+      </li>
       <li class="role" data-role="スイカ">
         <div class="role-name">スイカ</div>
         <button type="button" class="arrow up" aria-label="スイカ を1回足す">▲</button>
         <div class="count">0</div>
         <button type="button" class="arrow down" aria-label="スイカ を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/79.9</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/89.2</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="弱チェリー">
-        <div class="role-name">弱チェリー</div>
-        <button type="button" class="arrow up" aria-label="弱チェリー を1回足す">▲</button>
+      <li class="role" data-role="強リコリス目">
+        <div class="role-name">強リコリス目</div>
+        <button type="button" class="arrow up" aria-label="強リコリス目 を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="弱チェリー を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/99.6</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
+        <button type="button" class="arrow down" aria-label="強リコリス目 を1回減らす">▼</button>
+<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/728.2</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
-      <li class="role" data-role="チャンス目">
-        <div class="role-name">チャンス目</div>
-        <button type="button" class="arrow up" aria-label="チャンス目 を1回足す">▲</button>
+      <li class="role" data-role="中段チェリー">
+        <div class="role-name">中段チェリー</div>
+        <button type="button" class="arrow up" aria-label="中段チェリー を1回足す">▲</button>
         <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="チャンス目 を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/199.2</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
-      </li>
-      <li class="role" data-role="勝舞揃い">
-        <div class="role-name">勝舞揃い</div>
-        <button type="button" class="arrow up" aria-label="勝舞揃い を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="勝舞揃い を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/198.6</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
-      </li>
-      <li class="role" data-role="強チェリー">
-        <div class="role-name">強チェリー</div>
-        <button type="button" class="arrow up" aria-label="強チェリー を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="強チェリー を1回減らす">▼</button>
-<div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/198.6</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
-      </li>
-      <li class="role" data-role="確定チェリー">
-        <div class="role-name">確定チェリー</div>
-        <button type="button" class="arrow up" aria-label="確定チェリー を1回足す">▲</button>
-        <div class="count">0</div>
-        <button type="button" class="arrow down" aria-label="確定チェリー を1回減らす">▼</button>
+        <button type="button" class="arrow down" aria-label="中段チェリー を1回減らす">▼</button>
 <div class="probs"><div class="prob-row"><span class="k">解析</span><span class="v theory">1/16384.0</span></div><div class="prob-row"><span class="k">現在</span><span class="v now">1/－</span></div></div>
       </li>
   </ul>
@@ -137,7 +130,7 @@
     <div class="t-box"><div class="t-count">0</div><div class="t-cap">回</div></div>
     <div class="t-box"><div class="t-prob">1/－</div><div class="t-cap">現在の確率</div></div>
   </div>
-<div class="total-theory">解析値：1/26.5</div>
+<div class="total-theory">解析値：1/22.9</div>
 </div>
 
   <div class="actions">
@@ -164,14 +157,13 @@
 <h3 class="sub-h">そのほかのレア小役</h3>
 <div class="tablewrap"><table class="ref">
 <tr><th>レア小役</th><th>出現率</th></tr>
-<tr><td class="rolecell">スイカ</td><td>1/79.9<span class="cap">全設定共通</span></td></tr>
-<tr><td class="rolecell">弱チェリー</td><td>1/99.6<span class="cap">全設定共通</span></td></tr>
-<tr><td class="rolecell">チャンス目</td><td>1/199.2<span class="cap">全設定共通</span></td></tr>
-<tr><td class="rolecell">勝舞揃い</td><td>1/198.6<span class="cap">全設定共通</span></td></tr>
-<tr><td class="rolecell">強チェリー</td><td>1/198.6<span class="cap">全設定共通</span></td></tr>
-<tr><td class="rolecell">確定チェリー</td><td>1/16384.0<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">弱リコリス目</td><td>1/50.3<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">チェリー</td><td>1/89.2<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">スイカ</td><td>1/89.2<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">強リコリス目</td><td>1/728.2<span class="cap">全設定共通</span></td></tr>
+<tr><td class="rolecell">中段チェリー</td><td>1/16384.0<span class="cap">全設定共通</span></td></tr>
 </table></div>
-<p class="note src">確率の出典：<a href="https://1geki.jp/slot/l_hokuto_tensei2/4/" target="_blank" rel="nofollow noopener">1geki.jp</a>、<a href="https://chonborista.com/slot/sammy-slot/246735/" target="_blank" rel="nofollow noopener">chonborista.com</a></p>
+<p class="note src">確率の出典：<a href="https://chonborista.com/slot/sammy-slot/261631/" target="_blank" rel="nofollow noopener">chonborista.com</a>、<a href="https://slobase.jp/machines/lycoris-recoil" target="_blank" rel="nofollow noopener">slobase.jp</a></p>
 </div>
 
 <h2>使い方</h2>
@@ -181,7 +173,7 @@
   3. レア小役を引くたびに、その役の <strong>▲</strong> をタップして1回ずつカウントします。押し間違えたら <strong>▼</strong> で戻せます。<br>
   4. 各レア小役の出現率と、全レア小役を足した「レア小役合算」の確率が 1/○○ で自動表示されます。<br>
   5. カウントは機種ごとにこの端末へ自動保存されます。消したいときは「リセット」を2回押してください。</p>
-  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。L北斗の拳 転生の章2のレア役カウンター／レア子役カウンターとしてお使いください。</p>
+  <p class="note">※ レア小役は「レア役」「レア子役」と呼ばれることもありますが、どれも同じものを指します。スマスロ リコリス・リコイルのレア役カウンター／レア子役カウンターとしてお使いください。</p>
 </div>
 
 <h2>他の機種を選ぶ</h2>

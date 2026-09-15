@@ -114,6 +114,32 @@ body{
 .crumb{font-size:12px;color:var(--text-dim);padding:18px 0 0;}
 .crumb a{color:var(--neon-cyan);text-decoration:none;}
 
+/* サイト共通ヘッダー */
+.site-bar{
+  background:rgba(11,7,16,.82);
+  border-bottom:1px solid rgba(200,194,216,.18);
+  backdrop-filter:blur(8px);
+  margin:0 -16px;padding:0 16px;
+}
+.site-bar-inner{
+  max-width:760px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;padding:12px 0;
+}
+.site-logo{
+  font-family:"Reggae One",cursive;font-size:17px;
+  color:var(--lamp-gold);text-decoration:none;
+  letter-spacing:.06em;text-shadow:0 0 10px rgba(255,200,50,.5);
+  white-space:nowrap;
+}
+.site-nav{display:flex;gap:18px;flex-wrap:wrap;}
+.site-nav a{
+  color:var(--text-dim);text-decoration:none;font-size:13px;
+  padding:3px 0;border-bottom:2px solid transparent;white-space:nowrap;
+}
+.site-nav a:hover{color:var(--neon-cyan);}
+.site-nav a.current{color:var(--text);border-bottom-color:var(--neon-pink);}
+
 header{text-align:center;padding:18px 0 20px;}
 .eyebrow{font-family:"DotGothic16",monospace;color:var(--neon-cyan);
   letter-spacing:.25em;font-size:11px;margin:0 0 10px;}
@@ -239,6 +265,11 @@ footer a{color:var(--text-dim);}
 @media (max-width:480px){
   body{padding:0 12px 60px;}
   .panel{padding:16px;}
+  .site-bar{margin:0 -12px;padding:0 12px;}
+  .site-bar-inner{padding:10px 0;}
+  .site-logo{font-size:15px;}
+  .site-nav{gap:14px;}
+  .site-nav a{font-size:12px;}
 }
 """
 
@@ -352,6 +383,18 @@ def build_page(m, others):
 </script>
 </head>
 <body>
+
+<!-- サイト共通ヘッダー -->
+<div class="site-bar">
+  <div class="site-bar-inner">
+    <a class="site-logo" href="../">PACHI-TOOL</a>
+    <nav class="site-nav">
+      <a href="../slot/">レア小役カウンター</a>
+      <a class="current" href="../">ハマり確率計算機</a>
+    </nav>
+  </div>
+</div>
+
 <div class="wrap">
 
 <p class="crumb"><a href="../">ハマり確率計算機</a> ／ {esc(short)}</p>

@@ -638,6 +638,10 @@ def main():
                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                 + body + "\n</urlset>\n")
 
+    # テキスト形式のサイトマップ（1行1URL。XMLとは別経路の予備）
+    with open("sitemap.txt", "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(u for u, _, _ in urls) + "\n")
+
     # トップページのリンク一覧
     update_index(targets)
 

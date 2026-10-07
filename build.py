@@ -17,7 +17,7 @@ import os
 import re
 from datetime import date
 
-SITE = "https://pachi-tool.github.io/hamari/"
+SITE = "https://pachi-tool.com/"
 TODAY = date.today().isoformat()
 
 # 早見表に出す回転数

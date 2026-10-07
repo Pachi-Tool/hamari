@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pachi-tool.github.io/hamari/sitemap.xml
-Sitemap: https://pachi-tool.github.io/hamari/slot/sitemap.xml
+Sitemap: https://pachi-tool.com/sitemap.xml
+Sitemap: https://pachi-tool.com/slot/sitemap.xml

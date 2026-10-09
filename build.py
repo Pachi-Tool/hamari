@@ -80,15 +80,19 @@ def esc(s):
 # ---------------------------------------------------------------
 AD_BLOCK = """<aside class="ad-block">
   <span class="ad-label">PR</span>
-  <a href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+FM17UA+5PLE+5YZ75"
+  <a href="https://px.a8.net/svt/ejp?a8mat=4BECGY+F6JY42+5FAA+5YZ75"
      rel="sponsored nofollow noopener" target="_blank">
-    <img class="ad-banner" border="0" width="300" height="250" alt="広告"
+    <img class="ad-banner" border="0" width="300" height="250" alt="アニメ・マンガ・ゲームのグッズ専門ショップ FaNeMa"
          loading="lazy"
-         src="https://www25.a8.net/svt/bgt?aid=260827395944&amp;wid=001&amp;eno=01&amp;mid=s00000026645001003000&amp;mc=1">
+         src="https://www25.a8.net/svt/bgt?aid=261009826918&amp;wid=001&amp;eno=01&amp;mid=s00000025309001003000&amp;mc=1">
   </a>
   <img border="0" width="1" height="1"
-       src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
+       src="https://www14.a8.net/0.gif?a8mat=4BECGY+F6JY42+5FAA+5YZ75" alt="">
 </aside>"""
+
+
+CTA_LINK = "https://px.a8.net/svt/ejp?a8mat=4BECGY+F6JY42+5FAA+5YRHE"
+CTA_PIXEL = '<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4BECGY+F6JY42+5FAA+5YRHE" alt="">'
 
 
 # ---------------------------------------------------------------
@@ -252,6 +256,16 @@ tr.mark td{background:rgba(255,200,50,.09);}
 }
 .ad-link:hover{background:rgba(37,229,255,.12);}
 
+/* 計算直後に出る広告ボタン */
+.cta-pr{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(200,194,216,.25);text-align:center;}
+.cta-pr .pr{display:inline-block;font-size:10px;letter-spacing:.14em;color:var(--text-dim);
+  border:1px solid rgba(200,194,216,.3);border-radius:4px;padding:0 7px;margin-bottom:8px;}
+.cta-pr a.cta-btn{display:block;text-decoration:none;font-weight:900;font-size:14px;
+  color:#2a1300;background:linear-gradient(180deg,#ffe08a,var(--lamp-gold));
+  border-radius:999px;padding:13px 16px;box-shadow:0 4px 0 #a37a10,0 0 18px rgba(255,200,50,.45);}
+.cta-pr a.cta-btn:active{transform:scale(.98);}
+.cta-pr .note{font-size:11px;color:var(--text-dim);margin:6px 0 0;}
+
 .others{list-style:none;padding:0;margin:0;}
 .others li{border-bottom:1px solid rgba(200,194,216,.16);}
 .others a{display:flex;justify-content:space-between;gap:10px;
@@ -315,6 +329,17 @@ def build_page(m, others):
     # 投稿の先頭に付ける絵文字（machines.json で変更できる）
     emoji = (m.get("emoji") or "").strip()
     emoji_text = (emoji + " ") if emoji else ""
+
+    # 計算直後に出す広告ボタン（machines.json に goods_url があれば、その作品のグッズへ飛ばす）
+    goods_url = (m.get("goods_url") or "").strip()
+    if goods_url:
+        cta_href = goods_url
+        cta_text = f"{emoji_text}{esc(short)}のグッズを見る"
+        cta_pixel = ""
+    else:
+        cta_href = CTA_LINK
+        cta_text = "🎁 アニメ・ゲームのグッズを探す"
+        cta_pixel = CTA_PIXEL
 
     # 他機種へのリンク
     other_items = "\n".join(
@@ -420,6 +445,12 @@ def build_page(m, others):
     <div class="big"><span id="pct">--</span></div>
     <div class="sub" id="oneIn">--</div>
     <div class="cmp" id="cmp"></div>
+    <div class="cta-pr">
+      <span class="pr">PR</span>
+      <a class="cta-btn" href="{cta_href}" rel="sponsored nofollow noopener" target="_blank">{cta_text}</a>
+      <p class="note">アニメ・マンガ・ゲームのグッズ専門ショップ FaNeMa</p>
+      {cta_pixel}
+    </div>
     <a id="share" class="btn-x" href="#" target="_blank" rel="noopener">この結果をXに投稿する</a>
   </div>
 </section>

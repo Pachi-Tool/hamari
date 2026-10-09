@@ -304,14 +304,14 @@ def build_machine_page(machine, cfg, machines):
 
 <aside class="ad-block">
   <span class="ad-label">PR</span>
-  <a href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+FM17UA+5PLE+5YZ75"
+  <a href="https://px.a8.net/svt/ejp?a8mat=4BECGY+F6JY42+5FAA+5YZ75"
      rel="sponsored nofollow noopener" target="_blank">
-    <img class="ad-banner" border="0" width="300" height="250" alt="広告"
+    <img class="ad-banner" border="0" width="300" height="250" alt="アニメ・マンガ・ゲームのグッズ専門ショップ FaNeMa"
          loading="lazy"
-         src="https://www25.a8.net/svt/bgt?aid=260827395944&amp;wid=001&amp;eno=01&amp;mid=s00000026645001003000&amp;mc=1">
+         src="https://www25.a8.net/svt/bgt?aid=261009826918&amp;wid=001&amp;eno=01&amp;mid=s00000025309001003000&amp;mc=1">
   </a>
   <img border="0" width="1" height="1"
-       src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
+       src="https://www14.a8.net/0.gif?a8mat=4BECGY+F6JY42+5FAA+5YZ75" alt="">
 </aside>
 
 <h2 id="ref-heading">{ref_heading}</h2>
@@ -370,14 +370,14 @@ def build_index(cfg, machines):
 
 <aside class="ad-block">
   <span class="ad-label">PR</span>
-  <a href="https://px.a8.net/svt/ejp?a8mat=4BAFPF+FM17UA+5PLE+5YZ75"
+  <a href="https://px.a8.net/svt/ejp?a8mat=4BECGY+F6JY42+5FAA+5YZ75"
      rel="sponsored nofollow noopener" target="_blank">
-    <img class="ad-banner" border="0" width="300" height="250" alt="広告"
+    <img class="ad-banner" border="0" width="300" height="250" alt="アニメ・マンガ・ゲームのグッズ専門ショップ FaNeMa"
          loading="lazy"
-         src="https://www25.a8.net/svt/bgt?aid=260827395944&amp;wid=001&amp;eno=01&amp;mid=s00000026645001003000&amp;mc=1">
+         src="https://www25.a8.net/svt/bgt?aid=261009826918&amp;wid=001&amp;eno=01&amp;mid=s00000025309001003000&amp;mc=1">
   </a>
   <img border="0" width="1" height="1"
-       src="https://www17.a8.net/0.gif?a8mat=4BAFPF+FM17UA+5PLE+5YZ75" alt="">
+       src="https://www14.a8.net/0.gif?a8mat=4BECGY+F6JY42+5FAA+5YZ75" alt="">
 </aside>
 
 <h2>ジャグラー・ハナハナ（Aタイプ）</h2>

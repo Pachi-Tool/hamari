@@ -156,6 +156,16 @@ tr.mark td{background:rgba(255,200,50,.09);}
 }
 .ad-link:hover{background:rgba(37,229,255,.12);}
 
+/* 計算直後に出る広告ボタン */
+.cta-pr{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(200,194,216,.25);text-align:center;}
+.cta-pr .pr{display:inline-block;font-size:10px;letter-spacing:.14em;color:var(--text-dim);
+  border:1px solid rgba(200,194,216,.3);border-radius:4px;padding:0 7px;margin-bottom:8px;}
+.cta-pr a.cta-btn{display:block;text-decoration:none;font-weight:900;font-size:14px;
+  color:#2a1300;background:linear-gradient(180deg,#ffe08a,var(--lamp-gold));
+  border-radius:999px;padding:13px 16px;box-shadow:0 4px 0 #a37a10,0 0 18px rgba(255,200,50,.45);}
+.cta-pr a.cta-btn:active{transform:scale(.98);}
+.cta-pr .note{font-size:11px;color:var(--text-dim);margin:6px 0 0;}
+
 .others{list-style:none;padding:0;margin:0;}
 .others li{border-bottom:1px solid rgba(200,194,216,.16);}
 .others a{display:flex;justify-content:space-between;gap:10px;

@@ -406,6 +406,8 @@ def build_page(m, others):
 <script type="application/ld+json">
 {faq_json}
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 

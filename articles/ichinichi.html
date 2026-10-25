@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1日打つと大ハマりに何回出会う？回転数から見るハマりの頻度</title>
+<meta name="description" content="1日2,000回転打ったとき、1000回転以上の大ハマりに出会う確率はどのくらいでしょうか。甘デジ・ライトミドル・ミドルについて、1日・1か月で大ハマりに出会う回数の目安を計算しました。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pachi-tool.com/articles/ichinichi.html">
+<meta property="og:title" content="1日打つと大ハマりに何回出会う？回転数から見るハマりの頻度">
+<meta property="og:description" content="1日2,000回転打ったとき、1000回転以上の大ハマりに出会う確率はどのくらいでしょうか。甘デジ・ライトミドル・ミドルについて、1日・1か月で大ハマりに出会う回数の目安を計算しました。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pachi-tool.com/articles/ichinichi.html">
+<meta property="og:site_name" content="ハマり確率計算機">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Reggae+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "1日打つと大ハマりに何回出会う？回転数から見るハマりの頻度",
+      "description": "1日2,000回転打ったとき、1000回転以上の大ハマりに出会う確率はどのくらいでしょうか。甘デジ・ライトミドル・ミドルについて、1日・1か月で大ハマりに出会う回数の目安を計算しました。",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "author": {
+        "@type": "Organization",
+        "name": "PACHI-TOOL",
+        "url": "https://pachi-tool.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PACHI-TOOL",
+        "url": "https://pachi-tool.com/"
+      },
+      "mainEntityOfPage": "https://pachi-tool.com/articles/ichinichi.html",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ハマり確率計算機",
+          "item": "https://pachi-tool.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "解説記事",
+          "item": "https://pachi-tool.com/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "1日打つと大ハマりに何回出会う？回転数から見るハマりの頻度",
+          "item": "https://pachi-tool.com/articles/ichinichi.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- サイト共通ヘッダー -->
+<div class="site-bar">
+  <div class="site-bar-inner">
+    <a class="site-logo" href="../">PACHI-TOOL</a>
+    <nav class="site-nav">
+      <a href="../slot/">レア小役カウンター</a>
+      <a href="../">ハマり確率計算機</a>
+      <a class="current" href="./">解説記事</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<p class="crumb"><a href="../">ハマり確率計算機</a> ／ <a href="./">解説記事</a></p>
+
+<header>
+  <p class="eyebrow">HOW OFTEN</p>
+  <h1>1日打つと大ハマりに<br>何回出会う？</h1>
+  <p class="date">公開日：2026/10/25</p>
+</header>
+
+<p class="lead">「大ハマりなんて自分には関係ない」と思っていても、長く打っていれば誰でも出会います。
+この記事では、1日に回す回転数から、大ハマりに出会う確率と回数を計算してみます。</p>
+
+<nav class="toc"><p>この記事の内容</p><ol>
+<li><a href="#s1">計算の前提</a></li>
+<li><a href="#s2">1日・20日で大ハマりに出会う回数</a></li>
+<li><a href="#s3">ミドルの1000ハマりは「月に何回か」の出来事</a></li>
+<li><a href="#s4">「初当たり何回に1回」とのつながり</a></li>
+<li><a href="#s5">大ハマりとの付き合い方</a></li>
+</ol></nav>
+
+<section class="panel" id="s1">
+<h2>計算の前提</h2>
+<ul class="list">
+<li>1日に回す通常時の回転数は<strong>2,000回転</strong>とします（朝から夜までしっかり打った場合のおおよその目安です）</li>
+<li>打ち始めは0回転からとし、前日のハマりは引き継がないものとします</li>
+<li>大当たりの後は、また0回転から数え直します（時短や確変中の回転は数えません）</li>
+<li>通常時の大当たり確率だけで計算し、遊タイムなどの特殊な仕組みは考えません</li>
+</ul>
+<p>この前提で、「1日の中で、決めた回転数以上のハマりが起きる確率」と「起きる回数の平均」を、
+1回転ずつ順番にたどる方法で正確に計算しました。</p>
+</section>
+
+<section class="panel" id="s2">
+<h2>1日・20日で大ハマりに出会う回数</h2>
+<div class="table-scroll"><table>
+<tr><th>大当たり確率</th><th>ハマりの大きさ</th><th>1日で1回以上出会う確率</th><th>1日の平均回数</th><th>20日の平均回数</th></tr>
+<tr><td>1/99.9</td><td>300回転以上</td><td>64.4%</td><td>約0.88回</td><td>約17.6回</td></tr>
+<tr><td>1/99.9</td><td>500回転以上</td><td>10.2%</td><td>約0.10回</td><td>約2.1回</td></tr>
+<tr><td>1/199.8</td><td>800回転以上</td><td>12.5%</td><td>約0.13回</td><td>約2.5回</td></tr>
+<tr><td>1/199.8</td><td>1,000回転以上</td><td>3.98%</td><td>約0.04回</td><td>約0.8回</td></tr>
+<tr><td>1/319.7</td><td>1,000回転以上</td><td>18.0%</td><td>約0.18回</td><td>約3.6回</td></tr>
+<tr><td>1/319.7</td><td>1,500回転以上</td><td>2.33%</td><td>約0.02回</td><td>約0.5回</td></tr>
+</table></div>
+<p class="small">※「出会う」は、そのハマり回転数に到達したことを指します。到達した時点で1回と数えます。</p>
+<p>甘デジの500回転ハマりは、1日打っても出会う確率は10.2%です。
+一方、ミドルの1000回転ハマりは、1日で18.0%の確率で起こります。</p>
+</section>
+
+<section class="panel" id="s3">
+<h2>ミドルの1000ハマりは「月に何回か」の出来事</h2>
+<p>1/319.7のミドルを1日2,000回転打つと、初当たりは平均で約6.3回です。
+そのうえで1000回転以上のハマりに出会う回数は、1日あたり平均約0.18回でした。</p>
+<p>これは、<strong>およそ5.6日に1回</strong>のペースです。月に20日打つ人なら、
+1か月で平均3.6回ほど1000ハマりを経験する計算になります。
+「めったにない不運」というより、<strong>打っていれば毎月のように出会う出来事</strong>だといえます。</p>
+<p>1500回転以上になると、1日あたり約0.023回と、ぐっと少なくなります。
+それでも、20日打てば37.6%の確率で1回以上は出会う計算です（1日ごとの確率から計算）。</p>
+</section>
+
+<section class="panel" id="s4">
+<h2>「初当たり何回に1回」とのつながり</h2>
+<p>当サイトの計算機は、1/319.7の1000回転ハマりを「初当たり約23回に1回」と表示します。
+1日の初当たりが約6.3回なら、23回の初当たりに届くのは約3.7日後です。</p>
+<p>この「約3.7日に1回」と、上で正確に計算した「約5.6日に1回」には、かなり差があります。
+理由は、<strong>1日の区切り</strong>です。1日2,000回転に対して1000回転のハマりは半分の長さなので、
+その日の後半に始まったハマりは、閉店までに1000回転に届きません。翌日はまた0回転から数えるため、そのハマりは記録されずに終わります。</p>
+<p>逆にいえば、「初当たり約23回に1回」は、ハマりを最後まで見届けた場合の数字です。
+1日の中で区切って打つ普通の遊び方では、大ハマりに<strong>最後まで付き合う</strong>機会は、それより少なくなります。</p>
+</section>
+
+<section class="panel" id="s5">
+<h2>大ハマりとの付き合い方</h2>
+<h3>「自分だけが不運」ではない</h3>
+<p>ミドルを日常的に打つ人なら、1000回転ハマりは1週間に1回ほど出会う出来事です。ハマった台が壊れているわけでも、
+自分が特別ついていないわけでもありません。</p>
+<h3>ハマりは取り返せない</h3>
+<p>大ハマりのあとに「取り返すまでやめられない」と感じることがあります。
+しかし、<a href="./hamari-dai.html">ハマり台の記事</a>で説明したとおり、ハマったあとも当たりやすさは変わりません。
+使う金額と時間は、打つ前に決めておくのがおすすめです。</p>
+<h3>のめり込みに注意</h3>
+<p>遊技は20歳以上の方が、自己資金の範囲内で楽しむものです。のめり込んでいると感じたら、
+「リカバリーサポート・ネットワーク」などの専門の相談窓口に相談することもできます。</p>
+</section>
+
+<section class="panel try">
+<h2>計算機で確かめる</h2>
+<p>今日のハマりが、どのくらい珍しい出来事だったのかを計算してみましょう。</p>
+<a class="cta" href="../">ハマり確率計算機を使う</a>
+<p class="small" style="margin-top:12px;">機種別の早見表：<a href="../m/eva-319red.html">エヴァ -319 RED-（1/319.7）</a> ／ <a href="../m/gantz.html">GANTZ（1/319）</a> ／ <a href="../m/dennonbu-4500.html">ドラムde 電音部（1/259.0）</a></p>
+</section>
+<section class="panel"><h2>ほかの解説記事</h2><ul class="alist">
+<li><a href="./hamari-keisan.html">ハマり確率の計算方法｜1/319で1000回転ハマる確率は約4.3%</a></li>
+<li><a href="./bunbo.html">確率の分母だけ回せば当たる？分母まで回して当たっている確率は約63%</a></li>
+<li><a href="./type-hikaku.html">甘デジ・ライトミドル・ミドルでハマりやすさはどれだけ違う？</a></li>
+<li><a href="./hamari-dai.html">ハマり台は当たりやすい？ギャンブラーの誤謬を数字で解説</a></li>
+</ul></section>
+<footer>
+  <p>記事内の数値は、通常時の大当たり確率をもとにした確率計算の理論値です。実際の遊技結果を保証するものではありません。<br>
+     遊技は20歳以上・自己資金の範囲内でお楽しみください。</p>
+  <p style="margin-top:12px;"><a href="./">解説記事の一覧</a> ／ <a href="../">ハマり確率計算機</a> ／ <a href="../privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -8,7 +8,7 @@ machines.json を読んで、機種ごとのページと sitemap.xml を生成�
 生成されるもの:
   m/<slug>.html   機種ごとのページ
   m/style.css     機種ページ共通のスタイル
-  sitemap.xml     全ページを載せたサイトマップ
+  sitemap.xml     全ページを載せたサイトマップ（articles/ の解説記事も含む）
 """
 
 import json
@@ -418,6 +418,7 @@ def build_page(m, others):
     <nav class="site-nav">
       <a href="../slot/">レア小役カウンター</a>
       <a class="current" href="../">ハマり確率計算機</a>
+      <a href="../articles/">解説記事</a>
     </nav>
   </div>
 </div>
@@ -497,6 +498,15 @@ def build_page(m, others):
   <p>なりません。{short}の抽選は1回転ごとに独立しているため、
      何回転ハマった直後でも次の1回転の当選確率は1/{prob}のままです。
      「そろそろ当たる」と感じるのはギャンブラーの誤謬と呼ばれる錯覚です。</p>
+</section>
+
+<section class="panel">
+  <h2>ハマり確率をもっと知る</h2>
+  <ul class="others">
+    <li><a href="../articles/hamari-keisan.html"><span>ハマり確率の計算方法をやさしく解説</span></a></li>
+    <li><a href="../articles/bunbo.html"><span>分母まで回せば当たる？本当の当たりやすさ</span></a></li>
+    <li><a href="../articles/hamari-dai.html"><span>ハマり台は当たりやすい？数字で確かめる</span></a></li>
+  </ul>
 </section>
 
 <section class="panel">
@@ -658,6 +668,12 @@ def main():
 
     # サイトマップ
     urls = [(SITE, "weekly", "1.0"), (SITE + "privacy.html", "yearly", "0.3")]
+    # 解説記事（articles/ フォルダにあるHTMLをすべて載せる）
+    if os.path.isdir("articles"):
+        urls.append((SITE + "articles/", "monthly", "0.7"))
+        for fn in sorted(os.listdir("articles")):
+            if fn.endswith(".html") and fn != "index.html":
+                urls.append((f"{SITE}articles/{fn}", "monthly", "0.7"))
     for m in targets:
         urls.append((f"{SITE}m/{m['slug']}.html", "monthly", "0.8"))
 

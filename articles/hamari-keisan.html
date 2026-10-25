@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハマり確率の計算方法｜1/319で1000回転ハマる確率は約4.3%</title>
+<meta name="description" content="パチンコのハマり確率は「外れる確率を回転数ぶん掛け算する」だけで求められます。1/319で1000回転ハマる確率が約4.3%になる理由、よくある計算ミス、電卓やExcelでの計算方法を、具体例と早見表で解説します。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pachi-tool.com/articles/hamari-keisan.html">
+<meta property="og:title" content="ハマり確率の計算方法｜1/319で1000回転ハマる確率は約4.3%">
+<meta property="og:description" content="パチンコのハマり確率は「外れる確率を回転数ぶん掛け算する」だけで求められます。1/319で1000回転ハマる確率が約4.3%になる理由、よくある計算ミス、電卓やExcelでの計算方法を、具体例と早見表で解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pachi-tool.com/articles/hamari-keisan.html">
+<meta property="og:site_name" content="ハマり確率計算機">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Reggae+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "ハマり確率の計算方法｜1/319で1000回転ハマる確率は約4.3%",
+      "description": "パチンコのハマり確率は「外れる確率を回転数ぶん掛け算する」だけで求められます。1/319で1000回転ハマる確率が約4.3%になる理由、よくある計算ミス、電卓やExcelでの計算方法を、具体例と早見表で解説します。",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "author": {
+        "@type": "Organization",
+        "name": "PACHI-TOOL",
+        "url": "https://pachi-tool.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PACHI-TOOL",
+        "url": "https://pachi-tool.com/"
+      },
+      "mainEntityOfPage": "https://pachi-tool.com/articles/hamari-keisan.html",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ハマり確率計算機",
+          "item": "https://pachi-tool.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "解説記事",
+          "item": "https://pachi-tool.com/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ハマり確率の計算方法",
+          "item": "https://pachi-tool.com/articles/hamari-keisan.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- サイト共通ヘッダー -->
+<div class="site-bar">
+  <div class="site-bar-inner">
+    <a class="site-logo" href="../">PACHI-TOOL</a>
+    <nav class="site-nav">
+      <a href="../slot/">レア小役カウンター</a>
+      <a href="../">ハマり確率計算機</a>
+      <a class="current" href="./">解説記事</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<p class="crumb"><a href="../">ハマり確率計算機</a> ／ <a href="./">解説記事</a></p>
+
+<header>
+  <p class="eyebrow">HOW TO CALCULATE</p>
+  <h1>ハマり確率の計算方法を<br>やさしく解説</h1>
+  <p class="date">公開日：2026/10/25</p>
+</header>
+
+<p class="lead">「1000回転ハマった。これってどのくらい珍しいの？」――その答えは、中学校で習う掛け算だけで出せます。
+この記事では、ハマり確率の計算方法を一歩ずつ説明し、実際の数字で確かめていきます。</p>
+
+<nav class="toc"><p>この記事の内容</p><ol>
+<li><a href="#s1">ハマり確率とは</a></li>
+<li><a href="#s2">計算は「外れる確率の掛け算」</a></li>
+<li><a href="#s3">よくある計算ミス</a></li>
+<li><a href="#s4">電卓・Excelでの計算方法</a></li>
+<li><a href="#s5">確率別の早見表</a></li>
+<li><a href="#s6">「約○回に1回」の読み方</a></li>
+</ol></nav>
+
+<section class="panel" id="s1">
+<h2>ハマり確率とは</h2>
+<p>ここでいう「ハマり確率」は、<strong>決めた回転数まで1度も大当たりしない確率</strong>のことです。
+たとえば「1/319.7の台で1000回転ハマる確率」は、1回転目から1000回転目まで、ずっと外れ続ける確率を指します。</p>
+<p>パチンコの抽選は1回転ごとに独立しています。前の回転が外れたかどうかは、次の回転の当たりやすさに影響しません。
+この「独立している」という性質のおかげで、計算がとても簡単になります。</p>
+</section>
+
+<section class="panel" id="s2">
+<h2>計算は「外れる確率の掛け算」</h2>
+<h3>ステップ1：1回転で外れる確率を出す</h3>
+<p>大当たり確率が1/319.7なら、1回転で外れる確率は「1 − 1/319.7」です。分数で書くと318.7/319.7、
+小数にすると約0.99687になります。ほぼ1ですが、ほんの少しだけ1より小さい数です。</p>
+<h3>ステップ2：回転数の分だけ掛け算する</h3>
+<p>1000回転続けて外れる確率は、この0.99687を1000回掛けたものです。式で書くと次のとおりです。</p>
+<p class="formula">ハマり確率 ＝（1 − 1/大当たり確率の分母）<sup>回転数</sup></p>
+<p>実際に計算すると、1/319.7で1000回転ハマる確率は<strong>4.36%</strong>になります。
+1に近い数でも、1000回掛けるとここまで小さくなります。</p>
+<h3>ステップ3：パーセントを「何回に1回」に直す</h3>
+<p>4.36%は、逆数をとると約23です。つまり<strong>初当たりを約23回引くうちの1回</strong>は、
+その前に1000回転以上ハマっている計算です。パーセントより、こちらのほうが実感に近いかもしれません。</p>
+</section>
+
+<section class="panel" id="s3">
+<h2>よくある計算ミス</h2>
+<h3>ミス1：「1000 ÷ 319.7」で考えてしまう</h3>
+<p>「1000回転回したのだから、当たりが1000/319.7 ≒ 3.1回分あるはず」と考えると、
+当たる確率が300%を超えてしまいます。確率は100%を超えないので、この考え方はどこかが間違っています。
+1000/319.7は「1000回転で当たる回数の<strong>平均</strong>」で、「当たる確率」ではありません。</p>
+<h3>ミス2：「当たる確率」を掛け算してしまう</h3>
+<p>1/319.7を1000回掛けると、とてつもなく小さい数になります。これは「1000回転<strong>すべて</strong>で当たる確率」です。
+ハマり確率を求めるときに掛けるのは、当たる確率ではなく<strong>外れる確率</strong>です。</p>
+<h3>ポイント：「1回以上当たる確率」は引き算で出せる</h3>
+<p>1000回転以内に1回以上当たる確率は、1 − ハマり確率 ＝ 95.6%です。
+「1回以上当たる」と「1回も当たらない」は、どちらか必ず一方が起きるので、合計はぴったり100%になります。</p>
+</section>
+
+<section class="panel" id="s4">
+<h2>電卓・Excelでの計算方法</h2>
+<h3>Excel・Googleスプレッドシート</h3>
+<p>セルに次の式を入れるだけです。319.7と1000を、調べたい確率と回転数に変えてください。</p>
+<p class="formula">=(1-1/319.7)^1000</p>
+<p>結果は0.0436…と表示されます。パーセントにしたいときは、セルの表示形式を「%」にします。</p>
+<h3>スマホの電卓（関数電卓モード）</h3>
+<p>「1 − 1 ÷ 319.7」を計算してから、累乗のキー（x<sup>y</sup> や ^）で1000乗します。
+普通の電卓では累乗ができないので、当サイトの<a href="../">ハマり確率計算機</a>を使うのがかんたんです。</p>
+<h3>暗算で目安をつけるコツ</h3>
+<p>ハマり確率は、おおよそ「e<sup>−回転数÷分母</sup>」で近似できます（eは約2.718）。1000回転÷319.7 ≒ 3.13なので、
+e<sup>−3.13</sup> ≒ 4.38%となり、正確な値の4.36%にかなり近くなります。
+「分母の何倍ハマったか」がわかれば、だいたいの珍しさがつかめます。この考え方は
+<a href="./type-hikaku.html">甘デジ・ミドルの比較記事</a>でくわしく使っています。</p>
+</section>
+
+<section class="panel" id="s5">
+<h2>確率別の早見表</h2>
+<p>よくある4種類の大当たり確率で、回転数ごとのハマり確率をまとめました（色付きの行が1000回転）。</p>
+<div class="table-scroll"><table>
+<tr><th>ハマり回転数</th><th>1/99.9</th><th>1/199.8</th><th>1/319.7</th><th>1/349.9</th></tr>
+<tr><td>300回転</td><td>4.89%</td><td>22.2%</td><td>39.1%</td><td>42.4%</td></tr>
+<tr><td>500回転</td><td>0.654%</td><td>8.14%</td><td>20.9%</td><td>23.9%</td></tr>
+<tr><td>800回転</td><td>0.032%</td><td>1.81%</td><td>8.16%</td><td>10.1%</td></tr>
+<tr class="mark"><td>1,000回転</td><td>0.00427%</td><td>0.662%</td><td>4.36%</td><td>5.72%</td></tr>
+<tr><td>1,500回転</td><td>0.00003%</td><td>0.054%</td><td>0.910%</td><td>1.37%</td></tr>
+<tr><td>2,000回転</td><td>ほぼ0%</td><td>0.00438%</td><td>0.190%</td><td>0.327%</td></tr>
+</table></div>
+<p class="small">※通常時の大当たり確率だけで計算した理論値です。</p>
+<p>同じ1000回転でも、1/99.9では0.00427%とほぼ起こらない一方、1/349.9では5.72%と、
+十数回に1回は起こる出来事になります。</p>
+</section>
+
+<section class="panel" id="s6">
+<h2>「約○回に1回」の読み方</h2>
+<p>当サイトの計算機は、ハマり確率を「初当たり約○回に1回」という形でも表示しています。これは、
+<strong>初当たりを○回引くたびに、そのうち1回はこのくらいハマる</strong>という意味です。</p>
+<p>たとえば1/319.7で1000回転ハマるのは「初当たり約23回に1回」です。1日に初当たりを数回引く人なら、
+数日から1週間に1回くらい出会う計算になります。実際にどのくらいの頻度で出会うかは、
+<a href="./ichinichi.html">1日に大ハマりに何回出会うかの記事</a>で、回転数から計算しています。</p>
+</section>
+
+<section class="panel try">
+<h2>計算機で確かめる</h2>
+<p>自分のハマりの珍しさは、確率と回転数を入れるだけで計算できます。</p>
+<a class="cta" href="../">ハマり確率計算機を使う</a>
+<p class="small" style="margin-top:12px;">機種別の早見表：<a href="../m/eva-319red.html">エヴァ -319 RED-（1/319.7）</a> ／ <a href="../m/umi5-black.html">大海物語5 ブラック（1/199.8）</a> ／ <a href="../m/banchou-otoko.html">押忍!番長 漢の頂 99ver.（1/99.9）</a></p>
+</section>
+<section class="panel"><h2>ほかの解説記事</h2><ul class="alist">
+<li><a href="./bunbo.html">確率の分母だけ回せば当たる？分母まで回して当たっている確率は約63%</a></li>
+<li><a href="./type-hikaku.html">甘デジ・ライトミドル・ミドルでハマりやすさはどれだけ違う？</a></li>
+<li><a href="./hamari-dai.html">ハマり台は当たりやすい？ギャンブラーの誤謬を数字で解説</a></li>
+<li><a href="./ichinichi.html">1日打つと大ハマりに何回出会う？回転数から見るハマりの頻度</a></li>
+</ul></section>
+<footer>
+  <p>記事内の数値は、通常時の大当たり確率をもとにした確率計算の理論値です。実際の遊技結果を保証するものではありません。<br>
+     遊技は20歳以上・自己資金の範囲内でお楽しみください。</p>
+  <p style="margin-top:12px;"><a href="./">解説記事の一覧</a> ／ <a href="../">ハマり確率計算機</a> ／ <a href="../privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+</div>
+</body>
+</html>

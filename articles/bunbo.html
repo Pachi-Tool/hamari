@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>確率の分母だけ回せば当たる？分母まで回して当たっている確率は約63%</title>
+<meta name="description" content="「1/319なら319回転回せば当たる」は誤解です。分母と同じ回転数を回しても、当たっている確率は約63%しかありません。50%・90%・99%の確率で当たるまでの回転数や、平均と中央値の違いを数字で解説します。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pachi-tool.com/articles/bunbo.html">
+<meta property="og:title" content="確率の分母だけ回せば当たる？分母まで回して当たっている確率は約63%">
+<meta property="og:description" content="「1/319なら319回転回せば当たる」は誤解です。分母と同じ回転数を回しても、当たっている確率は約63%しかありません。50%・90%・99%の確率で当たるまでの回転数や、平均と中央値の違いを数字で解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pachi-tool.com/articles/bunbo.html">
+<meta property="og:site_name" content="ハマり確率計算機">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Reggae+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "確率の分母だけ回せば当たる？分母まで回して当たっている確率は約63%",
+      "description": "「1/319なら319回転回せば当たる」は誤解です。分母と同じ回転数を回しても、当たっている確率は約63%しかありません。50%・90%・99%の確率で当たるまでの回転数や、平均と中央値の違いを数字で解説します。",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "author": {
+        "@type": "Organization",
+        "name": "PACHI-TOOL",
+        "url": "https://pachi-tool.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PACHI-TOOL",
+        "url": "https://pachi-tool.com/"
+      },
+      "mainEntityOfPage": "https://pachi-tool.com/articles/bunbo.html",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ハマり確率計算機",
+          "item": "https://pachi-tool.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "解説記事",
+          "item": "https://pachi-tool.com/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "確率の分母だけ回せば当たる？分母まで回して当たっている確率は約63%",
+          "item": "https://pachi-tool.com/articles/bunbo.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- サイト共通ヘッダー -->
+<div class="site-bar">
+  <div class="site-bar-inner">
+    <a class="site-logo" href="../">PACHI-TOOL</a>
+    <nav class="site-nav">
+      <a href="../slot/">レア小役カウンター</a>
+      <a href="../">ハマり確率計算機</a>
+      <a class="current" href="./">解説記事</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<p class="crumb"><a href="../">ハマり確率計算機</a> ／ <a href="./">解説記事</a></p>
+
+<header>
+  <p class="eyebrow">BUNBO MYTH</p>
+  <h1>分母まで回せば当たる？<br>本当の当たりやすさ</h1>
+  <p class="date">公開日：2026/10/25</p>
+</header>
+
+<p class="lead">「1/319の台なら、319回転くらいで当たるはず」。ホールでよく聞く考え方ですが、実はこれは正しくありません。
+分母と同じだけ回しても、当たっている確率は<strong>約63%</strong>。3回に1回以上は、分母を超えてもまだ当たりません。</p>
+
+<nav class="toc"><p>この記事の内容</p><ol>
+<li><a href="#s1">分母まで回しても当たるのは約63%</a></li>
+<li><a href="#s2">50%・90%・99%で当たるのは何回転目か</a></li>
+<li><a href="#s3">初当たり回転数のばらつき</a></li>
+<li><a href="#s4">「平均」と「真ん中」は違う</a></li>
+<li><a href="#s5">この数字をどう使うか</a></li>
+</ol></nav>
+
+<section class="panel" id="s1">
+<h2>分母まで回しても当たるのは約63%</h2>
+<p>1/319.7の台で320回転回したとき、1回以上当たっている確率は次のように計算します。</p>
+<p class="formula">1 −（1 − 1/319.7）<sup>320</sup> ＝ 63.3%</p>
+<p>つまり、<strong>残りの36.7%は、分母を超えてもまだ当たっていません</strong>。
+「分母を超えたらハマり」と感じる人は多いですが、確率で見れば、分母超えは3回に1回以上起こるごく普通の出来事です。</p>
+<p>おもしろいことに、この約63%という数字は、甘デジでもミドルでもほとんど変わりません。
+1/99.9なら63.4%、1/349.9なら63.3%です。
+分母が大きいほど「1 − 1/e ≒ 63.2%」という値に近づいていきます。</p>
+</section>
+
+<section class="panel" id="s2">
+<h2>50%・90%・99%で当たるのは何回転目か</h2>
+<p>「この回転数までに当たっている確率」が50%・90%・99%を超えるのは、それぞれ何回転目かを計算しました。</p>
+<div class="table-scroll"><table>
+<tr><th>大当たり確率</th><th>50%で当たる</th><th>分母（約63%）</th><th>90%で当たる</th><th>99%で当たる</th></tr>
+<tr><td>1/99.9</td><td>69回転</td><td>100回転</td><td>229回転</td><td>458回転</td></tr>
+<tr><td>1/199.8</td><td>139回転</td><td>200回転</td><td>459回転</td><td>918回転</td></tr>
+<tr class="mark"><td>1/319.7</td><td>222回転</td><td>320回転</td><td>735回転</td><td>1,470回転</td></tr>
+<tr><td>1/349.9</td><td>243回転</td><td>350回転</td><td>805回転</td><td>1,610回転</td></tr>
+</table></div>
+<p class="small">※その回転数までに1回以上大当たりしている確率が、各パーセントを超える最初の回転数です。</p>
+<p>五分五分になるのは、分母の約0.7倍の回転数です。一方、99%の確率で当たるには分母の約4.6倍が必要です。
+1/319.7なら1,470回転。つまり、<strong>1/319.7の台で1,470回転ハマることも、100回に1回くらいは起こります</strong>。</p>
+</section>
+
+<section class="panel" id="s3">
+<h2>初当たり回転数のばらつき</h2>
+<p>1/319.7の台で、初当たりが何回転目に来るかの割合を区切りごとに計算しました。</p>
+<div class="table-scroll"><table>
+<tr><th>初当たりまでの回転数</th><th>割合</th><th>イメージ</th></tr>
+<tr><td>1〜100回転</td><td>26.9%</td><td>■■■■■■■■■■■</td></tr>
+<tr><td>101〜200回転</td><td>19.7%</td><td>■■■■■■■■</td></tr>
+<tr><td>201〜320回転</td><td>16.7%</td><td>■■■■■■■</td></tr>
+<tr><td>321〜500回転</td><td>15.8%</td><td>■■■■■■</td></tr>
+<tr><td>501〜800回転</td><td>12.7%</td><td>■■■■■</td></tr>
+<tr><td>801〜1,000回転</td><td>3.80%</td><td>■■</td></tr>
+<tr><td>1,001回転以上</td><td>4.36%</td><td>■■</td></tr>
+</table></div>
+<p>いちばん多いのは「早めに当たる」ケースで、1〜100回転で当たる割合が26.9%もあります。
+1回転ごとに当たる確率は同じでも、早い回転数ほど「そこまで外れ続けている」必要が少ないため、割合が大きくなります。
+その一方で、1000回転を超えるケースも4.36%あり、右側に長く伸びた形になっています。</p>
+</section>
+
+<section class="panel" id="s4">
+<h2>「平均」と「真ん中」は違う</h2>
+<p>初当たりまでの回転数の<strong>平均</strong>は、ちょうど分母と同じ約320回転です。
+ところが、たくさんの初当たりを早い順に並べたときの<strong>真ん中（中央値）</strong>は約222回転です。</p>
+<p>平均のほうが大きくなるのは、ときどき起こる大ハマりが平均を引き上げるからです。
+年収の平均が、一部の高収入の人に引っぱられて「ふつうの人の感覚」より高くなるのと同じ仕組みです。</p>
+<p>ホールで打っていると「だいたい分母の手前で当たるのに、たまにとんでもなくハマる」と感じることがあります。
+これは気のせいではなく、確率の分布そのものがそういう形をしているためです。</p>
+</section>
+
+<section class="panel" id="s5">
+<h2>この数字をどう使うか</h2>
+<h3>分母超えで「この台はおかしい」と思わない</h3>
+<p>分母を超えて当たらないことは、3回に1回以上起きる普通の出来事です。それだけで台の良し悪しは判断できません。</p>
+<h3>予算は「分母ちょうど」ではなく余裕を持って考える</h3>
+<p>分母ぶん回せる予算では、約37%の確率で初当たりを引けずに終わります。
+初当たりを90%の確率で引くには、分母の約2.3倍の回転数が必要です。
+遊技は無理のない範囲で、使う金額をあらかじめ決めておくことをおすすめします。</p>
+<h3>ハマった後の確率は変わらない</h3>
+<p>ここまでの数字は、すべて「打ち始めから数えた」確率です。すでにハマっている台の次の当たりやすさについては、
+<a href="./hamari-dai.html">ハマり台は当たりやすいのかを解説した記事</a>を読んでみてください。</p>
+</section>
+
+<section class="panel try">
+<h2>計算機で確かめる</h2>
+<p>今打っている台の確率と回転数を入れると、そのハマりの珍しさがすぐにわかります。</p>
+<a class="cta" href="../">ハマり確率計算機を使う</a>
+<p class="small" style="margin-top:12px;">機種別の早見表：<a href="../m/rezero-onigakari2.html">リゼロ 鬼がかり2（1/349.9）</a> ／ <a href="../m/nakamori-akina.html">中森明菜・歌姫伝説（1/319.7）</a> ／ <a href="../m/zom100.html">ゾン100（1/199.5）</a></p>
+</section>
+<section class="panel"><h2>ほかの解説記事</h2><ul class="alist">
+<li><a href="./hamari-keisan.html">ハマり確率の計算方法｜1/319で1000回転ハマる確率は約4.3%</a></li>
+<li><a href="./type-hikaku.html">甘デジ・ライトミドル・ミドルでハマりやすさはどれだけ違う？</a></li>
+<li><a href="./hamari-dai.html">ハマり台は当たりやすい？ギャンブラーの誤謬を数字で解説</a></li>
+<li><a href="./ichinichi.html">1日打つと大ハマりに何回出会う？回転数から見るハマりの頻度</a></li>
+</ul></section>
+<footer>
+  <p>記事内の数値は、通常時の大当たり確率をもとにした確率計算の理論値です。実際の遊技結果を保証するものではありません。<br>
+     遊技は20歳以上・自己資金の範囲内でお楽しみください。</p>
+  <p style="margin-top:12px;"><a href="./">解説記事の一覧</a> ／ <a href="../">ハマり確率計算機</a> ／ <a href="../privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+</div>
+</body>
+</html>

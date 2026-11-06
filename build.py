@@ -291,6 +291,112 @@ footer a{color:var(--text-dim);}
 # ---------------------------------------------------------------
 #  1機種分のページを組み立てる
 # ---------------------------------------------------------------
+def num(v):
+    """75.0 → 75、71.1 → 71.1 のように表示する"""
+    return f"{v:g}"
+
+
+def has_spec(m):
+    return bool(m.get("rush_rate")) and bool(m.get("rush_cont"))
+
+
+def spec_section(m, pool):
+    """machines.json に rush_rate（突入率%）と rush_cont（継続率%）がある機種だけ、
+    その機種のスペックから計算した数値を出す。pool はページを作る全機種。"""
+    if not has_spec(m):
+        return ""
+    prob = m["prob"]
+    short = esc(m["short"])
+    rn = esc(m.get("rush_name") or "RUSH")
+    rate = float(m["rush_rate"])
+    cont = float(m["rush_cont"])
+    r = rate / 100
+    c = cont / 100
+
+    chain = 1 / (1 - c)          # 初当たりを含めた平均連チャン数
+    p10 = c ** 9                  # 突入後、10連以上する確率
+    parts = []
+
+    # RUSHに入るまで
+    if r >= 1:
+        parts.append(f"""  <h3>{rn}に入るまで</h3>
+  <p>初当たりは必ず{rn}に入ります。そのため、{rn}に入るまでに回す通常時の回転数は、
+     大当たり確率と同じ平均約{round(prob):,}回転です。</p>""")
+    else:
+        avg = prob / r
+        miss2 = (1 - r) ** 2
+        miss3 = (1 - r) ** 3
+        parts.append(f"""  <h3>{rn}に入るまで</h3>
+  <p>初当たりのうち{num(rate)}%が{rn}に入ります。単純計算では、{rn}に入るまでに
+     通常時を<strong>平均約{avg:,.0f}回転</strong>回すことになります（{prob} ÷ {num(rate)}%）。</p>
+  <p>初当たりを引いても{rn}に入らないことが2回続く確率は{fmt_pct(miss2)}、
+     3回続く確率は{fmt_pct(miss3)}です。</p>""")
+
+    # 連チャン
+    parts.append(f"""  <h3>{rn}の連チャン</h3>
+  <p>継続率{num(cont)}%の場合、1回の{rn}で続く連チャン数は、初当たりを含めて
+     <strong>平均約{chain:.1f}回</strong>です。{rn}に入っても、1回も当たらずに終わる確率は{num(round(100 - cont, 1))}%あります。</p>
+  <p>{rn}に入ってから10連以上する確率は{fmt_pct(p10)}で、{rn}約{1 / p10:,.0f}回に1回の計算です。""")
+    if r < 1:
+        x = r * p10
+        parts[-1] += (f"\n     初当たりから数えると、{rn}に入ってさらに10連以上する確率は{fmt_pct(x)}"
+                      f"（初当たり約{1 / x:,.0f}回に1回）です。")
+    parts[-1] += "</p>"
+
+    # サイト内の比較（スペックを載せている機種の中での順位）
+    ranked = sorted([o for o in pool if has_spec(o)], key=lambda o: -float(o["rush_cont"]))
+    if len(ranked) >= 3:
+        higher = [o for o in ranked if float(o["rush_cont"]) > cont]
+        rank = len(higher) + 1
+        lower = [o for o in ranked if float(o["rush_cont"]) < cont]
+        near = []
+        if higher:
+            o = higher[-1]
+            near.append(f'すぐ上は<a href="./{o["slug"]}.html">{esc(o["short"])}</a>（{num(float(o["rush_cont"]))}%）')
+        if lower:
+            o = lower[0]
+            near.append(f'すぐ下は<a href="./{o["slug"]}.html">{esc(o["short"])}</a>（{num(float(o["rush_cont"]))}%）')
+        near_text = ("、".join(near) + "です。") if near else ""
+        ties = [o for o in ranked if float(o["rush_cont"]) == cont and o["slug"] != m["slug"]]
+        if ties:
+            near_text += "同じ継続率の機種は、" + "、".join(
+                f'<a href="./{o["slug"]}.html">{esc(o["short"])}</a>' for o in ties) + "です。"
+        parts.append(f"""  <h3>ほかの機種と比べると</h3>
+  <p>当サイトでスペックを載せている{len(ranked)}機種のうち、{short}の継続率{num(cont)}%は
+     {rank}番目に高い数字です。{near_text}</p>""")
+
+    # ひとこと
+    if m.get("comment"):
+        parts.append(f"""  <h3>この機種のポイント</h3>
+  <p>{esc(m["comment"])}</p>""")
+
+    note = esc(m.get("rush_note") or "")
+    src = ""
+    if m.get("spec_url"):
+        src = (f'スペックの出典：<a href="{esc(m["spec_url"])}" target="_blank" '
+               f'rel="noopener nofollow">{esc(m.get("spec_src") or "出典")}</a>')
+    rows = (f"      <tr><td>大当たり確率</td><td>1/{prob}</td></tr>\n"
+            f"      <tr><td>{rn}突入率</td><td>{'' if rate >= 100 else '約'}{num(rate)}%</td></tr>\n"
+            f"      <tr><td>{rn}継続率</td><td>約{num(cont)}%</td></tr>")
+    return f"""
+<section class="panel">
+  <h2>{short}のスペックから計算</h2>
+  <div class="table-scroll">
+    <table>
+      <tr><th>項目</th><th>数値</th></tr>
+{rows}
+    </table>
+  </div>
+  <p style="margin-top:10px;font-size:12px;color:var(--text-dim);">※{note}</p>
+{chr(10).join(parts)}
+  <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
+    ※突入率と継続率は公表値をもとにした単純計算の目安です。V入賞や残保留の扱いなど、細かい条件は機種ごとに異なります。<br>
+    {src}
+  </p>
+</section>
+"""
+
+
 def build_page(m, others):
     prob = m["prob"]
     name = m["name"]
@@ -302,6 +408,12 @@ def build_page(m, others):
             f"100回転から3000回転まで、そのハマりが何％の確率で起こるのか、"
             f"何回に1度の出来事なのかを一覧で確認できます。回転数を入れて計算もできます。")
     desc = desc.replace("early", "早見")
+    if has_spec(m):
+        rn = m.get("rush_name") or "RUSH"
+        title = f"{short}のハマり確率と継続率｜1/{prob}・{rn}突入率{num(float(m['rush_rate']))}%を計算"
+        desc = (f"{name}（大当たり確率1/{prob}、{rn}突入率約{num(float(m['rush_rate']))}%、"
+                f"継続率約{num(float(m['rush_cont']))}%）のハマり確率と、スペックから計算した"
+                f"{rn}までの平均回転数・平均連チャン数を掲載。回転数を入れて計算もできます。")
 
     # 早見表
     rows = []
@@ -341,11 +453,17 @@ def build_page(m, others):
         cta_text = "🎁 アニメ・ゲームのグッズを探す"
         cta_pixel = CTA_PIXEL
 
-    # 他機種へのリンク
+    # スペックから計算したセクション（データがある機種だけ）
+    spec_html = spec_section(m, others + [m])
+
+    # 他機種へのリンク（確率が近い機種を8つ。全機種の一覧はトップページにある）
+    import math
+    near_ms = sorted(others, key=lambda o: (abs(math.log(o["prob"] / prob)), o["slug"]))[:8]
+    near_ms = sorted(near_ms, key=lambda o: o["prob"])
     other_items = "\n".join(
         f'      <li><a href="./{o["slug"]}.html"><span>{esc(o["short"])}</span>'
         f'<span class="p">1/{o["prob"]}</span></a></li>'
-        for o in others
+        for o in near_ms
     )
 
     # FAQ構造化データ
@@ -382,6 +500,20 @@ def build_page(m, others):
             }
         ]
     }
+    if has_spec(m):
+        rn = m.get("rush_name") or "RUSH"
+        rate = float(m["rush_rate"])
+        cont = float(m["rush_cont"])
+        faq["mainEntity"].append({
+            "@type": "Question",
+            "name": f"{short}の{rn}突入率と継続率は？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": f"{rn}突入率は約{num(rate)}%、継続率は約{num(cont)}%です。"
+                        f"継続率{num(cont)}%の場合、1回の{rn}での連チャン数は初当たりを含めて"
+                        f"平均約{1 / (1 - cont / 100):.1f}回の計算です。"
+            }
+        })
     faq_json = json.dumps(faq, ensure_ascii=False, indent=2)
 
     return f"""<!DOCTYPE html>
@@ -474,7 +606,7 @@ def build_page(m, others):
     ※通常時の大当たり確率1/{prob}をもとに算出した理論値です。{note_html}
   </p>
 </section>
-
+{spec_html}
 <section class="panel">
   <h2>1/{prob}という数字の読み方</h2>
 
@@ -510,7 +642,7 @@ def build_page(m, others):
 </section>
 
 <section class="panel">
-  <h2>他の機種のハマり確率</h2>
+  <h2>1/{prob}に近い確率の機種</h2>
   <ul class="others">
 {other_items}
   </ul>

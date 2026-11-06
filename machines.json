@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-11-06",
   "note": "prob は通常時（ヘソ）の大当たり確率の分母。tag はXへの投稿に使う呼称（スペースや記号は不可）、emoji は投稿の先頭に付く絵文字（空欄可）。出典: P-WORLD 新台スケジュールほか。掲載前にメーカー公式または遊技説明で確認してください。",
   "machines": [
     {
@@ -14,7 +14,14 @@
       "note": "",
       "verified": false,
       "tag": "SAO",
-      "emoji": "⚔️"
+      "emoji": "⚔️",
+      "rush_name": "SWORD RUSH",
+      "rush_rate": 50,
+      "rush_cont": 65,
+      "rush_note": "突入率には上位RUSHへの直行（1.5%）を含みます。上位RUSH「War of Underworld」の継続率は約75%です。",
+      "comment": "通常のSWORD RUSHは継続率約65%ですが、上位RUSH「War of Underworld」に入ると約75%に上がる2段階の作りです。遊タイムは搭載していません。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7394/cutout/2"
     },
     {
       "name": "e 七つの大罪3",
@@ -126,7 +133,14 @@
       "note": "",
       "verified": false,
       "tag": "海物語",
-      "emoji": "🌊"
+      "emoji": "🌊",
+      "rush_name": "ST",
+      "rush_rate": 100,
+      "rush_cont": 71.1,
+      "rush_note": "継続率は50回転ST（電サポ50回＋残保留4個）の値です。上位ST「GOLDパールRUSH」（86回転）は約87.3%です。",
+      "comment": "初当たりはすべて3Rで、終了後は必ず50回転のSTに入ります。一部で86回転の上位ST「GOLDパールRUSH」に入り、継続率は約87%まで上がります。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/6832/cutout/2"
     },
     {
       "name": "eリコリス・リコイル",
@@ -140,7 +154,14 @@
       "note": "",
       "verified": false,
       "tag": "リコリコ",
-      "emoji": "☕"
+      "emoji": "☕",
+      "rush_name": "RUSH",
+      "rush_rate": 50,
+      "rush_cont": 75,
+      "rush_note": "突入率50%は、初当たりの半分がRUSHに直行する（ラッキートリガー）仕様によるものです。RUSHは132回転のSTです。",
+      "comment": "初当たりの半分がRUSHに直行する、わかりやすいゲーム性です。大当たりの一部で発生する「アルティメットドライブ」では、6000個の獲得に加えて、3000個の上乗せが50%でループします。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7355/cutout/2"
     },
     {
       "name": "eF機動戦士ガンダムSEED クライマックス",
@@ -212,7 +233,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "炎上RUSH",
+      "rush_rate": 60,
+      "rush_cont": 77,
+      "rush_note": "突入率は、直行・チャレンジ・引き戻しを合わせたトータルの値です。継続率は電サポ30回＋残保留4個の値です。",
+      "comment": "初当たり後は必ず右打ちになり、直行・チャレンジ・引き戻しを合わせて約60%で炎上RUSHに入ります。大当たりの約1%で、継続率約95%のLT「アドラバースト」が発動します。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7442/cutout/2"
     },
     {
       "name": "Pうしおととら~神のせSPEC~100ver.",
@@ -242,7 +270,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "RUSH",
+      "rush_rate": 25.5,
+      "rush_cont": 78,
+      "rush_note": "突入率は、初当たり後の「RUSH突入チャレンジ」に成功する割合です。RUSHは134回転のSTです。",
+      "comment": "初当たり後の「RUSH突入チャレンジ」が最大の山場で、突入率は約25.5%と低めです。そのかわり、RUSH中は1500個オールで継続し、「超輪廻ループ」での上乗せも狙えます。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines_v2/7404"
     },
     {
       "name": "e アサルトリリィ",
@@ -302,7 +337,14 @@
       "page": true,
       "note": "図柄揃い確率1/1394.38をもとに算出しています。大当り確率は約1/348.59です。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "DESTINY RUSH",
+      "rush_rate": 50,
+      "rush_cont": 77,
+      "rush_note": "突入率は図柄揃い時の値です。継続率は初回が100%、2回目以降が約77%です。",
+      "comment": "図柄揃い（約1/1394）から、1G連の「DESTINY CHALLENGE」を経てRUSHを目指す仕組みです。RUSHは144回転で、ハズレを即停止させる「SKIP CHALLENGE」も搭載しています。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7448/cutout/2"
     },
     {
       "name": "PA大海物語Withアグネス・ラム Premium Edition",
@@ -332,7 +374,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "バトルMODE",
+      "rush_rate": 53,
+      "rush_cont": 65,
+      "rush_note": "突入率は大当たり後のバトルに勝つ割合です。LT「史上最強バトルMODE90」のトータル継続率は約90%です。",
+      "comment": "大当たり後のバトルに勝つとバトルMODEに入る、バトル型の機種です。3連勝すると勇次郎との親子喧嘩に挑めて、勝てば継続率約90%のLTに入ります。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7456/cutout/2"
     },
     {
       "name": "e Re:ゼロから始める異世界生活 鬼がかり2",
@@ -347,7 +396,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "RUSH",
+      "rush_rate": 55,
+      "rush_cont": 77,
+      "rush_note": "RUSH中の実質大当り確率は約1/99.9です。",
+      "comment": "1種2種混合機で、RUSH中の電サポは144回です。大当たり出玉は1500個から最大12000個まで幅があります。RUSHの残りが50回以下で保留を0にし、1500個以上を引くと出る「Excellent予告」もあります。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines_v2/7467"
     },
     {
       "name": "SMART-PACHINKO GANTZ",
@@ -392,7 +448,14 @@
       "page": true,
       "note": "突入前の大当り確率です。突入後は約1/85.6に変化します。e版・P版がありますが確率は共通です。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "ST",
+      "rush_rate": 100,
+      "rush_cont": 70,
+      "rush_note": "継続率はST100回の値です。スタンプラリー達成後（ST100回＋時短100回）は約78%です。",
+      "comment": "初当たり後は必ずST100回に入り、「歌いきれば大当たり」が基本のゲーム性です。4R・7R・10Rをすべて取るスタンプラリーを達成すると時短100回が付き、継続率は約78%に上がります。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7452/cutout/2"
     },
     {
       "name": "デカスタeGODZILLA7 超震撼ver.",
@@ -437,7 +500,14 @@
       "page": true,
       "note": "ST中の大当り確率は約1/98.9です。ST突入率は約75%（引き戻し込み）、継続率は約81%です。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "ST",
+      "rush_rate": 75,
+      "rush_cont": 81,
+      "rush_note": "突入率は引き戻しを含む値です（直行は約65%）。STは161回転で、ST中の大当り確率は約1/98.9です。",
+      "comment": "初当たりでの直行（約65%）に加えて、時短100回中の引き戻しでもSTに入れるのが特徴です。STは161回転で、ST中の大当たりは1500個です。",
+      "spec_src": "ちょんぼりすた",
+      "spec_url": "https://chonborista.com/pachinko/bisty/264615/"
     },
     {
       "name": "eグランベルム 319ver.",

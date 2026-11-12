@@ -17,6 +17,11 @@ import os
 import html
 from datetime import date
 
+# 機種ページ（slot/m/*.html）を検索に出さない設定。
+# True  … 機種ページに noindex を付け、サイトマップからも外す（トップの slot/ は検索に残す）
+# False … 元に戻す（全ページを検索に出す）
+MACHINE_PAGES_NOINDEX = True
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(ROOT, "slot_machines.json")
 OUT_DIR = os.path.join(ROOT, "slot")
@@ -29,6 +34,7 @@ HEAD = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__TITLE__</title>
 <meta name="description" content="__DESC__">
+<meta name="robots" content="__ROBOTS__">
 <link rel="canonical" href="__CANONICAL__">
 <meta property="og:type" content="website">
 <meta property="og:title" content="__TITLE__">
@@ -70,8 +76,9 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-def head(title, desc, canonical, css, home, slot_home):
+def head(title, desc, canonical, css, home, slot_home, robots="index, follow"):
     return (HEAD
+            .replace("__ROBOTS__", robots)
             .replace("__TITLE__", esc(title))
             .replace("__DESC__", esc(desc))
             .replace("__CANONICAL__", esc(canonical))
@@ -337,7 +344,8 @@ def build_machine_page(machine, cfg, machines):
 <div class="panel"><p class="note">上のプルダウンで切り替えられます。<a href="../">機種一覧ページ</a>からも開けます。</p></div>
 """
     scripts = '<script src="../machines-data.js"></script>\n<script src="../counter.js"></script>'
-    return (head(title, desc, canonical, "../style.css", "../../", "../")
+    robots = "noindex, follow" if MACHINE_PAGES_NOINDEX else "index, follow"
+    return (head(title, desc, canonical, "../style.css", "../../", "../", robots)
             + body
             + foot("../../", "../", "../../privacy.html", scripts))
 
@@ -424,7 +432,9 @@ def build_data_js(machines):
 def build_sitemap(cfg, machines):
     base = cfg["base_url"] + cfg["section_path"]
     today = date.today().isoformat()
-    urls = [base] + [f"{base}m/{m['slug']}.html" for m in machines]
+    urls = [base]
+    if not MACHINE_PAGES_NOINDEX:
+        urls += [f"{base}m/{m['slug']}.html" for m in machines]
     body = "\n".join(
         f"  <url><loc>{esc(u)}</loc><lastmod>{today}</lastmod></url>" for u in urls)
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'

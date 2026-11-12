@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-12",
   "note": "prob は通常時（ヘソ）の大当たり確率の分母。tag はXへの投稿に使う呼称（スペースや記号は不可）、emoji は投稿の先頭に付く絵文字（空欄可）。出典: P-WORLD 新台スケジュールほか。掲載前にメーカー公式または遊技説明で確認してください。",
   "machines": [
     {
@@ -522,7 +522,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "グランベルムRUSH",
+      "rush_rate": 50.5,
+      "rush_cont": 77,
+      "rush_note": "継続率は、RESTARTを含むST130回転の値です。小当たり経由の場合は、V入賞がRUSH突入の条件です。",
+      "comment": "初当たりの約半分がRUSHに直行するタイプで、RUSHは130回転です。RUSH中は「超アドレナリンBOOST」での上乗せや、出玉性能が上がる「裏RUSH」があり、まとまった出玉を狙える作りになっています。",
+      "spec_src": "ななプレス",
+      "spec_url": "https://nana-press.com/kaiseki/machine/1240/"
     },
     {
       "name": "eグランベルム 249ver.",
@@ -537,7 +544,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "RUSH",
+      "rush_rate": 50,
+      "rush_cont": 75,
+      "rush_note": "RUSHは130回転です。小当たり経由の場合は、V入賞がRUSH突入の条件です。",
+      "comment": "319ver.より当たりやすい1/249.1のライトミドル版です。突入率50%・継続率約75%と319ver.に近い数字のまま、初当たりが軽くなっています。大当たりは最大で約4500個（10R×3回）です。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7473/cutout/2"
     },
     {
       "name": "e ノーゲーム・ノーライフ 119Ver.",
@@ -552,7 +566,15 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "ノゲノラッシュ",
+      "rush_rate": 50,
+      "rush_cont": 80,
+      "rush_cont_first": 51,
+      "rush_note": "継続率は2段階です。最初のノゲノラッシュ（電サポ12回＋残保留4個）が約51%で、そこで当たると移る「ノゲノラッシュHYPER」（電サポ32回＋残保留4個）が約80%です。",
+      "comment": "RUSHが2段階になっているのが特徴です。最初のノゲノラッシュは継続率約51%と低めですが、1回当たれば継続率約80%のHYPERに上がります。RUSHに入って最初の1回を引けるかどうかが勝負どころです。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7451/cutout/2"
     },
     {
       "name": "eフィーバー妖怪ウォッチ",
@@ -567,7 +589,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "RUSH",
+      "rush_rate": 61,
+      "rush_cont": 80,
+      "rush_note": "突入率は直行（約50%）と時短100回での引き戻し（約22%）を合わせた値です。継続率も、RUSH自体の約74%に時短での引き戻しを合わせた値です。",
+      "comment": "RUSH「ヨーデルSONIC怪闘」は、大当たりか最終決戦まで続きます。最終決戦に負けても時短100回の「コマチャレンジ」で引き戻しを狙えるため、トータルの継続率は約80%になります。RUSH中の大当たりはすべて10Rです。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7453/cutout/2"
     },
     {
       "name": "e 獣王 獅子の一撃",
@@ -582,7 +611,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "獣王RUSH",
+      "rush_rate": 50,
+      "rush_cont": 50,
+      "rush_note": "RUSHは100回転のSTです。突入率は、初当たり後の「獣王RUSHチャレンジ」に成功する割合です。",
+      "comment": "継続率は約50%と低めですが、そのぶん1回の出玉が大きい機種です。RUSH中の大当たり後に約50%で成功する「獣王ジャッジメント」から、最低約4500個・平均約9800個の「サバンナチャンス」を狙います。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7459/cutout/2"
     },
     {
       "name": "eとある魔術の禁書目録3",
@@ -597,7 +633,14 @@
       "page": true,
       "note": "1種2種混合機で、約1/348は通常時の図柄揃い確率です。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "ST",
+      "rush_rate": 50,
+      "rush_cont": 75,
+      "rush_note": "継続率は、前半30回転・後半100回転・最終1回転を合わせた値です。",
+      "comment": "突入率50%・継続率約75%の王道ST機です。STは前半30回転と後半100回転、ラスト1回転に分かれていて、区間によって当たりやすさと当たったときの恩恵が変わります。出玉は最大約3000個です。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7472/cutout/2"
     },
     {
       "name": "eプリンセス・プリンシパル",
@@ -612,7 +655,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "SPY RUSH",
+      "rush_rate": 50,
+      "rush_cont": 75,
+      "rush_note": "突入率は、初当たり（10R）中のチャレンジ演出に成功する割合です。",
+      "comment": "初当たりはすべて10R（約1500個）です。SPY RUSHは前半と後半で性格が違い、前半は大当たりの半分が6000個以上になります。後半は1500個を取るか、前半に戻る「RESET」を目指す、メリハリのあるSTです。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7478/cutout/2"
     },
     {
       "name": "桃太郎電鉄 ～ぱちんこも定番！～",
@@ -625,9 +675,16 @@
       "tag": "桃鉄",
       "emoji": "🚂",
       "page": true,
-      "note": "設定付きの機種です。1/89.8は設定1の大当り確率で、設定によって変わります。",
+      "note": "設定付きの機種です。1/89.8は設定1の大当り確率で、設定によって変わります。低確率を250回転消化すると遊タイム（時短10,000回）が発動するため、実際には250回転を大きく超えるハマりはほとんど起こりません。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "桃鉄RUSH",
+      "rush_rate": 45.9,
+      "rush_cont": 74.9,
+      "rush_note": "設定1の値です（設定6は突入率46.1%・継続率75.4%）。突入率は、直行（1%）と、時短50回の「桃鉄チャレンジ」突破を合わせた値です。",
+      "comment": "初当たりはすべて5R（約400個）で、時短50回の「桃鉄チャレンジ」中に当たるとRUSH（ST77回）に入ります。設定が6段階あり、高設定ほど10Rの割合が増えます。遊タイムも搭載しています。",
+      "spec_src": "ちょんぼりすた",
+      "spec_url": "https://chonborista.com/?p=273504"
     },
     {
       "name": "桃太郎電鉄 ～ぱちんこも定番！～ LTver.",
@@ -642,7 +699,14 @@
       "page": true,
       "note": "設定付きの機種です。1/129.7は設定1の大当り確率で、設定によって変わります。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "桃鉄RUSH",
+      "rush_rate": 53.3,
+      "rush_cont": 73,
+      "rush_note": "突入率は設定1の値で、設定6では65.3%まで上がります。継続率はST77回の値で、設定による差はありません。",
+      "comment": "設定で大きく変わるのはRUSH突入率で、設定1の53.3%から設定6の65.3%まで差があります。RUSH中に大当たりを9回重ねる「全国制覇」を達成すると、1回の当たりで実質4回分の出玉が出るLT「黄金列車RUSH」に入ります。遊タイムはありません。",
+      "spec_src": "ちょんぼりすた",
+      "spec_url": "https://chonborista.com/?p=273594"
     },
     {
       "name": "e 仮面ライダーBLACK デカヘソ Light Version",
@@ -657,7 +721,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "JUSTICE RUSH",
+      "rush_rate": 60,
+      "rush_cont": 72,
+      "rush_note": "RUSHは120回転のSTです。小当たり経由の大当たりは、V入賞が条件です。",
+      "comment": "突入率60%と入りやすいライトタイプです。1回の出玉は240個か400個と小さめですが、RUSH中の大当たりの25%で入る「宿命BATTLE」では、400個が約65%でループします。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7491/cutout/2"
     },
     {
       "name": "eワンパンマン2～正義執行 99ver.",
@@ -672,7 +743,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "HERO RUSH",
+      "rush_rate": 40,
+      "rush_cont": 50,
+      "rush_note": "突入率は、初当たり後のRUSHチャレンジに成功する割合です。RUSH中の電サポは66回です。",
+      "comment": "甘デジですが、RUSH中に約5000個の「正義執行5000BONUS」を狙える一撃型です。初当たりのほとんどは約252個で、突入率40%・継続率約50%と、RUSHに入れて続けるまでのハードルは高めです。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7460/cutout/2"
     }
   ]
 }

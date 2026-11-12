@@ -313,8 +313,15 @@ def spec_section(m, pool):
     r = rate / 100
     c = cont / 100
 
-    chain = 1 / (1 - c)          # 初当たりを含めた平均連チャン数
-    p10 = c ** 9                  # 突入後、10連以上する確率
+    # rush_cont_first があれば「RUSH最初の1回の継続率」として使う（2段階のRUSH向け）
+    first = float(m.get("rush_cont_first") or cont)
+    c1 = first / 100
+    chain = 1 + c1 / (1 - c)     # 初当たりを含めた平均連チャン数
+    p10 = c1 * c ** 8            # 突入後、10連以上する確率
+    if first != cont:
+        cont_text = f"継続率が最初は{num(first)}%、2回目以降は{num(cont)}%の場合"
+    else:
+        cont_text = f"継続率{num(cont)}%の場合"
     parts = []
 
     # RUSHに入るまで
@@ -334,8 +341,8 @@ def spec_section(m, pool):
 
     # 連チャン
     parts.append(f"""  <h3>{rn}の連チャン</h3>
-  <p>継続率{num(cont)}%の場合、1回の{rn}で続く連チャン数は、初当たりを含めて
-     <strong>平均約{chain:.1f}回</strong>です。{rn}に入っても、1回も当たらずに終わる確率は{num(round(100 - cont, 1))}%あります。</p>
+  <p>{cont_text}、1回の{rn}で続く連チャン数は、初当たりを含めて
+     <strong>平均約{chain:.1f}回</strong>です。{rn}に入っても、1回も当たらずに終わる確率は{num(round(100 - first, 1))}%あります。</p>
   <p>{rn}に入ってから10連以上する確率は{fmt_pct(p10)}で、{rn}約{1 / p10:,.0f}回に1回の計算です。""")
     if r < 1:
         x = r * p10
@@ -511,7 +518,7 @@ def build_page(m, others):
                 "@type": "Answer",
                 "text": f"{rn}突入率は約{num(rate)}%、継続率は約{num(cont)}%です。"
                         f"継続率{num(cont)}%の場合、1回の{rn}での連チャン数は初当たりを含めて"
-                        f"平均約{1 / (1 - cont / 100):.1f}回の計算です。"
+                        f"平均約{1 + float(m.get('rush_cont_first') or cont) / 100 / (1 - cont / 100):.1f}回の計算です。"
             }
         })
     faq_json = json.dumps(faq, ensure_ascii=False, indent=2)

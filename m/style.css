@@ -77,6 +77,8 @@ table{width:100%;border-collapse:collapse;font-size:13px;min-width:330px;}
 th,td{border:1px solid rgba(200,194,216,.25);padding:9px 6px;text-align:center;}
 th{background:rgba(255,45,120,.2);color:#fff;font-size:12px;}
 td:first-child{color:var(--lamp-gold);font-family:"DotGothic16",monospace;}
+table.analogy td.left{text-align:left;font-size:12.5px;line-height:1.65;}
+.panel p a{color:var(--neon-cyan);}
 tr.mark td{background:rgba(255,200,50,.09);}
 
 /* 計算機 */

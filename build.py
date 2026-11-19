@@ -177,6 +177,8 @@ table{width:100%;border-collapse:collapse;font-size:13px;min-width:330px;}
 th,td{border:1px solid rgba(200,194,216,.25);padding:9px 6px;text-align:center;}
 th{background:rgba(255,45,120,.2);color:#fff;font-size:12px;}
 td:first-child{color:var(--lamp-gold);font-family:"DotGothic16",monospace;}
+table.analogy td.left{text-align:left;font-size:12.5px;line-height:1.65;}
+.panel p a{color:var(--neon-cyan);}
 tr.mark td{background:rgba(255,200,50,.09);}
 
 /* 計算機 */
@@ -285,6 +287,95 @@ footer a{color:var(--text-dim);}
   .site-nav{gap:14px;}
   .site-nav a{font-size:12px;}
 }
+"""
+
+
+# ---------------------------------------------------------------
+#  身近な確率でたとえる（数学的に確率が決まるものだけを使う）
+# ---------------------------------------------------------------
+def build_analogies():
+    """(分母, 出来事, コイン投げか) のリスト"""
+    a = [(2, "コインを投げて表が出る", True)]
+    for n in range(2, 41):
+        a.append((2 ** n, f"コインを投げて{n}回続けて表が出る", True))
+    a += [(6, "サイコロを振って1の目が出る", False),
+          (36, "サイコロ2個がどちらも1の目になる", False),
+          (216, "サイコロ3個でピンゾロ（全部1の目）が出る", False)]
+    for n in range(4, 10):
+        a.append((6 ** n, f"サイコロ{n}個がすべて1の目になる", False))
+    for n in range(2, 16):
+        a.append((3 ** n, f"じゃんけんで{n}連勝する", False))
+    a += [(13, "トランプから引いた1枚がエースである", False),
+          (52, "トランプから狙った1枚を引き当てる", False),
+          (1000, "ナンバーズ3をストレートで当てる", False),
+          (10000, "ナンバーズ4をストレートで当てる", False),
+          (169911, "ミニロトで1等に当たる", False),
+          (6096454, "ロト6で1等に当たる", False),
+          (10295472, "ロト7で1等に当たる", False)]
+    return sorted(a)
+
+
+ANALOGIES = build_analogies()
+
+
+def analogy(one_in):
+    """1/one_in に一番近い出来事を選んで、たとえの文を返す。
+    コイン投げは2倍刻みでどこにでも近いので、ほかの出来事を少し優先する"""
+    best, best_score, best_gap = None, None, None
+    for d, label, coin in ANALOGIES:
+        gap = one_in / d if one_in > d else d / one_in
+        score = gap * (1.12 if coin else 1.0)
+        if best_score is None or score < best_score:
+            best, best_score, best_gap = (d, label), score, gap
+    d, label = best
+    if best_gap < 1.15:
+        tail = "とほぼ同じ確率"
+    elif best_gap < 1.5:
+        tail = "と同じくらいの珍しさ"
+    else:
+        tail = "に近い珍しさ"
+    return f"「{label}」（1/{d:,}）{tail}"
+
+
+def analogy_section(m):
+    """よく話題になる回転数のハマりを、身近な確率でたとえる表（静的に出す）"""
+    prob = m["prob"]
+    short = esc(m["short"])
+    rows = []
+    for spin in (500, 1000, 1500, 2000):
+        r = hamari_rate(prob, spin)
+        yutime = m.get("yutime")
+        if yutime and spin > yutime:
+            text = f"遊タイム（低確率{yutime}回転で発動）があるため、実際にはほぼ起こりません"
+        elif r >= 0.5:
+            text = "よくあるハマりなので、たとえるまでもありません"
+        else:
+            text = analogy(1 / r)
+        rows.append(f"      <tr><td>{spin:,}回転</td><td>{fmt_pct(r)}</td>"
+                    f"<td>{fmt_freq(r)}</td><td class=\"left\">{text}</td></tr>")
+    r1000 = hamari_rate(prob, 1000)
+    if m.get("yutime"):
+        lead = (f"{short}（1/{prob}）には、低確率を{m['yutime']}回転消化すると発動する遊タイムがあります。"
+                "下の表は遊タイムを考えない場合の確率で、遊タイムの回転数を超えるハマりは実際にはほぼ起こりません。")
+    else:
+        lead = (f"{short}（1/{prob}）で1000回転ハマるのは、{analogy(1 / r1000)}です。"
+                if r1000 < 0.5 else
+                f"{short}（1/{prob}）では、1000回転ハマりも珍しくありません。")
+    return f"""
+<section class="panel">
+  <h2>{short}のハマりを身近な確率でたとえると</h2>
+  <p>{lead}</p>
+  <div class="table-scroll">
+    <table class="analogy">
+      <tr><th>ハマり</th><th>起こる確率</th><th>頻度</th><th>たとえると</th></tr>
+{chr(10).join(rows)}
+    </table>
+  </div>
+  <p style="margin-top:10px;font-size:12px;color:var(--text-dim);">
+    ※たとえには、コイン・サイコロ・じゃんけん・トランプ・数字選択式宝くじ（ナンバーズ、ミニロト、ロト6、ロト7）など、
+    確率が計算で決まる出来事だけを使っています。
+  </p>
+</section>
 """
 
 
@@ -400,6 +491,7 @@ def spec_section(m, pool):
     ※突入率と継続率は公表値をもとにした単純計算の目安です。V入賞や残保留の扱いなど、細かい条件は機種ごとに異なります。<br>
     {src}
   </p>
+  <p style="margin-top:12px;"><a href="../tools/renchan.html?c={num(cont)}&amp;f={num(first)}">継続率計算ツールで、ほかの連チャン数も計算する →</a></p>
 </section>
 """
 
@@ -462,6 +554,8 @@ def build_page(m, others):
 
     # スペックから計算したセクション（データがある機種だけ）
     spec_html = spec_section(m, others + [m])
+    analogy_html = analogy_section(m)
+    compare_json = json.dumps([[d, l, c] for d, l, c in ANALOGIES], ensure_ascii=False)
 
     # 他機種へのリンク（確率が近い機種を8つ。全機種の一覧はトップページにある）
     import math
@@ -557,6 +651,7 @@ def build_page(m, others):
     <nav class="site-nav">
       <a href="../slot/">レア小役カウンター</a>
       <a class="current" href="../">ハマり確率計算機</a>
+      <a href="../tools/renchan.html">継続率計算</a>
       <a href="../articles/">解説記事</a>
     </nav>
   </div>
@@ -613,7 +708,7 @@ def build_page(m, others):
     ※通常時の大当たり確率1/{prob}をもとに算出した理論値です。{note_html}
   </p>
 </section>
-{spec_html}
+{spec_html}{analogy_html}
 <section class="panel">
   <h2>1/{prob}という数字の読み方</h2>
 
@@ -697,26 +792,18 @@ function fmtFreq(p, prefix){{
   return head + Math.round(n).toLocaleString() + '回に1回';
 }}
 
-// 身近な出来事とくらべる
-var COMPARE = [
-  [2,'コイン投げで表を出す'],[4,'コイン投げで2回連続表を出す'],[6,'サイコロで1の目を出す'],
-  [8,'コイン投げで3回連続表を出す'],[13,'トランプでエースを引く'],[20,'サイコロ2個でゾロ目を出す'],
-  [36,'サイコロ2個で狙ったゾロ目を出す'],[50,'50人から自分が選ばれる'],[64,'コイン投げで6回連続表を出す'],
-  [100,'1から100の数字を当てる'],[216,'サイコロ3個でピンゾロを出す'],[365,'知らない人と誕生日が一致する'],
-  [500,'ペットボトルのキャンペーンで当たりが出る'],[1024,'コイン投げで10回連続表を出す'],
-  [2000,'四つ葉のクローバーを一発で見つける'],[4500,'同姓同名の人に出会う'],[10000,'宝くじで1万円に当たる'],
-  [43000,'宝くじで10万円に当たる'],[220000,'ナンバーズ4をストレートで当てる'],[1000000,'雷に打たれる'],
-  [6100000,'ロト6で1等に当たる'],[20000000,'宝くじ1等に当たる'],[60000000,'ロト7で1等に当たる']
-];
+// 身近な出来事とくらべる（build.py の ANALOGIES と同じリスト）
+var COMPARE = {compare_json};
 function makeCompare(oneIn){{
-  var best = COMPARE[0], gap = Infinity;
+  var best = COMPARE[0], score = Infinity, gap = Infinity;
   for(var i=0;i<COMPARE.length;i++){{
-    var r = oneIn > COMPARE[i][0] ? oneIn/COMPARE[i][0] : COMPARE[i][0]/oneIn;
-    if(r < gap){{ gap = r; best = COMPARE[i]; }}
+    var g = oneIn > COMPARE[i][0] ? oneIn/COMPARE[i][0] : COMPARE[i][0]/oneIn;
+    var sc = g * (COMPARE[i][2] ? 1.12 : 1);
+    if(sc < score){{ score = sc; gap = g; best = COMPARE[i]; }}
   }}
-  var label = '約1/' + best[0].toLocaleString();
+  var label = '1/' + best[0].toLocaleString();
   if(gap < 1.15) return 'これは「' + best[1] + '」（' + label + '）とほぼ同じ確率です。';
-  if(gap < 1.8)  return 'これは「' + best[1] + '」（' + label + '）と同じくらいの珍しさです。';
+  if(gap < 1.5)  return 'これは「' + best[1] + '」（' + label + '）と同じくらいの珍しさです。';
   return 'これは「' + best[1] + '」（' + label + '）に近い珍しさです。';
 }}
 
@@ -752,8 +839,31 @@ def sort_by_new(machines):
     return sorted(machines, key=lambda m: (m.get("intro") or "0000-00-00"), reverse=True)
 
 
-def update_index(targets):
-    """トップページの機種リンク一覧を書き換える"""
+def build_news(data, targets, limit=10):
+    """トップページの「更新履歴」。machines.json の news と、新台の導入日から自動で作る"""
+    items = [(n["date"], n.get("tag", "更新"), esc(n["text"])) for n in data.get("news", [])]
+    groups = {}
+    for m in targets:
+        d = m.get("intro") or ""
+        if d and d <= TODAY:
+            groups.setdefault(d, []).append(m)
+    for d, ms in groups.items():
+        names = "、".join(f'<a href="./m/{x["slug"]}.html">{esc(x["short"])}</a>' for x in ms[:3])
+        more = f" ほか{len(ms) - 3}機種" if len(ms) > 3 else ""
+        mo, da = int(d[5:7]), int(d[8:10])
+        items.append((d, "新台", f"{mo}/{da}導入の{names}{more}のハマり確率ページ"))
+    items.sort(key=lambda x: x[0], reverse=True)
+    lis = "\n".join(
+        f'    <li><time datetime="{d}">{d.replace("-", ".")}</time>'
+        f'<span class="tag">{esc(t)}</span><span class="txt">{txt}</span></li>'
+        for d, t, txt in items[:limit])
+    return ('<!-- NEWS_START ここから下は build.py が自動生成します。手で編集しないでください -->\n'
+            '  <ul class="news">\n' + lis + '\n  </ul>\n'
+            '  <!-- NEWS_END -->')
+
+
+def update_index(targets, news_block=None):
+    """トップページの機種リンク一覧（と更新履歴）を書き換える"""
     path = "index.html"
     if not os.path.exists(path):
         print("  ※ index.html が見つからないため、リンク一覧の更新をスキップしました")
@@ -778,6 +888,12 @@ def update_index(targets):
     if n == 0:
         print("  ※ index.html に目印が見つからないため更新できませんでした")
         return
+
+    if news_block:
+        new_html, k = re.subn(r"<!-- NEWS_START.*?NEWS_END -->",
+                              lambda _: news_block, new_html, flags=re.S)
+        if k:
+            print("  更新: index.html の更新履歴")
 
     open(path, "w", encoding="utf-8").write(new_html)
     print(f"  更新: index.html のリンク一覧（{len(targets)}件）")
@@ -813,6 +929,11 @@ def main():
         for fn in sorted(os.listdir("articles")):
             if fn.endswith(".html") and fn != "index.html":
                 urls.append((f"{SITE}articles/{fn}", "monthly", "0.7"))
+    # ツール（tools/ フォルダにあるHTMLをすべて載せる）
+    if os.path.isdir("tools"):
+        for fn in sorted(os.listdir("tools")):
+            if fn.endswith(".html"):
+                urls.append((f"{SITE}tools/{fn}", "monthly", "0.8"))
     for m in targets:
         urls.append((f"{SITE}m/{m['slug']}.html", "monthly", "0.8"))
 
@@ -831,7 +952,7 @@ def main():
         f.write("\n".join(u for u, _, _ in urls) + "\n")
 
     # トップページのリンク一覧
-    update_index(targets)
+    update_index(targets, build_news(data, targets))
 
     print(f"\n完了: {len(targets)}ページ生成 / sitemap.xml に{len(urls)}件を登録")
 

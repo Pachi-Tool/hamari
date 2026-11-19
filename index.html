@@ -657,6 +657,15 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
 .cta-pr a.cta-btn:active{transform:scale(.98);}
 .cta-pr .note{font-size:11px;color:var(--text-dim);margin:6px 0 0;}
 
+/* 更新履歴 */
+.news{list-style:none;margin:0;padding:0;}
+.news li{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;
+  padding:10px 2px;border-bottom:1px solid rgba(200,194,216,.14);font-size:13.5px;line-height:1.7;}
+.news time{font-family:"DotGothic16",monospace;color:var(--text-dim);font-size:12px;}
+.news .tag{font-size:10.5px;font-weight:700;border-radius:4px;padding:0 7px;
+  color:#0b0710;background:var(--neon-cyan);}
+.news .txt{flex-basis:100%;color:var(--text);}
+.news .txt a{color:var(--neon-cyan);}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
      crossorigin="anonymous"></script>
@@ -670,6 +679,7 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
     <nav class="site-nav">
       <a href="./slot/">レア小役カウンター</a>
       <a class="current" href="./">ハマり確率計算機</a>
+      <a href="./tools/renchan.html">継続率計算</a>
       <a href="./articles/">解説記事</a>
     </nav>
   </div>
@@ -884,6 +894,34 @@ footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
   <!-- MACHINE_LINKS_END -->
 </section>
 
+<!-- ========== 更新履歴 ========== -->
+<section class="panel">
+  <h2>更新履歴</h2>
+  <!-- NEWS_START ここから下は build.py が自動生成します。手で編集しないでください -->
+  <ul class="news">
+    <li><time datetime="2026-11-19">2026.11.19</time><span class="tag">NEW</span><span class="txt">継続率から「N連する確率」と平均連チャン数を計算できる「継続率計算ツール」を公開しました。</span></li>
+    <li><time datetime="2026-11-19">2026.11.19</time><span class="tag">更新</span><span class="txt">機種ページに、500〜2000回転のハマりをコイン・サイコロ・ロト6などの身近な確率でたとえる表を追加しました。</span></li>
+    <li><time datetime="2026-11-12">2026.11.12</time><span class="tag">更新</span><span class="txt">11/2導入の11機種に、RUSH突入率と継続率から計算した「スペックから計算」の欄を追加しました。</span></li>
+    <li><time datetime="2026-11-06">2026.11.06</time><span class="tag">更新</span><span class="txt">アクセスの多い10機種に、RUSHまでの平均回転数・平均連チャン数・10連以上の確率を計算した欄を追加しました。</span></li>
+    <li><time datetime="2026-11-02">2026.11.02</time><span class="tag">新台</span><span class="txt">11/2導入の<a href="./m/granbelm-319.html">グランベルム 319ver.</a>、<a href="./m/granbelm-249.html">グランベルム 249ver.</a>、<a href="./m/nogenora-119.html">ノーゲーム・ノーライフ 119Ver.</a> ほか8機種のハマり確率ページ</span></li>
+    <li><time datetime="2026-10-25">2026.10.25</time><span class="tag">NEW</span><span class="txt">ハマり確率の計算方法や「分母まで回せば当たる？」などを解説する記事を5本公開しました。</span></li>
+    <li><time datetime="2026-10-19">2026.10.19</time><span class="tag">新台</span><span class="txt">10/19導入の<a href="./m/eva-319red.html">エヴァ -319 RED-</a>のハマり確率ページ</span></li>
+    <li><time datetime="2026-10-05">2026.10.05</time><span class="tag">新台</span><span class="txt">10/5導入の<a href="./m/hanma-baki-129.html">範馬刃牙 129ver.</a>、<a href="./m/rezero-onigakari2.html">リゼロ 鬼がかり2</a>、<a href="./m/gantz.html">GANTZ</a> ほか2機種のハマり確率ページ</span></li>
+    <li><time datetime="2026-09-07">2026.09.07</time><span class="tag">新台</span><span class="txt">9/7導入の<a href="./m/shin-ultraman-79.html">シン・ウルトラマン 79ver.</a>、<a href="./m/enen2-99.html">炎炎ノ消防隊2 99ver.</a>、<a href="./m/ushiotora-100.html">うしおととら 100ver.</a> ほか6機種のハマり確率ページ</span></li>
+    <li><time datetime="2026-08-17">2026.08.17</time><span class="tag">新台</span><span class="txt">8/17導入の<a href="./m/zom100.html">ゾン100</a>、<a href="./m/haruichiban2026.html">春一番 2026</a>のハマり確率ページ</span></li>
+  </ul>
+  <!-- NEWS_END -->
+</section>
+
+<!-- ========== ツール ========== -->
+<section class="panel">
+  <h2>ほかのツール</h2>
+  <ul class="machine-links">
+    <li><a href="./tools/renchan.html"><span>継続率計算ツール（N連する確率）</span><span class="p">NEW</span></a></li>
+    <li><a href="./slot/"><span>レア小役カウンター（パチスロ）</span></a></li>
+  </ul>
+</section>
+
 <!-- ========== 解説記事へのリンク ========== -->
 <section class="panel">
   <h2>ハマり確率の解説記事</h2>
@@ -1015,34 +1053,78 @@ function fmtFreq(p, prefix){
 
 // --- 身近な出来事とくらべる文章を作る ---
 // リストは「その出来事が起こる確率の分母」で並べている
+// 確率が計算で決まる出来事だけを使う（build.py の ANALOGIES と同じ）
 const COMPARE_LIST = [
-  [2,          'コイン投げで表を出す'],
-  [4,          'コイン投げで2回連続表を出す'],
-  [6,          'サイコロで1の目を出す'],
-  [8,          'コイン投げで3回連続表を出す'],
-  [13,         'トランプから引いた1枚がエースである'],
-  [20,         'サイコロ2個でゾロ目を出す'],
-  [36,         'サイコロ2個で狙ったゾロ目を出す'],
-  [50,         'クラス2つ分（50人）から自分が選ばれる'],
-  [64,         'コイン投げで6回連続表を出す'],
-  [100,        '1から100の数字をひと言で当てる'],
-  [216,        'サイコロ3個でピンゾロを出す'],
-  [365,        '知らない人と誕生日が一致する'],
-  [500,        'ペットボトルのキャンペーンで当たりが出る'],
-  [1024,       'コイン投げで10回連続表を出す'],
-  [2000,       '4つ葉のクローバーを一発で見つける'],
-  [4500,       '日本で同姓同名の人に出会う'],
-  [10000,      '宝くじで1万円に当たる'],
-  [43000,      '宝くじで10万円に当たる'],
-  [100000,     '交通事故で死亡する（年間・日本）'],
-  [220000,     'ナンバーズ4をストレートで当てる'],
-  [1000000,    '雷に打たれる（生涯）'],
-  [2500000,    'ナンバーズ4を2回連続で当てる'],
-  [6100000,    'ロト6で1等に当たる'],
-  [10000000,   '隕石が人に当たる（生涯）'],
-  [20000000,   '宝くじ1等に当たる'],
-  [60000000,   'ロト7で1等に当たる'],
-  [150000000,  '宝くじ1等を2回当てる（前後賞含む規模）']
+  [2, 'コインを投げて表が出る', true],
+  [4, 'コインを投げて2回続けて表が出る', true],
+  [6, 'サイコロを振って1の目が出る', false],
+  [8, 'コインを投げて3回続けて表が出る', true],
+  [9, 'じゃんけんで2連勝する', false],
+  [13, 'トランプから引いた1枚がエースである', false],
+  [16, 'コインを投げて4回続けて表が出る', true],
+  [27, 'じゃんけんで3連勝する', false],
+  [32, 'コインを投げて5回続けて表が出る', true],
+  [36, 'サイコロ2個がどちらも1の目になる', false],
+  [52, 'トランプから狙った1枚を引き当てる', false],
+  [64, 'コインを投げて6回続けて表が出る', true],
+  [81, 'じゃんけんで4連勝する', false],
+  [128, 'コインを投げて7回続けて表が出る', true],
+  [216, 'サイコロ3個でピンゾロ（全部1の目）が出る', false],
+  [243, 'じゃんけんで5連勝する', false],
+  [256, 'コインを投げて8回続けて表が出る', true],
+  [512, 'コインを投げて9回続けて表が出る', true],
+  [729, 'じゃんけんで6連勝する', false],
+  [1000, 'ナンバーズ3をストレートで当てる', false],
+  [1024, 'コインを投げて10回続けて表が出る', true],
+  [1296, 'サイコロ4個がすべて1の目になる', false],
+  [2048, 'コインを投げて11回続けて表が出る', true],
+  [2187, 'じゃんけんで7連勝する', false],
+  [4096, 'コインを投げて12回続けて表が出る', true],
+  [6561, 'じゃんけんで8連勝する', false],
+  [7776, 'サイコロ5個がすべて1の目になる', false],
+  [8192, 'コインを投げて13回続けて表が出る', true],
+  [10000, 'ナンバーズ4をストレートで当てる', false],
+  [16384, 'コインを投げて14回続けて表が出る', true],
+  [19683, 'じゃんけんで9連勝する', false],
+  [32768, 'コインを投げて15回続けて表が出る', true],
+  [46656, 'サイコロ6個がすべて1の目になる', false],
+  [59049, 'じゃんけんで10連勝する', false],
+  [65536, 'コインを投げて16回続けて表が出る', true],
+  [131072, 'コインを投げて17回続けて表が出る', true],
+  [169911, 'ミニロトで1等に当たる', false],
+  [177147, 'じゃんけんで11連勝する', false],
+  [262144, 'コインを投げて18回続けて表が出る', true],
+  [279936, 'サイコロ7個がすべて1の目になる', false],
+  [524288, 'コインを投げて19回続けて表が出る', true],
+  [531441, 'じゃんけんで12連勝する', false],
+  [1048576, 'コインを投げて20回続けて表が出る', true],
+  [1594323, 'じゃんけんで13連勝する', false],
+  [1679616, 'サイコロ8個がすべて1の目になる', false],
+  [2097152, 'コインを投げて21回続けて表が出る', true],
+  [4194304, 'コインを投げて22回続けて表が出る', true],
+  [4782969, 'じゃんけんで14連勝する', false],
+  [6096454, 'ロト6で1等に当たる', false],
+  [8388608, 'コインを投げて23回続けて表が出る', true],
+  [10077696, 'サイコロ9個がすべて1の目になる', false],
+  [10295472, 'ロト7で1等に当たる', false],
+  [14348907, 'じゃんけんで15連勝する', false],
+  [16777216, 'コインを投げて24回続けて表が出る', true],
+  [33554432, 'コインを投げて25回続けて表が出る', true],
+  [67108864, 'コインを投げて26回続けて表が出る', true],
+  [134217728, 'コインを投げて27回続けて表が出る', true],
+  [268435456, 'コインを投げて28回続けて表が出る', true],
+  [536870912, 'コインを投げて29回続けて表が出る', true],
+  [1073741824, 'コインを投げて30回続けて表が出る', true],
+  [2147483648, 'コインを投げて31回続けて表が出る', true],
+  [4294967296, 'コインを投げて32回続けて表が出る', true],
+  [8589934592, 'コインを投げて33回続けて表が出る', true],
+  [17179869184, 'コインを投げて34回続けて表が出る', true],
+  [34359738368, 'コインを投げて35回続けて表が出る', true],
+  [68719476736, 'コインを投げて36回続けて表が出る', true],
+  [137438953472, 'コインを投げて37回続けて表が出る', true],
+  [274877906944, 'コインを投げて38回続けて表が出る', true],
+  [549755813888, 'コインを投げて39回続けて表が出る', true],
+  [1099511627776, 'コインを投げて40回続けて表が出る', true]
 ];
 
 function makeCompare(oneIn){
@@ -1050,22 +1132,26 @@ function makeCompare(oneIn){
   let best = COMPARE_LIST[0];
   let bestGap = Infinity;
 
+  let bestScore = Infinity;
   for(const item of COMPARE_LIST){
     // 何倍ずれているかを見る（2倍ずれも1/2倍ずれも同じ扱いにする）
     const ratio = oneIn > item[0] ? oneIn / item[0] : item[0] / oneIn;
-    if(ratio < bestGap){
+    // コイン投げは2倍刻みでどこにでも近いので、ほかの出来事を少し優先する
+    const score = ratio * (item[2] ? 1.12 : 1);
+    if(score < bestScore){
+      bestScore = score;
       bestGap = ratio;
       best = item;
     }
   }
 
-  const label = '約1/' + best[0].toLocaleString();
+  const label = '1/' + best[0].toLocaleString();
 
   // ズレが小さいときは「ほぼ同じ」、大きいときは表現をゆるめる
   if(bestGap < 1.15){
     return 'これは「' + best[1] + '」（' + label + '）とほぼ同じ確率です。';
   }
-  if(bestGap < 1.8){
+  if(bestGap < 1.5){
     return 'これは「' + best[1] + '」（' + label + '）と同じくらいの珍しさです。';
   }
   return 'これは「' + best[1] + '」（' + label + '）に近い珍しさです。';

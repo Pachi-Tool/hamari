@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>継続率計算ツール｜N連する確率と平均連チャン数を計算</title>
+<meta name="description" content="パチンコ・パチスロの継続率から、N連以上する確率・ちょうどN連で終わる確率・平均連チャン数を計算する無料ツール。最初の1回だけ継続率が違う2段階のRUSHにも対応。継続率別の早見表つき。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pachi-tool.com/tools/renchan.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<meta property="og:title" content="継続率計算ツール｜N連する確率と平均連チャン数を計算">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pachi-tool.com/tools/renchan.html">
+<meta property="og:site_name" content="ハマり確率計算機">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Reggae+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../m/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "継続率計算ツール",
+  "url": "https://pachi-tool.com/tools/renchan.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "ja",
+  "isAccessibleForFree": true,
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
+     crossorigin="anonymous"></script>
+<style>
+.calc .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.calc select{width:100%;background:#05030a;color:var(--text);border:2px solid rgba(200,194,216,.35);
+  border-radius:10px;padding:11px 10px;font-size:15px;margin-bottom:14px;}
+.calc .hint{font-size:11.5px;color:var(--text-dim);margin:-8px 0 14px;line-height:1.6;}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0 14px;}
+.kpi div{background:rgba(255,255,255,.04);border:1px solid rgba(200,194,216,.2);border-radius:10px;padding:10px 6px;}
+.kpi .k{font-size:11px;color:var(--text-dim);}
+.kpi .v{font-family:"DotGothic16",monospace;font-size:22px;color:var(--lamp-gold);}
+.bars{margin:8px 0 4px;}
+.bar{display:grid;grid-template-columns:42px 1fr 64px;gap:8px;align-items:center;font-size:12px;margin:3px 0;}
+.bar .t{color:var(--text-dim);text-align:right;}
+.bar .b{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--neon-pink),var(--lamp-gold));min-width:2px;}
+.bar .n{font-family:"DotGothic16",monospace;color:var(--text);}
+#res{display:none;margin-top:16px;}
+.formula{background:#05030a;border:1px solid rgba(255,200,50,.5);border-radius:10px;padding:12px 14px;
+  text-align:center;font-family:"DotGothic16",monospace;color:var(--lamp-gold);font-size:14.5px;overflow-x:auto;}
+@media (max-width:480px){.kpi .v{font-size:18px;}}
+</style>
+</head>
+<body>
+
+<!-- サイト共通ヘッダー -->
+<div class="site-bar">
+  <div class="site-bar-inner">
+    <a class="site-logo" href="../">PACHI-TOOL</a>
+    <nav class="site-nav">
+      <a href="../slot/">レア小役カウンター</a>
+      <a href="../">ハマり確率計算機</a>
+      <a class="current" href="./renchan.html">継続率計算</a>
+      <a href="../articles/">解説記事</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<p class="crumb"><a href="../">ハマり確率計算機</a> ／ 継続率計算ツール</p>
+
+<header>
+  <p class="eyebrow">RENCHAN CALCULATOR</p>
+  <h1>継続率計算ツール<br>N連する確率</h1>
+</header>
+
+<section class="panel calc">
+  <h2>継続率を入れて計算する</h2>
+  <label for="preset">機種から選ぶ（任意）</label>
+  <select id="preset"><option value="">― 継続率を自分で入れる ―</option></select>
+  <div class="row2">
+    <div>
+      <label for="cont">継続率（%）</label>
+      <input type="number" id="cont" value="80" min="1" max="99.9" step="0.1" inputmode="decimal">
+    </div>
+    <div>
+      <label for="first">最初の1回だけの継続率（%）</label>
+      <input type="number" id="first" placeholder="同じなら空欄" min="1" max="100" step="0.1" inputmode="decimal">
+    </div>
+  </div>
+  <p class="hint">最初の1回だけ継続率が違うRUSH（例：最初は51%、当たれば80%に上がる2段階のRUSH）は、右の欄に最初の継続率を入れてください。</p>
+  <button id="btn">計算する</button>
+
+  <div id="res">
+    <div class="kpi">
+      <div><div class="k">平均連チャン</div><div class="v" id="avg">-</div></div>
+      <div><div class="k">半分はここまで</div><div class="v" id="med">-</div></div>
+      <div><div class="k">1連で終わる</div><div class="v" id="one">-</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);margin:0 0 6px;">ちょうどN連で終わる割合（初当たりを1連と数えます）</p>
+    <div class="bars" id="bars"></div>
+    <div class="table-scroll" style="margin-top:14px;">
+      <table id="tbl"></table>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>継続率別の早見表</h2>
+  <p>よくある継続率で、平均連チャン数と、5連・10連以上する確率をまとめました（最初の1回も同じ継続率の場合）。</p>
+  <div class="table-scroll">
+    <table>
+      <tr><th>継続率</th><th>平均連チャン</th><th>半分はここまで</th><th>5連以上</th><th>10連以上</th></tr>
+      <tr><td>50%</td><td>約2.0回</td><td>2連</td><td>6.25%</td><td>0.195%</td></tr>
+      <tr><td>60%</td><td>約2.5回</td><td>2連</td><td>13.0%</td><td>1.01%</td></tr>
+      <tr><td>65%</td><td>約2.9回</td><td>2連</td><td>17.9%</td><td>2.07%</td></tr>
+      <tr><td>70%</td><td>約3.3回</td><td>2連</td><td>24.0%</td><td>4.04%</td></tr>
+      <tr><td>75%</td><td>約4.0回</td><td>3連</td><td>31.6%</td><td>7.51%</td></tr>
+      <tr><td>77%</td><td>約4.3回</td><td>3連</td><td>35.2%</td><td>9.52%</td></tr>
+      <tr><td>80%</td><td>約5.0回</td><td>4連</td><td>41.0%</td><td>13.4%</td></tr>
+      <tr><td>85%</td><td>約6.7回</td><td>5連</td><td>52.2%</td><td>23.2%</td></tr>
+      <tr><td>90%</td><td>約10.0回</td><td>7連</td><td>65.6%</td><td>38.7%</td></tr>
+    </table>
+  </div>
+  <p style="margin-top:10px;font-size:12px;color:var(--text-dim);">※「半分はここまで」は、RUSHの半分以上がその連チャン数以内で終わるという意味です。</p>
+</section>
+
+<section class="panel">
+  <h2>継続率とは</h2>
+  <p>継続率は、RUSH（確変やSTなど、当たりやすい状態）の途中で次の大当たりを引いて、RUSHが続く確率のことです。
+     このツールでは、RUSHに入るきっかけになった初当たりを「1連目」と数え、そこから何回大当たりが続くかを計算しています。</p>
+  <p>メーカーや解析サイトが出している継続率には、「残保留込み」「引き戻し込み」など、条件が付いていることがあります。
+     機種ページの「スペックから計算」の欄では、どの条件の値を使ったかを注記しています。</p>
+</section>
+
+<section class="panel">
+  <h2>計算式</h2>
+  <p>継続率を c、最初の1回だけの継続率を f とします（2段階でないRUSHでは f = c です）。</p>
+  <p class="formula">N連以上する確率 ＝ f × c<sup>N−2</sup>（N≧2）</p>
+  <p class="formula">平均連チャン数 ＝ 1 ＋ f ÷（1 − c）</p>
+  <p>たとえば継続率80%なら、平均連チャン数は 1 ＋ 0.8 ÷ 0.2 ＝ 5回です。</p>
+</section>
+
+<section class="panel">
+  <h2>よくある勘違い：「平均5連」でも5連するとは限らない</h2>
+  <p>継続率80%の平均連チャン数は5回ですが、実際に5連以上する確率は41.0%しかありません。
+     RUSHの半分以上は4連以内で終わります。</p>
+  <p>平均が実際の感覚より大きくなるのは、ときどき起こる大連チャンが平均を引き上げるからです。
+     これは<a href="../articles/bunbo.html">「分母まで回せば当たる？」の記事</a>で説明した、ハマりの「平均と真ん中のずれ」と同じ仕組みです。</p>
+</section>
+
+<section class="panel">
+  <h2>2段階のRUSHは最初の1回が勝負</h2>
+  <p>最初の継続率が低く、1回当たると継続率が上がるRUSHでは、最初の1回で結果が大きく変わります。
+     たとえば<a href="../m/nogenora-119.html">ノーゲーム・ノーライフ 119Ver.</a>（最初約51%、その後約80%）の平均連チャン数は約3.6回で、
+     10連以上する確率は8.56%です。最初から80%続くRUSH（10連以上13.4%）と比べると、
+     最初の1回を引けるかどうかで差がついていることがわかります。</p>
+</section>
+
+<section class="panel">
+  <h2>ハマり確率もあわせて確認する</h2>
+  <p>初当たりまでのハマりやすさは、<a href="../">ハマり確率計算機</a>や、機種ごとのページで計算できます。
+     スペックのわかっている機種では、RUSHに入るまでの平均回転数もあわせて載せています。</p>
+</section>
+
+<footer>
+  <p>本ページの数値は、継続率が毎回一定だと仮定した確率計算の理論値です。実際の遊技結果を保証するものではありません。<br>
+     遊技は20歳以上・自己資金の範囲内でお楽しみください。</p>
+  <p style="margin-top:12px;"><a href="../">ハマり確率計算機</a> ／ <a href="../articles/">解説記事</a> ／ <a href="../privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+</div>
+
+<script>
+var cont = document.getElementById('cont');
+var first = document.getElementById('first');
+var preset = document.getElementById('preset');
+
+function pct(x){
+  var v = x * 100;
+  if(v >= 10) return v.toFixed(1) + '%';
+  if(v >= 1) return v.toFixed(2) + '%';
+  if(v >= 0.001) return v.toFixed(3) + '%';
+  return 'ほぼ0%';
+}
+function oneIn(x){
+  if(x >= 0.5) return '-';
+  var n = 1 / x;
+  if(n >= 1e8) return '約' + (n / 1e8).toFixed(1) + '億回に1回';
+  return '約' + Math.round(n).toLocaleString() + '回に1回';
+}
+function ge(n, f, c){ return n <= 1 ? 1 : f * Math.pow(c, n - 2); }
+
+function calc(){
+  var c = parseFloat(cont.value) / 100;
+  var fv = first.value === '' ? NaN : parseFloat(first.value);
+  var f = isNaN(fv) ? c : fv / 100;
+  if(!(c > 0 && c < 1) || !(f >= 0 && f <= 1)) return;
+
+  document.getElementById('avg').textContent = (1 + f / (1 - c)).toFixed(1) + '回';
+  var med = 1; while(ge(med + 1, f, c) >= 0.5) med++;
+  document.getElementById('med').textContent = med + '連';
+  document.getElementById('one').textContent = pct(1 - f);
+
+  // ちょうどN連の割合（1〜15連、16連以上はまとめる）
+  var bars = '', maxv = 0, vals = [];
+  for(var n = 1; n <= 15; n++){ var v = ge(n, f, c) - ge(n + 1, f, c); vals.push(v); if(v > maxv) maxv = v; }
+  vals.push(ge(16, f, c));
+  for(var i = 0; i < vals.length; i++){
+    var label = i < 15 ? (i + 1) + '連' : '16連~';
+    bars += '<div class="bar"><span class="t">' + label + '</span><span class="b" style="width:'
+         + Math.max(1, vals[i] / maxv * 100).toFixed(1) + '%"></span><span class="n">' + pct(vals[i]) + '</span></div>';
+  }
+  document.getElementById('bars').innerHTML = bars;
+
+  var rows = '<tr><th>連チャン</th><th>N連以上する確率</th><th>頻度</th></tr>';
+  [2,3,4,5,6,7,8,10,12,15,20,25,30].forEach(function(n){
+    var p = ge(n, f, c);
+    rows += '<tr><td>' + n + '連以上</td><td>' + pct(p) + '</td><td>' + oneIn(p) + '</td></tr>';
+  });
+  document.getElementById('tbl').innerHTML = rows;
+  document.getElementById('res').style.display = 'block';
+}
+
+document.getElementById('btn').addEventListener('click', calc);
+
+// 機種リスト（スペックを載せている機種）
+fetch('../machines.json').then(function(r){ return r.json(); }).then(function(d){
+  d.machines.filter(function(m){ return m.page && m.rush_cont; })
+    .sort(function(a, b){ return b.rush_cont - a.rush_cont; })
+    .forEach(function(m){
+      var o = document.createElement('option');
+      o.value = m.rush_cont + '|' + (m.rush_cont_first || '');
+      o.textContent = m.short + '（継続率' + m.rush_cont + '%' + (m.rush_cont_first ? '・最初' + m.rush_cont_first + '%' : '') + '）';
+      preset.appendChild(o);
+    });
+}).catch(function(){});
+preset.addEventListener('change', function(){
+  if(!preset.value) return;
+  var v = preset.value.split('|');
+  cont.value = v[0]; first.value = v[1];
+  calc();
+});
+
+// 機種ページからのリンク（?c=継続率&f=最初の継続率）で開いたとき
+var q = new URLSearchParams(location.search);
+if(q.get('c')){
+  cont.value = q.get('c');
+  if(q.get('f') && q.get('f') !== q.get('c')) first.value = q.get('f');
+  calc();
+}
+</script>
+</body>
+</html>

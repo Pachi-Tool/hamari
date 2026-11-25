@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>運営者情報｜ハマり確率計算機</title>
+<meta name="description" content="ハマり確率計算機（PACHI-TOOL）の運営者情報。サイトの目的、提供しているツール、データの出典と計算方法、更新の方針について記載しています。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pachi-tool.com/about.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+
+<meta property="og:title" content="運営者情報｜ハマり確率計算機">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pachi-tool.com/about.html">
+<meta property="og:site_name" content="ハマり確率計算機">
+<meta property="og:locale" content="ja_JP">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Reggae+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --hall-black:#0b0710;
+  --hall-deep:#171025;
+  --panel:#1e1630;
+  --neon-pink:#ff2d78;
+  --neon-cyan:#25e5ff;
+  --lamp-gold:#ffc832;
+  --chrome:#c8c2d8;
+  --text:#f2eefa;
+  --text-dim:#9c93b5;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,45,120,.18), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(37,229,255,.15), transparent 45%),
+    var(--hall-black);
+  color:var(--text);
+  font-family:"Noto Sans JP",sans-serif;
+  line-height:1.9;
+  padding:0 16px 80px;
+}
+.wrap{max-width:760px;margin:0 auto;}
+
+/* サイト共通ヘッダー */
+.site-bar{
+  background:rgba(11,7,16,.82);
+  border-bottom:1px solid rgba(200,194,216,.18);
+  backdrop-filter:blur(8px);
+  margin:0 -16px;padding:0 16px;
+}
+.site-bar-inner{
+  max-width:760px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;padding:12px 0;
+}
+.site-logo{
+  font-family:"Reggae One",cursive;font-size:17px;
+  color:var(--lamp-gold);text-decoration:none;
+  letter-spacing:.06em;text-shadow:0 0 10px rgba(255,200,50,.5);
+  white-space:nowrap;
+}
+.site-nav{display:flex;gap:18px;flex-wrap:wrap;}
+.site-nav a{
+  color:var(--text-dim);text-decoration:none;font-size:13px;
+  padding:3px 0;white-space:nowrap;
+}
+.site-nav a:hover{color:var(--neon-cyan);}
+
+header{text-align:center;padding:36px 0 20px;}
+.eyebrow{
+  font-family:"DotGothic16",monospace;
+  color:var(--neon-cyan);
+  letter-spacing:.3em;font-size:11px;margin:0 0 10px;
+}
+h1{
+  font-family:"Reggae One",cursive;
+  font-size:clamp(22px,5.5vw,34px);
+  margin:0;line-height:1.3;color:#fff;
+  text-shadow:0 0 8px var(--neon-pink),0 0 24px rgba(255,45,120,.6),0 3px 0 #7a0b39;
+}
+.updated{color:var(--text-dim);font-size:12px;margin:14px 0 0;}
+
+.panel{
+  background:linear-gradient(180deg,var(--panel),var(--hall-deep));
+  border:2px solid rgba(200,194,216,.25);
+  border-radius:14px;padding:24px;margin:22px 0;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 10px 30px rgba(0,0,0,.6);
+}
+h2{
+  font-family:"Reggae One",cursive;
+  font-size:17px;margin:30px 0 12px;
+  color:var(--lamp-gold);letter-spacing:.04em;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,200,50,.3);
+}
+h2:first-child{margin-top:0;}
+h3{font-size:14px;color:var(--neon-cyan);margin:20px 0 6px;}
+p{font-size:14px;color:#d8d1e8;margin:0 0 14px;}
+ul{font-size:14px;color:#d8d1e8;padding-left:20px;margin:0 0 14px;}
+li{margin-bottom:7px;}
+a{color:var(--neon-cyan);}
+
+.highlight{
+  background:rgba(37,229,255,.1);
+  border-left:4px solid var(--neon-cyan);
+  border-radius:0 8px 8px 0;
+  padding:14px 16px;margin:0 0 16px;
+  font-size:14px;
+}
+.highlight strong{color:var(--lamp-gold);}
+
+.back{
+  display:inline-block;
+  background:linear-gradient(180deg,#ff5c9a,var(--neon-pink));
+  color:#fff;text-decoration:none;font-weight:900;font-size:14px;
+  padding:13px 28px;border-radius:999px;
+  box-shadow:0 4px 0 #a30d4a,0 0 20px rgba(255,45,120,.5);
+}
+.center{text-align:center;margin-top:26px;}
+
+footer{text-align:center;color:var(--text-dim);font-size:12px;padding:30px 0 0;}
+footer a{color:var(--text-dim);}
+
+@media (max-width:480px){
+  body{padding:0 12px 60px;}
+  .panel{padding:17px;}
+  .site-bar{margin:0 -12px;padding:0 12px;}
+  .site-logo{font-size:15px;}
+  .site-nav{gap:14px;}
+  .site-nav a{font-size:12px;}
+}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907298996043161"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- サイト共通ヘッダー -->
+<div class="site-bar">
+  <div class="site-bar-inner">
+    <a class="site-logo" href="./">PACHI-TOOL</a>
+    <nav class="site-nav">
+      <a href="./slot/">レア小役カウンター</a>
+      <a href="./">ハマり確率計算機</a>
+      <a href="./tools/renchan.html">継続率計算</a>
+      <a href="./articles/">解説記事</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">ABOUT</p>
+  <h1>運営者情報</h1>
+</header>
+
+<div class="panel">
+
+  <h2>運営者</h2>
+  <ul>
+    <li>サイト名：ハマり確率計算機（PACHI-TOOL）</li>
+    <li>URL：https://pachi-tool.com/</li>
+    <li>運営者：han</li>
+    <li>公開：2026年8月</li>
+    <li>お問い合わせ：<a href="./contact.html">お問い合わせページ</a>から</li>
+  </ul>
+
+  <h2>このサイトについて</h2>
+  <p>パチンコを打っていると、「今日のハマりはどのくらい珍しいのか」が気になることがあります。当サイトは、その珍しさを確率の計算で確かめられるように作った、無料の計算サイトです。</p>
+  <p>計算はすべて利用者のブラウザの中で行い、入力した回転数や履歴をサーバーに送ることはありません。</p>
+
+  <h2>提供しているもの</h2>
+  <ul>
+    <li><a href="./">ハマり確率計算機</a>：大当たり確率と回転数から、ハマりの確率と珍しさを計算します</li>
+    <li>機種別のハマり確率ページ：機種ごとの早見表と、スペックから計算した数値を載せています</li>
+    <li><a href="./tools/renchan.html">継続率計算ツール</a>：継続率から、N連する確率や平均連チャン数を計算します</li>
+    <li><a href="./articles/">解説記事</a>：ハマり確率の計算方法や、よくある勘違いを解説しています</li>
+    <li><a href="./slot/">レア小役カウンター</a>：パチスロのレア小役を数えるためのカウンターです</li>
+  </ul>
+
+  <h2>データの出典と計算方法</h2>
+  <p>機種の大当たり確率・RUSH突入率・継続率などは、メーカーの公表値や、P-WORLD、パチセブン、ちょんぼりすたなどで公開されている情報をもとに入力しています。スペックの出典は、各機種のページに記載しています。</p>
+  <p>ハマり確率は「（1 − 1/大当たり確率の分母）の回転数乗」で求めた理論値です。計算の考え方は<a href="./articles/hamari-keisan.html">ハマり確率の計算方法</a>の記事でくわしく説明しています。数値の誤りに気づいた場合は、<a href="./contact.html">お問い合わせ</a>からお知らせください。</p>
+
+  <h2>更新の方針</h2>
+  <p>新台は導入日ごろにページを追加し、スペックがわかりしだい計算の欄を更新しています。これまでの更新は、トップページの「更新履歴」でご確認いただけます。</p>
+
+  <h2>広告について</h2>
+  <p>当サイトは、Google AdSense などの広告や、アフィリエイトプログラムを利用しています。広告には「PR」と表示しています。くわしくは<a href="./privacy.html">プライバシーポリシー</a>をご覧ください。</p>
+
+  <h2>遊技に関するお願い</h2>
+  <p>当サイトは、遊技をすすめるものではありません。計算結果は確率の理論値で、実際の遊技結果を保証するものではありません。遊技は20歳以上の方が、自己資金の範囲内でお楽しみください。のめり込みが心配なときは、リカバリーサポート・ネットワークなどの専門の相談窓口に相談することもできます。</p>
+
+</div>
+
+<div class="center">
+  <a class="back" href="./">← 計算機に戻る</a>
+</div>
+
+<footer>
+  <p>ハマり確率計算機</p>
+  <p style="margin-top:10px;"><a href="./about.html">運営者情報</a> ／ <a href="./contact.html">お問い合わせ</a> ／ <a href="./privacy.html">プライバシーポリシー</a></p>
+</footer>
+
+</div>
+</body>
+</html>

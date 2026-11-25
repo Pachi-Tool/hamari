@@ -64,6 +64,8 @@ FOOT = """
   <a href="__SLOT_HOME__">レア小役カウンター トップ</a>
   <a href="__HOME__">ハマり確率計算機</a>
   <a href="__PRIVACY__">プライバシーポリシー</a>
+  <a href="__ABOUT__">運営者情報</a>
+  <a href="__CONTACT__">お問い合わせ</a>
 </footer>
 </div>
 __SCRIPTS__
@@ -92,6 +94,8 @@ def foot(home, slot_home, privacy, scripts):
             .replace("__HOME__", home)
             .replace("__SLOT_HOME__", slot_home)
             .replace("__PRIVACY__", privacy)
+            .replace("__ABOUT__", privacy.replace("privacy.html", "about.html"))
+            .replace("__CONTACT__", privacy.replace("privacy.html", "contact.html"))
             .replace("__SCRIPTS__", scripts))
 
 

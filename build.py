@@ -755,7 +755,7 @@ def build_page(m, others):
   <p>本ページの数値は確率計算による理論値です。実際の遊技結果を保証するものではありません。<br>
      スペックは変更される場合があります。正確な情報はメーカー公式をご確認ください。<br>
      遊技は20歳以上・自己資金の範囲内でお楽しみください。</p>
-  <p style="margin-top:12px;"><a href="../privacy.html">プライバシーポリシー</a></p>
+  <p style="margin-top:12px;"><a href="../privacy.html">プライバシーポリシー</a> ／ <a href="../about.html">運営者情報</a> ／ <a href="../contact.html">お問い合わせ</a></p>
 </footer>
 
 </div>
@@ -923,6 +923,9 @@ def main():
 
     # サイトマップ
     urls = [(SITE, "weekly", "1.0"), (SITE + "privacy.html", "yearly", "0.3")]
+    for page_name in ("about.html", "contact.html"):
+        if os.path.exists(page_name):
+            urls.append((SITE + page_name, "yearly", "0.3"))
     # 解説記事（articles/ フォルダにあるHTMLをすべて載せる）
     if os.path.isdir("articles"):
         urls.append((SITE + "articles/", "monthly", "0.7"))

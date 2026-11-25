@@ -1,5 +1,7 @@
 https://pachi-tool.com/
 https://pachi-tool.com/privacy.html
+https://pachi-tool.com/about.html
+https://pachi-tool.com/contact.html
 https://pachi-tool.com/articles/
 https://pachi-tool.com/articles/bunbo.html
 https://pachi-tool.com/articles/hamari-dai.html

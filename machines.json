@@ -1,7 +1,12 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-26",
   "note": "prob は通常時（ヘソ）の大当たり確率の分母。tag はXへの投稿に使う呼称（スペースや記号は不可）、emoji は投稿の先頭に付く絵文字（空欄可）。出典: P-WORLD 新台スケジュールほか。掲載前にメーカー公式または遊技説明で確認してください。",
   "news": [
+    {
+      "date": "2026-11-26",
+      "tag": "更新",
+      "text": "アクセル・ワールド、シン・ウルトラマン 79ver.、愛の不時着 99スイート、大海物語Withアグネス・ラム PE、ドラムde 電音部の5機種に「スペックから計算」の欄を追加しました。"
+    },
     {
       "date": "2026-11-19",
       "tag": "NEW",
@@ -58,7 +63,7 @@
       "intro": "2026-08-03",
       "slug": "nanatsu3",
       "short": "七つの大罪3",
-      "page": true,
+      "page": false,
       "note": "",
       "verified": false,
       "tag": "七つの大罪",
@@ -76,7 +81,14 @@
       "note": "",
       "verified": false,
       "tag": "アクセルワールド",
-      "emoji": "⚡"
+      "emoji": "⚡",
+      "rush_name": "LT",
+      "rush_rate": 23.4,
+      "rush_cont": 78,
+      "rush_note": "突入率は、BURST BATTLE突入（69.5%）×突破（約33%）にLT直行（0.5%）を足した当サイトの計算値です。継続率は転落後の残保留・LAST ATTACKを含むトータルの値です。",
+      "comment": "初当たりの69.5%でBURST BATTLEに入り、約33%で突破するとLTに入ります。LTは前半のOVER HEAVEN（大当たり1回で約6000個）と後半パートに分かれていて、トータル継続率は約78%です。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines_v2/7409"
     },
     {
       "name": "ぱちんこ押忍!番長 漢の頂 99ver.",
@@ -86,7 +98,7 @@
       "intro": "2026-08-03",
       "slug": "banchou-otoko",
       "short": "押忍!番長 漢の頂 99ver.",
-      "page": true,
+      "page": false,
       "note": "P版・e版の2種類がありますが、大当たり確率はどちらも1/99.9です。",
       "verified": false,
       "tag": "押忍番長",
@@ -100,7 +112,7 @@
       "intro": "2026-08-17",
       "slug": "zom100",
       "short": "ゾン100",
-      "page": true,
+      "page": false,
       "note": "",
       "verified": false,
       "tag": "ゾン100",
@@ -114,7 +126,7 @@
       "intro": "2026-08-17",
       "slug": "haruichiban2026",
       "short": "春一番 2026",
-      "page": true,
+      "page": false,
       "note": "",
       "verified": false,
       "tag": "春一番",
@@ -128,7 +140,7 @@
       "intro": "2026-06-08",
       "slug": "sao-ggo",
       "short": "ガンゲイル・オンライン",
-      "page": true,
+      "page": false,
       "note": "",
       "verified": false,
       "tag": "GGO",
@@ -142,7 +154,7 @@
       "intro": "2026-06-08",
       "slug": "hotd3",
       "short": "ハイスクール・オブ・ザ・デッド3",
-      "page": true,
+      "page": false,
       "note": "",
       "verified": false,
       "tag": "学園黙示録",
@@ -245,7 +257,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "ゼットンATTACK",
+      "rush_rate": 33,
+      "rush_cont": 80,
+      "rush_note": "突入率は、初当たり後に必ず入る「ウルトラバトルモード」の突破率（約33%）です。",
+      "comment": "初当たり後は必ずウルトラバトルモードに入り、約33%で突破するとゼットンATTACKです。ゼットンATTACKは継続率約80%の1回転勝負で、右打ち中の大当たりの約30%が約1000個です。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines_v2/7464"
     },
     {
       "name": "eF炎炎ノ消防隊2 99ver.",
@@ -279,7 +298,7 @@
       "short": "うしおととら 100ver.",
       "tag": "うしおととら",
       "emoji": "🐯",
-      "page": true,
+      "page": false,
       "note": "",
       "sources": 1,
       "verified": false
@@ -316,7 +335,7 @@
       "short": "アサルトリリィ",
       "tag": "アサルトリリィ",
       "emoji": "🌷",
-      "page": true,
+      "page": false,
       "note": "",
       "sources": 1,
       "verified": false
@@ -334,7 +353,14 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "愛の降臨RUSH",
+      "rush_rate": 51,
+      "rush_cont": 70,
+      "rush_note": "突入率51%には、RUSHに入らない初当たりが2回続いた後の救済は含みません。上位RUSH「愛の燦然RUSH」の継続率は約92%です。",
+      "comment": "初当たりの51%で愛の降臨RUSH（ST60回）に入ります。RUSHに入らない初当たりが2回続くと、3回目の初当たりは必ずRUSHに入ります。RUSH中に10R大当たりを3回引くと、継続率約92%の愛の燦然RUSH（ST130回）に移行します。",
+      "spec_src": "パチセブン",
+      "spec_url": "https://pachiseven.jp/machines/7408"
     },
     {
       "name": "e魔女と野獣",
@@ -346,7 +372,7 @@
       "short": "魔女と野獣",
       "tag": "魔女と野獣",
       "emoji": "🐺",
-      "page": true,
+      "page": false,
       "note": "通常時図柄揃い確率と魔女決戦BONUS当選確率の合算値です。",
       "sources": 1,
       "verified": false
@@ -386,7 +412,15 @@
       "page": true,
       "note": "突入前の大当り確率です。突入後は約1/19.5に変化します。",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "ST",
+      "rush_rate": 100,
+      "rush_cont": 57.7,
+      "rush_note": "継続率は公表値がないため、ST10回転（約40.9%）とその後の時短での引き戻しを、ラウンド振り分けで平均した当サイトの計算値です。",
+      "comment": "初当たりはすべてSTに入る甘デジです。ST10回転（約1/19.5）のあと、ラウンドに応じて15〜90回転の時短が付きます。低確率を239回転消化すると時短10000回転の遊タイムが発動するため、大きなハマりは実際にはほぼ起こりません。",
+      "spec_src": "P-WORLD",
+      "spec_url": "https://www.p-world.co.jp/machine/database/10511",
+      "yutime": 239
     },
     {
       "name": "e範馬刃牙 129ver.",
@@ -442,7 +476,7 @@
       "short": "GANTZ",
       "tag": "GANTZ",
       "emoji": "⚫",
-      "page": true,
+      "page": false,
       "note": "",
       "sources": 1,
       "verified": false
@@ -460,7 +494,15 @@
       "page": true,
       "note": "",
       "sources": 1,
-      "verified": false
+      "verified": false,
+      "rush_name": "超ドラ熱ATTACK",
+      "rush_rate": 26,
+      "rush_cont": 50,
+      "rush_note": "突入率は、初当たりの1%の直行と、50%で入る「りむるしか勝たんチャレンジ」（成功約50%）を合わせた当サイトの計算値です。",
+      "comment": "1種2種混合機で、右打ち中はすべて1回転勝負です。初当たり後の「りむるしか勝たんチャレンジ」を突破すると超ドラ熱ATTACKに入り、ATTACK中の大当たりは1回で約4500個です。低確率を550回転消化すると遊タイムが発動し、大当たりがほぼ確定します。",
+      "spec_src": "ちょんぼりすた",
+      "spec_url": "https://chonborista.com/?p=264684",
+      "yutime": 550
     },
     {
       "name": "e／P 中森明菜・歌姫伝説~FORFANS~",

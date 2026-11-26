@@ -921,6 +921,15 @@ def main():
             f.write(build_page(m, others))
         print(f"  生成: m/{m['slug']}.html  ({m['short']} 1/{m['prob']})")
 
+    # "page": false にした機種の古いページを消す（machines.json に載っている機種だけが対象。
+    # 機種データは残るので、"page": true に戻せば次の実行でページが復活する）
+    for m in machines:
+        if not m.get("page"):
+            old = f"m/{m['slug']}.html"
+            if os.path.exists(old):
+                os.remove(old)
+                print(f"  削除: {old}  ({m['short']})")
+
     # サイトマップ
     urls = [(SITE, "weekly", "1.0"), (SITE + "privacy.html", "yearly", "0.3")]
     for page_name in ("about.html", "contact.html"):

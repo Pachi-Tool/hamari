@@ -5,6 +5,11 @@
     {
       "date": "2026-11-26",
       "tag": "更新",
+      "text": "機種ページに、作品の元ネタを紹介する「元ネタ」の欄を追加しました。"
+    },
+    {
+      "date": "2026-11-26",
+      "tag": "更新",
       "text": "アクセル・ワールド、シン・ウルトラマン 79ver.、愛の不時着 99スイート、大海物語Withアグネス・ラム PE、ドラムde 電音部の5機種に「スペックから計算」の欄を追加しました。"
     },
     {
@@ -53,7 +58,10 @@
       "rush_note": "突入率には上位RUSHへの直行（1.5%）を含みます。上位RUSH「War of Underworld」の継続率は約75%です。",
       "comment": "通常のSWORD RUSHは継続率約65%ですが、上位RUSH「War of Underworld」に入ると約75%に上がる2段階の作りです。遊タイムは搭載していません。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7394/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7394/cutout/2",
+      "origin": "ソードアート・オンラインは、川原礫氏の小説が原作の作品です。もとは2002年からウェブ上で連載されていた小説で、2009年に電撃文庫から刊行が始まりました。テレビアニメは2012年7月に始まり、「アリシゼーション」編は2018年10月から放送されました（後半の「War of Underworld」は2019年10月）。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%83%89%E3%82%A2%E3%83%BC%E3%83%88%E3%83%BB%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3",
+      "origin_src": "Wikipedia「ソードアート・オンライン」"
     },
     {
       "name": "e 七つの大罪3",
@@ -88,7 +96,10 @@
       "rush_note": "突入率は、BURST BATTLE突入（69.5%）×突破（約33%）にLT直行（0.5%）を足した当サイトの計算値です。継続率は転落後の残保留・LAST ATTACKを含むトータルの値です。",
       "comment": "初当たりの69.5%でBURST BATTLEに入り、約33%で突破するとLTに入ります。LTは前半のOVER HEAVEN（大当たり1回で約6000個）と後半パートに分かれていて、トータル継続率は約78%です。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines_v2/7409"
+      "spec_url": "https://pachiseven.jp/machines_v2/7409",
+      "origin": "アクセル・ワールドは、川原礫氏の小説が原作の作品で、2009年2月に電撃文庫から刊行が始まりました。テレビアニメは2012年4月に放送が始まっています。作者は「ソードアート・オンライン」と同じ川原礫氏です。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%AF%E3%82%BB%E3%83%AB%E3%83%BB%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89",
+      "origin_src": "Wikipedia「アクセル・ワールド」"
     },
     {
       "name": "ぱちんこ押忍!番長 漢の頂 99ver.",
@@ -179,7 +190,10 @@
       "rush_note": "継続率は50回転ST（電サポ50回＋残保留4個）の値です。上位ST「GOLDパールRUSH」（86回転）は約87.3%です。",
       "comment": "初当たりはすべて3Rで、終了後は必ず50回転のSTに入ります。一部で86回転の上位ST「GOLDパールRUSH」に入り、継続率は約87%まで上がります。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/6832/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/6832/cutout/2",
+      "origin": "海物語は、三洋物産のパチンコ機のシリーズで、2009年に10周年を迎えました。海を舞台に、人魚のマリンちゃんや魚群予告といった演出が、シリーズを通して引き継がれています。「大海物語」はその流れをくむシリーズで、この機種は「大海物語5」にあたります。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E6%B5%B7%E7%89%A9%E8%AA%9E%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA",
+      "origin_src": "Wikipedia「海物語シリーズ」"
     },
     {
       "name": "eリコリス・リコイル",
@@ -200,7 +214,10 @@
       "rush_note": "突入率50%は、初当たりの半分がRUSHに直行する（ラッキートリガー）仕様によるものです。RUSHは132回転のSTです。",
       "comment": "初当たりの半分がRUSHに直行する、わかりやすいゲーム性です。大当たりの一部で発生する「アルティメットドライブ」では、6000個の獲得に加えて、3000個の上乗せが50%でループします。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7355/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7355/cutout/2",
+      "origin": "リコリス・リコイルは、2022年に放送が始まったオリジナルのテレビアニメです。制作はA-1 Pictures、監督は足立慎吾氏で、ストーリー原案をアサウラ氏が担当しています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%82%B3%E3%83%AA%E3%82%B9%E3%83%BB%E3%83%AA%E3%82%B3%E3%82%A4%E3%83%AB",
+      "origin_src": "Wikipedia「リコリス・リコイル」"
     },
     {
       "name": "eF機動戦士ガンダムSEED クライマックス",
@@ -264,7 +281,10 @@
       "rush_note": "突入率は、初当たり後に必ず入る「ウルトラバトルモード」の突破率（約33%）です。",
       "comment": "初当たり後は必ずウルトラバトルモードに入り、約33%で突破するとゼットンATTACKです。ゼットンATTACKは継続率約80%の1回転勝負で、右打ち中の大当たりの約30%が約1000個です。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines_v2/7464"
+      "spec_url": "https://pachiseven.jp/machines_v2/7464",
+      "origin": "ウルトラマンは、1966年に放送が始まった特撮テレビ番組から続くヒーローです。「シン・ウルトラマン」は2022年5月13日に公開された映画で、企画・脚本を庵野秀明氏、監督を樋口真嗣氏が担当しました。円谷プロダクション、東宝、Kharaが共同で制作しています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%B3%E3%83%BB%E3%82%A6%E3%83%AB%E3%83%88%E3%83%A9%E3%83%9E%E3%83%B3",
+      "origin_src": "Wikipedia「シン・ウルトラマン」"
     },
     {
       "name": "eF炎炎ノ消防隊2 99ver.",
@@ -286,7 +306,10 @@
       "rush_note": "突入率は、直行・チャレンジ・引き戻しを合わせたトータルの値です。継続率は電サポ30回＋残保留4個の値です。",
       "comment": "初当たり後は必ず右打ちになり、直行・チャレンジ・引き戻しを合わせて約60%で炎上RUSHに入ります。大当たりの約1%で、継続率約95%のLT「アドラバースト」が発動します。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7442/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7442/cutout/2",
+      "origin": "炎炎ノ消防隊は、大久保篤氏の漫画で、2015年に講談社の「週刊少年マガジン」で連載が始まりました。テレビアニメは2019年に放送が始まっています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E7%82%8E%E7%82%8E%E3%83%8E%E6%B6%88%E9%98%B2%E9%9A%8A",
+      "origin_src": "Wikipedia「炎炎ノ消防隊」"
     },
     {
       "name": "Pうしおととら~神のせSPEC~100ver.",
@@ -323,7 +346,10 @@
       "rush_note": "突入率は、初当たり後の「RUSH突入チャレンジ」に成功する割合です。RUSHは134回転のSTです。",
       "comment": "初当たり後の「RUSH突入チャレンジ」が最大の山場で、突入率は約25.5%と低めです。そのかわり、RUSH中は1500個オールで継続し、「超輪廻ループ」での上乗せも狙えます。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines_v2/7404"
+      "spec_url": "https://pachiseven.jp/machines_v2/7404",
+      "origin": "甲鉄城のカバネリは、2016年4月にフジテレビの「ノイタミナ」枠で放送が始まったオリジナルのテレビアニメです。制作はWIT STUDIO、監督は荒木哲郎氏で、2019年には劇場版「海門決戦」が公開されました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E7%94%B2%E9%89%84%E5%9F%8E%E3%81%AE%E3%82%AB%E3%83%90%E3%83%8D%E3%83%AA",
+      "origin_src": "Wikipedia「甲鉄城のカバネリ」"
     },
     {
       "name": "e アサルトリリィ",
@@ -360,7 +386,10 @@
       "rush_note": "突入率51%には、RUSHに入らない初当たりが2回続いた後の救済は含みません。上位RUSH「愛の燦然RUSH」の継続率は約92%です。",
       "comment": "初当たりの51%で愛の降臨RUSH（ST60回）に入ります。RUSHに入らない初当たりが2回続くと、3回目の初当たりは必ずRUSHに入ります。RUSH中に10R大当たりを3回引くと、継続率約92%の愛の燦然RUSH（ST130回）に移行します。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7408"
+      "spec_url": "https://pachiseven.jp/machines/7408",
+      "origin": "愛の不時着は、2019年12月から韓国のtvNで放送された韓国ドラマです。ヒョンビンさんとソン・イェジンさんが主演し、日本では2020年2月からNetflixで配信が始まりました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E6%84%9B%E3%81%AE%E4%B8%8D%E6%99%82%E7%9D%80",
+      "origin_src": "Wikipedia「愛の不時着」"
     },
     {
       "name": "e魔女と野獣",
@@ -397,7 +426,10 @@
       "rush_note": "突入率は図柄揃い時の値です。継続率は初回が100%、2回目以降が約77%です。",
       "comment": "図柄揃い（約1/1394）から、1G連の「DESTINY CHALLENGE」を経てRUSHを目指す仕組みです。RUSHは144回転で、ハズレを即停止させる「SKIP CHALLENGE」も搭載しています。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7448/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7448/cutout/2",
+      "origin": "takt op.（タクトオーパス）は、クラシック音楽の楽曲をモチーフにしたオリジナルのメディアミックス企画で、原作はDeNAと広井王子氏です。テレビアニメ「takt op.Destiny」は2021年10月にテレビ東京で放送が始まりました。制作はMAPPAとMADHOUSE、監督は伊藤祐毅氏です。",
+      "origin_url": "https://www.wikiwand.com/en/articles/Takt_Op",
+      "origin_src": "Wikiwand「Takt Op」"
     },
     {
       "name": "PA大海物語Withアグネス・ラム Premium Edition",
@@ -420,7 +452,10 @@
       "comment": "初当たりはすべてSTに入る甘デジです。ST10回転（約1/19.5）のあと、ラウンドに応じて15〜90回転の時短が付きます。低確率を239回転消化すると時短10000回転の遊タイムが発動するため、大きなハマりは実際にはほぼ起こりません。",
       "spec_src": "P-WORLD",
       "spec_url": "https://www.p-world.co.jp/machine/database/10511",
-      "yutime": 239
+      "yutime": 239,
+      "origin": "アグネス・ラムさんは、1956年にハワイで生まれたモデル・タレントです。1975年に来日して日本での活動を始め、1976〜77年ごろに「アグネス・ラムフィーバー」と呼ばれる人気になりました。グラビアやCMで活躍し、1977年には歌手としてもデビューしています。この機種は、三洋物産の海物語シリーズに、アグネス・ラムさんを登場させた台です。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B0%E3%83%8D%E3%82%B9%E3%83%BB%E3%83%A9%E3%83%A0",
+      "origin_src": "Wikipedia「アグネス・ラム」"
     },
     {
       "name": "e範馬刃牙 129ver.",
@@ -442,7 +477,10 @@
       "rush_note": "突入率は大当たり後のバトルに勝つ割合です。LT「史上最強バトルMODE90」のトータル継続率は約90%です。",
       "comment": "大当たり後のバトルに勝つとバトルMODEに入る、バトル型の機種です。3連勝すると勇次郎との親子喧嘩に挑めて、勝てば継続率約90%のLTに入ります。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7456/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7456/cutout/2",
+      "origin": "刃牙シリーズは、板垣恵介氏の格闘漫画で、秋田書店の「週刊少年チャンピオン」で連載されました。「グラップラー刃牙」から「バキ」「範馬刃牙」と続き、2021年にはNetflixでアニメ「範馬刃牙」が配信されています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%A9%E3%83%83%E3%83%97%E3%83%A9%E3%83%BC%E5%88%83%E7%89%99",
+      "origin_src": "Wikipedia「グラップラー刃牙」"
     },
     {
       "name": "e Re:ゼロから始める異世界生活 鬼がかり2",
@@ -464,7 +502,10 @@
       "rush_note": "RUSH中の実質大当り確率は約1/99.9です。",
       "comment": "1種2種混合機で、RUSH中の電サポは144回です。大当たり出玉は1500個から最大12000個まで幅があります。RUSHの残りが50回以下で保留を0にし、1500個以上を引くと出る「Excellent予告」もあります。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines_v2/7467"
+      "spec_url": "https://pachiseven.jp/machines_v2/7467",
+      "origin": "Re:ゼロから始める異世界生活は、長月達平氏の小説で、2012年4月に「小説家になろう」でのウェブ連載が始まりました。2014年1月にMF文庫Jから書籍化され、テレビアニメは2016年4月に放送が始まっています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/Re%3A%E3%82%BC%E3%83%AD%E3%81%8B%E3%82%89%E5%A7%8B%E3%82%81%E3%82%8B%E7%95%B0%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB",
+      "origin_src": "Wikipedia「Re:ゼロから始める異世界生活」"
     },
     {
       "name": "SMART-PACHINKO GANTZ",
@@ -502,7 +543,10 @@
       "comment": "1種2種混合機で、右打ち中はすべて1回転勝負です。初当たり後の「りむるしか勝たんチャレンジ」を突破すると超ドラ熱ATTACKに入り、ATTACK中の大当たりは1回で約4500個です。低確率を550回転消化すると遊タイムが発動し、大当たりがほぼ確定します。",
       "spec_src": "ちょんぼりすた",
       "spec_url": "https://chonborista.com/?p=264684",
-      "yutime": 550
+      "yutime": 550,
+      "origin": "電音部は、バンダイナムコエンターテインメントの音楽ブランド「ASOBINOTES」が手がける、音楽を原作としたキャラクタープロジェクトです。2020年6月に発表され、架空の高校の電音部に所属する少女たちが、DJやライブを行う設定です。キャラクターデザインはMika Pikazo氏が担当しています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E9%9B%BB%E9%9F%B3%E9%83%A8",
+      "origin_src": "Wikipedia「電音部」"
     },
     {
       "name": "e／P 中森明菜・歌姫伝説~FORFANS~",
@@ -524,7 +568,10 @@
       "rush_note": "継続率はST100回の値です。スタンプラリー達成後（ST100回＋時短100回）は約78%です。",
       "comment": "初当たり後は必ずST100回に入り、「歌いきれば大当たり」が基本のゲーム性です。4R・7R・10Rをすべて取るスタンプラリーを達成すると時短100回が付き、継続率は約78%に上がります。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7452/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7452/cutout/2",
+      "origin": "中森明菜さんは、1982年5月に「スローモーション」でデビューした歌手です。2作目の「少女A」でブレイクし、「ミ・アモーレ」（1985年）と「DESIRE -情熱-」（1986年）で、日本レコード大賞を2年連続で受賞しました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%A3%AE%E6%98%8E%E8%8F%9C",
+      "origin_src": "Wikipedia「中森明菜」"
     },
     {
       "name": "デカスタeGODZILLA7 超震撼ver.",
@@ -576,7 +623,10 @@
       "rush_note": "突入率は引き戻しを含む値です（直行は約65%）。STは161回転で、ST中の大当り確率は約1/98.9です。",
       "comment": "初当たりでの直行（約65%）に加えて、時短100回中の引き戻しでもSTに入れるのが特徴です。STは161回転で、ST中の大当たりは1500個です。",
       "spec_src": "ちょんぼりすた",
-      "spec_url": "https://chonborista.com/pachinko/bisty/264615/"
+      "spec_url": "https://chonborista.com/pachinko/bisty/264615/",
+      "origin": "新世紀エヴァンゲリオンは、庵野秀明氏が原作・監督を務め、1995年10月から1996年3月にテレビ東京系列などで放送されたテレビアニメです（全26話、放送当時の制作はGAINAX）。その後、1997年から1998年に旧劇場版が、2007年から2021年に「ヱヴァンゲリヲン新劇場版」が公開されました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E6%96%B0%E4%B8%96%E7%B4%80%E3%82%A8%E3%83%B4%E3%82%A1%E3%83%B3%E3%82%B2%E3%83%AA%E3%82%AA%E3%83%B3",
+      "origin_src": "Wikipedia「新世紀エヴァンゲリオン」"
     },
     {
       "name": "eグランベルム 319ver.",
@@ -598,7 +648,10 @@
       "rush_note": "継続率は、RESTARTを含むST130回転の値です。小当たり経由の場合は、V入賞がRUSH突入の条件です。",
       "comment": "初当たりの約半分がRUSHに直行するタイプで、RUSHは130回転です。RUSH中は「超アドレナリンBOOST」での上乗せや、出玉性能が上がる「裏RUSH」があり、まとまった出玉を狙える作りになっています。",
       "spec_src": "ななプレス",
-      "spec_url": "https://nana-press.com/kaiseki/machine/1240/"
+      "spec_url": "https://nana-press.com/kaiseki/machine/1240/",
+      "origin": "グランベルムは、2019年7月に放送が始まったオリジナルのテレビアニメです。制作はNexus、監督は渡邊政治氏が務めました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%99%E3%83%AB%E3%83%A0",
+      "origin_src": "Wikipedia「グランベルム」"
     },
     {
       "name": "eグランベルム 249ver.",
@@ -620,7 +673,10 @@
       "rush_note": "RUSHは130回転です。小当たり経由の場合は、V入賞がRUSH突入の条件です。",
       "comment": "319ver.より当たりやすい1/249.1のライトミドル版です。突入率50%・継続率約75%と319ver.に近い数字のまま、初当たりが軽くなっています。大当たりは最大で約4500個（10R×3回）です。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7473/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7473/cutout/2",
+      "origin": "アニメ「グランベルム」は、もとになる原作を持たないオリジナル作品で、2019年7月から放送されました。制作会社はNexus、監督は渡邊政治氏です。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%99%E3%83%AB%E3%83%A0",
+      "origin_src": "Wikipedia「グランベルム」"
     },
     {
       "name": "e ノーゲーム・ノーライフ 119Ver.",
@@ -643,7 +699,10 @@
       "rush_note": "継続率は2段階です。最初のノゲノラッシュ（電サポ12回＋残保留4個）が約51%で、そこで当たると移る「ノゲノラッシュHYPER」（電サポ32回＋残保留4個）が約80%です。",
       "comment": "RUSHが2段階になっているのが特徴です。最初のノゲノラッシュは継続率約51%と低めですが、1回当たれば継続率約80%のHYPERに上がります。RUSHに入って最初の1回を引けるかどうかが勝負どころです。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7451/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7451/cutout/2",
+      "origin": "ノーゲーム・ノーライフは、榎宮祐氏の小説で、2012年4月にMF文庫Jから刊行が始まりました。テレビアニメは2014年4月に放送が始まり、2017年7月には劇場版「ノーゲーム・ノーライフ ゼロ」が公開されています。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%83%8E%E3%83%BC%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BB%E3%83%8E%E3%83%BC%E3%83%A9%E3%82%A4%E3%83%95",
+      "origin_src": "Wikipedia「ノーゲーム・ノーライフ」"
     },
     {
       "name": "eフィーバー妖怪ウォッチ",
@@ -665,7 +724,10 @@
       "rush_note": "突入率は直行（約50%）と時短100回での引き戻し（約22%）を合わせた値です。継続率も、RUSH自体の約74%に時短での引き戻しを合わせた値です。",
       "comment": "RUSH「ヨーデルSONIC怪闘」は、大当たりか最終決戦まで続きます。最終決戦に負けても時短100回の「コマチャレンジ」で引き戻しを狙えるため、トータルの継続率は約80%になります。RUSH中の大当たりはすべて10Rです。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7453/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7453/cutout/2",
+      "origin": "妖怪ウォッチは、レベルファイブが企画・開発したシリーズです。最初のゲームは2013年7月にニンテンドー3DS向けに発売され、2014年1月にテレビアニメの放送が始まると、小学生を中心にブームになりました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E5%A6%96%E6%80%AA%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81",
+      "origin_src": "Wikipedia「妖怪ウォッチ」"
     },
     {
       "name": "e 獣王 獅子の一撃",
@@ -687,7 +749,10 @@
       "rush_note": "RUSHは100回転のSTです。突入率は、初当たり後の「獣王RUSHチャレンジ」に成功する割合です。",
       "comment": "継続率は約50%と低めですが、そのぶん1回の出玉が大きい機種です。RUSH中の大当たり後に約50%で成功する「獣王ジャッジメント」から、最低約4500個・平均約9800個の「サバンナチャンス」を狙います。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7459/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7459/cutout/2",
+      "origin": "獣王は、2001年にサミーが出したパチスロ機です。連チャンしやすいAT「サバンナチャンス」で、一撃で数千枚の出玉になることもあり、4号機の時代に人気の機種になりました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E7%8D%A3%E7%8E%8B",
+      "origin_src": "Wikipedia「獣王」"
     },
     {
       "name": "eとある魔術の禁書目録3",
@@ -709,7 +774,10 @@
       "rush_note": "継続率は、前半30回転・後半100回転・最終1回転を合わせた値です。",
       "comment": "突入率50%・継続率約75%の王道ST機です。STは前半30回転と後半100回転、ラスト1回転に分かれていて、区間によって当たりやすさと当たったときの恩恵が変わります。出玉は最大約3000個です。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7472/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7472/cutout/2",
+      "origin": "とある魔術の禁書目録は、鎌池和馬氏の小説で、イラストは灰村キヨタカ氏が担当しています。2004年4月に電撃文庫から刊行が始まり、テレビアニメ第1期は2008年10月に放送されました。スピンオフに「とある科学の超電磁砲」があります。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%81%A8%E3%81%82%E3%82%8B%E9%AD%94%E8%A1%93%E3%81%AE%E7%A6%81%E6%9B%B8%E7%9B%AE%E9%8C%B2",
+      "origin_src": "Wikipedia「とある魔術の禁書目録」"
     },
     {
       "name": "eプリンセス・プリンシパル",
@@ -731,7 +799,10 @@
       "rush_note": "突入率は、初当たり（10R）中のチャレンジ演出に成功する割合です。",
       "comment": "初当たりはすべて10R（約1500個）です。SPY RUSHは前半と後半で性格が違い、前半は大当たりの半分が6000個以上になります。後半は1500個を取るか、前半に戻る「RESET」を目指す、メリハリのあるSTです。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7478/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7478/cutout/2",
+      "origin": "プリンセス・プリンシパルは、2017年7月に放送が始まったオリジナルのテレビアニメです。制作はStudio 3Hzとアクタス、監督は橘正紀氏で、劇場版が2021年と2023年に公開されました。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AA%E3%83%B3%E3%82%BB%E3%82%B9%E3%83%BB%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B7%E3%83%91%E3%83%AB",
+      "origin_src": "Wikipedia「プリンセス・プリンシパル」"
     },
     {
       "name": "桃太郎電鉄 ～ぱちんこも定番！～",
@@ -754,7 +825,10 @@
       "comment": "初当たりはすべて5R（約400個）で、時短50回の「桃鉄チャレンジ」中に当たるとRUSH（ST77回）に入ります。設定が6段階あり、高設定ほど10Rの割合が増えます。遊タイムも搭載しています。",
       "spec_src": "ちょんぼりすた",
       "spec_url": "https://chonborista.com/?p=273504",
-      "yutime": 250
+      "yutime": 250,
+      "origin": "桃太郎電鉄は、1988年12月にハドソンからファミリーコンピュータ向けに発売されたゲームです。電鉄会社の社長になって日本各地の物件を買い集め、総資産を競うボードゲーム形式で、ゲームの監督はさくまあきら氏です。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E6%A1%83%E5%A4%AA%E9%83%8E%E9%9B%BB%E9%89%84%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA",
+      "origin_src": "Wikipedia「桃太郎電鉄シリーズ」"
     },
     {
       "name": "桃太郎電鉄 ～ぱちんこも定番！～ LTver.",
@@ -776,7 +850,10 @@
       "rush_note": "突入率は設定1の値で、設定6では65.3%まで上がります。継続率はST77回の値で、設定による差はありません。",
       "comment": "設定で大きく変わるのはRUSH突入率で、設定1の53.3%から設定6の65.3%まで差があります。RUSH中に大当たりを9回重ねる「全国制覇」を達成すると、1回の当たりで実質4回分の出玉が出るLT「黄金列車RUSH」に入ります。遊タイムはありません。",
       "spec_src": "ちょんぼりすた",
-      "spec_url": "https://chonborista.com/?p=273594"
+      "spec_url": "https://chonborista.com/?p=273594",
+      "origin": "桃太郎電鉄シリーズの最初の作品は、1988年12月に発売されたファミリーコンピュータ用のソフトです。日本各地をまわって物件を買い、総資産の多さを競うボードゲーム形式で、生みの親はさくまあきら氏です。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E6%A1%83%E5%A4%AA%E9%83%8E%E9%9B%BB%E9%89%84%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA",
+      "origin_src": "Wikipedia「桃太郎電鉄シリーズ」"
     },
     {
       "name": "e 仮面ライダーBLACK デカヘソ Light Version",
@@ -798,7 +875,10 @@
       "rush_note": "RUSHは120回転のSTです。小当たり経由の大当たりは、V入賞が条件です。",
       "comment": "突入率60%と入りやすいライトタイプです。1回の出玉は240個か400個と小さめですが、RUSH中の大当たりの25%で入る「宿命BATTLE」では、400個が約65%でループします。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7491/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7491/cutout/2",
+      "origin": "仮面ライダーBLACKは、石ノ森章太郎氏が原作の特撮テレビドラマで、1987年10月から1988年10月まで放送されました。仮面ライダーシリーズの8作目にあたります。",
+      "origin_url": "https://en.wikipedia.org/wiki/Kamen_Rider_Black",
+      "origin_src": "Wikipedia（英語版）「Kamen Rider Black」"
     },
     {
       "name": "eワンパンマン2～正義執行 99ver.",
@@ -820,7 +900,10 @@
       "rush_note": "突入率は、初当たり後のRUSHチャレンジに成功する割合です。RUSH中の電サポは66回です。",
       "comment": "甘デジですが、RUSH中に約5000個の「正義執行5000BONUS」を狙える一撃型です。初当たりのほとんどは約252個で、突入率40%・継続率約50%と、RUSHに入れて続けるまでのハードルは高めです。",
       "spec_src": "パチセブン",
-      "spec_url": "https://pachiseven.jp/machines/7460/cutout/2"
+      "spec_url": "https://pachiseven.jp/machines/7460/cutout/2",
+      "origin": "ワンパンマンは、ONE氏が2009年にウェブで連載を始めた漫画です。村田雄介氏の作画によるリメイクが2012年から「となりのヤングジャンプ」で連載され、テレビアニメは2015年秋に放送が始まりました（制作はマッドハウス、第2期は2019年4月から）。",
+      "origin_url": "https://ja.wikipedia.org/wiki/%E3%83%AF%E3%83%B3%E3%83%91%E3%83%B3%E3%83%9E%E3%83%B3",
+      "origin_src": "Wikipedia「ワンパンマン」"
     }
   ]
 }

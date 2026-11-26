@@ -372,8 +372,7 @@ def analogy_section(m):
     </table>
   </div>
   <p style="margin-top:10px;font-size:12px;color:var(--text-dim);">
-    ※たとえには、コイン・サイコロ・じゃんけん・トランプ・数字選択式宝くじ（ナンバーズ、ミニロト、ロト6、ロト7）など、
-    確率が計算で決まる出来事だけを使っています。
+    ※たとえには、確率が計算で決まる出来事だけを使っています。
   </p>
 </section>
 """
@@ -488,10 +487,27 @@ def spec_section(m, pool):
   <p style="margin-top:10px;font-size:12px;color:var(--text-dim);">※{note}</p>
 {chr(10).join(parts)}
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
-    ※突入率と継続率は公表値をもとにした単純計算の目安です。V入賞や残保留の扱いなど、細かい条件は機種ごとに異なります。<br>
+    ※突入率と継続率は公表値をもとにした単純計算の目安です。<br>
     {src}
   </p>
   <p style="margin-top:12px;"><a href="../tools/renchan.html?c={num(cont)}&amp;f={num(first)}">継続率計算ツールで、ほかの連チャン数も計算する →</a></p>
+</section>
+"""
+
+
+def origin_section(m):
+    """machines.json に origin（元ネタの説明文）がある機種だけ「元ネタ」の欄を出す"""
+    if not m.get("origin"):
+        return ""
+    src = ""
+    if m.get("origin_url"):
+        src = (f'\n  <p style="margin-top:10px;font-size:12px;color:var(--text-dim);">'
+               f'元ネタの出典：<a href="{esc(m["origin_url"])}" target="_blank" rel="noopener nofollow">'
+               f'{esc(m.get("origin_src") or "出典")}</a></p>')
+    return f"""
+<section class="panel">
+  <h2>{esc(m["short"])}の元ネタ</h2>
+  <p>{esc(m["origin"])}</p>{src}
 </section>
 """
 
@@ -553,7 +569,7 @@ def build_page(m, others):
         cta_pixel = CTA_PIXEL
 
     # スペックから計算したセクション（データがある機種だけ）
-    spec_html = spec_section(m, others + [m])
+    spec_html = spec_section(m, others + [m]) + origin_section(m)
     analogy_html = analogy_section(m)
     compare_json = json.dumps([[d, l, c] for d, l, c in ANALOGIES], ensure_ascii=False)
 
@@ -703,35 +719,17 @@ def build_page(m, others):
     </table>
   </div>
   <p style="margin-top:14px;font-size:12px;color:var(--text-dim);">
-    ※「遭遇する頻度」は、大当たりを引くたびにそのハマりに何回に1度出会うかの目安です。
-    たとえば「約151回に1度」なら、大当たり151回につき1回はそこまでハマる計算になります。<br>
-    ※通常時の大当たり確率1/{prob}をもとに算出した理論値です。{note_html}
+    ※通常時の大当たり確率1/{prob}をもとにした理論値です。「遭遇する頻度」は、大当たり何回に1度そのハマりに出会うかの目安です。{note_html}
   </p>
 </section>
 {spec_html}{analogy_html}
 <section class="panel">
   <h2>1/{prob}という数字の読み方</h2>
-
-  <h3>{prob:.0f}回転回しても当たらないことは珍しくない</h3>
-  <p>大当たり確率と同じ{round(prob):,}回転を回した時点でも、まだ当たっていない確率は
-     {fmt_pct(r_at_prob)}あります。「確率の分母だけ回せば当たる」わけではなく、
-     3回に1度以上は分母を超えてハマる計算です。</p>
-
-  <h3>半分の確率で当たるのは約{half:,}回転</h3>
-  <p>{short}を打ち始めてから、大当たりを引いている確率が50%を超えるのは
-     約{half:,}回転を回した時点です。大当たり確率の分母より多く回して、
-     ようやく五分五分になります。</p>
-
-  <h3>1000回転・2000回転のハマりはどのくらい珍しいか</h3>
-  <p>1000回転のハマりは{fmt_pct(r1000)}（{fmt_one_in(r1000)}）、
-     2000回転のハマりは{fmt_pct(r2000)}（{fmt_one_in(r2000)}）です。
-     1000回転程度であれば長く打っていれば遭遇する範囲ですが、
-     2000回転を超えると相当まれな部類に入ります。</p>
-
-  <h3>ハマった後は当たりやすくなるのか</h3>
-  <p>なりません。{short}の抽選は1回転ごとに独立しているため、
-     何回転ハマった直後でも次の1回転の当選確率は1/{prob}のままです。
-     「そろそろ当たる」と感じるのはギャンブラーの誤謬と呼ばれる錯覚です。</p>
+  <p>{round(prob):,}回転回しても、まだ当たっていない確率は{fmt_pct(r_at_prob)}あります。
+     大当たりを引いている確率が50%を超えるのは、約{half:,}回転を回した時点です。</p>
+  <p>ハマったあとの当たりやすさや、「分母まで回せば当たる」という誤解については、
+     <a href="../articles/bunbo.html">分母の誤解の記事</a>と
+     <a href="../articles/hamari-dai.html">ハマり台の記事</a>で詳しく説明しています。</p>
 </section>
 
 <section class="panel">
